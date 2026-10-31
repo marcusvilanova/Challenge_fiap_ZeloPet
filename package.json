@@ -1,0 +1,11 @@
+{
+  "name": "zelo-web",
+  "private": true,
+  "type": "module",
+  "description": "Versão online (Vercel) do Zelo: front-end estático + motor de triagem em JS + função opcional do Gemini",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node web/build.mjs",
+    "test": "node --test web/test/parity.test.mjs"
+  }
+}

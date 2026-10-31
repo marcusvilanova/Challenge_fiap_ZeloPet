@@ -1,13 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": null,
-  "installCommand": null,
-  "outputDirectory": "backend/src/main/resources/static",
-  "cleanUrls": false,
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "https://SEU-BACKEND.onrender.com/api/:path*" }
-  ],
+  "installCommand": "",
+  "buildCommand": "node web/build.mjs",
+  "outputDirectory": "web/dist",
+  "functions": {
+    "api/llm.js": { "maxDuration": 30 }
+  },
   "headers": [
     {
       "source": "/(.*)",

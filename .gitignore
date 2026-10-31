@@ -25,3 +25,7 @@ Thumbs.db
 
 # Datasets completos (tamanho/licença): ver data/README.md
 data/raw/
+
+# Build da versão estática (Vercel)
+web/dist/
+.vercel/
