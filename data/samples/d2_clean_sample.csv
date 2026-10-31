@@ -1,0 +1,201 @@
+species,breed,age_years,weight_kg,history,canonical_symptoms
+dog,Rottweiler,6.0,32.1,Chronic illness,perda_apetite;diarreia
+cat,Mixed Breed,12.4,3.6,Previous heart condition,tosse;dor;perda_peso
+dog,Yorkshire Terrier,8.0,6.0,Recent surgery,dor_abdominal
+dog,Golden Retriever,8.6,29.6,Dental issues,dor;diarreia;vomito;perda_peso
+cat,Bengal,13.6,3.3,Parasite history,perda_apetite;apatia;fraqueza;vomito;dor
+cat,Ragdoll,12.8,9.0,Dental issues,fraqueza;diarreia;vomito
+dog,Labrador Retriever,8.3,45.0,Recent surgery,febre;apatia;perda_apetite;dor
+dog,Bulldog,3.8,17.3,Allergies,febre;dor
+dog,Yorkshire Terrier,5.9,5.9,Chronic illness,apatia;diarreia_sangue;dor;espirros
+dog,Labrador Retriever,10.1,37.1,No previous conditions,vomito;febre;perda_apetite;diarreia
+cat,Sphynx,3.8,4.9,No previous conditions,lesao_pele;tosse;apatia;ouvido_problema
+dog,Bulldog,7.5,19.3,Previous kidney disease,lesao_pele;coceira;queda_pelo
+cat,British Shorthair,0.5,5.3,Previous heart condition,perda_peso;ataxia;dor;tosse
+dog,Labrador Retriever,8.4,26.9,Previous heart condition,fraqueza;diarreia;espirros
+cat,Maine Coon,10.8,7.0,Previous heart condition,tosse;perda_apetite;febre;ouvido_problema
+cat,Maine Coon,11.9,6.3,Dental issues,espirros;vomito;perda_peso;febre
+cat,British Shorthair,6.5,2.7,Recent surgery,lesao_pele;perda_apetite;apatia
+cat,Ragdoll,18.0,7.1,Parasite history,perda_peso;perda_apetite;vomito;fraqueza
+dog,Bulldog,0.7,17.1,Vaccinated,claudicacao
+cat,Mixed Breed,1.2,6.3,Allergies,perda_peso;apatia;taquicardia
+cat,Mixed Breed,15.7,6.1,Allergies,febre;salivacao_excessiva;lesao_pele
+dog,Boxer,0.5,16.3,Vaccinated,vomito;espirros;ouvido_problema;lesao_pele
+dog,Poodle,12.5,6.2,Skin conditions history,febre;tosse;diarreia;perda_apetite
+dog,Beagle,8.2,17.5,Skin conditions history,apatia;ataxia;dificuldade_urinar
+cat,Scottish Fold,13.7,3.2,Vaccinated,diarreia;tosse;perda_apetite
+cat,Ragdoll,7.0,7.5,Previous kidney disease,febre;secrecao_nasal;tosse;espirros;desidratacao
+dog,German Shepherd,8.8,42.7,Parasite history,apatia;febre;diarreia;dor_abdominal;diarreia_sangue
+dog,Beagle,9.1,17.3,Not vaccinated,febre;problema_oral;ataxia;convulsao
+dog,Poodle,9.5,5.5,Previous kidney disease,vomito;febre;perda_peso;dificuldade_urinar
+cat,Mixed Breed,12.2,5.5,Chronic illness,dor
+cat,Mixed Breed,8.0,4.7,Chronic illness,vomito;paralisia;tosse
+dog,Beagle,2.3,21.7,No previous conditions,diarreia;perda_peso
+dog,Rottweiler,13.5,34.7,Previous kidney disease,diarreia;espirros;febre
+dog,Rottweiler,9.5,42.4,Recent surgery,apatia;secrecao_nasal
+dog,Labrador Retriever,11.4,34.9,Parasite history,perda_peso;fraqueza;apatia;tosse;perda_apetite
+dog,Yorkshire Terrier,5.4,8.2,Not vaccinated,perda_apetite;apatia;fraqueza;diarreia
+cat,Ragdoll,13.2,6.9,Chronic illness,fraqueza;perda_peso;apatia;febre;espirros
+dog,Mixed Breed,6.6,18.4,No previous conditions,diarreia;abdomen_distendido;perda_peso;fezes_escuras;vomito
+cat,Sphynx,4.4,6.9,Previous heart condition,apatia;febre;fraqueza
+dog,Labrador Retriever,10.1,41.2,Chronic illness,febre;dor;perda_apetite;diarreia
+dog,Bulldog,11.6,28.2,Recent surgery,inchaco;sangramento;dor
+dog,Poodle,12.6,5.2,Chronic illness,tosse;perda_apetite;dor;diarreia
+dog,Yorkshire Terrier,4.5,7.5,Not vaccinated,perda_apetite;dor;diarreia;tosse;febre
+cat,Sphynx,8.8,5.0,Dental issues,fraqueza;febre;vomito
+cat,Ragdoll,9.3,7.5,Not vaccinated,febre;tosse;fraqueza;apatia
+cat,Persian,7.1,6.5,Chronic illness,lesao_pele;tosse
+dog,German Shepherd,9.1,40.7,Previous kidney disease,apatia;claudicacao;perda_apetite;taquicardia;febre
+cat,Scottish Fold,7.7,6.5,Dental issues,apatia;perda_apetite;problema_oral;fraqueza
+dog,Bulldog,5.7,23.3,Parasite history,dor;tosse;tremores
+cat,Scottish Fold,15.8,4.5,Previous kidney disease,perda_peso;olho_vermelho_secrecao;espirros;olho_dor_lesao
+dog,Beagle,9.6,25.8,Skin conditions history,febre;claudicacao;dor
+dog,Golden Retriever,10.3,31.9,Previous heart condition,sangramento;perda_apetite;espirros
+dog,German Shepherd,3.9,34.2,Previous kidney disease,fraqueza;diarreia;tosse;nausea;espirros
+cat,Mixed Breed,1.5,5.7,Previous heart condition,perda_apetite;fraqueza
+dog,Rottweiler,5.1,27.4,Not vaccinated,febre;tremores;dor;apatia
+cat,Siamese,1.8,5.1,Parasite history,febre;perda_apetite;olho_vermelho_secrecao
+dog,Mixed Breed,4.8,40.0,No previous conditions,febre;apatia
+cat,Persian,15.2,4.9,No previous conditions,apatia;paralisia;perda_peso;perda_apetite
+dog,Labrador Retriever,6.6,40.0,Chronic illness,dor;inchaco;olho_vermelho_secrecao
+cat,Bengal,2.9,6.5,Chronic illness,dor_abdominal;perda_apetite;paralisia;febre;apatia
+dog,German Shepherd,15.0,42.2,Parasite history,secrecao_nasal;espirros;diarreia_sangue;perda_peso
+cat,British Shorthair,11.1,6.4,Chronic illness,tosse;dor;febre;perda_apetite;diarreia
+dog,Labrador Retriever,6.4,25.0,Recent surgery,queda_pelo;fraqueza;diarreia;espirros
+dog,Poodle,9.6,6.0,No previous conditions,perda_peso;fraqueza;apatia;espirros
+dog,Boxer,1.0,15.0,Previous kidney disease,apatia;fezes_escuras;claudicacao;tosse;perda_peso
+dog,Boxer,6.9,29.0,Allergies,diarreia_sangue;fraqueza;apatia
+cat,Ragdoll,7.6,6.8,Dental issues,secrecao_nasal;desidratacao;espirros;febre;tosse
+cat,Scottish Fold,18.0,3.7,Vaccinated,perda_peso;espirros;apatia
+dog,Golden Retriever,0.5,39.3,No previous conditions,dor;espirros;perda_apetite;vomito;apatia
+cat,Maine Coon,13.1,8.0,Previous heart condition,dor;perda_apetite;vomito
+cat,Scottish Fold,6.8,3.0,No previous conditions,espirros;fraqueza;tosse
+cat,Ragdoll,14.1,8.6,Skin conditions history,perda_apetite;vomito;perda_peso
+cat,Siamese,3.5,3.4,Recent surgery,paralisia;apatia;convulsao
+dog,Beagle,15.0,29.8,No previous conditions,perda_apetite;recusa_agua;mudanca_comportamento;claudicacao;dor
+dog,Labrador Retriever,9.9,35.3,Previous kidney disease,diarreia;apatia;tosse;perda_apetite
+dog,Poodle,11.6,8.2,No previous conditions,tosse;dor;apatia;espirros;perda_apetite
+dog,Boxer,7.5,24.8,Dental issues,perda_apetite;apatia;tosse;lesao_pele
+cat,Scottish Fold,13.9,5.6,Previous kidney disease,sangramento;perda_peso
+dog,Boxer,13.0,17.7,Chronic illness,febre;fraqueza;paralisia
+dog,Golden Retriever,11.0,36.8,No previous conditions,dor;parto_dificil
+cat,Sphynx,10.1,4.3,Previous kidney disease,dor;apatia;perda_apetite;fraqueza
+cat,British Shorthair,0.5,8.0,Previous kidney disease,fraqueza;apatia;tosse
+cat,Maine Coon,6.7,5.7,Skin conditions history,febre;diarreia;vomito;salivacao_excessiva;perda_apetite
+dog,Mixed Breed,9.6,15.9,Chronic illness,dor;olho_vermelho_secrecao;taquicardia;vomito
+dog,Golden Retriever,6.3,40.7,Parasite history,dor;tosse;perda_peso;febre
+cat,Maine Coon,10.0,6.4,Recent surgery,perda_peso;vomito;fraqueza;dor;apatia
+cat,Scottish Fold,7.6,3.9,No previous conditions,perda_apetite
+cat,Scottish Fold,17.7,4.3,Skin conditions history,olho_dor_lesao;dor_abdominal;intolerancia_exercicio;dor
+dog,German Shepherd,6.5,37.8,Previous heart condition,apatia;fraqueza
+cat,Scottish Fold,18.0,4.1,Not vaccinated,perda_peso;dificuldade_respirar;vomito;fraqueza;diarreia
+dog,Labrador Retriever,8.4,29.6,Allergies,febre;olho_vermelho_secrecao;espirros;apatia;claudicacao
+cat,Maine Coon,10.3,8.9,No previous conditions,febre;tremores;tosse;dor
+dog,Yorkshire Terrier,0.5,6.1,Vaccinated,vomito;febre;diarreia;perda_apetite
+cat,Persian,18.0,5.5,No previous conditions,vomito;fraqueza;apatia;olho_vermelho_secrecao
+dog,Golden Retriever,12.2,38.6,Recent surgery,espirros;dor;diarreia;fraqueza
+cat,Persian,1.0,3.7,Allergies,perda_peso;apatia;lesao_pele;perda_apetite
+dog,Mixed Breed,11.2,28.6,Allergies,fraqueza;perda_apetite;vomito;espirros
+cat,Bengal,0.5,3.8,Previous heart condition,linfonodos_aumentados;vomito;dor;espirros;perda_peso
+dog,Yorkshire Terrier,13.3,3.5,Previous kidney disease,tosse;vomito;perda_peso;espirros;apatia
+cat,Sphynx,1.3,2.6,Chronic illness,apatia;secrecao_nasal;tosse
+cat,British Shorthair,0.5,5.0,Parasite history,queda_pelo;espirros;diarreia;apatia;perda_apetite
+dog,Boxer,7.9,25.4,Parasite history,dor;fraqueza;apatia;diarreia
+cat,Ragdoll,14.7,6.5,Recent surgery,perda_peso;dor;perda_apetite;tosse
+cat,British Shorthair,14.8,4.3,No previous conditions,paralisia;diarreia;dificuldade_respirar;fraqueza
+cat,Persian,7.3,6.6,Chronic illness,perda_apetite;perda_peso;apatia
+cat,Siamese,11.5,4.7,No previous conditions,
+cat,Persian,18.0,6.5,Dental issues,sede_urina_excessiva;tremores;perda_peso
+cat,Bengal,13.5,6.6,Chronic illness,tosse;diarreia;perda_peso;dor_abdominal
+cat,British Shorthair,7.1,4.5,Vaccinated,claudicacao;febre;perda_peso;tremores;diarreia
+dog,German Shepherd,8.0,42.0,Parasite history,febre;diarreia;dor_abdominal;diarreia_sangue;apatia
+cat,Sphynx,12.7,3.3,No previous conditions,dificuldade_respirar;inchaco;sangramento;perda_apetite
+dog,Yorkshire Terrier,2.4,8.2,Dental issues,inchaco;dor;febre
+dog,Boxer,11.9,20.5,Parasite history,sangramento_nasal;fraqueza
+dog,German Shepherd,11.2,34.3,Recent surgery,dificuldade_respirar;secrecao_nasal;apatia;tosse
+cat,Mixed Breed,18.0,5.6,Not vaccinated,perda_peso;fraqueza;tosse;perda_apetite;apatia
+dog,Bulldog,7.8,19.4,Dental issues,tosse;apatia;vomito;febre;dor
+cat,Siamese,1.9,4.2,Recent surgery,apatia;febre;dor
+dog,Golden Retriever,8.8,42.8,Skin conditions history,febre;perda_peso;apatia;olho_vermelho_secrecao
+cat,Ragdoll,10.1,6.8,Dental issues,dor;apatia
+dog,German Shepherd,12.8,35.2,Recent surgery,tosse;inchaco_facial;apatia
+cat,Mixed Breed,11.8,5.3,Chronic illness,dor
+dog,Yorkshire Terrier,7.2,9.8,Vaccinated,tosse;diarreia;espirros;febre
+dog,Golden Retriever,12.6,25.0,Not vaccinated,perda_apetite;apatia;perda_peso;diarreia
+cat,Bengal,4.1,4.5,Chronic illness,fraqueza;vomito;espirros
+cat,Ragdoll,1.1,8.5,Parasite history,dor;tosse;perda_peso;secrecao_nasal
+cat,Bengal,7.3,7.0,Chronic illness,apatia;diarreia;espirros;perda_apetite;dor
+cat,Siamese,2.5,3.1,Parasite history,febre;diarreia;abdomen_distendido;vomito;dificuldade_respirar
+dog,Bulldog,9.7,16.6,Previous kidney disease,perda_apetite;tosse;fraqueza;espirros
+cat,Scottish Fold,8.9,7.6,No previous conditions,perda_apetite;sangramento;febre
+cat,Ragdoll,4.3,7.2,Skin conditions history,febre;diarreia;perda_apetite;vomito;sangramento
+cat,Scottish Fold,8.9,7.2,Dental issues,perda_apetite;dor;apatia;perda_peso
+cat,Bengal,13.2,6.2,Parasite history,fraqueza;problema_oral;perda_peso;febre
+dog,Poodle,9.6,7.4,No previous conditions,apatia;fraqueza;tosse
+cat,Persian,10.2,4.7,No previous conditions,inchaco_facial;diarreia;perda_apetite;secrecao_nasal
+cat,Persian,1.1,4.1,Dental issues,inchaco;dor
+dog,Boxer,6.0,19.9,Allergies,febre;espirros
+dog,Mixed Breed,4.8,13.0,Previous heart condition,desidratacao;dor
+dog,Mixed Breed,12.6,6.5,Dental issues,perda_apetite;fraqueza;dor;perda_peso
+dog,Mixed Breed,14.6,16.3,Previous heart condition,dor;espirros;andar_circulos;tosse
+dog,Beagle,3.3,16.7,No previous conditions,perda_apetite;tosse;perda_peso
+cat,Sphynx,4.9,5.2,Vaccinated,perda_peso;diarreia;fraqueza;dor
+cat,Ragdoll,10.5,5.7,Previous heart condition,sibilo;tosse
+dog,Yorkshire Terrier,12.4,4.5,No previous conditions,perda_apetite;diarreia;perda_peso
+cat,Mixed Breed,10.3,6.6,Skin conditions history,tremores;olho_dor_lesao;inchaco;dor
+cat,Sphynx,14.8,3.9,Chronic illness,febre;diarreia;perda_apetite;dor_abdominal;fraqueza
+cat,Sphynx,8.5,5.7,Skin conditions history,salivacao_excessiva;diarreia;apatia;secrecao_nasal;fraqueza
+dog,Mixed Breed,6.0,29.4,Recent surgery,febre;convulsao;perda_peso
+dog,Rottweiler,8.4,32.1,Previous heart condition,dor;febre;tosse;perda_apetite;fraqueza
+dog,German Shepherd,3.8,28.5,Skin conditions history,diarreia;dor;perda_peso;febre;perda_apetite
+cat,Maine Coon,3.4,6.2,Chronic illness,apatia;fraqueza;dor;inchaco
+cat,Persian,5.4,5.6,Parasite history,apatia;diarreia;perda_peso;nausea;desidratacao
+cat,Bengal,8.5,7.4,Vaccinated,queda_pelo;lesao_pele
+cat,Mixed Breed,3.6,5.9,Previous kidney disease,perda_peso;diarreia;dor
+dog,Bulldog,3.9,31.0,Previous heart condition,lesao_pele;dor
+dog,Beagle,9.2,29.9,Parasite history,vomito;febre;espirros
+cat,British Shorthair,6.8,5.8,Vaccinated,febre;diarreia;tremores;claudicacao;perda_peso
+dog,Poodle,4.0,5.4,Previous kidney disease,espirros;dor_abdominal;olho_dor_lesao;fraqueza;vomito
+cat,Bengal,8.5,5.8,Skin conditions history,vomito;perda_peso;diarreia;dor
+cat,Mixed Breed,8.6,3.5,Recent surgery,perda_apetite;diarreia;espirros;perda_peso
+dog,Yorkshire Terrier,7.9,6.3,Previous heart condition,febre;salivacao_excessiva;ataxia;paralisia;apatia
+dog,Rottweiler,13.6,31.0,Dental issues,perda_peso;perda_apetite;fraqueza;espirros
+dog,Mixed Breed,1.3,11.0,Not vaccinated,perda_apetite;recusa_agua;mudanca_comportamento;diarreia;dor
+dog,Beagle,4.0,19.5,Chronic illness,dor;perda_peso;diarreia;apatia
+cat,British Shorthair,9.3,4.5,Vaccinated,ataxia;salivacao_excessiva;perda_peso;apatia
+dog,Yorkshire Terrier,7.4,4.1,No previous conditions,fraqueza;claudicacao;tremores
+cat,Bengal,12.0,2.7,Skin conditions history,perda_peso;mudanca_comportamento;perda_apetite
+cat,Ragdoll,5.2,7.4,Previous heart condition,febre;fraqueza;dor_abdominal;vomito
+dog,Labrador Retriever,14.5,37.4,Vaccinated,mudanca_comportamento;fraqueza;dor
+dog,German Shepherd,13.3,41.1,Recent surgery,febre;espirros;perda_peso;tosse;vomito
+dog,Mixed Breed,14.5,34.6,Recent surgery,apatia;tosse;diarreia;convulsao
+dog,Mixed Breed,6.1,24.3,Previous heart condition,apatia;convulsao;tosse;diarreia
+dog,German Shepherd,5.4,38.9,Previous kidney disease,inchaco;febre;dor;secrecao_nasal
+dog,Yorkshire Terrier,8.2,3.0,Not vaccinated,apatia;febre;dor
+dog,Bulldog,9.0,18.8,Parasite history,espirros;perda_peso;apatia
+cat,Scottish Fold,10.4,3.6,Dental issues,vomito;perda_apetite;fraqueza
+dog,Labrador Retriever,5.9,32.2,Parasite history,espirros;dor;fraqueza;febre
+cat,British Shorthair,7.5,4.7,Not vaccinated,apatia;perda_apetite
+dog,Golden Retriever,2.8,27.8,Parasite history,perda_apetite;fraqueza;vomito;febre
+cat,Maine Coon,15.0,5.1,Vaccinated,perda_apetite;apatia;gestacao_problema
+cat,Persian,12.7,7.1,Not vaccinated,perda_peso;febre;paralisia;perda_apetite
+cat,Bengal,10.0,3.6,Parasite history,fraqueza;febre;perda_peso;apatia
+cat,Scottish Fold,8.1,4.2,Previous kidney disease,diarreia;perda_peso
+cat,Sphynx,6.0,4.1,Skin conditions history,perda_apetite;vomito;tosse;diarreia;perda_peso
+dog,Boxer,4.5,19.8,Chronic illness,apatia;diarreia;espirros
+dog,Poodle,9.7,3.4,Skin conditions history,nausea;vomito;perda_apetite;perda_peso;abdomen_distendido
+cat,Scottish Fold,5.3,3.8,No previous conditions,vomito;febre;fraqueza
+cat,Ragdoll,9.2,9.3,Vaccinated,febre;secrecao_nasal;claudicacao;linfonodos_aumentados;apatia
+cat,British Shorthair,1.9,3.6,Not vaccinated,apatia;perda_apetite;problema_oral;fraqueza
+dog,German Shepherd,14.2,32.4,Recent surgery,tosse;inchaco_facial;apatia
+cat,Sphynx,15.9,7.1,Allergies,febre;diarreia;mudanca_comportamento;tosse
+cat,Siamese,18.0,7.0,Previous heart condition,tosse;perda_peso;dor;vomito
+dog,Bulldog,11.2,17.7,Not vaccinated,tosse;febre
+cat,Maine Coon,15.3,7.4,Vaccinated,febre;perda_apetite;apatia;perda_peso
+cat,Bengal,1.3,5.1,Previous kidney disease,queda_pelo;ataxia;lesao_pele;dor
+dog,Yorkshire Terrier,2.3,7.1,Chronic illness,febre;convulsao;tremores;ataxia
+dog,Mixed Breed,3.5,32.7,Previous kidney disease,tosse;dor;perda_apetite;lesao_pele;perda_peso
+cat,Siamese,11.9,3.9,Dental issues,claudicacao
+cat,Persian,18.0,4.3,Skin conditions history,dor
+dog,Beagle,14.0,29.7,Vaccinated,perda_apetite;recusa_agua;mudanca_comportamento;claudicacao;dor
+cat,Ragdoll,16.0,7.3,Recent surgery,espirros;perda_peso

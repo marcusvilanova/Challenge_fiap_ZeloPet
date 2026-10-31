@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zelo — painel da clínica</title>
+  <meta name="theme-color" content="#faf5ec">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/zelo.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#detalhe">Ir para o detalhe da triagem</a>
+
+  <header class="topbar">
+    <a class="brand" href="/clinic.html" aria-label="Zelo, painel da clínica"><span class="brand__mark" id="brand-mark" aria-hidden="true"></span><span>Zelo · Clínica</span></a>
+    <span class="topbar__spacer"></span>
+    <span class="badge badge--ok" id="live" title="A fila é atualizada automaticamente"><i class="dot"></i>Ao vivo</span>
+    <div class="user">
+      <span id="user-name"></span>
+      <button class="btn btn--ghost btn--small" id="logout" type="button">Sair</button>
+    </div>
+  </header>
+
+  <div class="clinic">
+    <section class="queue" aria-labelledby="queue-title">
+      <div class="queue__head">
+        <h1 id="queue-title">Fila de atenção</h1>
+        <div class="stats" id="stats" aria-live="polite"></div>
+        <div class="filters" role="group" aria-label="Filtrar triagens">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">Todas</button>
+          <button class="chip" type="button" data-filter="pending" aria-pressed="false">Aguardando revisão</button>
+          <button class="chip" type="button" data-filter="reviewed" aria-pressed="false">Revisadas</button>
+        </div>
+      </div>
+      <ul class="queue__list" id="queue-list"></ul>
+    </section>
+
+    <main class="detail" id="detalhe" aria-live="polite"></main>
+  </div>
+
+  <script type="module" src="/js/clinic.js"></script>
+</body>
+</html>

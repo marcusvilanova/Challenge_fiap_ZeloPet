@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zelo.example/schemas/triage-result.schema.json",
+  "title": "TriageResult",
+  "description": "Saída estruturada da triagem preliminar do Zelo (contrato da Sprint 3, evoluído para v1.0). Toda saída carrega model_version, confidence, human_review_required e disclaimer.",
+  "type": "object",
+  "required": [
+    "triage_id", "pet_id", "symptoms", "priority", "next_action", "reason", "confidence",
+    "model_version", "engine", "human_review_required", "disclaimer", "created_at"
+  ],
+  "properties": {
+    "triage_id": { "type": "string", "pattern": "^TRI-\\d{6}$" },
+    "pet_id": { "type": "string", "pattern": "^PET-\\d{4,}$" },
+    "symptoms": {
+      "type": "array",
+      "description": "Ids canônicos do catálogo de sintomas (ia/triage/symptom_catalog.py).",
+      "items": { "type": "string" }
+    },
+    "symptom_details": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "category", "evidence"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "category": { "type": "string" },
+          "evidence": { "type": "string", "description": "Trecho do relato (normalizado) que originou o sintoma, ou '(identificado pela IA)'." },
+          "reference_frequency": { "type": "number", "minimum": 0, "maximum": 1, "description": "Fração dos registros do D2 (cães/gatos) com o sintoma. Contexto, nunca risco de doença." }
+        }
+      }
+    },
+    "priority": { "enum": ["baixa", "media", "alta", "emergencia"] },
+    "next_action": {
+      "enum": ["registrar_e_observar", "agendar_consulta", "contatar_clinica_veterinaria", "buscar_atendimento_urgente"]
+    },
+    "next_action_label": { "type": "string" },
+    "reason": { "type": "string" },
+    "reasons": { "type": "array", "items": { "type": "string" } },
+    "red_flags": { "type": "array", "items": { "type": "string" } },
+    "context_factors": { "type": "array", "items": { "type": "string" } },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1, "description": "Confiança da INTERPRETAÇÃO do relato, não probabilidade de doença." },
+    "model_version": { "type": "string" },
+    "engine": {
+      "type": "object",
+      "required": ["rules", "knowledge", "llm"],
+      "properties": {
+        "rules": { "type": "string" },
+        "knowledge": { "type": "string" },
+        "llm": { "type": "string", "description": "Modelo generativo usado ou 'local-fallback'." }
+      }
+    },
+    "human_review_required": { "type": "boolean" },
+    "disclaimer": { "type": "string" },
+    "duration_hours": { "type": "integer", "minimum": 0 },
+    "needs_more_info": { "type": "boolean" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "shared_with_clinic": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

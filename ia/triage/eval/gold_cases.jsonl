@@ -1,0 +1,86 @@
+{"id":"E01","text":"Meu cachorro teve uma convulsão agora há pouco","pet":"dog","priority":"emergencia","symptoms":["convulsao"]}
+{"id":"E02","text":"Ela está com muita falta de ar e a língua roxa","pet":"dog","priority":"emergencia","symptoms":["dificuldade_respirar","gengivas_palidas"]}
+{"id":"E03","text":"Meu gato macho não consegue fazer xixi, fica na caixa e nada sai","pet":"cat","priority":"emergencia","symptoms":["nao_urina"]}
+{"id":"E04","text":"Ele comeu chocolate ontem à noite","pet":"dog","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"E05","text":"Foi atropelado agora há pouco","pet":"dog","priority":"emergencia","symptoms":["trauma"]}
+{"id":"E06","text":"Ela desmaiou e não responde","pet":"cat","priority":"emergencia","symptoms":["colapso"]}
+{"id":"E07","text":"Vomitou sangue duas vezes","pet":"dog","priority":"emergencia","symptoms":["vomito_sangue"]}
+{"id":"E08","text":"A barriga está dura e inchada e ele tenta vomitar mas não sai nada","pet":"dog","priority":"emergencia","symptoms":["abdomen_agudo","ansia_sem_vomitar"]}
+{"id":"E09","text":"Está sangrando muito de um corte na pata","pet":"dog","priority":"emergencia","symptoms":["sangramento_intenso"]}
+{"id":"E10","text":"Meu cão foi picado por uma cobra no quintal","pet":"dog","priority":"emergencia","symptoms":["picada_peconhento"]}
+{"id":"E11","text":"Ficou preso dentro do carro no sol e está ofegante","pet":"dog","priority":"emergencia","symptoms":["golpe_calor","respiracao_ofegante"]}
+{"id":"E12","text":"Não consegue levantar e as patas de trás não mexem","pet":"dog","priority":"emergencia","symptoms":["paralisia"]}
+{"id":"E13","text":"Minha cadela está em trabalho de parto há 3 horas e o filhote não sai","pet":"dog","priority":"emergencia","symptoms":["parto_dificil"]}
+{"id":"E14","text":"Comeu veneno de rato","pet":"dog","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"E15","text":"Tomou três comprimidos de paracetamol que estavam na mesa","pet":"cat","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"E16","text":"O gato está respirando de boca aberta","pet":"cat","priority":"emergencia","symptoms":["dificuldade_respirar"]}
+{"id":"E17","text":"Ele convulcionou duas vezes e continua tremendo","pet":"dog","priority":"emergencia","symptoms":["convulsao","tremores"]}
+{"id":"E18","text":"Engasgou com um osso e não consegue respirar","pet":"dog","priority":"emergencia","symptoms":["dificuldade_respirar"]}
+{"id":"E19","text":"Caiu da janela do segundo andar","pet":"cat","priority":"emergencia","symptoms":["trauma"]}
+{"id":"E20","text":"As gengivas estão brancas e ele está muito fraco","pet":"dog","priority":"emergencia","symptoms":["gengivas_palidas","fraqueza"]}
+{"id":"E21","text":"Meu gato faz força na caixa de areia e só sai gotinha de xixi","pet":"cat","priority":"emergencia","symptoms":["dificuldade_urinar"]}
+{"id":"E22","text":"Comeu uvas passas","pet":"dog","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"E23","text":"Está babando muito e com a barriga estufada","pet":"dog","priority":"emergencia","symptoms":["salivacao_excessiva","abdomen_distendido"]}
+{"id":"A01","text":"Meu cão está abatido e vomitou duas vezes","pet":"dog","priority":"alta","symptoms":["apatia","vomito"]}
+{"id":"A02","text":"Vômitos repetidos desde ontem e muito apático","pet":"dog","priority":"alta","symptoms":["vomito_repetido","apatia"]}
+{"id":"A03","text":"Diarreia com sangue desde hoje cedo","pet":"dog","priority":"alta","symptoms":["diarreia_sangue"]}
+{"id":"A04","text":"Meu gato não come há 2 dias","pet":"cat","priority":"alta","symptoms":["perda_apetite"]}
+{"id":"A05","text":"O rosto dele ficou todo inchado depois que brincou no mato","pet":"dog","priority":"alta","symptoms":["inchaco_facial"]}
+{"id":"A06","text":"Está com dor na barriga, fica encolhido e geme","pet":"dog","priority":"alta","symptoms":["dor_abdominal"]}
+{"id":"A07","text":"Filhote com vômito e diarreia, ainda não tomou vacina","pet":{"species":"dog","age_months":2,"history":["nao_vacinado"]},"priority":"alta","symptoms":["vomito","diarreia"]}
+{"id":"A08","text":"Olho fechado e muito vermelho, ela não abre","pet":"dog","priority":"alta","symptoms":["olho_dor_lesao"]}
+{"id":"A09","text":"Tem tremores e anda cambaleando","pet":"dog","priority":"alta","symptoms":["tremores","ataxia"]}
+{"id":"A10","text":"Tosse seca e muito cansaço, ela tem problema no coração","pet":{"species":"dog","age_months":120,"history":["cardiopatia"]},"priority":"alta","symptoms":["tosse"]}
+{"id":"A11","text":"Está ofegante mesmo parada e abre a boca","pet":"cat","priority":"alta","symptoms":["respiracao_ofegante"]}
+{"id":"A12","text":"Fezes pretas, tipo borra de café","pet":"dog","priority":"alta","symptoms":["fezes_escuras"]}
+{"id":"A13","text":"O xixi está com sangue","pet":"dog","priority":"alta","symptoms":["sangue_urina"]}
+{"id":"A14","text":"Cachorro idoso com tosse","pet":{"species":"dog","age_months":156},"priority":"alta","symptoms":["tosse"]}
+{"id":"A15","text":"Bebe muita água, está emagrecendo e vomitou hoje","pet":{"species":"cat","age_months":168},"priority":"alta","symptoms":["sede_urina_excessiva","perda_peso","vomito"]}
+{"id":"A16","text":"Febre, tosse, vômito e diarreia","pet":"dog","priority":"alta","symptoms":["febre","tosse","vomito","diarreia"]}
+{"id":"A17","text":"Diarreia há 3 dias","pet":"dog","priority":"alta","symptoms":["diarreia"]}
+{"id":"A18","text":"Meu bulldog está ofegante e roncando alto","pet":{"species":"dog","age_months":48,"brachycephalic":true},"priority":"alta","symptoms":["respiracao_ofegante"]}
+{"id":"A19","text":"Ela tem doença renal e vomitou hoje","pet":{"species":"cat","age_months":120,"history":["doenca_renal"]},"priority":"alta","symptoms":["vomito"]}
+{"id":"A20","text":"Faz xixi fora da caixa","pet":"cat","priority":"alta","symptoms":["xixi_fora_lugar"]}
+{"id":"M01","text":"Ele está com tosse seca há 3 dias","pet":"dog","priority":"media","symptoms":["tosse"]}
+{"id":"M02","text":"Febre e tosse","pet":"dog","priority":"media","symptoms":["febre","tosse"]}
+{"id":"M03","text":"Está mancando da pata de trás desde ontem","pet":"dog","priority":"media","symptoms":["claudicacao"]}
+{"id":"M04","text":"Coça a orelha, balança a cabeça e a orelha está com cheiro ruim","pet":"dog","priority":"media","symptoms":["ouvido_problema"]}
+{"id":"M05","text":"Apareceu um caroço novo na barriga","pet":"cat","priority":"media","symptoms":["caroco_nodulo"]}
+{"id":"M06","text":"Bebe muita água e faz muito xixi","pet":"dog","priority":"media","symptoms":["sede_urina_excessiva"]}
+{"id":"M07","text":"Mau hálito forte e não quer mastigar","pet":"dog","priority":"media","symptoms":["problema_oral"]}
+{"id":"M08","text":"Olho vermelho e remelando","pet":"dog","priority":"media","symptoms":["olho_vermelho_secrecao"]}
+{"id":"M09","text":"Vomitou uma vez hoje, mas está comendo normal","pet":"dog","priority":"media","symptoms":["vomito"]}
+{"id":"M10","text":"Não está comendo direito","pet":"dog","priority":"media","symptoms":["perda_apetite"]}
+{"id":"M11","text":"Meu cachorro está estranho","pet":"dog","priority":"media","symptoms":["mal_estar_inespecifico"]}
+{"id":"M12","text":"Ele não está bem","pet":"cat","priority":"media","symptoms":["mal_estar_inespecifico"]}
+{"id":"M13","text":"Está com febre desde ontem","pet":"dog","priority":"media","symptoms":["febre"]}
+{"id":"M14","text":"Ele está com diarreia e vomitou","pet":"dog","priority":"media","symptoms":["diarreia","vomito"]}
+{"id":"M15","text":"Perdeu bastante peso nos últimos meses","pet":"cat","priority":"media","symptoms":["perda_peso"]}
+{"id":"M16","text":"Está mais quieto e dorme demais","pet":"dog","priority":"media","symptoms":["apatia"]}
+{"id":"M17","text":"Coceira intensa e feridas na pele","pet":"dog","priority":"media","symptoms":["coceira","lesao_pele"]}
+{"id":"M18","text":"Está mancando há 2 semanas","pet":"dog","priority":"media","symptoms":["claudicacao"]}
+{"id":"M19","text":"Diarreia desde hoje de manhã, mas está animado","pet":"dog","priority":"media","symptoms":["diarreia"]}
+{"id":"B01","text":"Espirrou algumas vezes hoje","pet":"dog","priority":"baixa","symptoms":["espirros"]}
+{"id":"B02","text":"Tem carrapatos no corpo","pet":"dog","priority":"baixa","symptoms":["parasitas_externos"]}
+{"id":"B03","text":"Está coçando muito as patas","pet":"dog","priority":"baixa","symptoms":["coceira"]}
+{"id":"B04","text":"Espirros e nariz escorrendo","pet":"cat","priority":"baixa","symptoms":["espirros","secrecao_nasal"]}
+{"id":"B05","text":"Está perdendo um pouco de pelo","pet":"dog","priority":"baixa","symptoms":["queda_pelo"]}
+{"id":"B06","text":"Ela está com pulgas","pet":"cat","priority":"baixa","symptoms":["parasitas_externos"]}
+{"id":"N01","text":"Ele não está vomitando nem com diarreia, só está com tosse","pet":"dog","priority":"media","symptoms":["tosse"]}
+{"id":"N02","text":"Não teve convulsão, só vomitou uma vez","pet":"dog","priority":"media","symptoms":["vomito"]}
+{"id":"N03","text":"A diarreia já passou mas ainda está sem apetite","pet":"dog","priority":"media","symptoms":["perda_apetite"]}
+{"id":"N04","text":"Parou de vomitar mas continua abatido","pet":"dog","priority":"media","symptoms":["apatia"]}
+{"id":"N05","text":"Não sei se foi convulsão ou susto, ficou duro e tremendo","pet":"dog","priority":"emergencia","symptoms":["convulsao","tremores"]}
+{"id":"N06","text":"Sem febre, sem vômito, sem diarreia. Só um pouco de coceira","pet":"dog","priority":"baixa","symptoms":["coceira"]}
+{"id":"N07","text":"Não vomitou, não tem diarreia e está comendo bem","pet":"dog","priority":"baixa","symptoms":[]}
+{"id":"N08","text":"Não come e vomita muito","pet":"dog","priority":"alta","symptoms":["perda_apetite","vomito_repetido"]}
+{"id":"N09","text":"Não aguento mais, ele está vomitando o dia todo","pet":"dog","priority":"alta","symptoms":["vomito_repetido"]}
+{"id":"T01","text":"meu cachoro vomtou 4 vezes","pet":"dog","priority":"alta","symptoms":["vomito_repetido"]}
+{"id":"T02","text":"esta apatico e com diarréia","pet":"dog","priority":"alta","symptoms":["apatia","diarreia"]}
+{"id":"T03","text":"CONVULSÃOOO!!! SOCORRO","pet":"dog","priority":"emergencia","symptoms":["convulsao"]}
+{"id":"T04","text":"esta com dificuldade pra respirar","pet":"dog","priority":"emergencia","symptoms":["dificuldade_respirar"]}
+{"id":"T05","text":"nao consegue fazer xixi","pet":"cat","priority":"emergencia","symptoms":["nao_urina"]}
+{"id":"C01","text":"Filhote de 3 meses vomitando e com diarreia","pet":{"species":"dog","age_months":3},"priority":"alta","symptoms":["vomito","diarreia"]}
+{"id":"C02","text":"Cadela de 12 anos com vômito","pet":{"species":"dog","age_months":144,"weight_kg":30},"priority":"alta","symptoms":["vomito"]}
+{"id":"C03","text":"Ele vomitou","pet":{"species":"dog","age_months":4},"priority":"alta","symptoms":["vomito"]}
+{"id":"D01","text":"Está sem apetite há uma semana","pet":"dog","priority":"alta","symptoms":["perda_apetite"]}

@@ -1,0 +1,60 @@
+{
+  "splits": {
+    "train": {
+      "images": 3022,
+      "unique_md5": 2974,
+      "unique_sources": 1536,
+      "classes": {
+        "Dermatitis": 546,
+        "Fungal_infections": 375,
+        "Healthy": 492,
+        "Hypersensitivity": 230,
+        "demodicosis": 588,
+        "ringworm": 791
+      }
+    },
+    "valid": {
+      "images": 860,
+      "unique_md5": 856,
+      "unique_sources": 694,
+      "classes": {
+        "Dermatitis": 175,
+        "Fungal_infections": 97,
+        "Healthy": 139,
+        "Hypersensitivity": 63,
+        "demodicosis": 174,
+        "ringworm": 212
+      }
+    },
+    "test": {
+      "images": 433,
+      "unique_md5": 433,
+      "unique_sources": 394,
+      "classes": {
+        "Dermatitis": 66,
+        "Fungal_infections": 54,
+        "Healthy": 69,
+        "Hypersensitivity": 29,
+        "demodicosis": 100,
+        "ringworm": 115
+      }
+    }
+  },
+  "overlaps": {
+    "train~valid": {
+      "identical_files": 21,
+      "shared_sources": 569,
+      "images_in_b_with_shared_source": 709
+    },
+    "train~test": {
+      "identical_files": 7,
+      "shared_sources": 325,
+      "images_in_b_with_shared_source": 357
+    },
+    "valid~test": {
+      "identical_files": 2,
+      "shared_sources": 135,
+      "images_in_b_with_shared_source": 147
+    }
+  }
+}

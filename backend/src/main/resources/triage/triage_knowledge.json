@@ -1,0 +1,2264 @@
+{
+ "version": "1.0.0",
+ "generatedAt": "2026-10-31T16:42:09Z",
+ "d2": {
+  "rowsRaw": 10000,
+  "rowsClean": 9980,
+  "duplicateRowsRemoved": 20,
+  "rowsPerSpecies": {
+   "dog": 5013,
+   "cat": 4967
+  }
+ },
+ "symptoms": [
+  {
+   "id": "apatia",
+   "label": "Apatia / abatimento",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bapatic\\w*",
+    "\\bapatia\\b",
+    "\\babatid\\w*",
+    "\\babatimento\\b",
+    "\\bletarg\\w*",
+    "\\bprostrad\\w*",
+    "\\bquietinh\\w*",
+    "\\bsem energia\\b",
+    "\\bsem animo\\b",
+    "\\bdesanimad\\w*",
+    "\\bmoleza\\b",
+    "\\bcaido\\b",
+    "\\bcansad\\w*",
+    "\\bmuito (?:quiet\\w*|parad\\w*)\\b",
+    "\\bdeitad\\w* (?:o|todo o) (?:dia|tempo)\\b",
+    "\\bnao (?:quer|esta querendo|tem vontade de) brincar\\b",
+    "\\bso (?:fica )?deitad\\w*",
+    "\\bmais quiet\\w*",
+    "\\bmolinh[oa]\\b",
+    "\\bmoleirao\\b",
+    "\\btodo mole\\b",
+    "\\bso dorm\\w*",
+    "\\bdorm\\w* (?:tanto|o tempo todo)\\b",
+    "\\bsem querer (?:sair|levantar|brincar|comer)\\b",
+    "\\bsem vontade de (?:brincar|sair|levantar|andar|passear)\\b",
+    "\\bnao (?:quer|quis) (?:mais )?(?:sair|passear|andar)\\b",
+    "\\bdorm\\w* (?:demais|muito|o dia todo)\\b"
+   ],
+   "typoWords": [
+    "apatico",
+    "apatia",
+    "letargia",
+    "letargico",
+    "abatido",
+    "prostrado",
+    "desanimado"
+   ],
+   "d2": {
+    "mentions": 3345,
+    "prevalence": {
+     "dog": 0.3222,
+     "cat": 0.3483
+    }
+   }
+  },
+  {
+   "id": "fraqueza",
+   "label": "Fraqueza",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bfraqu\\w*",
+    "\\bfrac[oa]s?\\b",
+    "\\bsem forcas\\b",
+    "\\bpernas? bambas?\\b",
+    "\\bbambo\\b"
+   ],
+   "typoWords": [
+    "fraqueza",
+    "fraquinho"
+   ],
+   "d2": {
+    "mentions": 2342,
+    "prevalence": {
+     "dog": 0.2378,
+     "cat": 0.2315
+    }
+   }
+  },
+  {
+   "id": "febre",
+   "label": "Febre",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bfebr\\w*",
+    "\\btemperatura (?:alta|elevada)\\b",
+    "\\bcorpo quente\\b",
+    "\\bquente demais\\b",
+    "\\bmuito quente\\b"
+   ],
+   "typoWords": [
+    "febre",
+    "febril"
+   ],
+   "d2": {
+    "mentions": 3418,
+    "prevalence": {
+     "dog": 0.3463,
+     "cat": 0.3386
+    }
+   }
+  },
+  {
+   "id": "perda_apetite",
+   "label": "Perda de apetite",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bsem apetite\\b",
+    "\\bnao (?:quer|esta querendo|consegue|esta conseguindo) comer\\b",
+    "\\bnao (?:esta )?com(?:e|endo)\\b",
+    "\\bnao (?:quer|esta querendo) (?:a |o )?(?:racao|comida)\\b",
+    "\\brecus\\w* (?:a |o )?(?:racao|comida|alimento|comer)\\b",
+    "\\bparou de comer\\b",
+    "\\bdeixou de comer\\b",
+    "\\bperd\\w* (?:o )?apetite\\b",
+    "\\bapetite (?:baixo|reduzido|diminuido)\\b",
+    "\\bcom(?:endo|e) (?:pouco|menos)\\b",
+    "\\binapet\\w*",
+    "\\banorex\\w*",
+    "\\bsem fome\\b",
+    "\\bnao tem fome\\b",
+    "\\bnem (?:come|comeu|quer comer)\\b",
+    "\\bsem comer\\b",
+    "\\bcomeu pouco\\b",
+    "\\bquase nao (?:come|comeu)\\b",
+    "\\b(?:sem|pouca|nenhuma) (?:muita )?(?:vontade|interesse)\\b[^|]{0,8}\\b(?:de|em|para|pra) comer\\b",
+    "\\bnem (?:quis|quer|tocou|olhou)[^|]{0,15}\\b(?:comer|racao|comida|cafe|petisco|lanche)\\b",
+    "\\bnao (?:esta |quer )?(?:mamando|mamar)\\b"
+   ],
+   "typoWords": [
+    "apetite",
+    "anorexia",
+    "inapetencia"
+   ],
+   "d2": {
+    "mentions": 3091,
+    "prevalence": {
+     "dog": 0.3068,
+     "cat": 0.3127
+    }
+   }
+  },
+  {
+   "id": "perda_peso",
+   "label": "Perda de peso",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bemagre\\w*",
+    "\\bperd\\w*[^|]{0,15}\\bpeso\\b",
+    "\\bmais magr[oa]\\b",
+    "\\bficando magr[oa]\\b",
+    "\\bmuito magr[oa]\\b",
+    "\\bcaquet\\w*"
+   ],
+   "typoWords": [
+    "emagrecendo",
+    "emagreceu"
+   ],
+   "d2": {
+    "mentions": 3088,
+    "prevalence": {
+     "dog": 0.2881,
+     "cat": 0.331
+    }
+   }
+  },
+  {
+   "id": "desidratacao",
+   "label": "Desidratação",
+   "category": "geral",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bdesidrat\\w*",
+    "\\bpele sem elasticidade\\b",
+    "\\bgengiva seca\\b",
+    "\\bolhos fundos\\b"
+   ],
+   "typoWords": [
+    "desidratado",
+    "desidratacao"
+   ],
+   "d2": {
+    "mentions": 176,
+    "prevalence": {
+     "dog": 0.0154,
+     "cat": 0.0199
+    }
+   }
+  },
+  {
+   "id": "dor",
+   "label": "Dor (não específica)",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bdor\\b",
+    "\\bdores\\b",
+    "\\bdolorid\\w*",
+    "\\bgemend\\w*",
+    "\\bgemido\\w*",
+    "\\bchoramingand\\w*",
+    "\\bchorand\\w*",
+    "\\bsente dor\\b",
+    "\\bguincho\\w*",
+    "\\bdoendo\\b",
+    "\\bdoi\\b",
+    "\\bgrito\\w*",
+    "\\bgeme\\b",
+    "\\bgemeu\\b",
+    "\\bchora\\b",
+    "\\bchorou\\b"
+   ],
+   "typoWords": [
+    "gemendo",
+    "dolorido"
+   ],
+   "d2": {
+    "mentions": 3227,
+    "prevalence": {
+     "dog": 0.3439,
+     "cat": 0.3026
+    }
+   }
+  },
+  {
+   "id": "tremores",
+   "label": "Tremores / calafrios",
+   "category": "neurologico",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\btrem\\w*",
+    "\\bcalafrio\\w*",
+    "\\btremedeira\\b",
+    "\\bcontracoes? musculares?\\b",
+    "\\bespasm\\w*"
+   ],
+   "typoWords": [
+    "tremendo",
+    "tremores",
+    "tremor"
+   ],
+   "d2": {
+    "mentions": 264,
+    "prevalence": {
+     "dog": 0.0168,
+     "cat": 0.0362
+    }
+   }
+  },
+  {
+   "id": "linfonodos_aumentados",
+   "label": "Ínguas / linfonodos aumentados",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\binguas?\\b",
+    "\\bganglios?\\b",
+    "\\blinfonod\\w*",
+    "\\bcaroc\\w* (?:no|na|sob|embaixo d\\w+) (?:pescoco|garganta|axila|virilha)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 108,
+    "prevalence": {
+     "dog": 0.0142,
+     "cat": 0.0074
+    }
+   }
+  },
+  {
+   "id": "inchaco",
+   "label": "Inchaço",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\binchac\\w*",
+    "\\binchad\\w*",
+    "\\bedema\\b",
+    "\\bintumescid\\w*"
+   ],
+   "typoWords": [
+    "inchado",
+    "inchaco"
+   ],
+   "d2": {
+    "mentions": 539,
+    "prevalence": {
+     "dog": 0.0577,
+     "cat": 0.0503
+    }
+   }
+  },
+  {
+   "id": "inchaco_facial",
+   "label": "Inchaço facial (possível reação alérgica)",
+   "category": "alergia",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\b(?:cara|rosto|focinho|face|olhos?|labios?|boca|pescoco)\\b[^|]{0,20}\\binchad\\w*",
+    "\\binchac\\w* (?:na|no|da|do|dos|das) (?:cara|rosto|focinho|face|olhos?|labios?|boca|pescoco)\\b",
+    "\\bface inchad\\w*",
+    "\\bcara inchad\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 121,
+    "prevalence": {
+     "dog": 0.0112,
+     "cat": 0.0131
+    }
+   }
+  },
+  {
+   "id": "colapso",
+   "label": "Desmaio / colapso",
+   "category": "geral",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\bdesmai\\w*",
+    "\\bcolaps\\w*",
+    "\\bcaiu (?:duro|desacordad\\w*|de repente|no chao)\\b",
+    "\\bdesacordad\\w*",
+    "\\binconscient\\w*",
+    "\\bnao (?:responde|acorda|reage)\\b",
+    "\\bficou (?:mole|desfalecid\\w*)\\b",
+    "\\bdesfalec\\w*",
+    "\\bperdeu (?:a )?consciencia\\b",
+    "\\bdesabou\\b"
+   ],
+   "typoWords": [
+    "desmaiou",
+    "desmaio",
+    "colapso",
+    "desacordado"
+   ],
+   "d2": {
+    "mentions": 49,
+    "prevalence": {
+     "dog": 0.0088,
+     "cat": 0.001
+    }
+   }
+  },
+  {
+   "id": "gengivas_palidas",
+   "label": "Gengivas pálidas, azuladas ou roxas",
+   "category": "geral",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\bgengiv\\w*[^|]{0,15}\\b(?:palid\\w*|branc\\w*|azulad\\w*|roxa\\w*|cinza\\w*|esbranquicad\\w*)",
+    "\\blingua\\b[^|]{0,15}\\b(?:roxa|azul\\w*|palida|branca)\\b",
+    "\\bmucosas?[^|]{0,15}\\b(?:palid\\w*|branc\\w*|azulad\\w*|roxa\\w*)",
+    "\\bcianose\\b",
+    "\\bpalid[oa]s?\\b",
+    "\\bgengiva branca\\b"
+   ],
+   "typoWords": [
+    "palido",
+    "cianose"
+   ],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "anemia",
+   "label": "Anemia (relatada)",
+   "category": "geral",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\banemi\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 181,
+    "prevalence": {
+     "dog": 0.01,
+     "cat": 0.0264
+    }
+   }
+  },
+  {
+   "id": "ictericia",
+   "label": "Icterícia (pele, olhos ou mucosas amarelados)",
+   "category": "geral",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bicteric\\w*",
+    "\\bictericia\\b",
+    "\\b(?:pele|olhos?|gengivas?|mucosas?|orelhas?)\\b[^|]{0,12}\\bamarel\\w*",
+    "(?<!secrecao )(?<!remela )(?<!catarro )(?<!corrimento )amarel\\w* (?:nos|nas|no|na) (?:olhos?|pele|gengiva|orelhas?)\\b"
+   ],
+   "typoWords": [
+    "ictericia"
+   ],
+   "d2": {
+    "mentions": 81,
+    "prevalence": {
+     "dog": 0.0064,
+     "cat": 0.0099
+    }
+   }
+  },
+  {
+   "id": "taquicardia",
+   "label": "Batimentos cardíacos acelerados",
+   "category": "geral",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bcoracao (?:acelerad\\w*|disparad\\w*)\\b",
+    "\\bbatimentos? (?:acelerad\\w*|rapid\\w*)\\b",
+    "\\btaquicard\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 66,
+    "prevalence": {
+     "dog": 0.0082,
+     "cat": 0.005
+    }
+   }
+  },
+  {
+   "id": "intolerancia_exercicio",
+   "label": "Cansa com facilidade / intolerância ao exercício",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bcansa (?:rapido|facil|facilmente|muito)\\b",
+    "\\bnao aguenta (?:mais )?(?:passear|correr|brincar|andar|caminhar)\\b",
+    "\\bintoleranc\\w* (?:ao )?exercicio\\b",
+    "\\bcansaco\\b",
+    "\\bsem folego\\b",
+    "\\bcansa\\w*[^|]{0,15}\\b(?:escada|subir|correr|passear)\\b",
+    "\\bnao consegue (?:mais )?(?:correr|brincar)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 46,
+    "prevalence": {
+     "dog": 0.0044,
+     "cat": 0.0048
+    }
+   }
+  },
+  {
+   "id": "vomito",
+   "label": "Vômito",
+   "category": "digestivo",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "vomito",
+   "patterns": [
+    "\\bvomit\\w*",
+    "\\bregurgit\\w*",
+    "\\bbot(?:ou|ando|a) (?:pra|para) fora\\b",
+    "\\bjogou (?:tudo )?(?:pra|para) fora\\b"
+   ],
+   "typoWords": [
+    "vomito",
+    "vomitou",
+    "vomitando",
+    "vomitar",
+    "vomita",
+    "vomitei"
+   ],
+   "d2": {
+    "mentions": 2308,
+    "prevalence": {
+     "dog": 0.2258,
+     "cat": 0.2368
+    }
+   }
+  },
+  {
+   "id": "vomito_repetido",
+   "label": "Vômitos repetidos",
+   "category": "digestivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "vomito",
+   "patterns": [
+    "\\bvomit\\w*[^|]{0,25}\\b(?:varias|muitas|diversas|inumeras|varios|muitos|repetidas?) vezes\\b",
+    "\\b(?:varias|muitas|diversas) vezes\\b[^|]{0,25}\\bvomit\\w*",
+    "\\bnao para de vomitar\\b",
+    "\\bvomit\\w*[^|]{0,15}\\b(?:toda hora|o tempo todo|sem parar|repetidamente|direto|seguido)\\b",
+    "\\bvomitos? (?:seguidos|repetidos|constantes|frequentes|persistentes)\\b",
+    "\\bvomit\\w* (?:muito|demais|bastante)\\b",
+    "\\bvomit\\w*[^|]{0,15}\\b(?:o dia (?:todo|inteiro)|a noite (?:toda|inteira))\\b",
+    "\\b(?:o dia (?:todo|inteiro)|a noite (?:toda|inteira))\\b[^|]{0,15}\\bvomit\\w*",
+    "\\bvomit\\w*[^|]{0,6}\\b(?:de novo|novamente)\\b",
+    "\\bvomit\\w*[^|]{0,15}\\b(?:tres|quatro|cinco|seis|sete|oito|nove|dez|[3-9]|\\d{2}) vezes\\b",
+    "\\b(?:tres|quatro|cinco|seis|sete|oito|nove|dez|[3-9]|\\d{2}) vezes\\b[^|]{0,20}\\bvomit\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "vomito_sangue",
+   "label": "Vômito com sangue",
+   "category": "digestivo",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": "vomito",
+   "patterns": [
+    "\\bvomit\\w*(?:(?!\\b(?:sem|nao|nem)\\b)[^|]){0,25}\\bsangu\\w*",
+    "\\bsangue (?:no|na|em|junto d\\w+) (?:o )?vomito\\b",
+    "\\bvomit\\w*[^|]{0,15}\\b(?:marrom|escuro|borra de cafe|cor de cafe|vermelho)\\b",
+    "\\bhematemese\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "nausea",
+   "label": "Náusea / enjoo",
+   "category": "digestivo",
+   "severity": 1,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\benjo\\w*",
+    "\\bnausea\\w*",
+    "\\bvontade de vomitar\\b",
+    "\\bestomago embrulhado\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 137,
+    "prevalence": {
+     "dog": 0.0132,
+     "cat": 0.0143
+    }
+   }
+  },
+  {
+   "id": "ansia_sem_vomitar",
+   "label": "Ânsia sem conseguir vomitar",
+   "category": "digestivo",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\bansia\\w*[^|]{0,25}\\b(?:sem|mas nao|e nao) (?:conseguir |consegue )?(?:vomitar|sai|sair)\\b",
+    "\\btenta vomitar[^|]{0,10}\\bnao (?:consegue|sai)\\b",
+    "\\btentando vomitar[^|]{0,15}\\bnao (?:consegue|sai)\\b",
+    "\\bquer vomitar[^|]{0,10}\\bnao (?:consegue|sai)\\b",
+    "\\bvomit\\w*[^|]{0,15}\\b(?:mas|e) nao (?:sai|solta|vem|consegue)\\b",
+    "\\bvomito seco\\b",
+    "\\bvomitando seco\\b",
+    "\\bvomit\\w*[^|]{0,15}\\bmas\\b[^|]{0,12}\\bso sai (?:uma? )?(?:pouco de )?(?:espuma|saliva|baba|liquido|agua)\\b",
+    "\\bengasgando[^|]{0,10}\\bsem (?:vomitar|sair)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "diarreia",
+   "label": "Diarreia",
+   "category": "digestivo",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "diarreia",
+   "patterns": [
+    "\\bdiarr\\w*",
+    "\\bfezes? (?:mole|moles|liquid\\w*|aguad\\w*|pastos\\w*|amolecid\\w*|sem forma)\\b",
+    "\\bcoco (?:mole|liquido|aguado|amolecido)\\b",
+    "\\bintestino solto\\b"
+   ],
+   "typoWords": [
+    "diarreia",
+    "diarreica"
+   ],
+   "d2": {
+    "mentions": 2746,
+    "prevalence": {
+     "dog": 0.2751,
+     "cat": 0.2752
+    }
+   }
+  },
+  {
+   "id": "diarreia_sangue",
+   "label": "Diarreia com sangue",
+   "category": "digestivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "diarreia",
+   "patterns": [
+    "\\bdiarr\\w*(?:(?!\\b(?:sem|nao|nem)\\b)[^|]){0,25}\\bsangu\\w*",
+    "\\bsangue (?:nas?|nos|em|junto d\\w+) (?:fezes|coco|diarreia)\\b",
+    "\\b(?:fezes|coco)s? (?:com )?(?:sangue|sanguinolent\\w*|avermelhad\\w*)\\b",
+    "\\bdisenteria\\b",
+    "\\b(?:coco|fezes)s?\\b(?:(?!\\b(?:sem|nao|nem)\\b)[^|]){0,25}\\bsangu\\w*",
+    "\\bsangue\\b[^|]{0,15}\\b(?:coco|fezes)\\b",
+    "\\bhematoquezia\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 67,
+    "prevalence": {
+     "dog": 0.0094,
+     "cat": 0.004
+    }
+   }
+  },
+  {
+   "id": "fezes_escuras",
+   "label": "Fezes escuras (tipo borra de café)",
+   "category": "digestivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "diarreia",
+   "patterns": [
+    "\\b(?:fezes|coco)s? (?:muito )?(?:pret\\w*|escur\\w*|negr\\w*)\\b",
+    "\\bmelena\\b",
+    "\\bborra de cafe\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 48,
+    "prevalence": {
+     "dog": 0.0084,
+     "cat": 0.0012
+    }
+   }
+  },
+  {
+   "id": "constipacao",
+   "label": "Constipação / dificuldade de evacuar",
+   "category": "digestivo",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bconstip\\w*",
+    "\\bprisao de ventre\\b",
+    "\\bnao (?:consegue )?(?:faz|fazer) (?:o )?coco\\b",
+    "\\bnao (?:consegue )?evacuar\\b",
+    "\\bforca (?:pra|para) (?:fazer coco|evacuar)\\b",
+    "\\bsem fazer coco\\b",
+    "\\b(?:fezes|coco)s? (?:duro|duros|dura|duras|ressecad\\w*)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 60,
+    "prevalence": {
+     "dog": 0.0066,
+     "cat": 0.0054
+    }
+   }
+  },
+  {
+   "id": "abdomen_distendido",
+   "label": "Abdômen distendido / inchado",
+   "category": "digestivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "abdomen",
+   "patterns": [
+    "\\b(?:barriga|abdomen|abdome|barrigao|estomago)\\b[^|]{0,15}\\b(?:inchad\\w*|distendid\\w*|grande|dilatad\\w*|estufad\\w*|cheia)\\b",
+    "\\binchac\\w* (?:na|no|da|do) (?:barriga|abdomen|abdome)\\b",
+    "\\bbarriga d agua\\b",
+    "\\bbarrigudo\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 129,
+    "prevalence": {
+     "dog": 0.014,
+     "cat": 0.0119
+    }
+   }
+  },
+  {
+   "id": "abdomen_agudo",
+   "label": "Abdômen duro, em tambor ou crescendo rápido",
+   "category": "digestivo",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": "abdomen",
+   "patterns": [
+    "\\b(?:barriga|abdomen|abdome|estomago)\\b[^|]{0,20}\\b(?:dura|duro|tipo balao|de balao|tambor|muito (?:inchad\\w*|grande)|crescendo)\\b",
+    "\\binchou (?:de repente|rapido)\\b",
+    "\\bbarriga dura\\b",
+    "\\btorcao (?:de|do) estomago\\b",
+    "\\bdilatacao[^|]{0,10}\\bestomago\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "dor_abdominal",
+   "label": "Dor abdominal",
+   "category": "digestivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bdor (?:de |na |no |em |ao redor d\\w+ )?(?:barriga|abdomen|abdome|estomago|barriguinha)\\b",
+    "\\bbarriga (?:doendo|dolorid\\w*|sensivel)\\b",
+    "\\bposicao de prece\\b",
+    "\\bcolicas?\\b",
+    "\\bencolhid\\w*",
+    "\\bgeme[^|]{0,15}\\bbarriga\\b",
+    "\\bnao deixa (?:encostar|tocar|pegar) (?:na )?barriga\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 259,
+    "prevalence": {
+     "dog": 0.0279,
+     "cat": 0.024
+    }
+   }
+  },
+  {
+   "id": "salivacao_excessiva",
+   "label": "Salivação excessiva",
+   "category": "digestivo",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bbaba\\w*",
+    "\\bsaliv\\w*",
+    "\\bescorrendo saliva\\b",
+    "\\bbabando\\b"
+   ],
+   "typoWords": [
+    "babando",
+    "salivando"
+   ],
+   "d2": {
+    "mentions": 242,
+    "prevalence": {
+     "dog": 0.0122,
+     "cat": 0.0364
+    }
+   }
+  },
+  {
+   "id": "espuma_boca",
+   "label": "Espuma na boca",
+   "category": "neurologico",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bespum\\w* (?:na|pela|da) boca\\b",
+    "\\bespumand\\w*",
+    "\\bboca (?:com )?espuma\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "recusa_agua",
+   "label": "Recusa de água",
+   "category": "digestivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bnao (?:quer|esta querendo|bebe|esta bebendo) agua\\b",
+    "\\bparou de beber agua\\b",
+    "\\brecus\\w* (?:a )?agua\\b",
+    "\\bsem beber agua\\b",
+    "\\bnem (?:bebe|bebendo) agua\\b",
+    "\\bbebe pouca agua\\b",
+    "\\bbebendo pouca agua\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 46,
+    "prevalence": {
+     "dog": 0.0086,
+     "cat": 0.0006
+    }
+   }
+  },
+  {
+   "id": "ingestao_corpo_estranho",
+   "label": "Possível ingestão de objeto estranho",
+   "category": "digestivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\b(?:engoliu|comeu|ingeriu|engolindo|mastigou e engoliu)\\b[^|]{0,25}\\b(?:meia|brinquedo|osso|pedra|linha|agulha|fio|plastico|tecido|pano|bola|caroco|espeto|palito|moeda|elastico|grampo|anzol|corda|meias)\\w*",
+    "\\bengoliu (?:um |uma )?(?:objeto|corpo estranho)\\b",
+    "\\bcorpo estranho\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "ingestao_toxica",
+   "label": "Possível ingestão de substância tóxica",
+   "category": "intoxicacao",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\b(?:comeu|ingeriu|engoliu|lambeu|bebeu|tomou|mastigou|roeu|pegou)\\b[^|]{0,30}\\b(?:chocolate|cacau|uva|uvas|passas?|veneno|raticida|chumbinho|xilitol|adocante|cebola|alho|abacate|macadamia|anticongelante|aditivo|desinfetante|cloro|agua sanitaria|detergente|inseticida|isca|cigarro|tabaco|nicotina|maconha|lirio|lirios|medicamento|remedio|comprimido|paracetamol|dipirona|ibuprofeno|antidepressivo|alcool)\\w*",
+    "\\benvenen\\w*",
+    "\\bintoxic\\w*",
+    "\\bchumbinho\\b",
+    "\\braticida\\b"
+   ],
+   "typoWords": [
+    "envenenado",
+    "intoxicado",
+    "chocolate"
+   ],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "picada_peconhento",
+   "label": "Picada de animal peçonhento",
+   "category": "trauma",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\b(?:picad\\w*|mordid\\w*|mordeu|picou|ataque)\\b[^|]{0,25}\\b(?:cobra|serpente|aranha|escorpiao|abelha|vespa|marimbondo|sapo)\\w*",
+    "\\b(?:cobra|serpente|escorpiao|aranha|abelha|vespa|marimbondo)\\b[^|]{0,25}\\b(?:picou|mordeu|atacou)\\b",
+    "\\bsapo\\b[^|]{0,20}\\b(?:lambeu|mordeu|mastigou)\\b"
+   ],
+   "typoWords": [
+    "escorpiao",
+    "serpente"
+   ],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "dificuldade_respirar",
+   "label": "Dificuldade para respirar",
+   "category": "respiratorio",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": "respiracao",
+   "patterns": [
+    "\\bdificuldade[^|]{0,15}\\brespir\\w*",
+    "\\brespir\\w*[^|]{0,6}\\bcom dificuldade\\b",
+    "\\bfalta de ar\\b",
+    "\\bsem ar\\b",
+    "\\bnao (?:consegue|esta conseguindo) respirar\\b",
+    "\\bsufoc\\w*",
+    "\\basfixi\\w*",
+    "\\bengasg(?:ou|ando|ado)\\b[^|]{0,12}\\b(?:com|em)\\b",
+    "\\bse engasgou\\b",
+    "\\bboca aberta[^|]{0,15}\\brespir\\w*",
+    "\\brespira\\w* (?:de|pela) boca aberta\\b",
+    "\\brespiracao (?:pesada|forcada|dificil)\\b",
+    "\\brespir\\w*[^|]{0,20}\\b(?:pesad\\w*|forcad\\w*|dificil|aperto)",
+    "\\bdispneia\\b",
+    "\\bdispnei\\w*",
+    "\\bcansaco (?:para|pra|ao) respirar\\b"
+   ],
+   "typoWords": [
+    "respirar",
+    "respiracao",
+    "dificuldade",
+    "sufocando"
+   ],
+   "d2": {
+    "mentions": 573,
+    "prevalence": {
+     "dog": 0.0606,
+     "cat": 0.0542
+    }
+   }
+  },
+  {
+   "id": "respiracao_ofegante",
+   "label": "Respiração ofegante ou acelerada",
+   "category": "respiratorio",
+   "severity": 2,
+   "severityCat": 3,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "respiracao",
+   "patterns": [
+    "\\bofegan\\w*",
+    "\\bofeg\\w*",
+    "\\barfand\\w*",
+    "\\brespiracao (?:rapida|acelerada|curta)\\b",
+    "\\brespira (?:rapido|curto)\\b",
+    "\\brespir\\w*[^|]{0,10}\\b(?:rapido|acelerad\\w*|curto)\\b"
+   ],
+   "typoWords": [
+    "ofegante",
+    "ofegando"
+   ],
+   "d2": {
+    "mentions": 43,
+    "prevalence": {
+     "dog": 0.0058,
+     "cat": 0.0028
+    }
+   }
+  },
+  {
+   "id": "tosse",
+   "label": "Tosse",
+   "category": "respiratorio",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\btoss\\w*",
+    "\\bpigarr\\w*",
+    "\\bcomo se (?:estivesse )?engasgad\\w*",
+    "\\bengasgad\\w*",
+    "\\bcough\\w*"
+   ],
+   "typoWords": [
+    "tossindo",
+    "tosse"
+   ],
+   "d2": {
+    "mentions": 2445,
+    "prevalence": {
+     "dog": 0.2442,
+     "cat": 0.2458
+    }
+   }
+  },
+  {
+   "id": "espirros",
+   "label": "Espirros",
+   "category": "respiratorio",
+   "severity": 1,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bespirr\\w*"
+   ],
+   "typoWords": [
+    "espirrando",
+    "espirros"
+   ],
+   "d2": {
+    "mentions": 2108,
+    "prevalence": {
+     "dog": 0.1999,
+     "cat": 0.2227
+    }
+   }
+  },
+  {
+   "id": "secrecao_nasal",
+   "label": "Secreção ou corrimento nasal",
+   "category": "respiratorio",
+   "severity": 1,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bcoriza\\b",
+    "\\bsecrecao (?:nasal|no nariz)\\b",
+    "\\bnariz (?:escorrendo|entupido|escorre|sujo|com secrecao|ranhoso)\\b",
+    "\\bcatarro\\b",
+    "\\bcorrimento (?:nasal|no nariz)\\b",
+    "\\branho\\w*",
+    "\\bescorrimento nasal\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 480,
+    "prevalence": {
+     "dog": 0.0447,
+     "cat": 0.0515
+    }
+   }
+  },
+  {
+   "id": "sibilo",
+   "label": "Chiado ou respiração ruidosa",
+   "category": "respiratorio",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bchiad\\w*",
+    "\\bsibil\\w*",
+    "\\brespir\\w*[^|]{0,6}\\b(?:com )?(?:ruido|barulho|chiando)\\b",
+    "\\bbarulho (?:ao|pra|para|quando) respirar\\b",
+    "\\brespir\\w*[^|]{0,20}\\b(?:estranh\\w*|barulh\\w*|ruidos\\w*)",
+    "\\bestertor\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 96,
+    "prevalence": {
+     "dog": 0.0064,
+     "cat": 0.0129
+    }
+   }
+  },
+  {
+   "id": "sangramento_nasal",
+   "label": "Sangramento pelo nariz",
+   "category": "respiratorio",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bsangr\\w*[^|]{0,10}\\bnariz\\b",
+    "\\bsangue (?:pelo|no|do) nariz\\b",
+    "\\bepistax\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 107,
+    "prevalence": {
+     "dog": 0.0112,
+     "cat": 0.0103
+    }
+   }
+  },
+  {
+   "id": "convulsao",
+   "label": "Convulsão",
+   "category": "neurologico",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\bconvul[cs]\\w*",
+    "\\bataque (?:epiletico|convulsivo)\\b",
+    "\\bepilep\\w*",
+    "\\bcrise (?:convulsiva|epiletica)\\b",
+    "\\bteve uma crise\\b",
+    "\\bespernea\\w*",
+    "\\bpatas? (?:batendo|esperneando)\\b",
+    "\\bbatendo (?:as )?patas\\b",
+    "\\bficou (?:todo |muito )?(?:duro|rigid\\w*)\\b[^|]{0,40}\\b(?:caiu|babando|tremendo|batendo|espuma)\\b"
+   ],
+   "typoWords": [
+    "convulsao",
+    "convulsionou",
+    "convulsionando",
+    "convulsoes",
+    "epilepsia"
+   ],
+   "d2": {
+    "mentions": 163,
+    "prevalence": {
+     "dog": 0.016,
+     "cat": 0.0167
+    }
+   }
+  },
+  {
+   "id": "paralisia",
+   "label": "Paralisia / não consegue andar ou levantar",
+   "category": "neurologico",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\bparalis\\w*",
+    "\\bparalitic\\w*",
+    "\\bparesia\\b",
+    "\\bnao (?:consegue|esta conseguindo|pode) (?:ficar de pe|levantar|andar|se levantar|mexer as patas)\\b",
+    "\\barrastand\\w* (?:as )?(?:patas|pernas)\\b",
+    "\\bperdeu (?:o )?movimento\\b",
+    "\\bpatas? traseiras? (?:fracas?|paralis\\w*|nao (?:funciona|mexe|responde))\\b",
+    "\\bnao (?:anda|levanta)\\b(?! (?:normal|como|igual|direito|bem)\\b)",
+    "\\bnao sente (?:as )?(?:patas|pernas)\\b",
+    "\\bnao (?:consegue )?(?:mexe|mexer|mexem|move|mover)\\b[^|]{0,15}\\b(?:pat\\w*|pernas?|traseir\\w*)"
+   ],
+   "typoWords": [
+    "paralisia",
+    "paralisado"
+   ],
+   "d2": {
+    "mentions": 273,
+    "prevalence": {
+     "dog": 0.0235,
+     "cat": 0.0312
+    }
+   }
+  },
+  {
+   "id": "ataxia",
+   "label": "Desequilíbrio / andar cambaleante",
+   "category": "neurologico",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bcambale\\w*",
+    "\\bdesequilibr\\w*",
+    "\\bataxia\\b",
+    "\\bandando torto\\b",
+    "\\banda torto\\b",
+    "\\bbebad[oa]\\b",
+    "\\bsem coordenacao\\b",
+    "\\bperdeu o equilibrio\\b",
+    "\\btropeca\\w*",
+    "\\bcai (?:toda hora|muito|de lado)\\b",
+    "\\bandar (?:estranho|trocando as patas)\\b"
+   ],
+   "typoWords": [
+    "cambaleando",
+    "desequilibrado"
+   ],
+   "d2": {
+    "mentions": 315,
+    "prevalence": {
+     "dog": 0.0124,
+     "cat": 0.0509
+    }
+   }
+  },
+  {
+   "id": "andar_circulos",
+   "label": "Andar em círculos / cabeça inclinada",
+   "category": "neurologico",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bem circulos?\\b",
+    "\\bgirand\\w*",
+    "\\bcabeca (?:inclinada|torta|de lado|virada)\\b",
+    "\\bpescoco torto\\b",
+    "\\binclina\\w* a cabeca\\b",
+    "\\bnistagmo\\b",
+    "\\btorticolo\\b",
+    "\\bolhos? (?:tremendo|balancando|se mexendo)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 110,
+    "prevalence": {
+     "dog": 0.013,
+     "cat": 0.0091
+    }
+   }
+  },
+  {
+   "id": "desorientacao",
+   "label": "Desorientação / confusão",
+   "category": "neurologico",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bdesorientad\\w*",
+    "\\bconfus[oa]\\b",
+    "\\bbatendo a cabeca (?:na|no) (?:parede|moveis?)\\b",
+    "\\bolhar vago\\b",
+    "\\bolhando para o nada\\b",
+    "\\bnao reconhece\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 34,
+    "prevalence": {
+     "dog": 0.0048,
+     "cat": 0.002
+    }
+   }
+  },
+  {
+   "id": "nao_urina",
+   "label": "Não consegue urinar",
+   "category": "urinario",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": "urinario",
+   "patterns": [
+    "\\bnao (?:consegue |esta conseguindo |conseguiu )?(?:urinar|fazer xixi|fazer pipi)\\b",
+    "\\bnao fez (?:xixi|pipi)\\b",
+    "\\bnao (?:esta |estava )?(?:fazendo|faz) (?:xixi|pipi)\\b",
+    "\\bnada de (?:xixi|pipi)\\b",
+    "\\bnao urin\\w*",
+    "\\bsem (?:fazer )?(?:xixi|pipi|urinar)\\b",
+    "\\b(?:tenta|tentando)[^|]{0,25}\\b(?:xixi|urinar|pipi)\\b[^|]{0,30}\\b(?:nada|nao sai|sem sucesso|nao consegue)\\b",
+    "\\bnao sai (?:xixi|urina|pipi)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "dificuldade_urinar",
+   "label": "Dificuldade ou dor para urinar",
+   "category": "urinario",
+   "severity": 3,
+   "severityCat": 4,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "urinario",
+   "patterns": [
+    "\\bdificuldade[^|]{0,15}\\burin\\w*",
+    "\\bforca (?:pra|para) (?:fazer )?(?:xixi|urinar|pipi)\\b",
+    "\\bxixi (?:aos pouquinhos|em gotas|pouco)\\b",
+    "\\bgotinhas? de xixi\\b",
+    "\\bchora\\w* (?:ao|pra|para) (?:fazer xixi|urinar)\\b",
+    "\\bdor (?:ao|para|pra) urinar\\b",
+    "\\bentra e sai da caixa\\b",
+    "\\b(?:varias vezes|toda hora) (?:na|a) caixa\\b",
+    "\\bagacha e nao faz\\b",
+    "\\b(?:faz|fazendo|fez|fazer) forca\\b[^|]{0,15}\\bcaixa\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 118,
+    "prevalence": {
+     "dog": 0.0028,
+     "cat": 0.0209
+    }
+   }
+  },
+  {
+   "id": "sangue_urina",
+   "label": "Sangue na urina",
+   "category": "urinario",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bsangue (?:no|na|em) (?:xixi|urina|pipi)\\b",
+    "\\b(?:xixi|urina|pipi)\\b[^|]{0,12}\\b(?:com sangue|vermelh\\w*|rosad\\w*|sanguinolent\\w*|avermelhad\\w*)",
+    "\\bhematuri\\w*",
+    "\\burinand\\w* sangue\\b",
+    "\\b(?:urinou|fez xixi)\\b[^|]{0,12}\\bsangue\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "sede_urina_excessiva",
+   "label": "Sede ou urina em excesso",
+   "category": "urinario",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bbebe (?:muita )?agua (?:demais|muito|bastante)\\b",
+    "\\b(?:bebe|bebendo|tomando) muita agua\\b",
+    "\\bmuito xixi\\b",
+    "\\bmuita sede\\b",
+    "\\bbebe\\w*[^|]{0,10}\\bagua\\b[^|]{0,10}\\b(?:o dia (?:todo|inteiro)|toda hora|o tempo todo)\\b",
+    "\\bsede (?:excessiva|demais)\\b",
+    "\\bpolidipsia\\b",
+    "\\bfaz (?:muito )?xixi (?:demais|muito)\\b",
+    "\\bxixi (?:demais|em excesso|toda hora)\\b",
+    "\\bpoliuria\\b",
+    "\\burinando (?:muito|demais)\\b",
+    "\\bbebendo (?:muita )?agua (?:demais|o tempo todo|toda hora)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 54,
+    "prevalence": {
+     "dog": 0.0068,
+     "cat": 0.004
+    }
+   }
+  },
+  {
+   "id": "xixi_fora_lugar",
+   "label": "Urinar fora do lugar habitual",
+   "category": "comportamento",
+   "severity": 2,
+   "severityCat": 3,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bfaz xixi (?:fora|em lugar errado|no tapete|na cama|no sofa|pela casa)\\b",
+    "\\burina fora\\b",
+    "\\bxixi fora da caixa\\b",
+    "\\bnao usa (?:mais )?a caixa\\b",
+    "\\burin\\w* (?:pela|na|em)[^|]{0,6}\\b(?:casa|sala|cama|sofa|tapete)\\b",
+    "\\bxixi (?:pela|em) casa\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "olho_vermelho_secrecao",
+   "label": "Olho vermelho ou com secreção",
+   "category": "ocular",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "olho",
+   "patterns": [
+    "\\bolhos? (?:vermelh\\w*|inflamad\\w*|irritad\\w*|lacrimejand\\w*|com secrecao|remelando|com remela|inchad\\w*)",
+    "\\bremela\\w*",
+    "\\blacrimej\\w*",
+    "\\bsecrecao\\b[^|]{0,25}\\bolhos?\\b",
+    "\\bsecrecao (?:no|nos|nas|dos|do) olhos?\\b",
+    "\\bconjuntivit\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 315,
+    "prevalence": {
+     "dog": 0.0321,
+     "cat": 0.031
+    }
+   }
+  },
+  {
+   "id": "olho_dor_lesao",
+   "label": "Olho fechado, ferido, opaco ou perda de visão",
+   "category": "ocular",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "olho",
+   "patterns": [
+    "\\bolho (?:esta )?(?:fechad\\w*|piscando muito|com ferida|ferid\\w*|machucad\\w*|opac\\w*|azulad\\w*|esbranquicad\\w*|estourad\\w*|saltad\\w*|para fora)",
+    "\\bulcera\\w* (?:na|no) (?:cornea|olho)\\b",
+    "\\bmancha (?:branca|azul|esbranquicada) no olho\\b",
+    "\\bnao abre o olho\\b",
+    "\\bolhos?\\b[^|]{0,20}\\bfechad\\w*",
+    "\\bolhos?\\b[^|]{0,15}\\b(?:azulad\\w*|esbranquicad\\w*|opac\\w*)",
+    "\\bcegueira\\b",
+    "\\bficou cego\\b",
+    "\\benxergando mal\\b",
+    "\\bbatendo nos? moveis\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 237,
+    "prevalence": {
+     "dog": 0.0215,
+     "cat": 0.026
+    }
+   }
+  },
+  {
+   "id": "ouvido_problema",
+   "label": "Ouvido: coceira, odor ou secreção",
+   "category": "ocular_otico",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bouvid\\w*[^|]{0,15}\\b(?:cheiro|odor|secrecao|sujo|vermelho|inflamad\\w*|cera|coceira)\\b",
+    "\\bcoceira\\b[^|]{0,10}\\b(?:orelha|ouvido)s?\\b",
+    "\\bcheiro\\b[^|]{0,15}\\b(?:ouvido|orelha)s?\\b",
+    "\\b(?:secrecao|sujeira|cera)\\b[^|]{0,10}\\b(?:ouvido|orelha)s?\\b",
+    "\\bmex\\w* (?:a )?cabeca (?:o tempo todo|toda hora|muito)\\b",
+    "\\bsacod\\w* (?:a )?cabeca\\b",
+    "\\bbalanca (?:a )?cabeca\\b",
+    "\\bcoca (?:a )?orelha\\b",
+    "\\bcocando (?:a )?orelha\\b",
+    "\\borelhas?[^|]{0,15}\\b(?:cheiro|odor|secrecao|suja|vermelha|inflamada|quente|inchada)\\b",
+    "\\botit\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 68,
+    "prevalence": {
+     "dog": 0.0072,
+     "cat": 0.0064
+    }
+   }
+  },
+  {
+   "id": "coceira",
+   "label": "Coceira",
+   "category": "pele",
+   "severity": 1,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bcoceira\\b",
+    "\\bcoca\\b",
+    "\\bcocar\\b",
+    "\\bcocand\\w*",
+    "\\bse coca\\b",
+    "\\bprurid\\w*",
+    "\\bse (?:lambe|morde|mordendo|lambendo)[^|]{0,15}\\b(?:muito|toda hora|demais|o tempo todo)\\b",
+    "\\blambend\\w* (?:as )?patas?\\b",
+    "\\blambe\\w*[^|]{0,20}\\b(?:regiao|mesmo lugar|pele|corpo)\\b",
+    "\\bse esfreg\\w*"
+   ],
+   "typoWords": [
+    "coceira",
+    "cocando"
+   ],
+   "d2": {
+    "mentions": 85,
+    "prevalence": {
+     "dog": 0.0078,
+     "cat": 0.0093
+    }
+   }
+  },
+  {
+   "id": "queda_pelo",
+   "label": "Queda de pelo",
+   "category": "pele",
+   "severity": 1,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bqueda de pelos?\\b",
+    "\\bperd\\w*[^|]{0,15}\\bpelos?\\b",
+    "\\bfalhas? (?:no|nos) pelos?\\b",
+    "\\bsem pelos?\\b",
+    "\\bcalvic\\w*",
+    "\\balopeci\\w*",
+    "\\bpelos? (?:caindo|ralo|falhado)\\b",
+    "\\bsoltando pelo\\b",
+    "\\barranc\\w*[^|]{0,10}\\bpelos?\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 191,
+    "prevalence": {
+     "dog": 0.0162,
+     "cat": 0.0221
+    }
+   }
+  },
+  {
+   "id": "lesao_pele",
+   "label": "Feridas, manchas ou vermelhidão na pele",
+   "category": "pele",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bferida\\w*",
+    "\\bferimento\\w*",
+    "\\bmanchas? (?:na|de) pele\\b",
+    "\\bpele\\b[^|]{0,25}\\b(?:vermelh\\w*|irritad\\w*|descamand\\w*|escur\\w*|inflamad\\w*|feridas?|machucad\\w*|grossa)",
+    "\\bvermelhidao\\b",
+    "\\bcrosta\\w*",
+    "\\bcaspa\\b",
+    "\\bbolhas?\\b",
+    "\\bmanchas? (?:vermelha|redonda|circular|avermelhad\\w*)\\w*",
+    "\\bdermatit\\w*",
+    "\\balergia (?:na|de) pele\\b",
+    "\\bpele\\b[^|]{0,25}\\bdescasc\\w*",
+    "\\bdescamacao\\b",
+    "\\bhot spot\\b",
+    "\\bpele (?:\\w+ ){0,2}machucad\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 633,
+    "prevalence": {
+     "dog": 0.066,
+     "cat": 0.0608
+    }
+   }
+  },
+  {
+   "id": "caroco_nodulo",
+   "label": "Caroço ou nódulo",
+   "category": "pele",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bcaroc\\w*",
+    "\\bnodul\\w*",
+    "\\bbolinha\\b",
+    "\\btumor\\w*",
+    "\\binchaco duro\\b",
+    "\\bmassa (?:dura|estranha)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "parasitas_externos",
+   "label": "Pulgas, carrapatos ou outros parasitas",
+   "category": "pele",
+   "severity": 1,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bpulga\\w*",
+    "\\bcarrapat\\w*",
+    "\\bpiolh\\w*",
+    "\\bacaro\\w*",
+    "\\bsarna\\b",
+    "\\bbernes?\\b",
+    "\\bbichos? (?:na|no) (?:pele|ferida|orelha)\\b"
+   ],
+   "typoWords": [
+    "carrapato",
+    "carrapatos",
+    "pulgas"
+   ],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "claudicacao",
+   "label": "Manca / dificuldade para andar",
+   "category": "locomotor",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bmanc\\w*",
+    "\\bcoxe\\w*",
+    "\\bclaudica\\w*",
+    "\\bnao (?:esta )?(?:apoiando|pisando)\\b",
+    "\\bnao apoia\\b",
+    "\\bsem apoiar (?:a )?(?:pata|perna)\\b",
+    "\\bpata (?:levantada|inchada|machucada|dolorida)\\b",
+    "\\bdificuldade[^|]{0,15}\\b(?:andar|caminhar|levantar|subir|pular)\\b",
+    "\\bandar (?:duro|rigido)\\b",
+    "\\brigid\\w*",
+    "\\bdurez\\w*",
+    "\\bnao (?:quer|consegue) (?:subir|pular|andar)\\b"
+   ],
+   "typoWords": [
+    "mancando",
+    "manca",
+    "claudicando"
+   ],
+   "d2": {
+    "mentions": 528,
+    "prevalence": {
+     "dog": 0.0668,
+     "cat": 0.0389
+    }
+   }
+  },
+  {
+   "id": "mudanca_comportamento",
+   "label": "Mudança de comportamento",
+   "category": "comportamento",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bmudanca de comportamento\\b",
+    "\\bcomportamento (?:estranho|diferente|alterado)\\b",
+    "\\bagressiv\\w*",
+    "\\bagitad\\w*",
+    "\\binquiet\\w*",
+    "\\bansios[oa]\\b",
+    "\\bnervos[oa]\\b",
+    "\\bse escond\\w*",
+    "\\bescondid\\w*",
+    "\\bnao para quiet[oa]\\b",
+    "\\bde um lado (?:pro|para) (?:o )?outro\\b",
+    "\\bisolad\\w*",
+    "\\buivand\\w*",
+    "\\blatindo (?:demais|muito)\\b",
+    "\\bmiand\\w* (?:muito|demais|sem parar)\\b",
+    "\\bvocaliz\\w*"
+   ],
+   "typoWords": [
+    "agressivo",
+    "agitado"
+   ],
+   "d2": {
+    "mentions": 231,
+    "prevalence": {
+     "dog": 0.0269,
+     "cat": 0.0193
+    }
+   }
+  },
+  {
+   "id": "prostracao_grave",
+   "label": "Prostração grave (nem levanta a cabeça)",
+   "category": "geral",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bnem levanta\\b",
+    "\\bnao quer levantar\\b",
+    "\\bnao levanta (?:a )?cabeca\\b",
+    "\\bnem (?:se )?mexe\\b",
+    "\\bnem reage\\b",
+    "\\bindiferente a tudo\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "urgencia_relatada",
+   "label": "Tutor relata urgência",
+   "category": "geral",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bsocorro\\b",
+    "\\burgente\\b",
+    "\\burgencia\\b",
+    "\\bemergencia\\b",
+    "\\bmorrendo\\b",
+    "\\bdesesperad\\w*",
+    "\\bmuito mal\\b",
+    "\\bpiorando (?:rapido|muito|a cada)\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "mal_estar_inespecifico",
+   "label": "Mal-estar inespecífico",
+   "category": "geral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bestranh[oa]\\b",
+    "\\besquisit[oa]\\b",
+    "\\bdiferente\\b",
+    "\\bnao esta (?:bem|normal|igual|como sempre)\\b",
+    "\\bdoente\\b",
+    "\\bpassando mal\\b",
+    "\\bcom algum problema\\b",
+    "\\bnao e o mesmo\\b",
+    "\\bmal\\b(?! cheiro)",
+    "\\bdoentinh[oa]\\b",
+    "\\balgo (?:errado|diferente)\\b",
+    "\\balguma coisa (?:errada|diferente)\\b"
+   ],
+   "typoWords": [
+    "estranho",
+    "doente"
+   ],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "trauma",
+   "label": "Trauma / atropelamento / queda de altura",
+   "category": "trauma",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\batropel\\w*",
+    "\\bpancada\\b",
+    "\\bcaiu (?:de|do|da|pela|no) (?:\\w+ ){0,2}(?:janela|sacada|varanda|escada|muro|telhado|laje|carro|cima|altura|arvore)\\b",
+    "\\bcaiu de (?:uma )?altura\\b",
+    "\\bmordid\\w* (?:por|de|pelo) (?:outro )?(?:cachorro|cao|gato)\\b",
+    "\\bchutad\\w*",
+    "\\bbatid\\w* (?:por|pelo) carro\\b",
+    "\\bfratura\\w*",
+    "\\bosso quebrad\\w*",
+    "\\bquebrou (?:a|o) (?:pata|perna|osso)\\b",
+    "\\bafogament\\w*",
+    "\\bchoque eletrico\\b",
+    "\\blevou (?:um )?choque\\b",
+    "\\bqueimadura\\w*",
+    "\\bqueimou\\b"
+   ],
+   "typoWords": [
+    "atropelado",
+    "atropelamento"
+   ],
+   "d2": {
+    "mentions": 21,
+    "prevalence": {
+     "dog": 0.0038,
+     "cat": 0.0004
+    }
+   }
+  },
+  {
+   "id": "sangramento_intenso",
+   "label": "Sangramento intenso",
+   "category": "trauma",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\bsangr\\w*[^|]{0,15}\\b(?:muito|bastante|intensamente|sem parar|abundante\\w*)\\b",
+    "\\bhemorragi\\w*",
+    "\\bmuito sangue\\b",
+    "\\bsangue (?:nao para|jorrando|escorrendo muito)\\b",
+    "\\bnao para de sangrar\\b",
+    "\\bpoca de sangue\\b"
+   ],
+   "typoWords": [
+    "sangrando",
+    "hemorragia"
+   ],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "sangramento",
+   "label": "Sangramento (ferida, boca ou outro local)",
+   "category": "trauma",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bsangr\\w*",
+    "\\bsangue\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 213,
+    "prevalence": {
+     "dog": 0.0203,
+     "cat": 0.0223
+    }
+   }
+  },
+  {
+   "id": "golpe_calor",
+   "label": "Possível golpe de calor",
+   "category": "trauma",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": null,
+   "patterns": [
+    "\\bgolpe de calor\\b",
+    "\\binsolacao\\b",
+    "\\bsuperaquec\\w*",
+    "\\b(?:ficou|deixad\\w*|esquecid\\w*|preso|trancad\\w*)[^|]{0,15}\\b(?:no|dentro do) carro\\b",
+    "\\b(?:sol|calor) (?:forte|demais|intenso)\\b[^|]{0,30}\\b(?:ofegante|mole|caiu|passando mal)\\b"
+   ],
+   "typoWords": [
+    "insolacao"
+   ],
+   "d2": {
+    "mentions": 0,
+    "prevalence": {
+     "dog": 0.0,
+     "cat": 0.0
+    }
+   }
+  },
+  {
+   "id": "parto_dificil",
+   "label": "Dificuldade no parto",
+   "category": "reprodutivo",
+   "severity": 4,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": true,
+   "family": "reprodutivo",
+   "patterns": [
+    "\\b(?:parto|trabalho de parto)\\b[^|]{0,40}\\b(?:dificil|demorando|demora|travad\\w*|parad\\w*|sem (?:sair|nascer)|nao (?:sai|nasce|progride))\\b",
+    "\\bfilhote[^|]{0,25}\\b(?:preso|entalad\\w*|nao sai)\\b",
+    "\\b(?:contracoes|fazendo forca)\\b[^|]{0,30}\\b(?:ha|por) (?:mais de )?(?:\\d+|duas|tres|quatro) horas\\b"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 143,
+    "prevalence": {
+     "dog": 0.0267,
+     "cat": 0.0018
+    }
+   }
+  },
+  {
+   "id": "gestacao_problema",
+   "label": "Problema na gestação ou corrimento vaginal",
+   "category": "reprodutivo",
+   "severity": 3,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": "reprodutivo",
+   "patterns": [
+    "\\bcorrimento (?:vaginal|com pus|purulento|amarelad\\w*|esverdead\\w*)\\b",
+    "\\bsecrecao vaginal\\b",
+    "\\bcorrimento\\b[^|]{0,25}\\b(?:vulva|vagina)\\b",
+    "\\b(?:vulva|vagina)\\b[^|]{0,20}\\b(?:corrimento|secrecao|pus|sangue|sangrando)\\b",
+    "\\bsangrando pela vagina\\b",
+    "\\bcorrimento (?:amarel\\w*|fedido|com cheiro)\\b",
+    "\\bpiometr\\w*",
+    "\\bvulva (?:inchada|com secrecao)\\b",
+    "\\babort\\w*"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 93,
+    "prevalence": {
+     "dog": 0.0106,
+     "cat": 0.0081
+    }
+   }
+  },
+  {
+   "id": "problema_oral",
+   "label": "Problema na boca ou nos dentes",
+   "category": "oral",
+   "severity": 2,
+   "severityCat": null,
+   "severityDog": null,
+   "redFlag": false,
+   "family": null,
+   "patterns": [
+    "\\bmau halito\\b",
+    "\\bhalito\\b[^|]{0,15}\\b(?:ruim|forte|fedido|horrivel)\\b",
+    "\\bmau cheiro (?:na|da) boca\\b",
+    "\\bhalitose\\b",
+    "\\bbafo\\b",
+    "\\bgengiva (?:inflamada|sangrando|vermelha|inchada)\\b",
+    "\\bdente (?:quebrado|mole|solto)\\b",
+    "\\bdentes? (?:amarelados|com tartaro)\\b",
+    "\\btartaro\\b",
+    "\\bnao (?:consegue|quer) mastigar\\b",
+    "\\bdificuldade[^|]{0,15}\\b(?:engolir|mastigar)\\b",
+    "\\bferida na boca\\b",
+    "\\bboca\\b[^|]{0,20}\\b(?:ferid\\w*|lesoes|machucad\\w*|bolhas)"
+   ],
+   "typoWords": [],
+   "d2": {
+    "mentions": 235,
+    "prevalence": {
+     "dog": 0.0239,
+     "cat": 0.0232
+    }
+   }
+  }
+ ],
+ "breeds": {
+  "dog": [
+   {
+    "id": "Beagle",
+    "label": "Beagle",
+    "brachycephalic": false
+   },
+   {
+    "id": "Boxer",
+    "label": "Boxer",
+    "brachycephalic": true
+   },
+   {
+    "id": "Bulldog",
+    "label": "Bulldog",
+    "brachycephalic": true
+   },
+   {
+    "id": "German Shepherd",
+    "label": "German Shepherd",
+    "brachycephalic": false
+   },
+   {
+    "id": "Golden Retriever",
+    "label": "Golden Retriever",
+    "brachycephalic": false
+   },
+   {
+    "id": "Labrador Retriever",
+    "label": "Labrador Retriever",
+    "brachycephalic": false
+   },
+   {
+    "id": "Mixed Breed",
+    "label": "SRD (sem raça definida)",
+    "brachycephalic": false
+   },
+   {
+    "id": "Poodle",
+    "label": "Poodle",
+    "brachycephalic": false
+   },
+   {
+    "id": "Rottweiler",
+    "label": "Rottweiler",
+    "brachycephalic": false
+   },
+   {
+    "id": "Yorkshire Terrier",
+    "label": "Yorkshire Terrier",
+    "brachycephalic": false
+   }
+  ],
+  "cat": [
+   {
+    "id": "Bengal",
+    "label": "Bengal",
+    "brachycephalic": false
+   },
+   {
+    "id": "British Shorthair",
+    "label": "British Shorthair",
+    "brachycephalic": false
+   },
+   {
+    "id": "Maine Coon",
+    "label": "Maine Coon",
+    "brachycephalic": false
+   },
+   {
+    "id": "Mixed Breed",
+    "label": "SRD (sem raça definida)",
+    "brachycephalic": false
+   },
+   {
+    "id": "Persian",
+    "label": "Persian",
+    "brachycephalic": true
+   },
+   {
+    "id": "Ragdoll",
+    "label": "Ragdoll",
+    "brachycephalic": false
+   },
+   {
+    "id": "Scottish Fold",
+    "label": "Scottish Fold",
+    "brachycephalic": false
+   },
+   {
+    "id": "Siamese",
+    "label": "Siamese",
+    "brachycephalic": false
+   },
+   {
+    "id": "Sphynx",
+    "label": "Sphynx",
+    "brachycephalic": false
+   }
+  ]
+ },
+ "historyTags": [
+  {
+   "id": "vacinado",
+   "label": "Vacinação em dia",
+   "d2Value": "Vaccinated"
+  },
+  {
+   "id": "nao_vacinado",
+   "label": "Sem vacinação em dia",
+   "d2Value": "Not vaccinated"
+  },
+  {
+   "id": "doenca_cronica",
+   "label": "Doença crônica",
+   "d2Value": "Chronic illness"
+  },
+  {
+   "id": "cardiopatia",
+   "label": "Problema cardíaco prévio",
+   "d2Value": "Previous heart condition"
+  },
+  {
+   "id": "doenca_renal",
+   "label": "Doença renal prévia",
+   "d2Value": "Previous kidney disease"
+  },
+  {
+   "id": "alergias",
+   "label": "Alergias",
+   "d2Value": "Allergies"
+  },
+  {
+   "id": "problemas_dentarios",
+   "label": "Problemas dentários",
+   "d2Value": "Dental issues"
+  },
+  {
+   "id": "parasitas",
+   "label": "Histórico de parasitas",
+   "d2Value": "Parasite history"
+  },
+  {
+   "id": "cirurgia_recente",
+   "label": "Cirurgia recente",
+   "d2Value": "Recent surgery"
+  },
+  {
+   "id": "problemas_pele",
+   "label": "Problemas de pele prévios",
+   "d2Value": "Skin conditions history"
+  },
+  {
+   "id": "sem_historico",
+   "label": "Sem condições prévias",
+   "d2Value": "No previous conditions"
+  }
+ ]
+}

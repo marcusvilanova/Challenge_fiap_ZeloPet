@@ -1,0 +1,868 @@
+grafia_d2,resultado,sintoma_canonico,mencoes
+fever,mapped,febre,3605
+weight loss,mapped,perda_peso,3140
+diarrhea,mapped,diarreia,3030
+coughing,mapped,tosse,2712
+pain,mapped,dor,2698
+vomiting,mapped,vomito,2626
+lethargy,mapped,apatia,2601
+weakness,mapped,fraqueza,2581
+anorexia,mapped,perda_apetite,2440
+sneezing,mapped,espirros,2431
+loss of appetite,mapped,perda_apetite,665
+pains,mapped,dor,534
+depression,mapped,apatia,478
+death,outcome,,400
+nasal discharge,mapped,secrecao_nasal,348
+lameness,mapped,claudicacao,258
+swelling,mapped,inchaco,216
+difficulty in breathing,mapped,dificuldade_respirar,197
+dehydration,mapped,desidratacao,176
+wasting,mapped,perda_peso,162
+blindness,mapped,olho_dor_lesao,154
+stumbling,mapped,ataxia,140
+drooling,mapped,salivacao_excessiva,135
+dyspnea,mapped,dificuldade_respirar,132
+listlessness,mapped,apatia,129
+uteria inertia,mapped,parto_dificil,123
+fetopelvic dispropotion,mapped,parto_dificil,123
+malpresentation,mapped,parto_dificil,120
+sudden death,outcome,,117
+skin rashes,mapped,lesao_pele,117
+dullness,mapped,apatia,103
+anemia,mapped,anemia,97
+hair loss,mapped,queda_pelo,92
+nausea,mapped,nausea,82
+swollen,mapped,inchaco,82
+emaciation,mapped,perda_peso,82
+jaundice,mapped,ictericia,81
+poor appetite,mapped,perda_apetite,77
+staggering,mapped,ataxia,76
+urination problem,mapped,dificuldade_urinar,70
+lying down,mapped,apatia,69
+ruffled feathers,non_companion,,68
+dull ness,mapped,apatia,67
+seizures,mapped,convulsao,66
+chills,mapped,tremores,64
+trembling,mapped,tremores,64
+respiratory distress,mapped,dificuldade_respirar,63
+tiredness,mapped,apatia,63
+convulsion,mapped,convulsao,61
+abortion,mapped,gestacao_problema,59
+fatique,mapped,apatia,58
+facial swelling,mapped,inchaco_facial,57
+change their normal behaviour,mapped,mudanca_comportamento,57
+drooping ears,unmapped,,56
+pneumonia,diagnosis,,55
+difficulty breathing,mapped,dificuldade_respirar,55
+ataxia,mapped,ataxia,55
+congestion,mapped,secrecao_nasal,54
+wheezing,mapped,sibilo,54
+facial edema,mapped,inchaco_facial,52
+bloody discharge,mapped,sangramento,52
+colic,mapped,dor_abdominal,51
+upset stomach,mapped,nausea,50
+bloody,mapped,sangramento,49
+swollen lymph nodes,mapped,linfonodos_aumentados,48
+stop eating,mapped,perda_apetite,48
+cough,mapped,tosse,47
+painfull,mapped,dor,47
+limping,mapped,claudicacao,46
+difficulty breating,mapped,dificuldade_respirar,46
+recumbency,mapped,paralisia,46
+stop drinking,mapped,recusa_agua,46
+stomach cramps,mapped,dor_abdominal,46
+watery eyes,mapped,olho_vermelho_secrecao,44
+head ache,mapped,dor,44
+rapid pulse and heart rates,mapped,taquicardia,44
+loss of appettite,mapped,perda_apetite,43
+heavy breathing,mapped,respiracao_ofegante,43
+lameness in affected leg,mapped,claudicacao,43
+paresis,mapped,paralisia,43
+stiffness,mapped,claudicacao,43
+droopy wings,non_companion,,43
+discharge,mapped,sangramento,43
+noisy breathing,mapped,sibilo,42
+seizuers,mapped,convulsao,42
+high temperature,mapped,febre,42
+mortality,outcome,,40
+abdominal pain,mapped,dor_abdominal,40
+chest pain,mapped,dor,40
+muscular spasms,mapped,tremores,40
+swollen abdomen,mapped,abdomen_distendido,39
+joint pain,mapped,dor,39
+tenderness,mapped,dor,38
+paralysis,mapped,paralisia,38
+rhinorrhea,mapped,secrecao_nasal,38
+enlarged lymph nodes,mapped,linfonodos_aumentados,37
+ulcers,mapped,lesao_pele,37
+tremor,mapped,tremores,37
+enteritis,diagnosis,,36
+gasping for breath,mapped,dificuldade_respirar,36
+salivation,mapped,salivacao_excessiva,36
+epistaxis,mapped,sangramento_nasal,36
+restlessness,mapped,mudanca_comportamento,36
+scabs,mapped,lesao_pele,36
+inappetence,mapped,perda_apetite,35
+infection,diagnosis,,35
+swelling of face or leg,mapped,inchaco,35
+constipation,mapped,constipacao,34
+abdominal discomfort,mapped,dor_abdominal,34
+muscle aches,mapped,dor,34
+neck paralysis,mapped,paralisia,34
+neurologic abnormalities,mapped,desorientacao,34
+headache,mapped,dor,34
+behaviour change,mapped,mudanca_comportamento,34
+foul smelling,mapped,problema_oral,34
+bottle jaw,mapped,inchaco,34
+distended stomach,mapped,abdomen_distendido,33
+anaemia,mapped,anemia,33
+mild weakness,mapped,fraqueza,33
+twisted neck,mapped,andar_circulos,33
+circling,mapped,andar_circulos,33
+muscle pain,mapped,dor,32
+shaking oh head,mapped,ouvido_problema,32
+pot belly,mapped,abdomen_distendido,32
+reduce growth,non_companion,,32
+slow growth,non_companion,,31
+skin issue,mapped,lesao_pele,31
+facial paralysis,mapped,paralisia,31
+bloody diarrhea,mapped,diarreia_sangue,31
+ulcerated skin,mapped,lesao_pele,31
+labored breathing,mapped,dificuldade_respirar,30
+eye closed,mapped,olho_dor_lesao,30
+eye redness,mapped,olho_vermelho_secrecao,30
+red skin,mapped,lesao_pele,30
+torticollis,mapped,andar_circulos,30
+swelling on leg,mapped,inchaco,30
+weakened legs,mapped,fraqueza,30
+los of the ability to walk,mapped,paralisia,30
+succumb,outcome,,29
+back pain,mapped,dor,29
+vomitting,mapped,vomito,29
+ulcer,mapped,lesao_pele,29
+dizziness and fainting,mapped,colapso,28
+fatigue,mapped,apatia,28
+lesions on nose,mapped,lesao_pele,28
+sweating,unmapped,,28
+darkened skin,mapped,lesao_pele,28
+lllthrift,mapped,apatia,28
+lession on the skin,mapped,lesao_pele,28
+urination,mapped,dificuldade_urinar,28
+folded ears,unmapped,,27
+thrist and urination,mapped,sede_urina_excessiva,27
+thirst,mapped,sede_urina_excessiva,27
+underdeveloped muscles,unmapped,,27
+frequent yawning,unmapped,,27
+heat,mapped,febre,27
+lack of coordination,mapped,ataxia,27
+exhaustion,mapped,apatia,27
+lack of pigmentation,non_companion,,27
+weightloss,mapped,perda_peso,27
+tear production,mapped,olho_vermelho_secrecao,26
+eye disharge,mapped,olho_vermelho_secrecao,26
+redness,mapped,lesao_pele,26
+egg production decreases,non_companion,,26
+gasping for air,mapped,dificuldade_respirar,26
+extending its neck,unmapped,,26
+speech delay,unmapped,,26
+self-isolation,mapped,apatia,26
+runny nose,mapped,secrecao_nasal,26
+bad smell,mapped,problema_oral,26
+gasping,mapped,dificuldade_respirar,26
+incoordination,mapped,ataxia,26
+aneamia,mapped,anemia,26
+inability to stand,mapped,paralisia,26
+kicking at the belly,mapped,dor_abdominal,26
+exercise in tolerance,mapped,intolerancia_exercicio,26
+tarry stool,mapped,fezes_escuras,26
+dejection,mapped,apatia,26
+straining,mapped,constipacao,26
+fleece become thin,mapped,queda_pelo,26
+difficulty swallowing,mapped,problema_oral,25
+scartch,mapped,coceira,25
+experiencing changes in weight,mapped,perda_peso,25
+pain and bloating,mapped,abdomen_distendido,25
+bluish white opacity,mapped,olho_dor_lesao,25
+lossened teeth,mapped,problema_oral,25
+wool loss,mapped,queda_pelo,25
+hemolytic anemia,mapped,anemia,25
+normal appetite,non_symptom,,25
+discharge from eye,mapped,olho_vermelho_secrecao,25
+lesion,mapped,lesao_pele,25
+bloody droping,mapped,diarreia_sangue,25
+edema in lower jaw,mapped,inchaco,24
+outstretched neck,unmapped,,24
+swelling of joints,mapped,inchaco,24
+skin colour change,mapped,lesao_pele,24
+blue straws,non_companion,,24
+excess sleeping,mapped,apatia,24
+abnormal conformation,non_companion,,24
+difficulty walking,mapped,claudicacao,24
+watery stool,mapped,diarreia,24
+vaginal discharge,mapped,gestacao_problema,24
+blood from mouth,mapped,sangramento,24
+frequent eye infections,mapped,olho_vermelho_secrecao,24
+skin infection,mapped,lesao_pele,24
+apathy,mapped,apatia,24
+abdonormal pain,mapped,dor_abdominal,24
+blue eye,mapped,olho_dor_lesao,24
+flabby,mapped,fraqueza,23
+decrease appetite,mapped,perda_apetite,23
+discharge from eyes,mapped,olho_vermelho_secrecao,23
+inflammed eye,mapped,olho_vermelho_secrecao,23
+air sacculitis,diagnosis,,23
+ulcerated muscle,mapped,lesao_pele,23
+excession salivation,mapped,salivacao_excessiva,23
+flatulence,unmapped,,23
+diarrhoea,mapped,diarreia,23
+hyperesthesia,mapped,dor,23
+short stature,non_companion,,23
+enlarged lymph nodes or swelling,mapped,linfonodos_aumentados,23
+muscular stiffness,mapped,claudicacao,23
+easily damage shell,non_companion,,23
+bloody drool,mapped,salivacao_excessiva,23
+bleeding from wounds,mapped,sangramento,23
+smell of ammonia,unmapped,,23
+nosebleed,mapped,sangramento_nasal,23
+crusting of the skin,mapped,lesao_pele,23
+uncharacteristic hiding,mapped,mudanca_comportamento,23
+poor growth,non_companion,,23
+lepatomegaly,diagnosis,,23
+signs in ewe,diagnosis,,23
+poor body condition,mapped,perda_peso,22
+stillbirth,mapped,gestacao_problema,22
+smell,mapped,problema_oral,22
+halitosis,mapped,problema_oral,22
+loss of eat,mapped,perda_apetite,22
+excessive eye watering,mapped,olho_vermelho_secrecao,22
+eyeproblem,mapped,olho_vermelho_secrecao,22
+reduce lamp marking,non_companion,,22
+liver disease,diagnosis,,22
+loss in weight,mapped,perda_peso,22
+nostrils,unmapped,,22
+bleeding in eye and skin,mapped,sangramento,22
+distended chest,unmapped,,22
+unilateral nasal discharge,mapped,secrecao_nasal,22
+sickness,mapped,apatia,22
+red tinge,mapped,olho_vermelho_secrecao,22
+wool production,non_companion,,22
+dandruff,mapped,lesao_pele,22
+sleeping excessively,mapped,apatia,22
+swelling problem,mapped,inchaco,22
+rapid heart rate,mapped,taquicardia,22
+oral lesion,mapped,problema_oral,22
+head tilt,mapped,andar_circulos,22
+inappentence,mapped,perda_apetite,22
+skin reashes,mapped,lesao_pele,22
+difficulty in swallowing,mapped,problema_oral,22
+dark colored bloody,mapped,fezes_escuras,22
+lathargy,mapped,apatia,22
+raw,mapped,lesao_pele,21
+throat and ear pain,mapped,dor,21
+pain on face,mapped,dor,21
+distinctive bumps,mapped,lesao_pele,21
+stunted growth,non_companion,,21
+floopy muscle,mapped,fraqueza,21
+itchiness,mapped,coceira,21
+tensemus,diagnosis,,21
+loss of vitamin e,diagnosis,,21
+changes in outer layer skin,mapped,lesao_pele,21
+immediate death,outcome,,21
+wool is clumped,mapped,queda_pelo,21
+holding limbs off the ground,mapped,claudicacao,21
+shock,mapped,colapso,21
+small red bumps,mapped,lesao_pele,21
+dry air,unmapped,,21
+kid moratality,outcome,,21
+scartching,mapped,coceira,21
+broken bones,mapped,trauma,21
+twitching,mapped,tremores,21
+eye ulcer,mapped,olho_dor_lesao,21
+nasal bleeding,mapped,sangramento_nasal,21
+firm,unmapped,,21
+tender to touch,mapped,dor,21
+poor wool,mapped,queda_pelo,21
+paralyzed leg,mapped,paralisia,21
+hyperexcitability,mapped,mudanca_comportamento,21
+mild colic,mapped,dor_abdominal,21
+changed gait,mapped,claudicacao,21
+oedema,mapped,inchaco,21
+high body temperature,mapped,febre,21
+pox lession on skin,mapped,lesao_pele,21
+mortality varies,outcome,,21
+greenish-yellow nasal discharge,mapped,secrecao_nasal,21
+loss of wool,mapped,queda_pelo,21
+inflammation,mapped,inchaco,21
+warm,mapped,febre,21
+muscle twiching,mapped,tremores,20
+sensitive to touch,mapped,dor,20
+green dropping,unmapped,,20
+loss of earing,unmapped,,20
+decreased growth of bone,non_companion,,20
+nervous,mapped,mudanca_comportamento,20
+animal gets uneasy,mapped,mudanca_comportamento,20
+aggressiveness,mapped,mudanca_comportamento,20
+walking problem,mapped,claudicacao,20
+unable to exercise,mapped,intolerancia_exercicio,20
+scartching ear,mapped,ouvido_problema,20
+skin may thicken,mapped,lesao_pele,20
+extension of neck,unmapped,,20
+foot hot,unmapped,,20
+slim over the shell,non_companion,,20
+ruffled coat,unmapped,,20
+decreased milk,non_companion,,20
+unable to eat,mapped,perda_apetite,20
+foul breath,mapped,problema_oral,20
+high body temperaure,mapped,febre,20
+diffulty chewing,mapped,problema_oral,20
+short term lethargy,mapped,apatia,20
+fatty stool,mapped,diarreia,20
+decreased appetite,mapped,perda_apetite,20
+tears,mapped,olho_vermelho_secrecao,20
+reduced appetite,mapped,perda_apetite,20
+attempt to urinate,mapped,dificuldade_urinar,20
+septic arthritis,diagnosis,,20
+weigth bearing long bones,mapped,claudicacao,20
+crusty,mapped,lesao_pele,20
+white mark on the muscle,unmapped,,20
+shortness of breath.,unmapped,,20
+overweight,unmapped,,20
+body stiffness,unmapped,,20
+viability,non_symptom,,20
+skin irritation,unmapped,,20
+shortness of breath,unmapped,,20
+hepatitis,unmapped,,20
+bleeding from the nose,unmapped,,20
+swallowing,non_companion,,20
+eye and skin change,unmapped,,19
+nasal,unmapped,,19
+ulcerated ear,unmapped,,19
+moist,unmapped,,19
+nuerological,unmapped,,19
+inability to absorb nutrients,unmapped,,19
+respiratory infection,unmapped,,19
+dandruff in cat coat,mapped,lesao_pele,19
+hind quarted soil,unmapped,,19
+retching,unmapped,,19
+hock joint,unmapped,,19
+ulcer on gum,unmapped,,19
+not eating,unmapped,,19
+feels stiff,unmapped,,19
+cramps,unmapped,,19
+decreased eyelid,unmapped,,19
+tail_bobbing,unmapped,,19
+relunctance to move,unmapped,,19
+loss od appetite,fuzzy,perda_apetite,19
+progressive weakness,unmapped,,19
+loss of tail tone,mapped,paralisia,19
+inability to digest,unmapped,,19
+itching,unmapped,,19
+trauma,unmapped,,19
+rhinitis,unmapped,,19
+tremor of head and neck,unmapped,,19
+reduce milk,non_companion,,19
+scaly patches of skin,unmapped,,19
+swelling of udder,non_companion,,19
+muscles problem,unmapped,,19
+puffed_up feather,non_companion,,19
+gas,unmapped,,19
+broody behavior,unmapped,,19
+hemoglobinuria,unmapped,,19
+asymptomatic,unmapped,,19
+acting unnaturally tame,unmapped,,19
+stained wool,non_companion,,19
+skin ulcer,unmapped,,19
+lacrimation,unmapped,,19
+mammary glads,unmapped,,19
+fluif filled blisters,unmapped,,19
+bloody in feather,non_companion,,19
+sheep often bites,unmapped,,19
+drop on egg production,non_companion,,18
+swollen left abdomen,unmapped,,18
+retarded growth,non_companion,,18
+barren ewes,non_companion,,18
+discomfort,unmapped,,18
+urine retention,unmapped,,18
+difficulty in walk,unmapped,,18
+strong cough,unmapped,,18
+yellow or green dropping,unmapped,,18
+gagging,unmapped,,18
+hyperaestesia,fuzzy,dor,18
+hematuria,unmapped,,18
+nible at their wool,non_companion,,18
+difficulty moving and eating,unmapped,,18
+chronic eye inflamation,unmapped,,18
+increased in breathing,unmapped,,18
+blood in urine,unmapped,,18
+loss of activity,unmapped,,18
+sores on lower leg and teats,non_companion,,18
+forthy eye,unmapped,,18
+wether restless,unmapped,,18
+abscessess,unmapped,,18
+septicemia,unmapped,,18
+sick,unmapped,,18
+stopped eat,unmapped,,18
+blood clots,unmapped,,18
+enlargement of bones,non_companion,,18
+scratching,mapped,coceira,18
+semen examination,unmapped,,18
+berberi,unmapped,,18
+wandering,unmapped,,18
+stomatitis,unmapped,,18
+nause,fuzzy,nausea,18
+swaying,unmapped,,18
+jerky limb movements,unmapped,,18
+skinallergy,unmapped,,18
+diarrhea with muscus,unmapped,,18
+strange behaviour,unmapped,,18
+beak overgrowth,non_companion,,18
+splenomegaly,unmapped,,18
+legness,unmapped,,18
+pyrexia,unmapped,,18
+pharyngitis,unmapped,,18
+yellowish discharge,unmapped,,18
+tachypea,unmapped,,18
+facial defects,unmapped,,18
+cessation of eructation,unmapped,,18
+tail shaking,unmapped,,18
+testical pain,unmapped,,18
+self mutilation,unmapped,,18
+swollen purple wattle,non_companion,,18
+swollen comb,non_companion,,18
+feather plucking,non_companion,,18
+ear infection,unmapped,,18
+tremors,fuzzy,tremores,18
+painfull swalling,unmapped,,18
+feather loss,non_companion,,18
+sensitivity to bright light,unmapped,,18
+nervousness,unmapped,,18
+hydrophobia,unmapped,,17
+abdminal pain,fuzzy,dor_abdominal,17
+shivering,non_companion,,17
+swelling may occur under jaw,unmapped,,17
+bony lesion,unmapped,,17
+milky hard,non_companion,,17
+difficult in respiration,unmapped,,17
+stamping and pedding of hind eye,unmapped,,17
+sour throat,unmapped,,17
+ring shaped lesion,unmapped,,17
+terminal convulsion,unmapped,,17
+crusty eye lashes and matting of eyelashes,unmapped,,17
+hot joints,unmapped,,17
+lession on cat skin,fuzzy,lesao_pele,17
+abnormally long leg,unmapped,,17
+periodic vommiting,unmapped,,17
+bubbles in the mouth,unmapped,,17
+swelling of eye,unmapped,,17
+red and inflammation ear,unmapped,,17
+poor coat apperence,unmapped,,17
+blue colored lip,unmapped,,17
+stealing,unmapped,,17
+spread of infection,unmapped,,17
+lesions on ear,unmapped,,17
+very cold skin,unmapped,,17
+weak kids,unmapped,,17
+difficulty diagnosis,unmapped,,17
+poor coat condition,unmapped,,17
+watering diarrhea,unmapped,,17
+defienciency in vitamin,non_companion,,17
+flaky,unmapped,,17
+yellow in beak,non_companion,,17
+eventually death,unmapped,,17
+clouded cornea,unmapped,,17
+severe weekness and depression,unmapped,,17
+drooping wings,non_companion,,17
+raised growth or bump,non_companion,,17
+reduce feed,unmapped,,17
+dry or tacky gums,unmapped,,17
+sweats,unmapped,,17
+kicking,unmapped,,17
+trouble walking,unmapped,,17
+undernutrition,unmapped,,17
+skin lesion,unmapped,,17
+itches,unmapped,,17
+polydipsa,unmapped,,17
+dilation of duodenum,unmapped,,17
+lesions,fuzzy,lesao_pele,17
+small size,unmapped,,17
+gums,unmapped,,17
+swelling of neck,unmapped,,17
+stress,unmapped,,17
+despression,fuzzy,apatia,17
+lack of vocalizations,unmapped,,17
+swelling of head and neck,unmapped,,17
+regurgitation of food,unmapped,,17
+occular discharge,unmapped,,17
+lame,unmapped,,17
+rubbing eye,unmapped,,17
+liquid dropping,unmapped,,17
+enlarged thymus,unmapped,,17
+nervous issue,unmapped,,17
+mouth lesion,unmapped,,17
+obscure lameness,unmapped,,17
+muscle trembling,unmapped,,17
+bad breath,unmapped,,17
+weekness,unmapped,,17
+greenish diarrhea,unmapped,,17
+rapid breathing,unmapped,,17
+pox lesion,unmapped,,17
+iris prolapse,unmapped,,17
+pink eye,unmapped,,17
+effort to breath,unmapped,,17
+hot udder,non_companion,,16
+excessive blood loss,unmapped,,16
+swelling of eyelid,unmapped,,16
+abnormal behaviour,unmapped,,16
+abdominal destention,unmapped,,16
+deability,unmapped,,16
+intellectual disability,unmapped,,16
+eye movements,unmapped,,16
+pustulses,unmapped,,16
+severe headache,unmapped,,16
+scratches,unmapped,,16
+cloacal pasting,unmapped,,16
+edema,mapped,inchaco,16
+watery eye,fuzzy,olho_vermelho_secrecao,16
+red patches,unmapped,,16
+red diarrhea,unmapped,,16
+edematous,unmapped,,16
+bloody urine,unmapped,,16
+head pressing,unmapped,,16
+burning ache or pain,unmapped,,16
+increased passing gas,unmapped,,16
+flaking of the scutes,unmapped,,16
+swollen eyelids,unmapped,,16
+obstructed lungs,unmapped,,16
+less feather growth,non_companion,,16
+week pulse,unmapped,,16
+respiratory noise,unmapped,,16
+constant pacing,unmapped,,16
+watery diarrhea dispropotion,unmapped,,16
+loss of eye,unmapped,,16
+undigested in their feces,unmapped,,16
+sores on lip,unmapped,,16
+rump,unmapped,,16
+sharp feather,non_companion,,16
+clubbed feather,non_companion,,16
+loss of alertness,unmapped,,16
+dizziness,unmapped,,16
+bite other animals,unmapped,,16
+severe inflammation,unmapped,,16
+muscles ache,fuzzy,dor,16
+hemopytsis,unmapped,,16
+fluffed feathers,non_companion,,16
+polyuria,unmapped,,16
+dirty,unmapped,,16
+weekness in the back legs,unmapped,,16
+bleeding from other parts of the body,unmapped,,16
+papules appear on teats anad udder,non_companion,,16
+flat ribs,unmapped,,16
+stiff,unmapped,,16
+loss of pigment,unmapped,,16
+extreme thirst,unmapped,,16
+sweat,unmapped,,16
+shyness or aggression,unmapped,,15
+egg production stops,non_companion,,15
+indigestion,unmapped,,15
+abortion on late pregancy,unmapped,,15
+milk getting out more thick,non_companion,,15
+scartches,unmapped,,15
+blurry vision,unmapped,,15
+grunting,unmapped,,15
+restless movement,unmapped,,15
+decreased stool production,unmapped,,15
+arthritis,unmapped,,15
+poor conformation,non_companion,,15
+hairy fleeces,non_companion,,15
+muscle stiffness,fuzzy,claudicacao,15
+dry skin,unmapped,,15
+carcass decomposes,unmapped,,15
+decresed egg production,non_companion,,15
+distress,unmapped,,15
+willnot run to jump,unmapped,,15
+swollen teats,non_companion,,15
+groosly enlarged,unmapped,,15
+nesting behaviour,unmapped,,15
+reduce reproductive potential,unmapped,,15
+skeleten abnormalities,unmapped,,15
+wart-like growth,non_companion,,15
+mummification,unmapped,,15
+anversion to light,unmapped,,15
+lack of walking,unmapped,,15
+stripped remiges,unmapped,,15
+fast breathing,unmapped,,15
+join pains,fuzzy,dor,15
+lack of appetite,unmapped,,15
+achomotrica,unmapped,,15
+unusally thin,unmapped,,15
+kick,unmapped,,15
+bald patches,unmapped,,15
+blood poisioning,unmapped,,15
+morbidity,unmapped,,15
+high moratality,unmapped,,15
+pale gums,unmapped,,15
+lymphosarcoma,unmapped,,15
+gastritis,unmapped,,15
+radip onset,unmapped,,15
+excess salivation,fuzzy,salivacao_excessiva,15
+difficulty in feeding,unmapped,,15
+attack,unmapped,,15
+listless,unmapped,,15
+production of mucus,unmapped,,15
+hardness,unmapped,,15
+conjuctivtis,unmapped,,15
+change in milk,non_companion,,15
+red eye,unmapped,,15
+excessive grooming,unmapped,,15
+pale comb,non_companion,,15
+loss of wariness,unmapped,,15
+swelling in the bite area,unmapped,,15
+partial paralysis,unmapped,,15
+acting aggressive,unmapped,,15
+fluif faeces on blood and muscle,unmapped,,15
+faeces are streake with blood,unmapped,,15
+animal become lame,unmapped,,15
+tail wagging,unmapped,,15
+pawing at the face or nose,non_companion,,15
+small intestines,unmapped,,15
+flock moratality,non_companion,,15
+vision problem,unmapped,,15
+teeth griding,unmapped,,15
+severe swellimg,unmapped,,15
+watering,unmapped,,15
+excitability,unmapped,,15
+horny growth,non_companion,,14
+fell unwell,unmapped,,14
+milk getting out more watery,non_companion,,14
+stand with head droping,unmapped,,14
+ruffled appearance,unmapped,,14
+rapid heartbeats,unmapped,,14
+pnemonia,unmapped,,14
+less eat,unmapped,,14
+abnormalities,unmapped,,14
+size of lesions vary,unmapped,,14
+sluggish,unmapped,,14
+formation of vesicles,unmapped,,14
+diffculty breathing,fuzzy,dificuldade_respirar,14
+reluctant move,unmapped,,14
+dull,unmapped,,14
+consistency of milk,non_companion,,14
+lesions in the nasal cavity,unmapped,,14
+lip,unmapped,,14
+severe colic,unmapped,,14
+rough coat,unmapped,,14
+pruritis,unmapped,,14
+muscus,unmapped,,14
+nose picking,unmapped,,14
+wattles,non_companion,,14
+sloughing of the tail,unmapped,,14
+blooody fluid,unmapped,,14
+most often none,unmapped,,14
+dysentery,unmapped,,14
+vitamin and minerals defiency,non_companion,,14
+drinking polluted water,unmapped,,14
+rub,unmapped,,14
+appetite varies,unmapped,,14
+difficult in walking,fuzzy,claudicacao,14
+difficultty in breathing,fuzzy,dificuldade_respirar,14
+eye discharges,fuzzy,olho_vermelho_secrecao,14
+nose bleeds,fuzzy,sangramento_nasal,14
+sinuses,unmapped,,14
+dry scabs,unmapped,,14
+eye become dull,unmapped,,14
+mucus discharge from the eye,unmapped,,14
+signs in rams,unmapped,,14
+purplish combs,non_companion,,14
+mucous discharge,unmapped,,14
+staggering as drunk,unmapped,,14
+lightheadedness,unmapped,,14
+panting,unmapped,,14
+diffulty swallowing,fuzzy,problema_oral,14
+gas or bloating,unmapped,,14
+swelling on joints,fuzzy,inchaco,14
+continuous loss of weight,unmapped,,14
+prostrat,unmapped,,14
+hyper sensitivity,unmapped,,14
+chirping,unmapped,,14
+conjunctive,unmapped,,14
+reduce energy,unmapped,,13
+shaking head,fuzzy,ouvido_problema,13
+corneal ulceration,unmapped,,13
+poor immune function,unmapped,,13
+infected navels,unmapped,,13
+blood in faces,unmapped,,13
+scabs on feet,unmapped,,13
+grinding teeth,unmapped,,13
+limp,unmapped,,13
+chewing,non_companion,,13
+haemorrhage,unmapped,,13
+straw colored,non_companion,,13
+scabs on lip,unmapped,,13
+animal stop feed,unmapped,,13
+weak pulse,unmapped,,13
+black on ear,unmapped,,13
+dribbling of saliva,unmapped,,13
+inability of swalllon feeding,unmapped,,13
+kidney failure,unmapped,,13
+loss of consciousness,unmapped,,13
+infection of the skin,unmapped,,13
+roughened,unmapped,,13
+rectal bleeding,unmapped,,13
+abortion at the end of gestation,unmapped,,13
+weak calves,non_companion,,13
+snoring,unmapped,,13
+difficulty in rising,unmapped,,13
+severe kerititis,unmapped,,13
+ruminal stasis,unmapped,,13
+poor condition,unmapped,,13
+swelling on thebody,unmapped,,13
+loss of milk production,non_companion,,13
+muscle loss,unmapped,,13
+difficulty in walking,fuzzy,claudicacao,13
+blister,unmapped,,13
+loss of powder down,unmapped,,13
+scabbing,unmapped,,13
+balance problem,unmapped,,13
+wound,unmapped,,13
+exessive urination,unmapped,,13
+change in gait,unmapped,,13
+jaw is dropped,unmapped,,13
+excess salivary,unmapped,,13
+wound lesion,unmapped,,13
+nosebleeds,fuzzy,sangramento_nasal,13
+watery faeces,unmapped,,13
+swolling of joint,fuzzy,inchaco,13
+mild sneezing,unmapped,,13
+attacks,unmapped,,13
+weight gain,unmapped,,13
+disharge from affected eye,unmapped,,13
+black stool,unmapped,,13
+red lesion from bald patches,unmapped,,13
+half-closed eye,unmapped,,13
+sneeze,unmapped,,13
+excessive drooling,unmapped,,13
+closed eyes,unmapped,,13
+lying on the side,unmapped,,13
+cell damage,unmapped,,13
+red-colored,unmapped,,12
+watering of eyes,unmapped,,12
+relunctance to walk,unmapped,,12
+dark or black face,unmapped,,12
+round patches,unmapped,,12
+rough hair coat,unmapped,,12
+foul smelling stools,unmapped,,12
+swelling of internal organs,unmapped,,12
+painfull to touch,unmapped,,12
+fluffed feather,non_companion,,12
+enlarged skulls,unmapped,,12
+drop in milk production,non_companion,,12
+swollen kidney,unmapped,,12
+secondary infection,unmapped,,12
+sore,unmapped,,12
+feline infections,unmapped,,12
+"bumps(black,grey or red)",unmapped,,12
+heavy infection,unmapped,,12
+preening,unmapped,,12
+misshapen beak,non_companion,,12
+facial muscle twitching,unmapped,,12
+swollen belly,unmapped,,12
+blood in stool,unmapped,,12
+muscle weakness,unmapped,,12
+yellow eye,unmapped,,12
+droopiness,unmapped,,12
+undigested seeds,unmapped,,12
+unable to urinate,unmapped,,12
+passing of undigested food,unmapped,,12
+slightly swollen,unmapped,,12
+abnormalalities,unmapped,,12
+grinding of teeth,unmapped,,12
+"facial swelling,",fuzzy,inchaco_facial,12
+no appp,unmapped,,12
+hepatic failure,unmapped,,12
+retained placenda,unmapped,,11
+endomeritis,unmapped,,11
+redness of white of the eye,unmapped,,11
+appetite,unmapped,,11
+thickening of skin,unmapped,,11
+excessive production,unmapped,,11
+sudden abortion,unmapped,,11
+decrease in milk production,non_companion,,11
+week legs,unmapped,,11
+pain on leg,unmapped,,11
+allergic reaction,unmapped,,11
+gurgling sound,unmapped,,11
+bloody diarhhea,fuzzy,diarreia_sangue,11
+red on affected area,unmapped,,11
+salivating,fuzzy,salivacao_excessiva,11
+neurologic sign,unmapped,,11
+lack of flying,unmapped,,11
+lumps,unmapped,,11
+thick crusting,unmapped,,11
+urine infection,unmapped,,11
+flank,unmapped,,11
+dry hair coat,unmapped,,11
+scaly skin,unmapped,,11
+agalactia,unmapped,,11
+skeleten pain,unmapped,,11
+abdonormal discomfort,unmapped,,11
+lound breathing,unmapped,,11
+thicked skin,unmapped,,11
+hair tining,unmapped,,11
+inability to jump,unmapped,,11
+inflamed nostrils,unmapped,,11
+neck vein swelling,unmapped,,11
+gasc,unmapped,,11
+blood stool,unmapped,,11
+small and yellow bumps,unmapped,,11
+diphtherictic,unmapped,,11
+erythema,unmapped,,11
+tear produce,unmapped,,11
+ocular discharge,unmapped,,11
+pains to walk,unmapped,,11
+unsteady gait,unmapped,,11
+excessive food intake,unmapped,,11
+skin color change,fuzzy,lesao_pele,11
+severe,unmapped,,10
+pawing at bedding,non_companion,,10
+dizzines,unmapped,,10
+spines,unmapped,,10
+urine dribbling,unmapped,,10
+tremors of the head,unmapped,,10
+shallow breathing,unmapped,,10
+larynx,unmapped,,10
+milk reduce,non_companion,,10
+stomach growling,unmapped,,10
+confusion,unmapped,,10
+irritation,unmapped,,10
+anoxeria,unmapped,,10
+trachea,unmapped,,9
+isolation from flock,non_companion,,9
+pulmonary congestion,unmapped,,9
+malaise,unmapped,,9
+inability to fly,unmapped,,9
+death of lamb,non_companion,,9
+aversion to light,unmapped,,9
+general malaise,unmapped,,9
+redness of eye,unmapped,,8
+cornea become cloudy,unmapped,,8
+diffuse,unmapped,,8
+inflammation of eye,unmapped,,8
+swelling on jaw,unmapped,,8
+oxygen defiency,unmapped,,8
+hoarseness,unmapped,,8
+clearly unthrifty,unmapped,,8
+good appetite,unmapped,,8
+inability to rise,unmapped,,8
+head tossing,unmapped,,8
+blood on faces,unmapped,,8
+dry or dull hair,unmapped,,7
+thivk skin,unmapped,,7
+moist and painfull,unmapped,,7
+discharge from ear,fuzzy,olho_vermelho_secrecao,7
+bleeding wounds,unmapped,,7
+swollen and painfull,unmapped,,7
+odor to ear,mapped,ouvido_problema,6
+redness on ear,mapped,ouvido_problema,5
+profuse,unmapped,,5
+head shking,mapped,ouvido_problema,4
