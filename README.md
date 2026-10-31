@@ -69,6 +69,10 @@ cd ia\vision\service; ..\..\.venv\Scripts\python -m uvicorn app:app --host 127.0
 cd backend; .\mvnw.cmd spring-boot:run
 ```
 
+### Versão online (Vercel)
+
+A Vercel não roda Java, então a versão online usa as **mesmas telas** com o motor de triagem portado para JavaScript (mesmo resultado do Java nos conjuntos de avaliação: `npm test`) e os dados guardados no navegador. A IA generativa é opcional, via Google Gemini, com a chave só nas variáveis da Vercel. Análise de foto fica só na versão local. Detalhes e passo a passo: [`docs/deploy.md`](docs/deploy.md).
+
 ### Contas de demonstração (dados fictícios; o `run-local.ps1` liga o seed, o backend sozinho vem com ele **desligado**)
 
 | Perfil | E-mail | Senha |
