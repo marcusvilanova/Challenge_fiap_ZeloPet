@@ -1,0 +1,56 @@
+{"id":"H01","text":"Meu doguinho amanheceu todo molinho, nem quis o café da manhã","pet":"dog","priority":"alta","symptoms":["apatia","perda_apetite"]}
+{"id":"H02","text":"A gatinha está escondida debaixo da cama desde ontem e não quer comer","pet":"cat","priority":"alta","symptoms":["mudanca_comportamento","perda_apetite"]}
+{"id":"H03","text":"Ele ficou todo duro, babando e depois caiu de lado batendo as patas","pet":"dog","priority":"emergencia","symptoms":["convulsao","salivacao_excessiva"]}
+{"id":"H04","text":"Tá com a barriga muito grande de repente e quer vomitar mas só sai espuma","pet":"dog","priority":"emergencia","symptoms":["abdomen_agudo","ansia_sem_vomitar"]}
+{"id":"H05","text":"Meu gato está ofegando igual cachorro","pet":"cat","priority":"alta","symptoms":["respiracao_ofegante"]}
+{"id":"H06","text":"Minha cachorra está com um corrimento amarelo e fedido saindo da vulva","pet":"dog","priority":"alta","symptoms":["gestacao_problema"]}
+{"id":"H07","text":"O pet está com o olho super inchado e fechado desde a manhã","pet":"dog","priority":"alta","symptoms":["olho_dor_lesao"]}
+{"id":"H08","text":"Ele tomou veneno de formiga","pet":"dog","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"H09","text":"Tá espirrando sem parar e com o nariz sujo","pet":"cat","priority":"baixa","symptoms":["espirros","secrecao_nasal"]}
+{"id":"H10","text":"Cachorro vomitou ração e depois ficou normal, brincando","pet":"dog","priority":"media","symptoms":["vomito"]}
+{"id":"H11","text":"Minha gata está miando de dor e não consegue fazer xixi","pet":"cat","priority":"emergencia","symptoms":["nao_urina","dor"]}
+{"id":"H12","text":"Ela está com as gengivas amareladas","pet":"dog","priority":"alta","symptoms":["ictericia"]}
+{"id":"H13","text":"Uma abelha picou o focinho dele e está inchando muito","pet":"dog","priority":"emergencia","symptoms":["picada_peconhento","inchaco_facial"]}
+{"id":"H14","text":"Não faz cocô há 3 dias e faz força","pet":"cat","priority":"media","symptoms":["constipacao"]}
+{"id":"H15","text":"O cachorro bebeu água sanitária","pet":"dog","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"H16","text":"Está mancando e com a pata inchada depois de brincar","pet":"dog","priority":"media","symptoms":["claudicacao"]}
+{"id":"H17","text":"Meu cão tem tossido muito à noite, parece que tá engasgado","pet":"dog","priority":"media","symptoms":["tosse"]}
+{"id":"H18","text":"A pele da barriga dele tá vermelha e cheia de bolinhas","pet":"dog","priority":"media","symptoms":["lesao_pele"]}
+{"id":"H19","text":"Desde ontem à noite ele não parou de espirrar e agora tem sangue no nariz","pet":"dog","priority":"alta","symptoms":["espirros","sangramento_nasal"]}
+{"id":"H20","text":"Ela não quer andar, só fica deitada e geme quando pego","pet":"dog","priority":"alta","symptoms":["apatia","dor"]}
+{"id":"H21","text":"Tomou banho e depois começou a tremer muito","pet":"dog","priority":"media","symptoms":["tremores"]}
+{"id":"H22","text":"O gatinho está com diarreia líquida","pet":{"species":"cat","age_months":2},"priority":"alta","symptoms":["diarreia"]}
+{"id":"H23","text":"Nossa cachorra velhinha parou de comer e não levanta mais","pet":{"species":"dog","age_months":180},"priority":"emergencia","symptoms":["perda_apetite","paralisia"]}
+{"id":"H25","text":"Acho que ele engoliu um pedaço de brinquedo","pet":"dog","priority":"alta","symptoms":["ingestao_corpo_estranho"]}
+{"id":"H26","text":"Estou preocupada porque ele está bebendo água demais e urinando pela casa toda","pet":"dog","priority":"media","symptoms":["sede_urina_excessiva","xixi_fora_lugar"]}
+{"id":"H28","text":"Tem uns carocinhos na pele e ele coça sem parar","pet":"dog","priority":"media","symptoms":["caroco_nodulo","coceira"]}
+{"id":"H29","text":"Está com o hálito muito ruim","pet":"dog","priority":"media","symptoms":["problema_oral"]}
+{"id":"H30","text":"Ele deu um grito agudo quando encostei na coluna e não mexe as patinhas de trás","pet":"dog","priority":"emergencia","symptoms":["dor","paralisia"]}
+{"id":"H31","text":"Cachorro com cara de dor, rígido e com a barriga dura","pet":"dog","priority":"emergencia","symptoms":["dor","abdomen_agudo","claudicacao"]}
+{"id":"H32","text":"Gato com os olhos amarelados e sem comer","pet":"cat","priority":"alta","symptoms":["ictericia","perda_apetite"]}
+{"id":"H33","text":"Está com muita coceira nas orelhas e mexe a cabeça o tempo todo","pet":"dog","priority":"media","symptoms":["ouvido_problema","coceira"]}
+{"id":"H34","text":"O gatinho está fraquinho e frio","pet":{"species":"cat","age_months":1},"priority":"alta","symptoms":["fraqueza"]}
+{"id":"H36","text":"Ela está sangrando pela vagina e é castrada","pet":"dog","priority":"alta","symptoms":["sangramento"]}
+{"id":"H37","text":"Passou mal depois de comer grama e vomitou espuma branca","pet":"dog","priority":"media","symptoms":["vomito","mal_estar_inespecifico"]}
+{"id":"H38","text":"A língua dele está azul","pet":"dog","priority":"emergencia","symptoms":["gengivas_palidas"]}
+{"id":"H39","text":"Não para de se coçar e já tem feridas","pet":"dog","priority":"media","symptoms":["coceira","lesao_pele"]}
+{"id":"H40","text":"Convulsionou 3 vezes seguidas","pet":"dog","priority":"emergencia","symptoms":["convulsao"]}
+{"id":"H41","text":"Está respirando muito rápido dormindo","pet":"dog","priority":"media","symptoms":["respiracao_ofegante"]}
+{"id":"H42","text":"O cachorro foi mordido por outro cachorro no pescoço e está sangrando","pet":"dog","priority":"emergencia","symptoms":["trauma","sangramento"]}
+{"id":"H43","text":"Meu gato está lambendo muito a mesma região e perdendo pelo ali","pet":"cat","priority":"baixa","symptoms":["coceira","queda_pelo"]}
+{"id":"H44","text":"Ela vomitou três vezes hoje e está bebendo muita água","pet":"cat","priority":"alta","symptoms":["vomito_repetido","sede_urina_excessiva"]}
+{"id":"H45","text":"Estou com medo, ele está muito quieto, nem levanta a cabeça","pet":"dog","priority":"alta","symptoms":["apatia"]}
+{"id":"H47","text":"Teve uma quedinha leve do sofá, mas está normal","pet":"dog","priority":"baixa","symptoms":[]}
+{"id":"H48","text":"Meu pet está com fezes moles e muito gás","pet":"dog","priority":"media","symptoms":["diarreia"]}
+{"id":"H49","text":"Não está querendo brincar nem passear","pet":"dog","priority":"media","symptoms":["apatia"]}
+{"id":"H50","text":"Ele passou o dia todo vomitando e agora não consegue ficar de pé","pet":"dog","priority":"emergencia","symptoms":["vomito_repetido","paralisia"]}
+{"id":"H51","text":"A cachorra apareceu com um caroço duro na mama","pet":"dog","priority":"media","symptoms":["caroco_nodulo"]}
+{"id":"H52","text":"Está mancando da pata da frente e chorando muito","pet":"dog","priority":"media","symptoms":["claudicacao","dor"]}
+{"id":"H53","text":"Meu gato comeu lírio do vaso","pet":"cat","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"H54","text":"O cachorro está tremendo, ofegante e com as gengivas pálidas","pet":"dog","priority":"emergencia","symptoms":["tremores","respiracao_ofegante","gengivas_palidas"]}
+{"id":"H55","text":"Está com dificuldade de andar depois do banho","pet":"dog","priority":"media","symptoms":["claudicacao"]}
+{"id":"H56","text":"Vomitou uma vez, mas está agitado e com a barriga estufada","pet":"dog","priority":"emergencia","symptoms":["vomito","mudanca_comportamento","abdomen_distendido"]}
+{"id":"H57","text":"O filhotinho de um mês e meio não está mamando","pet":{"species":"cat","age_months":1},"priority":"alta","symptoms":["perda_apetite"]}
+{"id":"H58","text":"Ela está há um dia sem urinar","pet":"cat","priority":"emergencia","symptoms":["nao_urina"]}
+{"id":"H59","text":"Tosse de cachorro velho com cansaço ao subir escada, tem problema cardíaco","pet":{"species":"dog","age_months":150,"history":["cardiopatia"]},"priority":"alta","symptoms":["tosse","intolerancia_exercicio"]}
+{"id":"H60","text":"Parece que ele está com dor de dente, não quer mastigar a ração","pet":"dog","priority":"media","symptoms":["problema_oral","dor"]}

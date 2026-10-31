@@ -1,0 +1,11 @@
+# Preparação de dados e treino (inclui o serviço de inferência).
+-r requirements-service.txt
+pandas==2.2.3
+scikit-learn==1.6.1
+torch==2.5.1
+torchvision==0.20.1
+onnx==1.17.0
+openpyxl==3.1.5
+httpx==0.28.1
+pytest==8.3.4
+jsonschema==4.23.0

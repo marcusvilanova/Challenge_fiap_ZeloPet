@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zelo — conversa com a assistente</title>
+  <meta name="theme-color" content="#faf5ec">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/zelo.css">
+  <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body data-tab="chat">
+  <a class="skip-link" href="#conversa">Ir para a conversa</a>
+
+  <header class="topbar">
+    <a class="brand" href="/chat.html" aria-label="Zelo, início"><span class="brand__mark" id="brand-mark" aria-hidden="true"></span><span>Zelo</span></a>
+    <nav class="pet-switch" id="pet-switch" aria-label="Seus pets"></nav>
+    <span class="topbar__spacer"></span>
+    <div class="topbar__status" id="status" aria-label="Estado dos componentes de IA"></div>
+    <div class="user">
+      <span id="user-name"></span>
+      <button class="btn btn--ghost btn--small" id="logout" type="button">Sair</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="rail rail--left" aria-label="Pet e cuidados">
+      <section class="card pet-card" id="pet-card" aria-live="polite"></section>
+
+      <section aria-labelledby="care-title">
+        <h2 id="care-title">Ciclo Zelo · próximos cuidados</h2>
+        <ul class="care-list" id="care-list"></ul>
+      </section>
+
+      <section class="consent" aria-labelledby="consent-title">
+        <h2 id="consent-title">Compartilhamento com a clínica</h2>
+        <p id="consent-text"></p>
+        <button class="btn btn--ghost btn--small" id="consent-toggle" type="button"></button>
+      </section>
+    </aside>
+
+    <main class="chat" id="conversa">
+      <div class="chat__header">
+        <h1 id="chat-title">Conversa</h1>
+        <button class="btn btn--ghost btn--small" id="new-chat" type="button">Nova conversa</button>
+      </div>
+
+      <div class="chat__log" id="log" role="log" aria-live="polite" aria-relevant="additions" aria-label="Mensagens da conversa" tabindex="0"></div>
+      <div class="quick" id="quick" role="group" aria-label="Respostas rápidas"></div>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <input type="file" id="photo" accept="image/jpeg,image/png,image/webp" hidden>
+        <button class="btn btn--ghost btn--icon" id="attach" type="button" aria-label="Enviar foto da pele para análise (somente cães)" title="Enviar foto da pele (somente cães)"></button>
+        <label class="sr-only" for="message">Sua mensagem</label>
+        <textarea class="textarea composer__input" id="message" rows="1" maxlength="1000" placeholder="Conte o que você notou…" enterkeyhint="send"></textarea>
+        <button class="btn btn--primary btn--icon" id="send" type="submit" aria-label="Enviar mensagem"></button>
+      </form>
+      <p class="chat__legal">A Zelo faz uma triagem preliminar e não substitui o médico-veterinário. Em emergência, vá direto a um pronto-atendimento.</p>
+      <p class="chat__legal" id="llm-notice" hidden>IA generativa ativa: o texto do seu relato é enviado a um provedor externo (Anthropic) para ajudar a entender e redigir a resposta. E-mails, telefones, CPF e CEP são ocultados antes do envio; nomes digitados no texto não são. A prioridade é sempre definida pelas regras de segurança da Zelo.</p>
+    </main>
+
+    <aside class="rail rail--right" aria-label="Histórico do pet">
+      <section aria-labelledby="timeline-title">
+        <h2 id="timeline-title">Linha do tempo</h2>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="tabbar" aria-label="Seções">
+    <button type="button" data-tab="chat" aria-current="page">Conversa</button>
+    <button type="button" data-tab="care">Cuidados</button>
+    <button type="button" data-tab="history">Histórico</button>
+  </nav>
+
+  <dialog id="pet-dialog" aria-labelledby="pet-dialog-title">
+    <form class="dialog__body" id="pet-form" method="dialog" novalidate>
+      <h2 id="pet-dialog-title">Cadastrar um pet</h2>
+      <div class="form-grid">
+        <div class="field span-2">
+          <label for="pet-name">Nome</label>
+          <input class="input" id="pet-name" name="name" maxlength="80" required>
+        </div>
+        <div class="field">
+          <label for="pet-species">Espécie</label>
+          <select class="select" id="pet-species" name="species" required>
+            <option value="dog">Cachorro</option>
+            <option value="cat">Gato</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pet-sex">Sexo</label>
+          <select class="select" id="pet-sex" name="sex" required>
+            <option value="F">Fêmea</option>
+            <option value="M">Macho</option>
+          </select>
+        </div>
+        <div class="field span-2">
+          <label for="pet-breed">Raça</label>
+          <select class="select" id="pet-breed" name="breed"></select>
+        </div>
+        <div class="field">
+          <label for="pet-birth">Nascimento</label>
+          <input class="input" id="pet-birth" name="birth" type="date">
+        </div>
+        <div class="field">
+          <label for="pet-weight">Peso (kg)</label>
+          <input class="input" id="pet-weight" name="weight" type="number" min="0.1" max="120" step="0.1" inputmode="decimal">
+        </div>
+        <div class="field span-2">
+          <span class="label" id="history-label">Histórico de saúde</span>
+          <div class="checks" id="pet-history" role="group" aria-labelledby="history-label"></div>
+        </div>
+      </div>
+      <p class="error-text" id="pet-error" role="alert" hidden></p>
+      <div class="actions">
+        <button class="btn btn--ghost" type="button" id="pet-cancel">Cancelar</button>
+        <button class="btn btn--primary" type="submit" id="pet-submit">Cadastrar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="/js/chat.js"></script>
+</body>
+</html>

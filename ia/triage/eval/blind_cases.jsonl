@@ -1,0 +1,35 @@
+{"id":"B01","text":"Acordei e a Luna estava toda tremendo e sem querer sair da caminha","pet":"dog","priority":"alta","symptoms":["tremores","apatia"]}
+{"id":"B02","text":"O Thor está com uma ferida enorme na orelha que não cicatriza há semanas","pet":"dog","priority":"media","symptoms":["lesao_pele"]}
+{"id":"B03","text":"Ela comeu um monte de cebola crua","pet":"dog","priority":"emergencia","symptoms":["ingestao_toxica"]}
+{"id":"B04","text":"Peguei meu gato dormindo e percebi que a respiração dele está muito pesada","pet":"cat","priority":"emergencia","symptoms":["dificuldade_respirar"]}
+{"id":"B05","text":"Tem uns dois dias que ele está sem vontade de comer e bebe pouca água","pet":"dog","priority":"alta","symptoms":["perda_apetite"]}
+{"id":"B06","text":"Minha poodle fez coco com um pouco de sangue vivo hoje","pet":"dog","priority":"alta","symptoms":["diarreia_sangue"]}
+{"id":"B07","text":"Ele está se coçando tanto que já arrancou o pelo","pet":"dog","priority":"baixa","symptoms":["coceira","queda_pelo"]}
+{"id":"B08","text":"Minha gata está muito magra e bebe água o dia inteiro","pet":{"species":"cat","age_months":192},"priority":"alta","symptoms":["perda_peso","sede_urina_excessiva"]}
+{"id":"B09","text":"O cachorro está com o olho esquerdo azulado e lacrimejando","pet":"dog","priority":"alta","symptoms":["olho_dor_lesao"]}
+{"id":"B10","text":"Quando ele corre fica sem fôlego e tosse","pet":"dog","priority":"media","symptoms":["tosse","intolerancia_exercicio"]}
+{"id":"B11","text":"Ela não está fazendo xixi desde ontem","pet":"cat","priority":"emergencia","symptoms":["nao_urina"]}
+{"id":"B12","text":"Meu pastor alemão está com a barriga estufada e não para quieto, anda de um lado para o outro","pet":{"species":"dog","age_months":60,"weight_kg":38},"priority":"emergencia","symptoms":["abdomen_distendido","mudanca_comportamento"]}
+{"id":"B13","text":"Ele mordeu uma lagartixa e agora está com espuma na boca","pet":"dog","priority":"alta","symptoms":["espuma_boca"]}
+{"id":"B15","text":"Ele caiu da cama e agora chora quando encosto na pata","pet":"dog","priority":"media","symptoms":["dor"]}
+{"id":"B16","text":"A gata está sem vontade de brincar, quietinha, e comeu pouco hoje","pet":"cat","priority":"alta","symptoms":["apatia","perda_apetite"]}
+{"id":"B17","text":"Notei um inchaço duro embaixo do queixo","pet":"dog","priority":"media","symptoms":["caroco_nodulo"]}
+{"id":"B18","text":"Depois da vacina de ontem ele está com o rosto inchado e se coçando","pet":"dog","priority":"alta","symptoms":["inchaco_facial","coceira"]}
+{"id":"B19","text":"Ele está respirando de um jeito estranho, fazendo muito barulho","pet":"dog","priority":"alta","symptoms":["sibilo"]}
+{"id":"B20","text":"Meu filhote não quer mamar e está molinho","pet":{"species":"dog","age_months":1},"priority":"alta","symptoms":["perda_apetite","apatia"]}
+{"id":"B21","text":"Faz uns 5 dias que ele manca da pata traseira direita","pet":"dog","priority":"media","symptoms":["claudicacao"]}
+{"id":"B22","text":"Ela teve diarreia e vômito durante a madrugada","pet":"dog","priority":"media","symptoms":["diarreia","vomito"]}
+{"id":"B23","text":"Ele engoliu uma meia inteira e agora está vomitando","pet":"dog","priority":"alta","symptoms":["ingestao_corpo_estranho","vomito"]}
+{"id":"B25","text":"O gatinho está espirrando e com secreção amarela no olho e no nariz","pet":"cat","priority":"media","symptoms":["espirros","olho_vermelho_secrecao","secrecao_nasal"]}
+{"id":"B27","text":"Ele não consegue pular no sofá como antes e fica gemendo","pet":"dog","priority":"media","symptoms":["claudicacao","dor"]}
+{"id":"B28","text":"Meu cachorro está com a pele toda descascando","pet":"dog","priority":"media","symptoms":["lesao_pele"]}
+{"id":"B29","text":"Meu gato está com muita baba escorrendo e a boca cheia de feridinhas","pet":"cat","priority":"media","symptoms":["salivacao_excessiva","problema_oral"]}
+{"id":"B31","text":"Ele deu um espirro e logo depois ficou normal","pet":"dog","priority":"baixa","symptoms":["espirros"]}
+{"id":"B32","text":"Deitou na calçada no passeio e não quis mais andar, tremendo e ofegante","pet":"dog","priority":"alta","symptoms":["respiracao_ofegante","tremores"]}
+{"id":"B33","text":"Será que isso foi convulsão? Ela ficou balançando a cabeça por 10 segundos","pet":"dog","priority":"emergencia","symptoms":["convulsao"]}
+{"id":"B34","text":"Não está comendo mas bebe água normalmente e brinca","pet":"dog","priority":"media","symptoms":["perda_apetite"]}
+{"id":"B36","text":"Gato macho castrado indo toda hora na caixa e miando, só saem gotinhas","pet":"cat","priority":"emergencia","symptoms":["dificuldade_urinar"]}
+{"id":"B37","text":"Ele ficou todo mole e não quer levantar","pet":"dog","priority":"alta","symptoms":["apatia"]}
+{"id":"B38","text":"Ela está há 3 dias só dormindo, não come e a gengiva está pálida","pet":"dog","priority":"emergencia","symptoms":["gengivas_palidas","perda_apetite"]}
+{"id":"B39","text":"Minha cachorra idosa está urinando sangue","pet":{"species":"dog","age_months":170},"priority":"alta","symptoms":["sangue_urina"]}
+{"id":"B40","text":"Gato com mau cheiro no ouvido e inclinando a cabeça","pet":"cat","priority":"alta","symptoms":["ouvido_problema","andar_circulos"]}

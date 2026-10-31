@@ -1,0 +1,27 @@
+# Ambientes e segredos
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Build e saídas
+backend/target/
+backend/data/
+*.log
+*.class
+__pycache__/
+.pytest_cache/
+
+# Treino de visão: features em cache (regeneráveis) — o modelo .onnx e o model_card.json SÃO versionados
+ia/vision/training/cache/
+
+# IDE / SO
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Datasets completos (tamanho/licença): ver data/README.md
+data/raw/

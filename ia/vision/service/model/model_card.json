@@ -1,0 +1,395 @@
+{
+  "model_version": "zelo-skin-mobilenet_v3_large-lr-1.0",
+  "task": "classificação dermatológica experimental (cães)",
+  "backbone": "mobilenet_v3_large",
+  "classes": [
+    "Dermatitis",
+    "Fungal_infections",
+    "Healthy",
+    "Hypersensitivity",
+    "demodicosis",
+    "ringworm"
+  ],
+  "labels_pt": {
+    "demodicosis": "Demodicose (sarna demodécica)",
+    "Dermatitis": "Dermatite",
+    "Fungal_infections": "Infecção fúngica",
+    "Healthy": "Pele saudável",
+    "Hypersensitivity": "Hipersensibilidade (reação alérgica)",
+    "ringworm": "Tinha (dermatofitose)"
+  },
+  "input": {
+    "size": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "layout": "NCHW float32 RGB"
+  },
+  "confidence_threshold": 0.5,
+  "classifier": {
+    "type": "LogisticRegression(multinomial, class_weight=balanced)",
+    "C": 1.0
+  },
+  "trained_at": "2026-10-31 14:09 UTC",
+  "dataset": {
+    "name": "D3 - Doenças de pele em cães",
+    "images": 4315,
+    "split_sizes": {
+      "train": 3022,
+      "valid": 860,
+      "test": 433
+    }
+  },
+  "onnx_max_abs_diff": 1.1920928955078125e-07,
+  "metrics": {
+    "test": {
+      "n": 433,
+      "accuracy": 0.9145,
+      "macro_f1": 0.8906,
+      "per_class": {
+        "Dermatitis": {
+          "precision": 0.8923076923076924,
+          "recall": 0.8787878787878788,
+          "f1-score": 0.8854961832061069,
+          "support": 66.0
+        },
+        "Fungal_infections": {
+          "precision": 0.8461538461538461,
+          "recall": 0.8148148148148148,
+          "f1-score": 0.8301886792452831,
+          "support": 54.0
+        },
+        "Healthy": {
+          "precision": 0.9014084507042254,
+          "recall": 0.927536231884058,
+          "f1-score": 0.9142857142857143,
+          "support": 69.0
+        },
+        "Hypersensitivity": {
+          "precision": 0.75,
+          "recall": 0.8275862068965517,
+          "f1-score": 0.7868852459016393,
+          "support": 29.0
+        },
+        "demodicosis": {
+          "precision": 0.9702970297029703,
+          "recall": 0.98,
+          "f1-score": 0.9751243781094527,
+          "support": 100.0
+        },
+        "ringworm": {
+          "precision": 0.9642857142857143,
+          "recall": 0.9391304347826087,
+          "f1-score": 0.9515418502202643,
+          "support": 115.0
+        },
+        "accuracy": 0.9145496535796767,
+        "macro avg": {
+          "precision": 0.8874087888590748,
+          "recall": 0.8946425945276518,
+          "f1-score": 0.8905870084947435,
+          "support": 433.0
+        },
+        "weighted avg": {
+          "precision": 0.9155989805920579,
+          "recall": 0.9145496535796767,
+          "f1-score": 0.914822341279413,
+          "support": 433.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          58,
+          2,
+          2,
+          2,
+          0,
+          2
+        ],
+        [
+          1,
+          44,
+          3,
+          4,
+          2,
+          0
+        ],
+        [
+          1,
+          4,
+          64,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          2,
+          24,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          98,
+          0
+        ],
+        [
+          3,
+          1,
+          0,
+          2,
+          1,
+          108
+        ]
+      ],
+      "selective": {
+        "threshold": 0.5,
+        "coverage": 0.9885,
+        "accuracy_when_accepted": 0.9252
+      }
+    },
+    "valid": {
+      "n": 860,
+      "accuracy": 0.9279,
+      "macro_f1": 0.9187,
+      "per_class": {
+        "Dermatitis": {
+          "precision": 0.9181286549707602,
+          "recall": 0.8971428571428571,
+          "f1-score": 0.9075144508670521,
+          "support": 175.0
+        },
+        "Fungal_infections": {
+          "precision": 0.8555555555555555,
+          "recall": 0.7938144329896907,
+          "f1-score": 0.8235294117647058,
+          "support": 97.0
+        },
+        "Healthy": {
+          "precision": 0.8986486486486487,
+          "recall": 0.9568345323741008,
+          "f1-score": 0.926829268292683,
+          "support": 139.0
+        },
+        "Hypersensitivity": {
+          "precision": 0.8955223880597015,
+          "recall": 0.9523809523809523,
+          "f1-score": 0.9230769230769231,
+          "support": 63.0
+        },
+        "demodicosis": {
+          "precision": 0.9884393063583815,
+          "recall": 0.9827586206896551,
+          "f1-score": 0.9855907780979827,
+          "support": 174.0
+        },
+        "ringworm": {
+          "precision": 0.9478672985781991,
+          "recall": 0.9433962264150944,
+          "f1-score": 0.9456264775413712,
+          "support": 212.0
+        },
+        "accuracy": 0.9279069767441861,
+        "macro avg": {
+          "precision": 0.9173603086952077,
+          "recall": 0.9210546036653917,
+          "f1-score": 0.9186945516067864,
+          "support": 860.0
+        },
+        "weighted avg": {
+          "precision": 0.9278230031670137,
+          "recall": 0.9279069767441861,
+          "f1-score": 0.9274954708340226,
+          "support": 860.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          157,
+          7,
+          2,
+          1,
+          2,
+          6
+        ],
+        [
+          1,
+          77,
+          12,
+          4,
+          0,
+          3
+        ],
+        [
+          0,
+          4,
+          133,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          60,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          171,
+          1
+        ],
+        [
+          11,
+          0,
+          0,
+          1,
+          0,
+          200
+        ]
+      ],
+      "selective": {
+        "threshold": 0.5,
+        "coverage": 0.993,
+        "accuracy_when_accepted": 0.9309
+      }
+    },
+    "test_clean": {
+      "n": 49,
+      "accuracy": 0.8571,
+      "macro_f1": 0.7852,
+      "per_class": {
+        "Dermatitis": {
+          "precision": 0.9230769230769231,
+          "recall": 0.75,
+          "f1-score": 0.8275862068965517,
+          "support": 16.0
+        },
+        "Fungal_infections": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1-score": 0.5,
+          "support": 2.0
+        },
+        "Healthy": {
+          "precision": 0.8333333333333334,
+          "recall": 0.9090909090909091,
+          "f1-score": 0.8695652173913043,
+          "support": 11.0
+        },
+        "Hypersensitivity": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1-score": 0.6666666666666666,
+          "support": 2.0
+        },
+        "demodicosis": {
+          "precision": 0.9,
+          "recall": 1.0,
+          "f1-score": 0.9473684210526315,
+          "support": 9.0
+        },
+        "ringworm": {
+          "precision": 0.8181818181818182,
+          "recall": 1.0,
+          "f1-score": 0.9,
+          "support": 9.0
+        },
+        "accuracy": 0.8571428571428571,
+        "macro avg": {
+          "precision": 0.8290986790986792,
+          "recall": 0.7765151515151515,
+          "f1-score": 0.7851977520011922,
+          "support": 49.0
+        },
+        "weighted avg": {
+          "precision": 0.8652966081537512,
+          "recall": 0.8571428571428571,
+          "f1-score": 0.852372363764412,
+          "support": 49.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          12,
+          1,
+          1,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          10,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          9
+        ]
+      ],
+      "selective": {
+        "threshold": 0.5,
+        "coverage": 0.9796,
+        "accuracy_when_accepted": 0.875
+      }
+    },
+    "grouped_cv": {
+      "folds": 5,
+      "groups": 1705,
+      "accuracy_mean": 0.8215,
+      "accuracy_std": 0.0126,
+      "macro_f1_mean": 0.7698,
+      "macro_f1_std": 0.0158
+    }
+  },
+  "disclaimer": "Classificação experimental. Não é diagnóstico; sempre procure um médico-veterinário."
+}

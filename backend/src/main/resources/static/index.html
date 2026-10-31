@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zelo — cuidado contínuo antes da urgência</title>
+  <meta name="description" content="Zelo: assistente de cuidado contínuo para pets, que conecta tutor, clínica e inteligência artificial.">
+  <meta name="theme-color" content="#faf5ec">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/zelo.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+  <a class="skip-link" href="#entrar">Ir para o formulário</a>
+  <div class="auth">
+    <section class="auth__hero" aria-labelledby="titulo">
+      <a class="brand" href="/" aria-label="Zelo, página inicial">
+        <span class="brand__mark" id="brand-mark" aria-hidden="true"></span>
+        Zelo
+      </a>
+
+      <div>
+        <h1 class="auth__headline" id="titulo">Cuidado contínuo <em>antes da urgência.</em></h1>
+        <p class="auth__lead">
+          Um assistente que entende o que seu pet está sentindo, indica o próximo passo e,
+          se você autorizar, avisa a clínica antes de você chegar. Sem diagnóstico, sem remédio:
+          a decisão clínica é sempre do veterinário.
+        </p>
+      </div>
+
+      <ul class="pillars">
+        <li class="pillar"><strong>Tutor</strong><span>Relata com suas palavras e recebe orientação clara.</span></li>
+        <li class="pillar"><strong>IA com limites</strong><span>Regras de segurança primeiro; linguagem natural depois.</span></li>
+        <li class="pillar"><strong>Clínica</strong><span>Recebe a triagem com histórico, só com consentimento.</span></li>
+      </ul>
+
+      <div class="pulse" aria-hidden="true"><span></span><span></span><span></span></div>
+    </section>
+
+    <main class="auth__panel" id="entrar">
+      <div class="auth-card">
+        <div id="denied" class="banner" role="alert" hidden>Seu perfil não tem acesso a essa página. Entre com a conta correta.</div>
+
+        <div class="tabs" role="tablist" aria-label="Acesso">
+          <button class="tab" role="tab" id="tab-login" aria-selected="true" aria-controls="panel-login" type="button">Entrar</button>
+          <button class="tab" role="tab" id="tab-register" aria-selected="false" aria-controls="panel-register" tabindex="-1" type="button">Criar conta de tutor</button>
+        </div>
+
+        <section id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+          <h2>Bem-vindo de volta</h2>
+          <form id="form-login" novalidate>
+            <div class="field">
+              <label for="login-email">E-mail</label>
+              <input class="input" id="login-email" name="email" type="email" autocomplete="username" required>
+            </div>
+            <div class="field">
+              <label for="login-password">Senha</label>
+              <input class="input" id="login-password" name="password" type="password" autocomplete="current-password" required>
+            </div>
+            <p class="error-text" id="login-error" role="alert" hidden></p>
+            <button class="btn btn--primary" type="submit" id="login-submit">Entrar</button>
+          </form>
+
+          <div class="demo">
+            <p class="eyebrow">Demonstração (dados fictícios)</p>
+            <div class="demo__row">
+              <button class="chip" type="button" data-demo="ana@zelo.demo">Tutora Ana</button>
+              <button class="chip" type="button" data-demo="bruno@zelo.demo">Tutor Bruno</button>
+              <button class="chip" type="button" data-demo="vet@zelo.demo">Clínica Zelo</button>
+            </div>
+            <p class="hint mt-s">A senha da demonstração está no README do projeto.</p>
+          </div>
+        </section>
+
+        <section id="panel-register" role="tabpanel" aria-labelledby="tab-register" hidden>
+          <h2>Crie sua conta</h2>
+          <form id="form-register" novalidate>
+            <div class="field">
+              <label for="reg-name">Seu nome</label>
+              <input class="input" id="reg-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+            </div>
+            <div class="field">
+              <label for="reg-email">E-mail</label>
+              <input class="input" id="reg-email" name="email" type="email" autocomplete="email" maxlength="160" required>
+            </div>
+            <div class="field">
+              <label for="reg-password">Senha</label>
+              <input class="input" id="reg-password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="reg-hint">
+              <span class="hint" id="reg-hint">Mínimo de 8 caracteres.</span>
+            </div>
+            <p class="error-text" id="register-error" role="alert" hidden></p>
+            <button class="btn btn--primary" type="submit" id="register-submit">Criar conta</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="/js/login.js"></script>
+</body>
+</html>

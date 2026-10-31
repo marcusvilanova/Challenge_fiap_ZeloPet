@@ -1,0 +1,25 @@
+{
+  "triage_id": "TRI-000001",
+  "pet_id": "PET-0001",
+  "symptoms": ["apatia", "vomito"],
+  "symptom_details": [
+    { "id": "apatia", "label": "Apatia / abatimento", "category": "geral", "evidence": "abatida", "reference_frequency": 0.32 },
+    { "id": "vomito", "label": "Vômito", "category": "digestivo", "evidence": "vomitou", "reference_frequency": 0.26 }
+  ],
+  "priority": "alta",
+  "next_action": "contatar_clinica_veterinaria",
+  "next_action_label": "Contatar a clínica veterinária hoje",
+  "reason": "Abatimento junto de outros sinais indica que o organismo está sendo afetado",
+  "reasons": ["Abatimento junto de outros sinais indica que o organismo está sendo afetado"],
+  "red_flags": [],
+  "context_factors": [],
+  "confidence": 0.78,
+  "model_version": "zelo-triage-hybrid-1.0",
+  "engine": { "rules": "zelo-rules-1.0", "knowledge": "1.0.0", "llm": "local-fallback" },
+  "human_review_required": true,
+  "disclaimer": "Esta orientação não substitui avaliação veterinária.",
+  "duration_hours": 24,
+  "needs_more_info": false,
+  "created_at": "2026-10-31T14:37:12Z",
+  "shared_with_clinic": false
+}

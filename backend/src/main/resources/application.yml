@@ -1,0 +1,83 @@
+spring:
+  application:
+    name: zelo-chatbot
+  datasource:
+    # H2 em arquivo para a demonstração local. Para Oracle: defina SPRING_DATASOURCE_URL/USERNAME/PASSWORD
+    # (as migrations usam SQL portável). Credenciais nunca ficam no repositório.
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:file:./data/zelo;DB_CLOSE_ON_EXIT=FALSE}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    session:
+      timeout: 60m
+      cookie:
+        name: ZELO_SESSION
+        http-only: true
+        same-site: lax
+        secure: ${ZELO_COOKIE_SECURE:false}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+zelo:
+  seed:
+    # Cria usuários/pets FICTÍCIOS (incluindo uma conta de clínica) para a demonstração. DESLIGADO por padrão:
+    # scripts/run-local.ps1 liga para rodar localmente. Nunca ligue com a senha padrão fora do seu computador.
+    enabled: ${ZELO_SEED_DEMO:false}
+    demo-password: ${ZELO_DEMO_PASSWORD:zelo-demo-2026}
+  llm:
+    # auto = usa o Claude se ANTHROPIC_API_KEY existir; senão, motor local. local = força o motor local.
+    provider: ${ZELO_LLM_PROVIDER:auto}
+    api-key: ${ANTHROPIC_API_KEY:}
+    model: ${ZELO_LLM_MODEL:claude-opus-5-5}
+    base-url: ${ZELO_LLM_BASE_URL:https://api.anthropic.com}
+    timeout-seconds: 15
+  vision:
+    url: ${ZELO_VISION_URL:http://localhost:8001}
+    timeout-seconds: 20
+  rate-limit:
+    per-minute: 40
+    login-per-minute: 10
+
+logging:
+  level:
+    root: INFO
+    br.com.zelo: INFO

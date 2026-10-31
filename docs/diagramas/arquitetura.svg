@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-labelledby="t d">
+  <title id="t">Arquitetura de integração do Zelo</title>
+  <desc id="d">Tutor e clínica acessam o backend Spring Boot, que orquestra a conversa, o núcleo determinístico de triagem, o LLM opcional com guard, o banco de dados e o serviço de visão em Python.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#1f4d3f"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10z" fill="#8a7a58"/>
+    </marker>
+    <style>
+      .title { font: 700 26px Georgia, 'Times New Roman', serif; fill: #1f4d3f; }
+      .sub { font: 500 14px 'Segoe UI', system-ui, sans-serif; fill: #4a5b54; }
+      .box { fill: #fffdf8; stroke: #1f4d3f; stroke-width: 1.6; rx: 12; }
+      .panel { fill: #f3ebdd; stroke: #cfc0a3; stroke-width: 1.4; rx: 18; }
+      .core { fill: #dce8df; stroke: #1f4d3f; stroke-width: 2.2; rx: 12; }
+      .ext { fill: #fffdf8; stroke: #8a7a58; stroke-width: 1.6; stroke-dasharray: 6 5; rx: 12; }
+      .h { font: 700 15px 'Segoe UI', system-ui, sans-serif; fill: #1b2a25; }
+      .t { font: 400 12.5px 'Segoe UI', system-ui, sans-serif; fill: #4a5b54; }
+      .tag { font: 700 11px 'Segoe UI', system-ui, sans-serif; fill: #c4503a; letter-spacing: .08em; }
+      .line { stroke: #1f4d3f; stroke-width: 2; fill: none; }
+      .soft { stroke: #8a7a58; stroke-width: 2; fill: none; stroke-dasharray: 6 5; }
+      .note { fill: #fadcc6; stroke: #b84a12; stroke-width: 1.4; rx: 10; }
+      .noteT { font: 700 13px 'Segoe UI', system-ui, sans-serif; fill: #7a2f0a; }
+      .num { font: 800 12px 'Segoe UI', system-ui, sans-serif; fill: #fffdf8; }
+      .dot { fill: #c4503a; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="700" fill="#faf5ec"/>
+  <text x="40" y="46" class="title">Zelo · arquitetura de integração</text>
+  <text x="40" y="70" class="sub">Sprint 4 — Disruptive Architectures: IoT, IoB &amp; Generative IA</text>
+
+  <!-- clientes -->
+  <rect x="40" y="150" width="190" height="110" class="box"/>
+  <text x="135" y="188" text-anchor="middle" class="h">Tutor</text>
+  <text x="135" y="210" text-anchor="middle" class="t">chat.html · HTML + JS</text>
+  <text x="135" y="230" text-anchor="middle" class="t">conversa · foto · consentimento</text>
+
+  <rect x="40" y="470" width="190" height="110" class="box"/>
+  <text x="135" y="508" text-anchor="middle" class="h">Clínica</text>
+  <text x="135" y="530" text-anchor="middle" class="t">clinic.html · HTML + JS</text>
+  <text x="135" y="550" text-anchor="middle" class="t">fila ao vivo · revisão humana</text>
+
+  <!-- backend -->
+  <rect x="280" y="96" width="540" height="560" class="panel"/>
+  <text x="304" y="124" class="h">Backend · Spring Boot 3.5 · Java 21</text>
+
+  <rect x="304" y="140" width="492" height="44" class="box"/>
+  <text x="550" y="167" text-anchor="middle" class="t">Spring Security · sessão HttpOnly · CSRF · perfis TUTOR/CLINICA · rate limit</text>
+
+  <rect x="304" y="206" width="492" height="44" class="box"/>
+  <text x="550" y="233" text-anchor="middle" class="t">API REST /api/* · validação · erros RFC 7807 · OpenAPI</text>
+
+  <rect x="304" y="276" width="236" height="64" class="box"/>
+  <text x="422" y="302" text-anchor="middle" class="h">ConversationFlow</text>
+  <text x="422" y="322" text-anchor="middle" class="t">máquina de estados · ≤ 2 perguntas</text>
+
+  <rect x="560" y="276" width="236" height="64" class="box"/>
+  <text x="678" y="302" text-anchor="middle" class="h">Serviços</text>
+  <text x="678" y="322" text-anchor="middle" class="t">pet · triagem · consentimento · clínica</text>
+
+  <rect x="304" y="372" width="236" height="118" class="core"/>
+  <text x="422" y="398" text-anchor="middle" class="h">Núcleo de triagem</text>
+  <text x="422" y="418" text-anchor="middle" class="t">Java puro · determinístico</text>
+  <text x="422" y="438" text-anchor="middle" class="t">extrator + negação · regras R1–R13</text>
+  <text x="422" y="456" text-anchor="middle" class="t">confiança · revisão humana</text>
+  <text x="422" y="476" text-anchor="middle" class="t">base: triage_knowledge.json (D2)</text>
+
+  <rect x="560" y="372" width="236" height="118" class="box"/>
+  <text x="678" y="398" text-anchor="middle" class="h">LlmClient + ResponseGuard</text>
+  <text x="678" y="418" text-anchor="middle" class="t">SDK oficial da Anthropic · opcional</text>
+  <text x="678" y="438" text-anchor="middle" class="t">bloqueia dose, remédio,</text>
+  <text x="678" y="456" text-anchor="middle" class="t">diagnóstico e perda de urgência</text>
+
+  <rect x="560" y="520" width="236" height="62" class="box"/>
+  <text x="678" y="546" text-anchor="middle" class="h">VisionClient</text>
+  <text x="678" y="566" text-anchor="middle" class="t">timeout · falha graciosa (503)</text>
+
+  <rect x="304" y="520" width="236" height="62" class="box"/>
+  <text x="422" y="546" text-anchor="middle" class="h">Persistência</text>
+  <text x="422" y="566" text-anchor="middle" class="t">JPA · Flyway (SQL portável)</text>
+
+  <rect x="304" y="598" width="492" height="40" class="note"/>
+  <text x="550" y="623" text-anchor="middle" class="noteT">O LLM só soma sintomas ou reescreve o texto: nunca reduz a prioridade do motor determinístico.</text>
+
+  <!-- externos -->
+  <rect x="870" y="140" width="290" height="96" class="box"/>
+  <text x="1015" y="176" text-anchor="middle" class="h">Banco relacional</text>
+  <text x="1015" y="198" text-anchor="middle" class="t">H2 (demo) · evolução com Flyway</text>
+  <text x="1015" y="216" text-anchor="middle" class="t">triagem + JSON da IA persistidos</text>
+
+  <rect x="870" y="372" width="290" height="96" class="ext"/>
+  <text x="1015" y="408" text-anchor="middle" class="h">API Anthropic (Claude)</text>
+  <text x="1015" y="430" text-anchor="middle" class="t">só com ANTHROPIC_API_KEY</text>
+  <text x="1015" y="448" text-anchor="middle" class="t">sem chave: motor local assume</text>
+
+  <rect x="870" y="508" width="290" height="110" class="box"/>
+  <text x="1015" y="540" text-anchor="middle" class="h">Serviço de visão (Python)</text>
+  <text x="1015" y="562" text-anchor="middle" class="t">FastAPI + ONNX Runtime</text>
+  <text x="1015" y="580" text-anchor="middle" class="t">MobileNetV3 · D3 · só cães</text>
+  <text x="1015" y="598" text-anchor="middle" class="t">resultado experimental, guarda só o hash</text>
+
+  <!-- setas -->
+  <path d="M230 205 H304" class="line" marker-end="url(#arrow)"/>
+  <path d="M230 525 H262 V162 H304" class="line" marker-end="url(#arrow)"/>
+  <path d="M550 184 V206" class="line" marker-end="url(#arrow)"/>
+  <path d="M422 250 V276" class="line" marker-end="url(#arrow)"/>
+  <path d="M678 250 V276" class="line" marker-end="url(#arrow)"/>
+  <path d="M422 340 V372" class="line" marker-end="url(#arrow)"/>
+  <path d="M540 340 L600 372" class="line" marker-end="url(#arrow)"/>
+  <path d="M678 340 V362 H760 V250" class="line" marker-end="url(#arrow)" opacity="0"/>
+  <path d="M678 340 V520" class="line" opacity="0"/>
+  <path d="M796 428 H870" class="soft" marker-end="url(#arrow-soft)"/>
+  <path d="M796 551 H870" class="line" marker-end="url(#arrow)"/>
+  <path d="M796 308 H838 V188 H870" class="line" marker-end="url(#arrow)"/>
+  <path d="M540 551 H560" class="line" opacity="0"/>
+  <path d="M740 340 V372" class="line" opacity="0"/>
+  <path d="M770 250 V520" class="line" opacity="0"/>
+
+  <!-- numeração do fluxo -->
+  <circle cx="262" cy="205" r="11" class="dot"/><text x="262" y="209" text-anchor="middle" class="num">1</text>
+  <circle cx="422" cy="262" r="11" class="dot"/><text x="422" y="266" text-anchor="middle" class="num">2</text>
+  <circle cx="422" cy="356" r="11" class="dot"/><text x="422" y="360" text-anchor="middle" class="num">3</text>
+  <circle cx="574" cy="356" r="11" class="dot"/><text x="574" y="360" text-anchor="middle" class="num">4</text>
+  <circle cx="838" cy="248" r="11" class="dot"/><text x="838" y="252" text-anchor="middle" class="num">5</text>
+
+  <text x="40" y="640" class="sub">1 relato do tutor · 2 estado da conversa · 3 análise determinística · 4 LLM opcional (extrai/reescreve) · 5 triagem + consentimento persistidos</text>
+  <text x="40" y="662" class="sub">Dados enviados à IA: espécie, idade, raça, peso, histórico e o texto do relato — nunca nome, e-mail ou telefone do tutor.</text>
+</svg>
