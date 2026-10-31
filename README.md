@@ -6,7 +6,7 @@
 | | |
 |---|---|
 | **Vídeo pitch (YouTube, não listado)** | _inserir o link aqui antes de entregar_ |
-| **Repositório** | _inserir o link do GitHub aqui antes de entregar_ |
+| **Repositório** | https://github.com/marcusvilanova/Challenge_fiap_ZeloPet |
 | **Integrantes** | Bruno Ferreira (RM 563489) · Gabriel Robertoni Padilha (RM 566293) · Hebert Lopes do Santos (RM 563192) · Marcus Vinícius Vila Nova da Silva (RM 558771) · Nicolas Monteiro Ramiro (RM 562380) |
 
 ---
