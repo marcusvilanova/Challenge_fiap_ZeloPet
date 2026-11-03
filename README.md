@@ -6,6 +6,7 @@
 | | |
 |---|---|
 | **Vídeo pitch (YouTube, não listado)** | _inserir o link aqui antes de entregar_ |
+| **Apresentação de slides (IBM Carbon)** | [apresentacao.html](apresentacao.html) · online em `/apresentacao` |
 | **Repositório** | https://github.com/marcusvilanova/Challenge_fiap_ZeloPet |
 
 ## Integrantes

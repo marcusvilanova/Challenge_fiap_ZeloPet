@@ -11,6 +11,7 @@ A Vercel não executa o backend Java. Por isso a versão online é **estática**
 | Clínica | Funciona no **mesmo navegador**: entre como tutora, compartilhe, saia e entre como `vet@zelo.demo` |
 | IA generativa | Opcional: função `api/llm.js` chama o **Google Gemini** com a chave guardada só nas variáveis da Vercel. Mesmas travas do Java: só soma sintomas, só reescreve baixa/média, `ResponseGuard` reprova dose/remédio/diagnóstico |
 | Análise de foto | Indisponível online (o classificador ONNX roda no serviço Python). O chat avisa e segue funcionando |
+| Apresentação (Pitch) | Rota `/apresentacao` (ou `/pitch` / `/slides`): deck interativo com identidade visual **IBM Carbon Design System** para apresentação e vídeo |
 
 ## Publicar
 
