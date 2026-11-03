@@ -6,23 +6,32 @@
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 30;
+  z-index: 8000;
   display: flex;
   align-items: center;
   gap: 16px;
-  height: var(--topbar-h);
-  padding: 0 clamp(12px, 2vw, 24px);
-  background: rgb(250 245 236 / 0.88);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  height: 48px;
+  padding: 0 16px;
+  background: #161616;
+  border-bottom: 1px solid #393939;
+  color: #ffffff;
 }
 .topbar .brand {
-  font-size: 1.3rem;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
 }
 .topbar .brand__mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  background: #0f62fe;
+  border-radius: 2px;
 }
 .topbar__spacer {
   flex: 1;
@@ -36,9 +45,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 500;
+  color: #c6c6c6;
 }
 
 .pet-switch {
@@ -722,4 +731,247 @@
   .detail {
     overflow: visible;
   }
+}
+
+
+/* ==========================================================================
+   IBM CARBON DESIGN SYSTEM V11 - CHAT & COMPONENT OVERRIDES
+   ========================================================================== */
+
+.pet-tab {
+  height: 32px;
+  border: 1px solid #393939;
+  border-radius: 4px;
+  color: #c6c6c6;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 0 12px 0 6px;
+  transition: all 0.15s ease;
+}
+
+.pet-tab:hover {
+  background: #262626;
+  color: #ffffff;
+}
+
+.pet-tab[aria-pressed="true"] {
+  background: #0f62fe;
+  border-color: #0f62fe;
+  color: #ffffff;
+}
+
+.pet-tab__avatar {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+}
+
+.chat {
+  background: #ffffff;
+}
+
+.chat__header {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 14px 24px;
+  background: #ffffff;
+}
+
+.chat__header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: #161616;
+}
+
+.chat__log {
+  background: #ffffff;
+  padding: 20px 24px;
+  gap: 16px;
+}
+
+.msg {
+  gap: 12px;
+  max-width: 720px;
+}
+
+.msg__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.msg__bubble {
+  padding: 14px 18px;
+  background: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-left: 3px solid #0f62fe;
+  border-radius: 0 4px 4px 4px;
+  box-shadow: none;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #161616;
+}
+
+.msg--user .msg__avatar {
+  background: #262626;
+}
+
+.msg--user .msg__bubble {
+  background: #edf5ff;
+  border: 1px solid #d0e2ff;
+  border-left: 1px solid #d0e2ff;
+  border-right: 3px solid #0f62fe;
+  color: #161616;
+  border-radius: 4px 0 4px 4px;
+}
+
+.composer {
+  background: #ffffff;
+  border: 1px solid #a8a8a8;
+  border-bottom: 2px solid #0f62fe;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 8px 12px;
+}
+
+.composer:focus-within {
+  border-color: #0f62fe;
+  box-shadow: 0 0 0 1px #0f62fe;
+}
+
+.composer__input {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: #161616;
+}
+
+.composer__input::placeholder {
+  color: #8d8d8d;
+}
+
+.composer button[type="submit"] {
+  background: #0f62fe;
+  color: #ffffff;
+  border-radius: 2px;
+  transition: background 0.15s;
+}
+
+.composer button[type="submit"]:hover {
+  background: #0043ce;
+}
+
+.quick button,
+.chip {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 16px;
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1px solid #0f62fe;
+  color: #0f62fe;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.quick button:hover,
+.chip:hover {
+  background: #edf5ff;
+  border-color: #0043ce;
+  color: #0043ce;
+}
+
+.rail--left {
+  background: #f4f4f4;
+  border-right: 1px solid #e0e0e0;
+}
+
+.rail--right {
+  background: #f4f4f4;
+  border-left: 1px solid #e0e0e0;
+}
+
+.rail h2 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.32px;
+  color: #525252;
+}
+
+.pet-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.pet-avatar {
+  background: #edf5ff;
+  color: #0043ce;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+.care-item {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-left: 3px solid #0f62fe;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.care-item--overdue {
+  border-left-color: #da1e28;
+  background: #fff8f8;
+}
+
+.consent {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.timeline::before {
+  background: #c6c6c6;
+}
+
+.timeline__item::before {
+  background: #0f62fe;
+  border-color: #f4f4f4;
+}
+
+.triage-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.triage-card[data-priority="emergencia"] {
+  border-left: 4px solid #da1e28;
+}
+
+.triage-card[data-priority="alta"] {
+  border-left: 4px solid #fa4d56;
+}
+
+.triage-card[data-priority="media"] {
+  border-left: 4px solid #ff832b;
+}
+
+.triage-card[data-priority="baixa"] {
+  border-left: 4px solid #198038;
+}
+
+.triage-card__head {
+  border-bottom: 1px solid #e0e0e0;
 }

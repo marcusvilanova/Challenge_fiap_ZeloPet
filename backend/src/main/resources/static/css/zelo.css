@@ -23,58 +23,82 @@
   font-display: swap;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
 :root {
   color-scheme: light;
 
-  --paper: #faf5ec;
-  --paper-2: #f3ebdd;
-  --paper-3: #eadfca;
-  --surface: #fffdf8;
-  --ink: #1b2a25;
-  --ink-2: #4a5b54;
-  --ink-3: #6f7f77;
-  --line: #e3d8c3;
-  --line-strong: #cfc0a3;
+  /* IBM Carbon Gray Tokens */
+  --carbon-white: #ffffff;
+  --carbon-gray-10: #f4f4f4;
+  --carbon-gray-20: #e0e0e0;
+  --carbon-gray-30: #c6c6c6;
+  --carbon-gray-40: #a8a8a8;
+  --carbon-gray-50: #8d8d8d;
+  --carbon-gray-60: #6f6f6f;
+  --carbon-gray-70: #525252;
+  --carbon-gray-80: #393939;
+  --carbon-gray-90: #262626;
+  --carbon-gray-100: #161616;
 
-  --forest: #1f4d3f;
-  --forest-2: #2e6b58;
-  --forest-ink: #f6f1e5;
-  --sage: #dce8df;
-  --terracotta: #c4503a;
-  --terracotta-soft: #f7dfd8;
-  --honey: #e5a22f;
-  --honey-soft: #fbecc9;
+  /* IBM Carbon Blue Tokens */
+  --carbon-blue-10: #edf5ff;
+  --carbon-blue-20: #d0e2ff;
+  --carbon-blue-40: #78a9ff;
+  --carbon-blue-60: #0f62fe;
+  --carbon-blue-70: #0043ce;
+  --carbon-blue-80: #002d9c;
 
-  /* prioridade: cor + rótulo + nº de segmentos (nunca só cor) */
-  --p-baixa: #2e6b58;
-  --p-baixa-soft: #dcebe2;
-  --p-media: #a86a05;
-  --p-media-soft: #fbecc9;
-  --p-alta: #b84a12;
-  --p-alta-soft: #fadcc6;
-  --p-emergencia: #a8231b;
-  --p-emergencia-soft: #f8d6d1;
+  /* Semantic mappings to existing tokens */
+  --paper: var(--carbon-gray-10);
+  --paper-2: var(--carbon-gray-20);
+  --paper-3: var(--carbon-gray-30);
+  --surface: var(--carbon-white);
+  --ink: var(--carbon-gray-100);
+  --ink-2: var(--carbon-gray-70);
+  --ink-3: var(--carbon-gray-50);
+  --line: var(--carbon-gray-20);
+  --line-strong: var(--carbon-gray-30);
 
-  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-ui: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+  --forest: var(--carbon-blue-60);
+  --forest-2: var(--carbon-blue-70);
+  --forest-ink: var(--carbon-white);
+  --sage: var(--carbon-blue-10);
+  --terracotta: #da1e28;
+  --terracotta-soft: #fff1f1;
+  --honey: #ff832b;
+  --honey-soft: #fff2e8;
+
+  /* Prioridade: cores oficiais IBM Carbon */
+  --p-baixa: #198038;
+  --p-baixa-soft: #defbe6;
+  --p-media: #ff832b;
+  --p-media-soft: #fff2e8;
+  --p-alta: #fa4d56;
+  --p-alta-soft: #fff1f1;
+  --p-emergencia: #da1e28;
+  --p-emergencia-soft: #ffd7d9;
+
+  --font-display: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', monospace;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: clamp(1.1rem, 1.02rem + 0.35vw, 1.25rem);
-  --text-xl: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
-  --text-hero: clamp(2.4rem, 1.4rem + 4.2vw, 4.6rem);
+  --text-lg: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
+  --text-xl: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem);
+  --text-hero: clamp(2.2rem, 1.3rem + 3.8vw, 4.2rem);
 
-  --radius-s: 8px;
-  --radius-m: 14px;
-  --radius-l: 22px;
-  --shadow-1: 0 1px 2px rgb(31 77 63 / 0.08), 0 4px 14px rgb(31 77 63 / 0.06);
-  --shadow-2: 0 2px 4px rgb(31 77 63 / 0.1), 0 14px 38px rgb(31 77 63 / 0.14);
+  --radius-s: 2px;
+  --radius-m: 4px;
+  --radius-l: 4px;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.12);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 150ms;
-  --dur: 280ms;
-  --focus: 0 0 0 3px var(--paper), 0 0 0 5px var(--forest-2);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --focus: 0 0 0 2px var(--carbon-blue-60);
 }
 
 *,
@@ -93,13 +117,9 @@ body {
   min-height: 100dvh;
   font-family: var(--font-ui);
   font-size: var(--text-base);
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--ink);
-  background-color: var(--paper);
-  background-image:
-    radial-gradient(1200px 520px at 8% -10%, rgb(220 232 223 / 0.75), transparent 60%),
-    radial-gradient(900px 480px at 100% 0%, rgb(251 236 201 / 0.55), transparent 55%),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.38  0 0 0 0 0.25  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-color: var(--carbon-gray-10);
   -webkit-font-smoothing: antialiased;
 }
 
