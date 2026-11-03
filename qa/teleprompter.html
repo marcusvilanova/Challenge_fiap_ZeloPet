@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teleprompter de Gravação — Compliance & QA | Zelo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #161616;
+      --card-bg: #262626;
+      --text-main: #f4f4f4;
+      --text-muted: #c6c6c6;
+      --accent: #0f62fe;
+      --accent-hover: #0353e9;
+      --success: #24a148;
+      --border: #393939;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+    header {
+      background: #121212;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px; }
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+    .timer-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .timer-display {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f62fe;
+      background: #000;
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid #333;
+    }
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--accent-hover); }
+    .btn-secondary {
+      background: #393939;
+    }
+    .btn-secondary:hover { background: #4c4c4c; }
+
+    .main-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: #1c1c1c;
+      border-right: 1px solid var(--border);
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sidebar h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .link-item a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 12px;
+      background: #262626;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 3px;
+      border-left: 3px solid var(--accent);
+      font-size: 0.85rem;
+      transition: background 0.15s;
+    }
+    .link-item a:hover {
+      background: #333;
+    }
+    .link-item a span {
+      font-size: 0.72rem;
+      color: #8d8d8d;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .hotkey-tip {
+      background: #002d9c;
+      color: #edf5ff;
+      padding: 14px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+    .hotkey-tip strong { color: #fff; font-weight: 700; }
+
+    /* Teleprompter Content */
+    .prompter-content {
+      padding: 40px 60px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      scroll-behavior: smooth;
+    }
+    .scene-card {
+      background: var(--card-bg);
+      border-left: 5px solid var(--accent);
+      padding: 28px 32px;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .scene-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .scene-time {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      background: #161616;
+      color: #78a9ff;
+      padding: 4px 10px;
+      border-radius: 3px;
+    }
+    .scene-screen {
+      background: #1a1a1a;
+      border: 1px dashed #525252;
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: #c6c6c6;
+      margin-bottom: 20px;
+    }
+    .scene-screen strong {
+      color: #ff8389;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .speech-box {
+      font-size: 1.25rem;
+      line-height: 1.65;
+      color: #ffffff;
+      background: #1e1e1e;
+      padding: 20px 24px;
+      border-radius: 4px;
+      border-left: 4px solid var(--success);
+    }
+    .speech-box strong.lead {
+      color: #42be65;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span class="badge">Zelo Pet</span>
+      <h1>Guia & Teleprompter de Gravação — Compliance & QA</h1>
+    </div>
+    <div class="timer-box">
+      <div class="timer-display" id="timer">00:00</div>
+      <button class="btn" id="btnToggleTimer" onclick="toggleTimer()">Iniciar Cronômetro</button>
+      <button class="btn btn-secondary" onclick="resetTimer()">Zerar</button>
+    </div>
+  </header>
+
+  <div class="main-container">
+    
+    <!-- Sidebar Links -->
+    <aside class="sidebar">
+      <div>
+        <h2>Abas para abrir</h2>
+        <ul class="link-list">
+          <li class="link-item">
+            <a href="https://dev.azure.com/RM558771/CLYVO%20VET" target="_blank">
+              1. Azure DevOps (Boards)
+              <span>dev.azure.com/RM558771...</span>
+            </a>
+          </li>
+          <li class="link-item">
+            <a href="https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop/qa" target="_blank">
+              2. GitHub (Branch develop/qa)
+              <span>github.com/.../develop/qa</span>
+            </a>
+          </li>
+          <li class="link-item">
+            <a href="https://zelopet.vercel.app" target="_blank">
+              3. Zelo em Produção
+              <span>zelopet.vercel.app</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hotkey-tip">
+        <strong>🔴 Como Gravar no Windows:</strong><br>
+        Pressione <strong>Win + Alt + R</strong> para iniciar e parar a gravação de tela com microfone. O vídeo é salvo em <em>Vídeos / Capturas</em>.
+      </div>
+
+      <div style="font-size: 0.8rem; color: #8d8d8d; line-height: 1.5;">
+        <strong>Identificação:</strong><br>
+        Marcus Vinícius Vila Nova da Silva<br>
+        RM: 558771 — Turma 2TDS<br>
+        Prof. Felipe Santos
+      </div>
+    </aside>
+
+    <!-- Main Prompter Script -->
+    <main class="prompter-content">
+
+      <!-- Scene 1 -->
+      <article class="scene-card" id="cena1">
+        <div class="scene-header">
+          <h2 class="scene-title">CENA 1: Introdução e Testes Manuais no Azure Boards</h2>
+          <span class="scene-time">0:00 - 0:45</span>
+        </div>
+        <div class="scene-screen">
+          <strong>🖥️ O que mostrar na tela:</strong>
+          Aba do Azure DevOps aberta no projeto <em>CLYVO VET</em>. Navegue em <em>Boards > Work Items</em>, abra o Caso de Teste #57 (CT-01) e mostre os passos (Steps) preenchidos e a lista de membros do projeto.
+        </div>
+        <div class="speech-box">
+          <strong class="lead">🗣️ O que você deve falar:</strong>
+          "Olá professor Felipe Santos e banca avaliadora. Meu nome é Marcus Vinícius, RM 558771, e estou apresentando a entrega da Sprint 4 da matéria de Compliance, Quality Assurance and Tests do projeto Zelo para a Clyvo Vet.<br><br>
+          Iniciando pela Parte A — Testes Manuais de Software: conforme as diretrizes do edital, elaboramos o plano completo de testes dentro do Azure Boards. Cadastramos 20 Casos de Teste formais, identificados do número 57 ao 76, cobrindo todos os fluxos críticos da nossa solução: autenticação, triagem de sintomas por IA, diretrizes clínicas e compartilhamento com a clínica.<br><br>
+          Como podemos ver aqui no Caso de Teste 57, cada item possui objetivo bem definido, dados de entrada controlados, passos estruturados e as saídas esperadas. As permissões do professor também já foram configuradas com nível Basic e Administrador do Projeto."
+        </div>
+      </article>
+
+      <!-- Scene 2 -->
+      <article class="scene-card" id="cena2">
+        <div class="scene-header">
+          <h2 class="scene-title">CENA 2: Repositório GitHub na Branch develop</h2>
+          <span class="scene-time">0:45 - 1:15</span>
+        </div>
+        <div class="scene-screen">
+          <strong>🖥️ O que mostrar na tela:</strong>
+          Aba do GitHub aberta na pasta <em>/qa</em> da branch <em>develop</em>. Aponte para o seletor de branch mostrando 'develop' e destaque os arquivos README.md e a pasta selenium/.
+        </div>
+        <div class="speech-box">
+          <strong class="lead">🗣️ O que você deve falar:</strong>
+          "Seguindo para a estrutura de entrega do repositório no GitHub: estamos posicionados na branch 'develop', atendendo rigorosamente à regra de entrega da disciplina.<br><br>
+          Dentro do diretório 'qa', organizamos toda a documentação de suporte: temos o 'README.md' com a matriz de rastreabilidade completa vinculando os PBIs e histórias de usuário aos casos de teste, o 'plano-testes-manuais.md' e a suíte de automação na pasta 'selenium'. Tudo devidamente versionado e público."
+        </div>
+      </article>
+
+      <!-- Scene 3 -->
+      <article class="scene-card" id="cena3">
+        <div class="scene-header">
+          <h2 class="scene-title">CENA 3: Configuração do Selenium IDE (Parte B)</h2>
+          <span class="scene-time">1:15 - 1:55</span>
+        </div>
+        <div class="scene-screen">
+          <strong>🖥️ O que mostrar na tela:</strong>
+          Janela do Selenium IDE com o projeto aberto. Mostre a URL base <em>https://zelopet.vercel.app</em> e a lista de 6 testes automatizados (TA-01 ao TA-06) à esquerda.
+        </div>
+        <div class="speech-box">
+          <strong class="lead">🗣️ O que você deve falar:</strong>
+          "Passando agora para a Parte B — Automação de Testes: utilizamos o Selenium IDE na modalidade Record and Playback para validar a aplicação web em produção na Vercel.<br><br>
+          O edital solicitava um mínimo de 4 casos automatizados. Nossa equipe implementou 6 casos de teste automatizados cobrindo os fluxos prioritários:<br>
+          - TA-01: Login da tutora e validação do Design System IBM Carbon v11;<br>
+          - TA-02: Bloqueio correto de credenciais inválidas;<br>
+          - TA-03: Triagem de emergência imediata ao relatar tosse e engasgo da pet Mel;<br>
+          - TA-04: Triagem de prioridade média com perguntas complementares;<br>
+          - TA-05: Guardrail ético recusando prescrição de medicamentos;<br>
+          - E TA-06: Compartilhamento seguro da triagem com a fila da clínica.<br><br>
+          Todos os testes utilizam seletores consistentes, comandos de espera e asserções automáticas."
+        </div>
+      </article>
+
+      <!-- Scene 4 -->
+      <article class="scene-card" id="cena4">
+        <div class="scene-header">
+          <h2 class="scene-title">CENA 4: Execução ao Vivo da Automação no Navegador</h2>
+          <span class="scene-time">1:55 - 2:50</span>
+        </div>
+        <div class="scene-screen">
+          <strong>🖥️ O que mostrar na tela:</strong>
+          Clique no botão 'Run all tests' no Selenium IDE. Deixe a janela do navegador aberta ao lado executando as ações (login, chat, envio de mensagem, tela da clínica).
+        </div>
+        <div class="speech-box">
+          <strong class="lead">🗣️ O que você deve falar:</strong>
+          "Vou iniciar agora a execução ao vivo de toda a suíte de testes.<br><br>
+          Acompanhem na janela do navegador: o Selenium executa cada comando de forma 100% automatizada. Ele realiza o login no sistema no padrão visual IBM Carbon, valida as mensagens de boas-vindas da pet Mel, submete os relatos de saúde no chat, valida a classificação de emergência em tempo real e verifica os bloqueios de segurança farmacológica.<br><br>
+          Por fim, valida a integração com o painel da clínica veterinária sem qualquer intervenção manual."
+        </div>
+      </article>
+
+      <!-- Scene 5 -->
+      <article class="scene-card" id="cena5">
+        <div class="scene-header">
+          <h2 class="scene-title">CENA 5: Resultados e Conclusão</h2>
+          <span class="scene-time">2:50 - 3:20</span>
+        </div>
+        <div class="scene-screen">
+          <strong>🖥️ O que mostrar na tela:</strong>
+          Volte para o Selenium IDE exibindo os 6 testes marcados em verde com status 'Passed' e log com 0 falhas.
+        </div>
+        <div class="speech-box">
+          <strong class="lead">🗣️ O que você deve falar:</strong>
+          "Como podemos verificar no log de resultados do Selenium IDE: os 6 testes automatizados foram executados com sucesso e obtiveram status aprovado, com zero erros.<br><br>
+          Com isso, comprovamos o atendimento de 100% dos requisitos de Compliance e Quality Assurance da Sprint 4: os 20 testes manuais no Azure Boards com dados controlados, a permissão do professor, a automação no Selenium IDE com evidência gravada e o repositório público na branch develop.<br><br>
+          Muito obrigado pela atenção!"
+        </div>
+      </article>
+
+    </main>
+  </div>
+
+  <script>
+    let seconds = 0;
+    let timerInterval = null;
+
+    function toggleTimer() {
+      const btn = document.getElementById('btnToggleTimer');
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        btn.textContent = 'Retomar';
+        btn.style.background = '#0f62fe';
+      } else {
+        timerInterval = setInterval(() => {
+          seconds++;
+          const min = String(Math.floor(seconds / 60)).padStart(2, '0');
+          const sec = String(seconds % 60).padStart(2, '0');
+          document.getElementById('timer').textContent = `${min}:${sec}`;
+        }, 1000);
+        btn.textContent = 'Pausar';
+        btn.style.background = '#da1e28';
+      }
+    }
+
+    function resetTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      seconds = 0;
+      document.getElementById('timer').textContent = '00:00';
+      const btn = document.getElementById('btnToggleTimer');
+      btn.textContent = 'Iniciar Cronômetro';
+      btn.style.background = '#0f62fe';
+    }
+  </script>
+</body>
+</html>
