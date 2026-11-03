@@ -9,6 +9,11 @@
     "api/llm.js": { "maxDuration": 30 }
   },
   "rewrites": [
+    { "source": "/", "destination": "/dashboard.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/painel", "destination": "/dashboard.html" },
+    { "source": "/tutor", "destination": "/dashboard.html" },
+    { "source": "/login", "destination": "/index.html" },
     { "source": "/apresentacao", "destination": "/apresentacao.html" },
     { "source": "/pitch", "destination": "/apresentacao.html" },
     { "source": "/slides", "destination": "/apresentacao.html" }

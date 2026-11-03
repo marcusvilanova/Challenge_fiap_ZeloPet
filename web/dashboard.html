@@ -733,29 +733,26 @@
 
 <!-- ── UI SHELL ─────────────────────────────────────────── -->
 <header class="ui-shell">
-  <a href="#" class="shell-name">
+  <a href="/dashboard" class="shell-name">
     <div class="shell-logo-mark">
       <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
     </div>
-    Zelo
+    Zelo &middot; Clyvo Vet
   </a>
   <nav class="shell-nav">
-    <a class="shell-nav-item active" href="#">Painel</a>
-    <a class="shell-nav-item" href="#">Pets</a>
-    <a class="shell-nav-item" href="#">Consultas</a>
-    <a class="shell-nav-item" href="#">Documentos</a>
+    <a class="shell-nav-item active" href="/dashboard">Painel</a>
+    <a class="shell-nav-item" href="/chat.html">Triagem / Chat</a>
+    <a class="shell-nav-item" href="/clinic.html">Visão Clínica</a>
+    <a class="shell-nav-item" href="/apresentacao">Pitch Sprint 4</a>
   </nav>
   <div class="shell-right">
-    <button class="shell-icon-btn" title="Notificações" aria-label="Notificações">
-      <svg viewBox="0 0 32 32"><path d="M28.7 22.6C27.3 21 26 19.4 26 14c0-4.5-3.1-8.3-7.3-9.4C18.5 3.6 17.3 2 15.7 2s-2.8 1.6-3 2.6C8.5 5.7 5.3 9.5 5.3 14c0 5.4-1.3 7-2.7 8.6-.4.5-.6 1-.6 1.4 0 1.1 1.1 2 2.5 2h5.2c.5 1.7 2 3 3.8 3s3.3-1.3 3.8-3h5.2c1.4 0 2.5-.9 2.5-2 0-.4-.2-.9-.6-1.4zM15.5 28c-.9 0-1.7-.5-2.1-1.3h4.2c-.4.8-1.2 1.3-2.1 1.3z"/></svg>
-    </button>
-    <button class="shell-icon-btn" title="Ajuda" aria-label="Ajuda">
-      <svg viewBox="0 0 32 32"><path d="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14 14-6.3 14-14S23.7 2 16 2zm0 26C9.4 28 4 22.6 4 16S9.4 4 16 4s12 5.4 12 12-5.4 12-12 12z"/><path d="M16 22v-6m0-6h.01" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-    </button>
-    <div class="shell-user">
+    <a href="/apresentacao" class="shell-icon-btn" title="Apresentação do Pitch (Sprint 4)" aria-label="Pitch" style="text-decoration:none;">
+      <svg viewBox="0 0 32 32"><path d="M28 4H4a2 2 0 00-2 2v20a2 2 0 002 2h24a2 2 0 002-2V6a2 2 0 00-2-2zm0 22H4V6h24z"/><path d="M8 10h6v2H8zm0 4h16v2H8zm0 4h12v2H8z"/></svg>
+    </a>
+    <a href="/index.html" class="shell-user" style="text-decoration:none;" title="Trocar conta ou fazer login de demonstração">
       <div class="shell-user-avatar">A</div>
-      <span>Ana Souza</span>
-    </div>
+      <span>Ana Souza (Sair)</span>
+    </a>
   </div>
 </header>
 
@@ -848,18 +845,22 @@
     <div class="nav-divider"></div>
     <div style="padding-top:0">
       <div class="left-nav-section-title">Ações</div>
-      <a href="chat.html" class="nav-link" style="color:var(--blue-60);font-weight:600;">
+      <a href="/chat.html" class="nav-link" style="color:var(--blue-60);font-weight:600;text-decoration:none;">
         <svg viewBox="0 0 32 32" style="fill:var(--blue-60)"><path d="M17.7 3H6C4.3 3 3 4.3 3 6v21l6-6h20V6c0-1.7-1.3-3-3-3H17.7z"/></svg>
-        Iniciar Triagem
+        Iniciar Triagem (Chat)
       </a>
-      <button class="nav-link" onclick="alert('Disponível na versão completa')">
-        <svg viewBox="0 0 32 32"><path d="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14 14-6.3 14-14S23.7 2 16 2zm7 15h-6v6h-2v-6H9v-2h6V9h2v6h6v2z"/></svg>
-        Agendar Consulta
-      </button>
-      <button class="nav-link" onclick="alert('Disponível na versão completa')">
-        <svg viewBox="0 0 32 32"><path d="M26 4H6L2 28h28L26 4zm-5 18H11v-2h10v2zm2-5H9v-2h14v2zm1-5H8V10h16v2z"/></svg>
-        Ver Receituário
-      </button>
+      <a href="/apresentacao" class="nav-link" style="text-decoration:none;">
+        <svg viewBox="0 0 32 32"><path d="M28 4H4a2 2 0 00-2 2v20a2 2 0 002 2h24a2 2 0 002-2V6a2 2 0 00-2-2zm0 22H4V6h24z"/><path d="M8 10h6v2H8zm0 4h16v2H8zm0 4h12v2H8z"/></svg>
+        Apresentação Pitch (Sprint 4)
+      </a>
+      <a href="/clinic.html" class="nav-link" style="text-decoration:none;">
+        <svg viewBox="0 0 32 32"><path d="M26 4h-4V2h-2v2h-8V2h-2v2H6c-1.1 0-2 .9-2 2v22c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 24H6V10h20v18z"/></svg>
+        Fila da Clínica (Veterinário)
+      </a>
+      <a href="/index.html" class="nav-link" style="text-decoration:none;">
+        <svg viewBox="0 0 32 32"><path d="M26 16l-6-6-1.4 1.4 3.6 3.6H10v2h12.2l-3.6 3.6 1.4 1.4 6-6zM6 6h10V4H6c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h10v-2H6V6z"/></svg>
+        Trocar Conta / Login
+      </a>
     </div>
 
   </aside>

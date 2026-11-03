@@ -20,6 +20,24 @@ if (existsSync(join(root, "apresentacao.html"))) {
   cpSync(join(root, "apresentacao.html"), join(dist, "apresentacao.html"));
 }
 
+if (existsSync(join(root, "web", "dashboard.html"))) {
+  cpSync(join(root, "web", "dashboard.html"), join(dist, "dashboard.html"));
+} else if (existsSync(join(statics, "dashboard.html"))) {
+  cpSync(join(statics, "dashboard.html"), join(dist, "dashboard.html"));
+}
+
+if (existsSync(join(root, "web", "pet_mel.png"))) {
+  cpSync(join(root, "web", "pet_mel.png"), join(dist, "pet_mel.png"));
+} else if (existsSync(join(statics, "pet_mel.png"))) {
+  cpSync(join(statics, "pet_mel.png"), join(dist, "pet_mel.png"));
+}
+
+if (existsSync(join(root, "web", "pet_thor.png"))) {
+  cpSync(join(root, "web", "pet_thor.png"), join(dist, "pet_thor.png"));
+} else if (existsSync(join(statics, "pet_thor.png"))) {
+  cpSync(join(statics, "pet_thor.png"), join(dist, "pet_thor.png"));
+}
+
 function patch(file, from, to) {
   const path = join(dist, file);
   const html = readFileSync(path, "utf8");
