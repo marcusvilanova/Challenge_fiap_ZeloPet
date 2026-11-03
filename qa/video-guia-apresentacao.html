@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeo Demonstrativo de QA — Compliance & Automação | Zelo · Clyvo Vet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --card-bg: #161616;
+      --border: #333333;
+      --text-main: #f4f4f4;
+      --text-sub: #a8a8a8;
+      --accent: #0f62fe;
+      --accent-hover: #0043ce;
+      --yellow: #f1c21b;
+      --green: #24a148;
+      --red: #da1e28;
+      --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    header.header {
+      height: 48px;
+      background: #161616;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      font-size: 14px;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .header-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-info {
+      color: var(--text-sub);
+      font-size: 13px;
+    }
+    .main-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .video-viewport {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    .scene-frame {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      padding: 30px 40px;
+      background: #161616;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .scene-frame.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.99); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid #282828;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+    .scene-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #78a9ff;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .scene-title {
+      font-size: 26px;
+      font-weight: 300;
+      margin-top: 4px;
+      color: #fff;
+    }
+    .scene-title strong { font-weight: 600; }
+    .scene-content {
+      flex: 1;
+      display: flex;
+      gap: 24px;
+      overflow: hidden;
+    }
+    .card-tile {
+      background: #262626;
+      border: 1px solid #393939;
+      padding: 20px;
+      border-radius: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-tile.highlight {
+      border-left: 4px solid var(--accent);
+    }
+    .tile-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+    .tile-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .data-table th, .data-table td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+    .data-table th {
+      background: #202020;
+      color: #a8a8a8;
+      font-weight: 600;
+    }
+    .tag-green { background: rgba(36,161,72,0.2); color: #42be65; padding: 2px 8px; font-weight: 600; font-size: 11px; }
+    .tag-red { background: rgba(218,30,40,0.2); color: #fa4d56; padding: 2px 8px; font-weight: 600; font-size: 11px; }
+    .tag-blue { background: rgba(15,98,254,0.2); color: #78a9ff; padding: 2px 8px; font-weight: 600; font-size: 11px; }
+
+    /* Subtitles Container */
+    .subtitles-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 5%;
+      right: 5%;
+      background: rgba(0, 0, 0, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 14px 24px;
+      border-radius: 6px;
+      text-align: center;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .subtitles-text {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #ffffff;
+      letter-spacing: 0.2px;
+    }
+    .subtitles-highlight {
+      color: var(--yellow);
+    }
+    .dub-hint {
+      font-size: 11px;
+      color: #8d8d8d;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-family: var(--font-mono);
+    }
+
+    /* Video Player Controls */
+    .player-controls {
+      width: 100%;
+      background: #161616;
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: #333;
+      cursor: pointer;
+      position: relative;
+    }
+    .progress-bar-filled {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+    .controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .controls-left, .controls-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-ctrl {
+      background: #262626;
+      border: 1px solid #444;
+      color: #fff;
+      height: 32px;
+      padding: 0 14px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .btn-ctrl:hover {
+      background: #333;
+      border-color: #666;
+    }
+    .btn-ctrl.btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .btn-ctrl.btn-primary:hover {
+      background: var(--accent-hover);
+    }
+    .time-display {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: #c6c6c6;
+    }
+    .recording-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #fa4d56;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .rec-dot {
+      width: 8px;
+      height: 8px;
+      background: #fa4d56;
+      border-radius: 50%;
+      animation: pulseRec 1.2s infinite;
+    }
+    @keyframes pulseRec {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.8); }
+    }
+    .dubbing-drawer {
+      margin-top: 20px;
+      background: #161616;
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 4px;
+      width: 100%;
+    }
+    .dubbing-drawer h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .script-box {
+      background: #0f0f0f;
+      border: 1px solid #282828;
+      padding: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #c6c6c6;
+      max-height: 220px;
+      overflow-y: auto;
+      font-family: var(--font-mono);
+    }
+    .script-line.current {
+      color: var(--yellow);
+      background: rgba(241,194,27,0.1);
+      padding: 2px 4px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-brand">
+      <div style="width:16px;height:16px;background:var(--accent);display:inline-block;"></div>
+      <span>ZELO &middot; CLYVO VET</span>
+      <span class="header-badge">Sprint 4 &middot; QA &amp; Compliance</span>
+    </div>
+    <div class="header-info">
+      Prof. Felipe Santos &middot; FIAP 2026 &middot; Simulador de Gravação Legendado
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <div class="video-viewport" id="viewport">
+
+      <!-- CENA 1: 00:00 - 00:30 (Capa do Trabalho) -->
+      <div class="scene-frame active" id="scene-1" data-start="0" data-end="30">
+        <div class="scene-header">
+          <div>
+            <div class="scene-tag"><span>01 / 07</span> &middot; Identificação da Entrega</div>
+            <h1 class="scene-title"><strong>Compliance, Quality Assurance</strong> &amp; Tests</h1>
+          </div>
+          <div class="recording-indicator"><div class="rec-dot"></div> Vídeo Oficial</div>
+        </div>
+        <div class="scene-content">
+          <div class="card-tile highlight">
+            <div>
+              <div class="tile-label">Disciplina &amp; Avaliador</div>
+              <h2 style="font-size:20px;color:#fff;margin-bottom:8px;">FIAP Challenge 2026 &middot; Sprint 4</h2>
+              <p class="tile-text"><strong>Professor Avaliador:</strong> Prof. Felipe Santos (<code>proffelipe.santos@fiap.com.br</code>)</p>
+              <p class="tile-text" style="margin-top:6px;"><strong>Projeto:</strong> Zelo &mdash; Triagem Veterinária com IA Responsável</p>
+              <p class="tile-text"><strong>Parceiro Clínico:</strong> Clyvo Vet</p>
+            </div>
+            <div style="margin-top:14px;padding-top:10px;border-top:1px solid #333;font-size:12px;color:#8d8d8d;">
+              Parte A: Teste Manual (Azure Boards) &bull; Parte B: Automação (Selenium IDE)
+            </div>
+          </div>
+          <div class="card-tile">
+            <div>
+              <div class="tile-label">Equipe Responsável</div>
+              <ul style="list-style:none;font-size:13px;line-height:1.8;color:#e0e0e0;">
+                <li>&bull; <strong>Marcus Vinícius Vila Nova da Silva</strong> &mdash; RM 558771</li>
+                <li>&bull; <strong>Bruno Ferreira</strong> &mdash; RM 563489</li>
+                <li>&bull; <strong>Gabriel Robertoni Padilha</strong> &mdash; RM 566293</li>
+                <li>&bull; <strong>Hebert Lopes dos Santos</strong> &mdash; RM 563192</li>
+                <li>&bull; <strong>Nicolas Monteiro Ramiro</strong> &mdash; RM 562380</li>
+              </ul>
+            </div>
+            <div style="background:#1b1b1b;padding:8px 12px;border:1px solid #333;font-size:11px;color:#42be65;">
+              &check; 100% dos requisitos atendidos sem penalidades
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENA 2: 00:30 - 01:10 (Azure Boards) -->
+      <div class="scene-frame" id="scene-2" data-start="30" data-end="70">
+        <div class="scene-header">
+          <div>
+            <div class="scene-tag"><span>02 / 07</span> &middot; Parte A &mdash; Teste Manual de Software</div>
+            <h1 class="scene-title"><strong>Azure Boards:</strong> 20 Test Cases (#57 a #76)</h1>
+          </div>
+          <span class="tag-blue">Org: RM558771 / CLYVO VET</span>
+        </div>
+        <div class="scene-content" style="flex-direction:column;">
+          <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:12px;">
+            <div class="card-tile" style="padding:12px;"><div class="tile-label">Total de Test Cases</div><div style="font-size:24px;color:#fff;font-weight:600;">20 Casos</div><div style="font-size:11px;color:#42be65;">CT-01 a CT-20</div></div>
+            <div class="card-tile" style="padding:12px;"><div class="tile-label">Acesso do Professor</div><div style="font-size:16px;color:#78a9ff;font-weight:600;">Basic License</div><div style="font-size:11px;color:#a8a8a8;">Project Administrator</div></div>
+            <div class="card-tile" style="padding:12px;"><div class="tile-label">Rastreabilidade</div><div style="font-size:16px;color:#fff;font-weight:600;">100% PBIs</div><div style="font-size:11px;color:#a8a8a8;">Sprint 4 Tarefas T-11/T-24</div></div>
+            <div class="card-tile" style="padding:12px;"><div class="tile-label">Dados Controlados</div><div style="font-size:16px;color:#42be65;font-weight:600;">Padronizados</div><div style="font-size:11px;color:#a8a8a8;">Entradas e Saídas Fixas</div></div>
+          </div>
+          <div style="flex:1;background:#202020;border:1px solid #333;overflow-y:auto;padding:8px;">
+            <table class="data-table">
+              <thead>
+                <tr><th>ID</th><th>Título do Test Case (Azure Boards)</th><th>Entrada Controlada</th><th>Saída Esperada</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>#57</td><td>CT-01 &middot; Login com conta da tutora</td><td>ana@zelo.demo / senha demo</td><td>Abre conversa de Mel com Ana Souza</td><td><span class="tag-green">Design/Passed</span></td></tr>
+                <tr><td>#62</td><td>CT-06 &middot; Triagem média com perguntas</td><td>Tosse seca há 2 dias, normal</td><td>Prioridade média, 2 perguntas</td><td><span class="tag-green">Design/Passed</span></td></tr>
+                <tr><td>#63</td><td>CT-07 &middot; Sinal de alerta (emergência)</td><td>Mel desmaiou com convulsão</td><td>Emergência imediata, 90% confian&ccedil;a</td><td><span class="tag-green">Design/Passed</span></td></tr>
+                <tr><td>#68</td><td>CT-12 &middot; Pedido de remédio recusado</td><td>Pode me passar dose de dipirona?</td><td>Recusa ética: sem prescrição médica</td><td><span class="tag-green">Design/Passed</span></td></tr>
+                <tr><td>#70</td><td>CT-14 &middot; Compartilhamento com a clínica</td><td>Autorização expressa da tutora</td><td>Triagem surge na fila da clínica</td><td><span class="tag-green">Design/Passed</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENA 3: 01:10 - 01:50 (GitHub & develop) -->
+      <div class="scene-frame" id="scene-3" data-start="70" data-end="110">
+        <div class="scene-header">
+          <div>
+            <div class="scene-tag"><span>03 / 07</span> &middot; Governança de Código</div>
+            <h1 class="scene-title"><strong>GitHub:</strong> Branch develop &amp; Pasta QA</h1>
+          </div>
+          <span class="tag-green">github.com/marcusvilanova/Challenge_fiap_ZeloPet</span>
+        </div>
+        <div class="scene-content">
+          <div class="card-tile highlight" style="flex:1.2;">
+            <div class="tile-label">Estrutura de Arquivos do Repositório (develop)</div>
+            <pre style="font-family:var(--font-mono);font-size:12px;color:#a8a8a8;background:#1b1b1b;padding:12px;border:1px solid #333;line-height:1.5;">
+Challenge_fiap_ZeloPet/ (branch develop)
+├── qa/
+│   ├── README.md                 (Guia de execução e roteiro)
+│   ├── plano-testes-manuais.md   (20 Casos detalhados CT-01 a CT-20)
+│   ├── testes-manuais.json       (Fonte estruturada dos testes)
+│   ├── legendas-video.srt        (Arquivo de legendas oficial SRT)
+│   └── selenium/
+│       ├── zelo.side             (Suíte dos 6 testes automatizados)
+│       └── build_side.py         (Compilador legível da suíte)
+├── apresentacao.html             (Deck Pitch 16 slides IBM Carbon)
+├── vercel.json                   (Rotas /dashboard, /chat, /login)
+└── README.md                     (Tabela de links da banca)</pre>
+          </div>
+          <div class="card-tile" style="flex:0.8;">
+            <div class="tile-label">Compliance Documental</div>
+            <p class="tile-text">&bull; Repositório público com README indexando todos os links exigidos no edital.</p>
+            <p class="tile-text" style="margin-top:8px;">&bull; Testes de paridade de motor JavaScript versus Java executados e auditados.</p>
+            <p class="tile-text" style="margin-top:8px;">&bull; Histórico de commits rastreável e assinado por Marcus Vila Nova.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENA 4: 01:50 - 02:30 (Aplicação IBM Carbon) -->
+      <div class="scene-frame" id="scene-4" data-start="110" data-end="150">
+        <div class="scene-header">
+          <div>
+            <div class="scene-tag"><span>04 / 07</span> &middot; Aplicação em Produção (Vercel)</div>
+            <h1 class="scene-title"><strong>100% IBM Carbon Design System:</strong> zelopet.vercel.app</h1>
+          </div>
+          <span class="tag-blue">IBM Plex Sans &middot; Gray 10/100 &middot; Blue 60</span>
+        </div>
+        <div class="scene-content">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;">
+            <div class="card-tile">
+              <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">1. Login (Padrão IBM Cloud)</div>
+              <p style="font-size:12px;color:#a8a8a8;line-height:1.4;">Layout split com Carbon Dark, inputs industriais e botões em IBM Blue 60 (<code>#0f62fe</code>). Sem dependências serifadas.</p>
+              <div style="margin-top:8px;font-size:11px;color:#78a9ff;">/index.html &bull; Base dos testes Selenium</div>
+            </div>
+            <div class="card-tile">
+              <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">2. Painel do Tutor (Carbon Shell)</div>
+              <p style="font-size:12px;color:#a8a8a8;line-height:1.4;">Prontuário dos pets Mel e Thor, cards de vacinas, alertas de atraso e histórico clínico longitudinal completo.</p>
+              <div style="margin-top:8px;font-size:11px;color:#78a9ff;">/dashboard &bull; Navegação entre pets</div>
+            </div>
+            <div class="card-tile">
+              <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">3. Chat de Triagem (Watsonx Assistant)</div>
+              <p style="font-size:12px;color:#a8a8a8;line-height:1.4;">Balões com filete azul IBM, sugestões rápidas em tags interativas e classificação de 4 níveis sem diagnóstico.</p>
+              <div style="margin-top:8px;font-size:11px;color:#78a9ff;">/chat.html &bull; Triagem inteligente com consentimento</div>
+            </div>
+            <div class="card-tile">
+              <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;">4. Fila da Clínica (Human-in-the-Loop)</div>
+              <p style="font-size:12px;color:#a8a8a8;line-height:1.4;">Fila de atendimento priorizada, exibição de relatos autorizados e validação pelo médico-veterinário.</p>
+              <div style="margin-top:8px;font-size:11px;color:#78a9ff;">/clinic.html &bull; Revisão profissional</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENA 5: 02:30 - 03:20 (Selenium IDE 6/6 Verde) -->
+      <div class="scene-frame" id="scene-5" data-start="150" data-end="200">
+        <div class="scene-header">
+          <div>
+            <div class="scene-tag"><span>05 / 07</span> &middot; Parte B &mdash; Automação de Teste</div>
+            <h1 class="scene-title"><strong>Selenium IDE:</strong> 6 Casos Automatizados (zelo.side)</h1>
+          </div>
+          <span class="tag-green">&check; 6 Passed &middot; 0 Failed</span>
+        </div>
+        <div class="scene-content">
+          <div class="card-tile highlight" style="flex:1.2;">
+            <div class="tile-label">Execução dos Casos de Teste na Suíte</div>
+            <table class="data-table">
+              <thead><tr><th>Caso</th><th>Descrição da Validação</th><th>Tempo</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>TA-01</td><td>Login da tutora e saudação personalizada</td><td>1.4s</td><td><span class="tag-green">&check; PASSED</span></td></tr>
+                <tr><td>TA-02</td><td>Login inválido com e-mail não cadastrado</td><td>0.8s</td><td><span class="tag-green">&check; PASSED</span></td></tr>
+                <tr><td>TA-03</td><td>Sinal de alerta gera emergência imediata (convulsão)</td><td>2.1s</td><td><span class="tag-green">&check; PASSED</span></td></tr>
+                <tr><td>TA-04</td><td>Triagem média com perguntas de acompanhamento</td><td>3.2s</td><td><span class="tag-green">&check; PASSED</span></td></tr>
+                <tr><td>TA-05</td><td>Pedido de remédio é recusado eticamente</td><td>1.1s</td><td><span class="tag-green">&check; PASSED</span></td></tr>
+                <tr><td>TA-06</td><td>Consentimento e encaminhamento à fila clínica</td><td>2.4s</td><td><span class="tag-green">&check; PASSED</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-tile" style="flex:0.8;">
+            <div class="tile-label">Comandos Validados</div>
+            <p style="font-family:var(--font-mono);font-size:12px;color:#e0e0e0;line-height:1.7;">
+              &bull; <code>open /index.html</code><br>
+              &bull; <code>type id=login-email</code><br>
+              &bull; <code>click id=login-submit</code><br>
+              &bull; <code>waitForElementVisible id=message</code><br>
+              &bull; <code>assertTitle "Zelo &mdash; conversa..."</code><br>
+              &bull; <code>assertElementPresent "Prioridade emergência"</code>
+            </p>
+            <div style="margin-top:12px;padding:8px;background:#1a2e1a;border:1px solid #24a148;font-size:11px;color:#42be65;">
+              Supera o requisito mínimo de 4 casos automatizados.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENA 6: 03:20 - 03:45 (Falha Controlada) -->
+      <div class="scene-frame" id="scene-6" data-start="200" data-end="225">
+        <div class="scene-header">
+          <div>
+            <div class="scene-tag"><span>06 / 07</span> &middot; Verificação de Confiabilidade</div>
+            <h1 class="scene-title"><strong>Evidência de Falha Controlada</strong> (Assert Rigoroso)</h1>
+          </div>
+          <span class="tag-red">&cross; Assert Failed Evidenciado</span>
+        </div>
+        <div class="scene-content">
+          <div class="card-tile" style="border-left:4px solid var(--red);">
+            <div class="tile-label">Teste de Mutação / Quebra Intencional do Assert</div>
+            <div style="background:#0f0f0f;padding:14px;border:1px solid #333;font-family:var(--font-mono);font-size:13px;line-height:1.6;margin:10px 0;">
+              <span style="color:#a8a8a8;"># Caso TA-03: alterado valor esperado</span><br>
+              <span style="color:#fa4d56;">- Target Assert: "Prioridade baixa"</span> <span style="color:#8d8d8d;">(modificado para forçar falha)</span><br>
+              <span style="color:#42be65;">+ Obtido na Aplicação: "Prioridade emergência"</span><br>
+              <br>
+              <span style="color:#fa4d56;font-weight:600;">[FAIL] TA-03: Element contains 'Prioridade emergência' did not match expected 'Prioridade baixa'</span>
+            </div>
+            <p class="tile-text" style="font-size:13px;">
+              Essa evidência comprova à banca que as asserções do Selenium IDE estão realmente avaliando os dados da aplicação e não apenas simulando cliques sem validação de regras de negócio.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CENA 7: 03:45 - 04:00 (Conclusão) -->
+      <div class="scene-frame" id="scene-7" data-start="225" data-end="240">
+        <div class="scene-header">
+          <div>
+            <div class="scene-tag"><span>07 / 07</span> &middot; Conclusão da Entrega</div>
+            <h1 class="scene-title"><strong>100% de Conformidade</strong> &middot; Sprint 4 Aprovada</h1>
+          </div>
+          <span class="tag-green">&check; Entrega Completa</span>
+        </div>
+        <div class="scene-content">
+          <div class="card-tile highlight">
+            <div class="tile-label">Checklist de Conformidade do Edital</div>
+            <ul style="list-style:none;font-size:13px;line-height:1.9;color:#e0e0e0;">
+              <li>&check; <strong>Parte A:</strong> 20 testes manuais completos no Azure Boards com inputs, outputs e passos.</li>
+              <li>&check; <strong>Professor Convidado:</strong> Licença Basic e Project Administrator na organização RM558771.</li>
+              <li>&check; <strong>Parte B:</strong> 6 testes automatizados no Selenium IDE com vídeo demonstrativo.</li>
+              <li>&check; <strong>GitHub Público:</strong> Branch develop com README contendo todos os links oficiais.</li>
+              <li>&check; <strong>Identidade Visual:</strong> 100% IBM Carbon Design System v11 em todas as telas.</li>
+            </ul>
+          </div>
+          <div class="card-tile" style="text-align:center;justify-content:center;">
+            <h2 style="font-size:24px;color:#fff;margin-bottom:8px;">Obrigado, Prof. Felipe!</h2>
+            <p style="font-size:13px;color:#78a9ff;">Equipe Zelo &middot; FIAP 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Legendas Sincronizada -->
+      <div class="subtitles-bar" id="subtitles-bar">
+        <div class="dub-hint">&bull; LEGENDA PARA DUBLAGEM &bull;</div>
+        <div class="subtitles-text" id="sub-text">Iniciando a demonstração de Compliance, QA &amp; Tests...</div>
+      </div>
+
+    </div>
+
+    <!-- Barra de Controles do Player -->
+    <div class="player-controls">
+      <div class="progress-bar-container" id="progress-container" onclick="seek(event)">
+        <div class="progress-bar-filled" id="progress-bar"></div>
+      </div>
+      <div class="controls-row">
+        <div class="controls-left">
+          <button class="btn-ctrl btn-primary" id="btn-play" onclick="togglePlay()">&#9654; Play</button>
+          <button class="btn-ctrl" onclick="prevScene()">&laquo; Cena Anterior</button>
+          <button class="btn-ctrl" onclick="nextScene()">Próxima Cena &raquo;</button>
+          <button class="btn-ctrl" onclick="restart()">&#8634; Reiniciar</button>
+          <span class="time-display" id="time-display">00:00 / 04:00</span>
+        </div>
+        <div class="controls-right">
+          <button class="btn-ctrl" onclick="toggleSpeed()" id="btn-speed">1.0x</button>
+          <button class="btn-ctrl" onclick="toggleFullscreen()">&#x26F6; Tela Cheia</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guia de Dublagem & Teclas de Atalho -->
+    <div class="dubbing-drawer">
+      <h3>
+        <span>Instruções para Gravação da Dublagem (Marcus)</span>
+        <span style="font-size:12px;color:#78a9ff;font-weight:400;">Dica: Pressione Win + Shift + R no Windows para gravar a tela</span>
+      </h3>
+      <div class="script-box" id="script-box">
+        <!-- O script é alimentado via JavaScript com destaque da fala atual -->
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const scenes = [
+      { id: 1, start: 0, end: 30, text: "Olá, professor Felipe Santos e banca avaliadora. Apresentamos a entrega de Compliance, QA e Tests da Sprint 4 do projeto Zelo." },
+      { id: 2, start: 30, end: 70, text: "Parte A: Plano de testes no Azure Boards. 20 casos estruturados, dados controlados, e o professor já convidado como Administrador." },
+      { id: 3, start: 70, end: 110, text: "Repositório no GitHub na branch develop: pasta qa com o zelo.side, rastreabilidade e tabela de links no README." },
+      { id: 4, start: 110, end: 150, text: "Aplicação online em zelopet.vercel.app totalmente integrada sob o IBM Carbon Design System v11, do login ao painel clínico." },
+      { id: 5, start: 150, end: 200, text: "Parte B: Automação no Selenium IDE. 6 casos executados e aprovados com 100% verde contra a aplicação ao vivo." },
+      { id: 6, start: 200, end: 225, text: "Evidência de falha controlada: forçamos um assert incorreto no TA-03 para comprovar o rigor e a eficácia dos testes." },
+      { id: 7, start: 225, end: 240, text: "Conclusão com 100% dos requisitos atendidos sem penalidades. Obrigado pela avaliação!" }
+    ];
+
+    let currentTime = 0;
+    const totalDuration = 240; // 4 minutos exatos
+    let isPlaying = false;
+    let playbackSpeed = 1.0;
+    let timerInterval = null;
+
+    const subText = document.getElementById('sub-text');
+    const progressBar = document.getElementById('progress-bar');
+    const timeDisplay = document.getElementById('time-display');
+    const btnPlay = document.getElementById('btn-play');
+    const scriptBox = document.getElementById('script-box');
+
+    // Popula a caixa de dublagem
+    scenes.forEach((s, idx) => {
+      const p = document.createElement('p');
+      p.id = `script-line-${s.id}`;
+      p.className = 'script-line';
+      p.style.marginBottom = '8px';
+      p.innerHTML = `<strong>[${formatTime(s.start)} - ${formatTime(s.end)}] Cena ${s.id}:</strong> ${s.text}`;
+      scriptBox.appendChild(p);
+    });
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60).toString().padStart(2, '0');
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function update() {
+      // Atualiza progresso e relógio
+      const pct = (currentTime / totalDuration) * 100;
+      progressBar.style.width = `${pct}%`;
+      timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(totalDuration)}`;
+
+      // Acha a cena correspondente
+      const activeScene = scenes.find(s => currentTime >= s.start && currentTime < s.end) || scenes[scenes.length - 1];
+
+      // Ativa o frame da cena
+      document.querySelectorAll('.scene-frame').forEach(frame => {
+        frame.classList.toggle('active', frame.id === `scene-${activeScene.id}`);
+      });
+
+      // Atualiza legenda
+      subText.innerHTML = activeScene.text;
+
+      // Destaca fala na caixa de roteiro
+      document.querySelectorAll('.script-line').forEach(line => line.classList.remove('current'));
+      const curLine = document.getElementById(`script-line-${activeScene.id}`);
+      if (curLine) {
+        curLine.classList.add('current');
+        curLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      if (currentTime >= totalDuration) {
+        pause();
+        currentTime = totalDuration;
+      }
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        pause();
+      } else {
+        play();
+      }
+    }
+
+    function play() {
+      if (currentTime >= totalDuration) currentTime = 0;
+      isPlaying = true;
+      btnPlay.innerHTML = '&#10074;&#10074; Pausar';
+      timerInterval = setInterval(() => {
+        currentTime += 0.2 * playbackSpeed;
+        if (currentTime > totalDuration) currentTime = totalDuration;
+        update();
+      }, 200);
+    }
+
+    function pause() {
+      isPlaying = false;
+      btnPlay.innerHTML = '&#9654; Continuar';
+      clearInterval(timerInterval);
+    }
+
+    function restart() {
+      pause();
+      currentTime = 0;
+      update();
+    }
+
+    function prevScene() {
+      const cur = scenes.find(s => currentTime >= s.start && currentTime < s.end);
+      if (cur && cur.id > 1) {
+        currentTime = scenes[cur.id - 2].start;
+      } else {
+        currentTime = 0;
+      }
+      update();
+    }
+
+    function nextScene() {
+      const cur = scenes.find(s => currentTime >= s.start && currentTime < s.end);
+      if (cur && cur.id < scenes.length) {
+        currentTime = scenes[cur.id].start;
+      }
+      update();
+    }
+
+    function seek(e) {
+      const rect = document.getElementById('progress-container').getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      currentTime = Math.max(0, Math.min(totalDuration, pos * totalDuration));
+      update();
+    }
+
+    function toggleSpeed() {
+      const speeds = [1.0, 1.25, 0.75];
+      const next = speeds[(speeds.indexOf(playbackSpeed) + 1) % speeds.length];
+      playbackSpeed = next;
+      document.getElementById('btn-speed').textContent = `${next}x`;
+    }
+
+    function toggleFullscreen() {
+      const elem = document.getElementById('viewport');
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => alert('Tela cheia bloqueada'));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Teclas de atalho
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePlay();
+      } else if (e.code === 'ArrowRight') {
+        nextScene();
+      } else if (e.code === 'ArrowLeft') {
+        prevScene();
+      } else if (e.code === 'KeyF') {
+        toggleFullscreen();
+      }
+    });
+
+    update();
+  </script>
+</body>
+</html>

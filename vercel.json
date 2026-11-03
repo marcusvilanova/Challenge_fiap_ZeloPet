@@ -6,17 +6,51 @@
   "outputDirectory": "web/dist",
   "cleanUrls": true,
   "functions": {
-    "api/llm.js": { "maxDuration": 30 }
+    "api/llm.js": {
+      "maxDuration": 30
+    }
   },
   "rewrites": [
-    { "source": "/", "destination": "/dashboard.html" },
-    { "source": "/dashboard", "destination": "/dashboard.html" },
-    { "source": "/painel", "destination": "/dashboard.html" },
-    { "source": "/tutor", "destination": "/dashboard.html" },
-    { "source": "/login", "destination": "/index.html" },
-    { "source": "/apresentacao", "destination": "/apresentacao.html" },
-    { "source": "/pitch", "destination": "/apresentacao.html" },
-    { "source": "/slides", "destination": "/apresentacao.html" }
+    {
+      "source": "/",
+      "destination": "/dashboard.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/dashboard.html"
+    },
+    {
+      "source": "/painel",
+      "destination": "/dashboard.html"
+    },
+    {
+      "source": "/tutor",
+      "destination": "/dashboard.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/apresentacao",
+      "destination": "/apresentacao.html"
+    },
+    {
+      "source": "/pitch",
+      "destination": "/apresentacao.html"
+    },
+    {
+      "source": "/slides",
+      "destination": "/apresentacao.html"
+    },
+    {
+      "source": "/video",
+      "destination": "/video.html"
+    },
+    {
+      "source": "/demonstracao",
+      "destination": "/video.html"
+    }
   ],
   "headers": [
     {
@@ -26,8 +60,14 @@
           "key": "Content-Security-Policy",
           "value": "default-src 'self'; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
         },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]
