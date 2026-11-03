@@ -1,18 +1,25 @@
-/* Página de entrada: manifesto à esquerda, formulário à direita. */
+/* ==========================================================================
+   IBM CARBON DESIGN SYSTEM V11 - AUTH & LOGIN PATTERN
+   ========================================================================== */
+
 .auth {
   min-height: 100vh;
   min-height: 100dvh;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(380px, 0.75fr);
+  background: #161616;
 }
 
+/* ------------------------------------------------------------------ Hero Esquerda (Carbon Dark) */
 .auth__hero {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
-  padding: clamp(28px, 5vw, 64px);
+  gap: 36px;
+  padding: clamp(32px, 5vw, 64px);
+  background: #161616;
+  border-right: 1px solid #262626;
   overflow: hidden;
 }
 
@@ -20,85 +27,101 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: -0.02em;
-  color: var(--forest);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.1px;
+  color: #ffffff;
   text-decoration: none;
 }
 .brand__mark {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  background: var(--forest);
-  color: var(--forest-ink);
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  background: #0f62fe;
+  color: #ffffff;
 }
 
 .auth__headline {
-  font-size: var(--text-hero);
-  font-weight: 560;
-  max-width: 13ch;
-  color: var(--forest);
+  font-family: var(--font-ui);
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  max-width: 16ch;
+  color: #ffffff;
+  margin: 0;
 }
 .auth__headline em {
-  font-style: italic;
-  font-weight: 450;
-  color: var(--terracotta);
+  font-style: normal;
+  font-weight: 600;
+  color: #78a9ff;
 }
 .auth__lead {
-  margin-top: 22px;
-  max-width: 46ch;
-  font-size: var(--text-lg);
-  color: var(--ink-2);
+  margin-top: 18px;
+  max-width: 52ch;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.6;
+  color: #c6c6c6;
+  font-weight: 300;
 }
 
 .pillars {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  max-width: 640px;
+  gap: 16px;
+  max-width: 720px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .pillar {
-  padding: 14px 16px;
-  background: rgb(255 253 248 / 0.72);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  backdrop-filter: blur(4px);
+  padding: 16px;
+  background: #262626;
+  border: 1px solid #393939;
+  border-left: 3px solid #0f62fe;
+  border-radius: 0;
+  transition: transform 0.2s, border-color 0.2s;
 }
 .pillar:nth-child(2) {
-  transform: translateY(14px);
+  transform: translateY(0);
+}
+.pillar:hover {
+  border-color: #525252;
+  border-left-color: #78a9ff;
 }
 .pillar strong {
   display: block;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: var(--forest);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.1px;
+  margin-bottom: 4px;
 }
 .pillar span {
-  font-size: var(--text-sm);
-  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.45;
+  color: #a8a8a8;
 }
 
-/* anéis de "pulso": o cuidado que antecede a urgência */
+/* Radar concentric waves (IBM high-tech) */
 .pulse {
   position: absolute;
-  right: -140px;
-  top: 28%;
-  width: 520px;
-  height: 520px;
+  right: -120px;
+  top: 25%;
+  width: 480px;
+  height: 480px;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.45;
 }
 .pulse span {
   position: absolute;
   inset: 0;
-  border: 1.5px solid var(--forest-2);
+  border: 1px solid rgba(15, 98, 254, 0.4);
   border-radius: 50%;
   opacity: 0;
   animation: ring 6s var(--ease) infinite;
@@ -111,82 +134,204 @@
 }
 @keyframes ring {
   0% {
-    transform: scale(0.35);
-    opacity: 0.45;
+    transform: scale(0.3);
+    opacity: 0.5;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.1);
     opacity: 0;
   }
 }
 
+/* ------------------------------------------------------------------ Painel Direita (Carbon White/Gray Card) */
 .auth__panel {
   display: grid;
   place-items: center;
-  padding: clamp(20px, 4vw, 56px);
+  padding: clamp(24px, 5vw, 64px);
+  background: #f4f4f4;
 }
+
 .auth-card {
-  width: min(430px, 100%);
-  padding: 28px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-l);
-  box-shadow: var(--shadow-2);
+  width: min(440px, 100%);
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
+
 .auth-card h2 {
-  font-size: var(--text-xl);
+  font-family: var(--font-ui);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: #161616;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
+
 .auth-card form {
   display: grid;
-  gap: 16px;
-  margin-top: 20px;
+  gap: 18px;
+  margin-top: 16px;
 }
 
+/* Tabs no padrão Carbon (Subtle underline) */
 .tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 4px;
-  margin-bottom: 22px;
-  background: var(--paper-2);
-  border-radius: 999px;
+  display: flex;
+  gap: 0;
+  padding: 0;
+  margin-bottom: 24px;
+  background: transparent;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
 }
 .tab {
-  min-height: 40px;
+  flex: 1;
+  min-height: 44px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
   background: transparent;
-  font-weight: 700;
-  font-size: var(--text-sm);
-  color: var(--ink-2);
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 14px;
+  color: #525252;
   cursor: pointer;
-  transition: background-color var(--dur-fast), color var(--dur-fast);
+  padding: 0 16px;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+.tab:hover {
+  color: #161616;
+  background: #f4f4f4;
 }
 .tab[aria-selected="true"] {
-  background: var(--surface);
-  color: var(--forest);
-  box-shadow: var(--shadow-1);
+  background: transparent;
+  color: #161616;
+  font-weight: 600;
+  border-bottom-color: #0f62fe;
+  box-shadow: none;
 }
 
+/* Form fields no padrão Carbon */
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  color: #525252;
+  letter-spacing: 0.1px;
+}
+.field .input {
+  height: 44px;
+  padding: 0 14px;
+  background: #f4f4f4;
+  border: 1px solid #8d8d8d;
+  border-bottom: 2px solid #161616;
+  border-radius: 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: #161616;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+.field .input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #0f62fe;
+  border-bottom: 2px solid #0f62fe;
+  box-shadow: 0 0 0 1px #0f62fe;
+}
+
+/* Botão Primário IBM Carbon */
+.auth-card .btn--primary {
+  height: 48px;
+  width: 100%;
+  background: #0f62fe;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  transition: background-color 0.15s;
+}
+.auth-card .btn--primary:hover {
+  background: #0043ce;
+}
+.auth-card .btn--primary:active {
+  background: #002d9c;
+}
+
+/* Demo box / chips no padrão IBM Carbon Tags */
 .demo {
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px dashed var(--line-strong);
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+.demo .eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  color: #525252;
+  margin: 0 0 10px 0;
 }
 .demo__row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+.demo .chip {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #0f62fe;
+  color: #0f62fe;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.demo .chip:hover {
+  background: #edf5ff;
+  border-color: #0043ce;
+  color: #0043ce;
+}
+.demo .hint {
+  font-size: 12px;
+  color: #6f6f6f;
   margin-top: 10px;
+  line-height: 1.4;
 }
 
 .banner {
-  padding: 10px 14px;
-  border-radius: var(--radius-s);
-  background: var(--honey-soft);
-  color: var(--p-media);
-  font-size: var(--text-sm);
-  font-weight: 600;
+  padding: 12px 14px;
+  border-radius: 0;
+  background: #fff8e1;
+  border-left: 3px solid #f1c21b;
+  color: #161616;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.error-text {
+  color: #da1e28;
+  font-size: 12px;
+  font-weight: 500;
+  margin: -4px 0 0 0;
 }
 
 @media (max-width: 900px) {
@@ -195,13 +340,15 @@
   }
   .auth__hero {
     gap: 24px;
-    padding-bottom: 8px;
+    padding: 32px 20px 24px;
+    border-right: none;
+    border-bottom: 1px solid #262626;
   }
   .pillars,
   .pulse {
     display: none;
   }
   .auth__headline {
-    max-width: 16ch;
+    max-width: 100%;
   }
 }
