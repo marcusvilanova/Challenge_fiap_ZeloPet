@@ -15,6 +15,7 @@
 | **QA — Vídeo da Automação de Testes (YouTube)** | _inserir o link aqui antes de entregar_ | Demonstração do Selenium IDE executando os 6 testes (roteiro em `qa/README.md`) |
 | **Vídeo Pitch — Solução de IA (YouTube, não listado)** | _inserir o link aqui antes de entregar_ | Roteiro de 5 min em [`docs/roteiro-video-pitch.md`](docs/roteiro-video-pitch.md) |
 | **Apresentação de Slides (IBM Carbon)** | [apresentacao.html](apresentacao.html) · online em `/apresentacao` | Deck interativo com 16 slides, timer de 5 min e navegação Carbon |
+| **Painel do Tutor (IBM Carbon)** | [web/dashboard.html](web/dashboard.html) · online em `/dashboard` | Perfil animal (Mel & Thor), histórico clínico, plano de cuidados e acesso à triagem |
 | **Repositório GitHub (Branch develop)** | https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop | Repositório público com código, testes e documentação |
 | **Aplicação Online (Vercel)** | https://zelopet.vercel.app | Ambiente de validação dos testes manuais e automatizados |
 
