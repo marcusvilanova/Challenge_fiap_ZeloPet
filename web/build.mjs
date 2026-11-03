@@ -20,6 +20,10 @@ if (existsSync(join(root, "apresentacao.html"))) {
   cpSync(join(root, "apresentacao.html"), join(dist, "apresentacao.html"));
 }
 
+if (existsSync(join(root, "qa", "video-guia-apresentacao.html"))) {
+  cpSync(join(root, "qa", "video-guia-apresentacao.html"), join(dist, "video.html"));
+}
+
 if (existsSync(join(root, "web", "dashboard.html"))) {
   cpSync(join(root, "web", "dashboard.html"), join(dist, "dashboard.html"));
 } else if (existsSync(join(statics, "dashboard.html"))) {

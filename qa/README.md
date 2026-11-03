@@ -6,7 +6,9 @@
 | Consulta: plano de testes manuais | [Sprint 4 — Plano de Testes Manuais](https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=f930bbaf-4182-464d-a1be-6c443ec5b010) |
 | Consulta: rastreabilidade PBI × casos de teste | [Sprint 4 — Rastreabilidade](https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=21ce73d1-aef0-4f10-908b-8e053f9f5e3a) |
 | Consulta: tarefas da Sprint 4 | [Sprint 4 — Tarefas](https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=7c3d453c-74fe-46bd-9eba-8ec43ef24cb2) |
-| **Vídeo da automação de testes** (YouTube) | _inserir o link aqui antes de entregar_ |
+| **Vídeo da automação de testes** (YouTube) | _inserir o link do YouTube aqui após gravação_ |
+| **Simulador de Gravação & Telas Legendadas** | [`video-guia-apresentacao.html`](video-guia-apresentacao.html) · online em `/video` |
+| **Arquivo de Legendas Oficiais para Dublagem** | [`legendas-video.srt`](legendas-video.srt) |
 | Sistema testado (versão online) | https://zelopet.vercel.app |
 | **Professor Avaliador** | Prof. Felipe Santos (`proffelipe.santos@fiap.com.br`) |
 | **Acesso Configurado** | Licença **Basic** na Organização · **Project Administrator** no projeto CLYVO VET |

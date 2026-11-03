@@ -1,0 +1,155 @@
+1
+00:00:00,500 --> 00:00:05,000
+Olá, professor Felipe Santos e banca avaliadora da FIAP.
+
+2
+00:00:05,200 --> 00:00:10,000
+Apresentamos a entrega de Compliance, Quality Assurance & Tests da Sprint 4 do projeto Zelo.
+
+3
+00:00:10,200 --> 00:00:15,500
+O Zelo é o assistente inteligente de cuidado contínuo e triagem para a clínica Clyvo Vet.
+
+4
+00:00:15,800 --> 00:00:21,500
+Nossa equipe é composta pelo Marcus Vila Nova, Bruno, Gabriel, Hebert e Nicolas.
+
+5
+00:00:22,000 --> 00:00:27,500
+Vamos demonstrar o cumprimento integral dos requisitos da Parte A e da Parte B do edital.
+
+6
+00:00:28,000 --> 00:00:33,000
+Iniciamos pela Parte A: o plano de testes manuais no Azure Boards.
+
+7
+00:00:33,500 --> 00:00:39,000
+Aqui na organização RM558771, no projeto CLYVO VET, o professor já está convidado.
+
+8
+00:00:39,500 --> 00:00:44,500
+O acesso foi configurado com perfil Basic e permissão de Administrador do Projeto.
+
+9
+00:00:45,000 --> 00:00:51,500
+Estruturamos 20 casos de teste manuais, do CT-01 ao CT-20, cobrindo todo o sistema.
+
+10
+00:00:52,000 --> 00:00:58,000
+Cada teste possui objetivo claro, dados de entrada controlados, passos e dados de saída esperados.
+
+11
+00:00:58,500 --> 00:01:04,500
+Todos os 20 casos estão rastreados aos Product Backlog Items e às tarefas da Sprint 4.
+
+12
+00:01:05,000 --> 00:01:10,500
+Também deixamos consultas salvas na barra lateral para facilitar a navegação e correção.
+
+13
+00:01:11,000 --> 00:01:16,500
+Agora, visualizamos o nosso repositório no GitHub, publicado na branch develop.
+
+14
+00:01:17,000 --> 00:01:23,000
+O repositório é público e possui uma tabela de entregáveis no README com todos os links diretos.
+
+15
+00:01:23,500 --> 00:01:29,000
+Na pasta QA, disponibilizamos a documentação dos testes manuais e o arquivo de automação.
+
+16
+00:01:29,500 --> 00:01:35,000
+O arquivo zelo.side contém a suíte completa de automação para o Selenium IDE.
+
+17
+00:01:35,500 --> 00:01:41,500
+Além disso, temos mais de duzentos testes automatizados entre Java no backend e JavaScript na web.
+
+18
+00:01:42,000 --> 00:01:47,500
+A aplicação está implantada em ambiente de produção na Vercel em zelopet.vercel.app.
+
+19
+00:01:48,000 --> 00:01:54,000
+Toda a interface adota cem por cento a identidade visual do IBM Carbon Design System versão onze.
+
+20
+00:01:54,500 --> 00:02:00,000
+A tela de login segue o padrão IBM Cloud com tipografia IBM Plex Sans e botões IBM Blue.
+
+21
+00:02:00,500 --> 00:02:06,500
+O painel do tutor exibe o prontuário dos pets Mel e Thor, com histórico clínico e ciclo preventivo.
+
+22
+00:02:07,000 --> 00:02:13,000
+O chat com a Zelo segue o padrão watsonx, classificando riscos sem diagnosticar ou prescrever.
+
+23
+00:02:13,500 --> 00:02:20,000
+E o painel da clínica apresenta a fila de triagens em tempo real, com consentimento e revisão profissional.
+
+24
+00:02:20,500 --> 00:02:26,000
+Passamos agora para a Parte B do trabalho: a automação de testes com o Selenium IDE.
+
+25
+00:02:26,500 --> 00:02:32,000
+Abrimos o Selenium IDE e carregamos o projeto zelo.side contido na pasta qa do repositório.
+
+26
+00:02:32,500 --> 00:02:38,500
+A URL base configurada é https://zelopet.vercel.app, apontando para o ambiente online.
+
+27
+00:02:39,000 --> 00:02:45,500
+Criamos seis casos automatizados, superando o mínimo de quatro casos exigidos no edital.
+
+28
+00:02:46,000 --> 00:02:51,500
+Os testes cobrem login da tutora, erro de login, emergência imediata e triagem média.
+
+29
+00:02:52,000 --> 00:02:57,500
+Também validamos a recusa de prescrição de medicamentos e o compartilhamento com a clínica.
+
+30
+00:02:58,000 --> 00:03:03,500
+Ao clicar em Run all tests, vemos cada comando sendo executado diretamente contra a aplicação.
+
+31
+00:03:04,000 --> 00:03:10,000
+Comandos open, type, click, waitForElement e assertValidating são checados passo a passo.
+
+32
+00:03:10,500 --> 00:03:17,000
+A execução finaliza com sucesso total: seis de seis casos aprovados e marcados em verde.
+
+33
+00:03:17,500 --> 00:03:23,500
+Para comprovar que os asserts realmente funcionam, faremos agora um teste de falha controlada.
+
+34
+00:03:24,000 --> 00:03:30,000
+No caso TA-03, alteramos o valor esperado do assert de Prioridade emergência para Prioridade baixa.
+
+35
+00:03:30,500 --> 00:03:36,500
+Executamos o caso novamente e o Selenium IDE acusa erro imediatamente, interrompendo o fluxo.
+
+36
+00:03:37,000 --> 00:03:42,500
+O log exibe assert failed em vermelho, evidenciando o rigor da nossa automação.
+
+37
+00:03:43,000 --> 00:03:48,000
+Restauramos o valor correto, reexecutamos e o caso volta a passar com sucesso.
+
+38
+00:03:48,500 --> 00:03:54,000
+Concluímos assim cem por cento dos requisitos de Compliance, QA e Automação da Sprint 4.
+
+39
+00:03:54,500 --> 00:04:00,000
+Todos os links e evidências estão disponíveis na branch develop do GitHub. Muito obrigado!
