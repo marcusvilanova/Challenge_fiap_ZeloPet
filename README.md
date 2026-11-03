@@ -1,13 +1,25 @@
 # Zelo — cuidado contínuo antes da urgência
 
-> **Sprint 4 · Disruptive Architectures: IoT, IoB & Generative IA** — FIAP Challenge 2026 · Clyvo Vet
-> Chatbot de triagem preliminar para pets: **HTML + Java (Spring Boot) + IA híbrida**, funcionando de ponta a ponta.
+> **Sprint 4 · Disruptive Architectures: IoT, IoB & Generative IA** & **Compliance, Quality Assurance & Tests**  
+> FIAP Challenge 2026 · Clyvo Vet · Chatbot de triagem preliminar para pets: **HTML + Java (Spring Boot) + IA híbrida**, funcionando de ponta a ponta.
 
-| | |
-|---|---|
-| **Vídeo pitch (YouTube, não listado)** | _inserir o link aqui antes de entregar_ |
-| **Apresentação de slides (IBM Carbon)** | [apresentacao.html](apresentacao.html) · online em `/apresentacao` |
-| **Repositório** | https://github.com/marcusvilanova/Challenge_fiap_ZeloPet |
+## Entregas da Sprint 4
+
+| Disciplina / Entrega | Link | Detalhes |
+|---|---|---|
+| **QA — Azure Boards (Casos de Teste & Backlog)** | [CLYVO VET no Azure Boards](https://dev.azure.com/RM558771/CLYVO%20VET) | 20 Casos de Teste (#57–#76) vinculados aos PBIs e tarefas da Sprint 4 |
+| **QA — Consulta: Plano de Testes Manuais** | [Sprint 4 — Testes Manuais](https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=f930bbaf-4182-464d-a1be-6c443ec5b010) | Consulta direta filtrada no Azure Boards |
+| **QA — Consulta: Rastreabilidade PBI × Testes** | [Sprint 4 — Rastreabilidade](https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=21ce73d1-aef0-4f10-908b-8e053f9f5e3a) | Rastreabilidade *Tests / Tested By* |
+| **QA — Documentação dos Testes Manuais** | [`qa/plano-testes-manuais.md`](qa/plano-testes-manuais.md) · [`qa/README.md`](qa/README.md) | Objetivos, dados controlados de entrada/saída e passos detalhados |
+| **QA — Automação Selenium IDE** | [`qa/selenium/zelo.side`](qa/selenium/zelo.side) | 6 testes automatizados executando contra a versão online |
+| **QA — Vídeo da Automação de Testes (YouTube)** | _inserir o link aqui antes de entregar_ | Demonstração do Selenium IDE executando os 6 testes (roteiro em `qa/README.md`) |
+| **Vídeo Pitch — Solução de IA (YouTube, não listado)** | _inserir o link aqui antes de entregar_ | Roteiro de 5 min em [`docs/roteiro-video-pitch.md`](docs/roteiro-video-pitch.md) |
+| **Apresentação de Slides (IBM Carbon)** | [apresentacao.html](apresentacao.html) · online em `/apresentacao` | Deck interativo com 16 slides, timer de 5 min e navegação Carbon |
+| **Repositório GitHub (Branch develop)** | https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop | Repositório público com código, testes e documentação |
+| **Aplicação Online (Vercel)** | https://zelopet.vercel.app | Ambiente de validação dos testes manuais e automatizados |
+
+> **Acesso do Professor ao Azure DevOps (Prof. Felipe Santos — `proffelipe.santos@fiap.com.br`):**
+> O professor foi cadastrado na organização `https://dev.azure.com/RM558771` com licença **Basic** e permissão de **Project Administrator** no projeto **CLYVO VET**.
 
 ## Integrantes
 

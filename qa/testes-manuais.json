@@ -1,0 +1,522 @@
+{
+  "ambiente": "Versão online: https://zelopet.vercel.app (dados de demonstração no navegador; contas de exemplo entram com qualquer senha). Os casos CT-19 e CT-20 usam o sistema completo local (backend Java + serviço de visão): .\\scripts\\run-local.ps1 e http://localhost:8080.",
+  "preparacao": "Antes de cada execução, abrir o site numa janela anônima (dados limpos). Datas relativas (vacinas) são calculadas a partir do dia da execução.",
+  "casos": [
+    {
+      "id": "CT-01",
+      "pbi": 17,
+      "prioridade": 1,
+      "titulo": "Login com conta de demonstração da tutora",
+      "objetivo": "Verificar que a tutora entra no sistema e chega à conversa do primeiro pet com a saudação personalizada.",
+      "entrada": "E-mail: ana@zelo.demo · Senha: Teste-1234",
+      "saida": "Tela 'Conversa sobre Mel'; nome 'Ana Souza' no topo; mensagem 'Oi! Eu sou a Zelo, assistente de cuidado da Mel...'; atalhos 'Relatar um sintoma', 'Próximos cuidados', 'O que você faz?'.",
+      "passos": [
+        [
+          "Abrir https://zelopet.vercel.app",
+          "Tela de entrada com as abas 'Entrar' e 'Criar conta'"
+        ],
+        [
+          "Clicar no atalho 'Tutora Ana'",
+          "Campo E-mail preenchido com ana@zelo.demo"
+        ],
+        [
+          "Digitar a senha Teste-1234 e clicar em 'Entrar'",
+          "Abre a tela 'Conversa sobre Mel' com 'Ana Souza' no topo"
+        ],
+        [
+          "Ler a primeira mensagem do bot",
+          "Saudação 'Oi! Eu sou a Zelo, assistente de cuidado da Mel...' e os três atalhos de resposta rápida"
+        ]
+      ]
+    },
+    {
+      "id": "CT-02",
+      "pbi": 17,
+      "prioridade": 2,
+      "titulo": "Login com e-mail não cadastrado é recusado",
+      "objetivo": "Verificar que credenciais inválidas não dão acesso e geram mensagem clara.",
+      "entrada": "E-mail: naoexiste@zelo.demo · Senha: Teste-1234",
+      "saida": "Mensagem 'E-mail ou senha inválidos'; usuário continua na tela de entrada.",
+      "passos": [
+        [
+          "Abrir https://zelopet.vercel.app",
+          "Tela de entrada"
+        ],
+        [
+          "Digitar o e-mail naoexiste@zelo.demo e a senha Teste-1234",
+          "Campos preenchidos"
+        ],
+        [
+          "Clicar em 'Entrar'",
+          "Mensagem 'E-mail ou senha inválidos' abaixo do formulário; a URL continua /index.html"
+        ]
+      ]
+    },
+    {
+      "id": "CT-03",
+      "pbi": 16,
+      "prioridade": 2,
+      "titulo": "Cadastro de tutor: senha curta recusada e cadastro válido aceito",
+      "objetivo": "Validar a regra de senha mínima (8 caracteres) e a criação de conta de tutor.",
+      "entrada": "Nome: Carla Teste · E-mail: carla.teste@zelo.demo · Senha 1: 1234567 (7 caracteres) · Senha 2: senha-segura-1",
+      "saida": "Com a senha 1: 'Preencha nome, e-mail e uma senha com ao menos 8 caracteres.' Com a senha 2: conta criada, tela do chat abre e pede o cadastro do primeiro pet.",
+      "passos": [
+        [
+          "Abrir https://zelopet.vercel.app e clicar na aba 'Criar conta'",
+          "Formulário com Nome, E-mail e Senha"
+        ],
+        [
+          "Preencher Carla Teste / carla.teste@zelo.demo / 1234567 e clicar em 'Criar conta'",
+          "Mensagem 'Preencha nome, e-mail e uma senha com ao menos 8 caracteres.'"
+        ],
+        [
+          "Trocar a senha para senha-segura-1 e clicar em 'Criar conta'",
+          "Entra no chat da tutora 'Carla Teste'"
+        ],
+        [
+          "Observar a tela",
+          "Abre o cadastro do primeiro pet (a conta nova não tem pets)"
+        ]
+      ]
+    },
+    {
+      "id": "CT-04",
+      "pbi": 18,
+      "prioridade": 2,
+      "titulo": "Cadastro de pet",
+      "objetivo": "Verificar que o tutor cadastra um pet e ele passa a ter conversa própria.",
+      "entrada": "Logado como ana@zelo.demo · Nome: Luna · Espécie: Gato · Sexo: Fêmea · Nascimento: 01/05/2025 · Peso: 3,2 kg",
+      "saida": "Aba 'Luna' no topo; título 'Conversa sobre Luna'; cartão do pet 'Gato · fêmea'; aviso 'Luna foi cadastrado.'",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo (CT-01)",
+          "Conversa sobre Mel"
+        ],
+        [
+          "Clicar em 'Novo' na barra de pets",
+          "Abre o formulário de cadastro de pet"
+        ],
+        [
+          "Preencher Luna, Gato, Fêmea, 01/05/2025, 3,2 e clicar em 'Cadastrar'",
+          "Formulário fecha e aparece o aviso 'Luna foi cadastrado.'"
+        ],
+        [
+          "Conferir a barra de pets e o cartão lateral",
+          "Aba 'Luna' selecionada, 'Conversa sobre Luna' e cartão 'Gato · fêmea'"
+        ]
+      ]
+    },
+    {
+      "id": "CT-05",
+      "pbi": 24,
+      "prioridade": 2,
+      "titulo": "Plano de cuidados (Ciclo Zelo) na conversa e no painel lateral",
+      "objetivo": "Verificar que os cuidados vencidos e próximos aparecem na conversa e no painel.",
+      "entrada": "Logado como ana@zelo.demo, pet Mel · Mensagem: Quais as próximas vacinas?",
+      "saida": "Resposta 'Estes são os próximos cuidados da Mel:' com 'V10 (polivalente) — reforço anual: venceu há 12 dias', 'Antirrábica: vence em 9 dias', 'Vermífugo: vence em 28 dias' e 'Check-up anual'; no painel, V10 marcada como 'Vencido'.",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo e selecionar Mel",
+          "Conversa sobre Mel"
+        ],
+        [
+          "Enviar a mensagem 'Quais as próximas vacinas?'",
+          "Bot lista os cuidados da Mel, começando por 'V10 (polivalente) — reforço anual: venceu há 12 dias'"
+        ],
+        [
+          "Conferir o painel 'Ciclo Zelo · próximos cuidados'",
+          "V10 com selo 'Vencido', Antirrábica 'Em breve', Vermífugo e Check-up 'Em dia'"
+        ]
+      ]
+    },
+    {
+      "id": "CT-06",
+      "pbi": 25,
+      "prioridade": 1,
+      "titulo": "Triagem de prioridade média com perguntas de acompanhamento",
+      "objetivo": "Verificar que um relato leve gera no máximo duas perguntas e termina em prioridade média com explicação.",
+      "entrada": "Pet Mel · Mensagens: 'Mel está com tosse' → atalho 'Há 1 ou 2 dias' → atalho 'Respira normalmente'",
+      "saida": "Perguntas 'Desde quando ela está assim?' e 'Como está a respiração da Mel?'; cartão 'Prioridade média', 'Agendar consulta nas próximas 24–72 horas', sintoma 'Tosse', duração '≈ 2 dias', confiança 58%, selo 'Revisão humana'; pergunta se pode enviar o resumo à clínica.",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo, Mel, clicar em 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Mel está com tosse'",
+          "Bot: 'Entendi: tosse. Desde quando ela está assim?' com atalhos de tempo"
+        ],
+        [
+          "Clicar em 'Há 1 ou 2 dias'",
+          "Bot pergunta sobre a respiração da Mel"
+        ],
+        [
+          "Clicar em 'Respira normalmente'",
+          "Cartão 'Prioridade média', 'Agendar consulta nas próximas 24–72 horas', sintoma Tosse, ≈ 2 dias, confiança 58%"
+        ],
+        [
+          "Ler o fim da mensagem e os atalhos",
+          "'Quer que eu envie este resumo para a clínica?' e atalhos 'Sim, compartilhar com a clínica' / 'Agora não'"
+        ]
+      ]
+    },
+    {
+      "id": "CT-07",
+      "pbi": 25,
+      "prioridade": 1,
+      "titulo": "Sinal de alerta gera emergência imediata",
+      "objetivo": "Verificar que um sinal de alerta encerra as perguntas e indica atendimento de urgência com primeiros cuidados.",
+      "entrada": "Pet Mel · Mensagem: 'Ela teve uma convulsão agora há pouco'",
+      "saida": "Sem perguntas; texto 'Atenção: isso pode ser uma emergência. Leve a Mel agora a um pronto-atendimento veterinário...'; primeiros cuidados para convulsão; cartão 'Prioridade emergência', 'Buscar atendimento veterinário de urgência agora', 'Por quê: Sinal de alerta relatado: convulsão', confiança 90%.",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo, Mel, 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Ela teve uma convulsão agora há pouco'",
+          "Resposta imediata, sem perguntas de acompanhamento"
+        ],
+        [
+          "Conferir o texto",
+          "'Atenção: isso pode ser uma emergência...' e 'Afaste objetos que possam machucar, não coloque a mão na boca...'"
+        ],
+        [
+          "Conferir o cartão",
+          "'Prioridade emergência', 'Buscar atendimento veterinário de urgência agora', sintoma Convulsão, confiança 90%"
+        ]
+      ]
+    },
+    {
+      "id": "CT-08",
+      "pbi": 25,
+      "prioridade": 1,
+      "titulo": "Combinação de sinais eleva a prioridade para alta",
+      "objetivo": "Verificar a regra de combinação (abatimento + vômito) e a duração extraída do texto.",
+      "entrada": "Pet Mel · Mensagem: 'Ela está muito abatida e vomitou duas vezes desde ontem'",
+      "saida": "Cartão 'Prioridade alta', 'Contatar a clínica veterinária hoje', sintomas 'Apatia / abatimento' e 'Vômito', duração '≈ 24 h', motivo 'Abatimento junto de outros sinais indica que o organismo está sendo afetado', confiança 78%.",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo, Mel, 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Ela está muito abatida e vomitou duas vezes desde ontem'",
+          "Triagem fecha sem perguntas (prioridade alta)"
+        ],
+        [
+          "Conferir o cartão",
+          "'Prioridade alta', 'Contatar a clínica veterinária hoje', Apatia / abatimento + Vômito, ≈ 24 h, confiança 78%"
+        ]
+      ]
+    },
+    {
+      "id": "CT-09",
+      "pbi": 25,
+      "prioridade": 1,
+      "titulo": "Regra específica de gato: não consegue urinar",
+      "objetivo": "Verificar a regra de espécie (obstrução urinária em gato é emergência).",
+      "entrada": "Pet Thor (gato) · Mensagem: 'Ele tenta fazer xixi e não sai nada, está miando muito'",
+      "saida": "Cartão 'Prioridade emergência' com sintomas 'Não consegue urinar' e 'Mudança de comportamento'; texto com 'Não espere: a obstrução urinária pode ser fatal em poucas horas.'",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo e clicar na aba 'Thor'",
+          "Conversa sobre Thor"
+        ],
+        [
+          "Clicar em 'Nova conversa' e enviar 'Ele tenta fazer xixi e não sai nada, está miando muito'",
+          "Resposta de emergência sem perguntas"
+        ],
+        [
+          "Conferir texto e cartão",
+          "'Não espere: a obstrução urinária pode ser fatal em poucas horas.'; 'Prioridade emergência'; sintomas Não consegue urinar e Mudança de comportamento"
+        ]
+      ]
+    },
+    {
+      "id": "CT-10",
+      "pbi": 25,
+      "prioridade": 2,
+      "titulo": "Negação: sintoma negado não entra na triagem",
+      "objetivo": "Verificar que 'não vomitou' não é contado como vômito.",
+      "entrada": "Pet Mel · Mensagens: 'Ela não vomitou, só espirrou algumas vezes hoje' → atalho 'Respira normalmente'",
+      "saida": "Pergunta sobre a respiração; cartão 'Prioridade baixa', 'Registrar e observar por 24–48 horas', sintoma identificado apenas 'Espirros' (sem Vômito).",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo, Mel, 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Ela não vomitou, só espirrou algumas vezes hoje'",
+          "Bot pergunta sobre a respiração da Mel"
+        ],
+        [
+          "Clicar em 'Respira normalmente'",
+          "Cartão 'Prioridade baixa', 'Registrar e observar por 24–48 horas'"
+        ],
+        [
+          "Conferir 'Sintomas identificados'",
+          "Somente 'Espirros'; Vômito não aparece"
+        ]
+      ]
+    },
+    {
+      "id": "CT-11",
+      "pbi": 31,
+      "prioridade": 2,
+      "titulo": "Relato não reconhecido vira média com revisão humana e pode ser enviado",
+      "objetivo": "Verificar que ausência de sintoma reconhecido não é tratada como baixo risco.",
+      "entrada": "Pet Mel · Mensagens: 'Ela está com um comportamento que não sei descrever direito' → atalho 'Enviar para a clínica avaliar'",
+      "saida": "Primeiro: 'Não consegui entender isso como um sinal de saúde da Mel...' com orientação de sinais de urgência. Depois: cartão 'Prioridade média' com motivo 'Não consegui identificar sinais específicos no relato...', selo 'Revisão humana' e mensagem 'Pronto. Enviei o resumo da Mel para a clínica...'.",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo, Mel, 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Ela está com um comportamento que não sei descrever direito'",
+          "Bot pede outras palavras e lista os sinais de urgência; atalho 'Enviar para a clínica avaliar'"
+        ],
+        [
+          "Clicar em 'Enviar para a clínica avaliar'",
+          "Cartão 'Prioridade média', 'Revisão humana', motivo 'Não consegui identificar sinais específicos no relato...'"
+        ],
+        [
+          "Ler o fim da resposta",
+          "'Pronto. Enviei o resumo da Mel para a clínica...'"
+        ]
+      ]
+    },
+    {
+      "id": "CT-12",
+      "pbi": 25,
+      "prioridade": 1,
+      "titulo": "Pedido de remédio é recusado",
+      "objetivo": "Verificar que o chatbot nunca indica medicamento nem dose.",
+      "entrada": "Pet Mel · Mensagem: 'Posso dar dipirona para ela?'",
+      "saida": "'Não posso indicar remédios nem doses. Vários medicamentos humanos, como dipirona, paracetamol e ibuprofeno, são perigosos para cães e gatos...'; nenhuma dose é citada.",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo, Mel, 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Posso dar dipirona para ela?'",
+          "Bot responde 'Não posso indicar remédios nem doses...'"
+        ],
+        [
+          "Conferir a resposta",
+          "Explica o risco de remédios humanos e orienta procurar o veterinário; não cita dose"
+        ]
+      ]
+    },
+    {
+      "id": "CT-13",
+      "pbi": 31,
+      "prioridade": 1,
+      "titulo": "Recusa do compartilhamento: nada vai para a clínica",
+      "objetivo": "Verificar o consentimento explícito (LGPD): recusar não compartilha.",
+      "entrada": "Pet Mel · 'Ela teve uma convulsão agora há pouco' → atalho 'Agora não' · Depois: login vet@zelo.demo",
+      "saida": "'Tudo bem, não compartilhei nada com a clínica...'; na fila da clínica essa triagem não aparece (em sessão limpa: 'Nenhuma triagem compartilhada ainda').",
+      "passos": [
+        [
+          "Em janela anônima, entrar como ana@zelo.demo, Mel, 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Ela teve uma convulsão agora há pouco'",
+          "Triagem de emergência com atalhos de compartilhamento"
+        ],
+        [
+          "Clicar em 'Agora não'",
+          "'Tudo bem, não compartilhei nada com a clínica...'"
+        ],
+        [
+          "Clicar em 'Sair' e entrar como vet@zelo.demo (atalho 'Clínica Zelo')",
+          "Painel 'Fila de atenção' sem essa triagem ('Nenhuma triagem compartilhada ainda')"
+        ]
+      ]
+    },
+    {
+      "id": "CT-14",
+      "pbi": 31,
+      "prioridade": 1,
+      "titulo": "Compartilhamento com consentimento aparece na fila da clínica",
+      "objetivo": "Verificar o fluxo tutor → consentimento → clínica, com prioridade na fila.",
+      "entrada": "Pet Mel · 'Ela teve uma convulsão agora há pouco' → atalho 'Sim, compartilhar com a clínica' · Depois: login vet@zelo.demo",
+      "saida": "Tutor: 'Pronto. Enviei o resumo da Mel para a clínica...', cartão com 'Compartilhada com a clínica', painel 'Compartilhamento com a clínica' ativo. Clínica: item 'Mel · EMERGÊNCIA · Convulsão · Aguardando revisão' no topo da fila.",
+      "passos": [
+        [
+          "Em janela anônima, entrar como ana@zelo.demo, Mel, 'Nova conversa'",
+          "Saudação do bot"
+        ],
+        [
+          "Enviar 'Ela teve uma convulsão agora há pouco'",
+          "Triagem de emergência"
+        ],
+        [
+          "Clicar em 'Sim, compartilhar com a clínica'",
+          "'Pronto. Enviei o resumo da Mel para a clínica...'; cartão marcado 'Compartilhada com a clínica'"
+        ],
+        [
+          "Conferir o painel 'Compartilhamento com a clínica'",
+          "'Ativo desde ...' e botão 'Revogar compartilhamento'"
+        ],
+        [
+          "Sair e entrar como vet@zelo.demo",
+          "Fila mostra 'Mel', selo 'EMERGÊNCIA', 'Convulsão', 'Aguardando revisão'"
+        ]
+      ]
+    },
+    {
+      "id": "CT-15",
+      "pbi": 30,
+      "prioridade": 1,
+      "titulo": "Revisão profissional pela clínica e retorno ao tutor",
+      "objetivo": "Verificar o humano no circuito: a clínica confirma a prioridade e o tutor vê o retorno.",
+      "entrada": "Pré-condição: CT-14 executado · Clínica: decisão 'Confirmar prioridade' · Observação: 'Trazer a Mel agora.'",
+      "saida": "Clínica: aviso 'Revisão registrada...', seção 'Revisões registradas' com 'Confirmada · Emergência' e a observação; item da fila 'Revisada'. Tutor: linha do tempo com 'Clínica confirmou a prioridade emergência' e a observação.",
+      "passos": [
+        [
+          "Logado como vet@zelo.demo, clicar no item 'Mel' da fila",
+          "Detalhe com relato, triagem da IA e formulário 'Revisão profissional'"
+        ],
+        [
+          "Manter 'Confirmar prioridade', escrever 'Trazer a Mel agora.' e clicar em 'Registrar revisão'",
+          "Aviso 'Revisão registrada...' e 'Confirmada · Emergência' em 'Revisões registradas'"
+        ],
+        [
+          "Conferir a fila",
+          "Item com selo 'Revisada'"
+        ],
+        [
+          "Sair, entrar como ana@zelo.demo e abrir a 'Linha do tempo' da Mel",
+          "Evento 'Clínica confirmou a prioridade emergência' com 'Trazer a Mel agora.'"
+        ]
+      ]
+    },
+    {
+      "id": "CT-16",
+      "pbi": 31,
+      "prioridade": 1,
+      "titulo": "Revogar o consentimento oculta as triagens da clínica",
+      "objetivo": "Verificar que a revogação desfaz o compartilhamento (LGPD).",
+      "entrada": "Pré-condição: CT-14 executado · Tutor clica em 'Revogar compartilhamento'",
+      "saida": "Aviso 'Compartilhamento revogado. A clínica deixou de ver as triagens.'; painel 'Desativado'; na clínica a triagem some da fila.",
+      "passos": [
+        [
+          "Logado como ana@zelo.demo, Mel, painel 'Compartilhamento com a clínica'",
+          "Status 'Ativo desde ...'"
+        ],
+        [
+          "Clicar em 'Revogar compartilhamento'",
+          "Aviso 'Compartilhamento revogado. A clínica deixou de ver as triagens.'"
+        ],
+        [
+          "Conferir o painel",
+          "'Desativado. Nada é enviado à clínica sem a sua autorização.'"
+        ],
+        [
+          "Sair e entrar como vet@zelo.demo",
+          "As triagens da Mel não aparecem mais na fila"
+        ]
+      ]
+    },
+    {
+      "id": "CT-17",
+      "pbi": 17,
+      "prioridade": 2,
+      "titulo": "Controle de acesso: tutor não abre o painel da clínica",
+      "objetivo": "Verificar a separação de perfis TUTOR e CLÍNICA.",
+      "entrada": "Logado como ana@zelo.demo · URL: https://zelopet.vercel.app/clinic.html",
+      "saida": "O painel da clínica não é exibido; o usuário é redirecionado para a área do tutor (Conversa sobre Mel).",
+      "passos": [
+        [
+          "Entrar como ana@zelo.demo",
+          "Conversa sobre Mel"
+        ],
+        [
+          "Digitar na barra de endereço https://zelopet.vercel.app/clinic.html",
+          "A fila da clínica não aparece"
+        ],
+        [
+          "Aguardar o redirecionamento",
+          "Volta para a tela do tutor (Conversa sobre Mel)"
+        ]
+      ]
+    },
+    {
+      "id": "CT-18",
+      "pbi": 32,
+      "prioridade": 2,
+      "titulo": "Saída estruturada da IA e rastreabilidade",
+      "objetivo": "Verificar que a triagem expõe o contrato JSON com versão do modelo, confiança, revisão humana e aviso.",
+      "entrada": "Triagem do CT-07 · Ação: abrir 'Ver saída JSON estruturada'",
+      "saida": "JSON com \"priority\": \"emergencia\", \"next_action\": \"buscar_atendimento_urgente\", \"confidence\": 0.9, \"model_version\": \"zelo-triage-hybrid-1.0\", \"engine\".\"rules\": \"zelo-rules-1.0\", \"human_review_required\": true e \"disclaimer\": \"Esta orientação não substitui avaliação veterinária.\"",
+      "passos": [
+        [
+          "Executar o CT-07",
+          "Cartão de emergência"
+        ],
+        [
+          "Clicar em 'Ver saída JSON estruturada' no cartão",
+          "Bloco JSON é exibido"
+        ],
+        [
+          "Conferir os campos",
+          "priority=emergencia, next_action=buscar_atendimento_urgente, confidence=0.9, model_version=zelo-triage-hybrid-1.0, human_review_required=true, disclaimer presente"
+        ]
+      ]
+    },
+    {
+      "id": "CT-19",
+      "pbi": 26,
+      "prioridade": 2,
+      "titulo": "Análise de foto da pele (cão) — resultado experimental",
+      "objetivo": "Verificar a integração do classificador de imagens (D3) com o chat. Ambiente: sistema completo local.",
+      "entrada": "http://localhost:8080 · ana@zelo.demo (senha de demonstração do README) · Pet Mel · Arquivo: data/samples/d3/fungica_2.jpg",
+      "saida": "Cartão 'Análise de foto · Experimental' com 'Infecção fúngica' 96%, selo 'MÉDIA', texto 'só o hash da imagem é guardado; a foto não é armazenada' e aviso 'Não é diagnóstico'; linha do tempo com 'Análise de foto (experimental): Infecção fúngica'.",
+      "passos": [
+        [
+          "Subir o sistema com .\\scripts\\run-local.ps1 e entrar como ana@zelo.demo",
+          "Conversa sobre Mel; selo 'Visão ativa' no topo"
+        ],
+        [
+          "Clicar no ícone de câmera e escolher data/samples/d3/fungica_2.jpg",
+          "Mensagem 'Enviei uma foto para análise.'"
+        ],
+        [
+          "Conferir o cartão de resultado",
+          "'Infecção fúngica' 96%, selo 'MÉDIA', aviso de classificação experimental"
+        ],
+        [
+          "Conferir a linha do tempo",
+          "Evento 'Análise de foto (experimental): Infecção fúngica'"
+        ]
+      ]
+    },
+    {
+      "id": "CT-20",
+      "pbi": 26,
+      "prioridade": 3,
+      "titulo": "Foto de gato é recusada com explicação",
+      "objetivo": "Verificar o limite do classificador (treinado só com cães). Ambiente: sistema completo local.",
+      "entrada": "http://localhost:8080 · ana@zelo.demo (senha de demonstração do README) · Pet Thor (gato) · Arquivo: data/samples/d3/fungica_2.jpg",
+      "saida": "Aviso 'O classificador visual foi treinado apenas com cães. Para gatos, descreva os sinais no chat que eu faço a triagem.'; nenhum resultado de classificação.",
+      "passos": [
+        [
+          "Com o sistema local no ar, entrar como ana@zelo.demo e selecionar Thor",
+          "Conversa sobre Thor"
+        ],
+        [
+          "Clicar no ícone de câmera e escolher data/samples/d3/fungica_2.jpg",
+          "Aviso 'O classificador visual foi treinado apenas com cães...'"
+        ],
+        [
+          "Conferir o chat",
+          "Nenhum cartão de análise de foto é criado"
+        ]
+      ]
+    }
+  ]
+}
