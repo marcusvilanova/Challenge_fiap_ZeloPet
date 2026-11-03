@@ -1,6 +1,6 @@
 // Monta a versão estática para a Vercel em web/dist: as mesmas telas do backend, com a API rodando no navegador.
 // Uso: node web/build.mjs   (a Vercel roda isto como buildCommand)
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,6 +15,10 @@ cpSync(join(root, "web", "local-api.js"), join(dist, "js", "api.js"));
 cpSync(join(root, "web", "engine"), join(dist, "js", "engine"), { recursive: true });
 mkdirSync(join(dist, "triage"), { recursive: true });
 cpSync(join(root, "backend", "src", "main", "resources", "triage", "triage_knowledge.json"), join(dist, "triage", "triage_knowledge.json"));
+
+if (existsSync(join(root, "apresentacao.html"))) {
+  cpSync(join(root, "apresentacao.html"), join(dist, "apresentacao.html"));
+}
 
 function patch(file, from, to) {
   const path = join(dist, file);

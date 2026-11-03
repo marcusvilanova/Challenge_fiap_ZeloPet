@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zelo — Pitch Sprint 4 · Clyvo Vet · FIAP Challenge 2026</title>
+  <meta name="description" content="Apresentação executiva e técnica do projeto Zelo - Chatbot de triagem preliminar para pets com IA híbrida. FIAP Challenge 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── IBM CARBON DESIGN SYSTEM TOKENS ──────────────── */
+    :root {
+      --cds-white: #ffffff;
+      --cds-gray-10: #f4f4f4;
+      --cds-gray-20: #e0e0e0;
+      --cds-gray-30: #c6c6c6;
+      --cds-gray-50: #8d8d8d;
+      --cds-gray-60: #6f6f6f;
+      --cds-gray-70: #525252;
+      --cds-gray-80: #393939;
+      --cds-gray-90: #262626;
+      --cds-gray-100: #161616;
+
+      --cds-blue-10: #edf5ff;
+      --cds-blue-20: #d0e2ff;
+      --cds-blue-40: #78a9ff;
+      --cds-blue-60: #0f62fe;
+      --cds-blue-70: #0043ce;
+      --cds-blue-80: #002d9c;
+
+      --cds-red-10: #fff1f1;
+      --cds-red-50: #fa4d56;
+      --cds-red-60: #da1e28;
+
+      --cds-green-10: #defbe6;
+      --cds-green-40: #42be65;
+      --cds-green-50: #24a148;
+
+      --cds-yellow-10: #fcf4d6;
+      --cds-yellow-30: #f1c21b;
+      --cds-orange-40: #ff832b;
+
+      --cds-purple-10: #f6f2ff;
+      --cds-purple-60: #8a3ffc;
+
+      --cds-teal-10: #d9fbfb;
+      --cds-teal-50: #007d79;
+
+      --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: var(--cds-gray-100);
+      color: var(--cds-white);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── CARBON UI SHELL / HEADER ───────────────────────── */
+    .carbon-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: var(--cds-gray-100);
+      border-bottom: 1px solid var(--cds-gray-80);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 9000;
+    }
+
+    .carbon-header__left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .carbon-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cds-white);
+      text-decoration: none;
+      letter-spacing: 0.16px;
+    }
+
+    .carbon-brand strong {
+      font-weight: 700;
+      color: var(--cds-blue-40);
+    }
+
+    .carbon-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--cds-gray-80);
+    }
+
+    .carbon-subheading {
+      font-size: 12px;
+      color: var(--cds-gray-50);
+      font-weight: 400;
+      letter-spacing: 0.32px;
+    }
+
+    .carbon-header__right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--cds-gray-30);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      height: 32px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .header-btn:hover {
+      background: var(--cds-gray-90);
+      color: var(--cds-white);
+      border-color: var(--cds-gray-70);
+    }
+
+    .timer-badge {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--cds-blue-40);
+      background: var(--cds-gray-90);
+      border: 1px solid var(--cds-gray-80);
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .timer-badge:hover {
+      border-color: var(--cds-blue-60);
+    }
+
+    /* ── PROGRESS BAR ───────────────────────────────────── */
+    .progress-bar {
+      position: fixed;
+      top: 48px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--cds-gray-80);
+      z-index: 9001;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--cds-blue-60);
+      width: 0%;
+      transition: width 0.3s cubic-bezier(0.2, 0, 0.38, 0.9);
+    }
+
+    /* ── SLIDE CONTAINER ────────────────────────────────── */
+    .slide-deck {
+      position: absolute;
+      top: 51px;
+      bottom: 48px;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* ── SLIDE LAYOUTS ──────────────────────────────────── */
+    .slide-dark {
+      background: var(--cds-gray-100);
+      color: var(--cds-white);
+      padding: 64px 80px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .slide-white {
+      background: var(--cds-white);
+      color: var(--cds-gray-100);
+      padding: 56px 80px;
+    }
+
+    .slide-split {
+      flex-direction: row;
+      background: var(--cds-white);
+    }
+
+    .split-left {
+      width: 38%;
+      background: var(--cds-gray-100);
+      color: var(--cds-white);
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--cds-gray-80);
+    }
+
+    .split-right {
+      width: 62%;
+      background: var(--cds-white);
+      color: var(--cds-gray-100);
+      padding: 56px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .slide-blue {
+      background: var(--cds-blue-60);
+      color: var(--cds-white);
+      padding: 64px 80px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* ── CARBON TYPOGRAPHY ──────────────────────────────── */
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow-blue { color: var(--cds-blue-40); }
+    .eyebrow-dark { color: var(--cds-gray-60); }
+    .eyebrow-white { color: rgba(255, 255, 255, 0.7); }
+
+    .title-xl {
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .title-xl strong { font-weight: 700; }
+
+    .title-lg {
+      font-size: 38px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+    }
+    .title-lg strong { font-weight: 600; }
+
+    .title-md {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .title-md strong { font-weight: 600; }
+
+    .subtitle {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--cds-gray-30);
+      max-width: 680px;
+    }
+    .subtitle-center { margin: 0 auto; }
+    .subtitle strong { font-weight: 600; color: var(--cds-white); }
+
+    .body-text {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--cds-gray-70);
+    }
+    .body-text strong { color: var(--cds-gray-100); font-weight: 600; }
+
+    .accent-line {
+      width: 48px;
+      height: 3px;
+      background: var(--cds-blue-60);
+      margin-bottom: 20px;
+    }
+    .accent-line-white { background: var(--cds-white); }
+
+    /* ── CARBON BUTTONS ─────────────────────────────────── */
+    .cds-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      height: 44px;
+      padding: 0 20px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .cds-btn--primary {
+      background: var(--cds-blue-60);
+      color: var(--cds-white);
+    }
+    .cds-btn--primary:hover {
+      background: var(--cds-blue-70);
+    }
+
+    .cds-btn--secondary {
+      background: var(--cds-gray-80);
+      color: var(--cds-white);
+    }
+    .cds-btn--secondary:hover {
+      background: var(--cds-gray-70);
+    }
+
+    .cds-btn--ghost {
+      background: transparent;
+      color: var(--cds-blue-60);
+      border-color: var(--cds-blue-60);
+    }
+    .cds-btn--ghost:hover {
+      background: var(--cds-blue-10);
+    }
+
+    .cds-btn--light {
+      background: var(--cds-white);
+      color: var(--cds-gray-100);
+    }
+    .cds-btn--light:hover {
+      background: var(--cds-gray-10);
+    }
+
+    /* ── CARBON TAGS & BADGES ───────────────────────────── */
+    .cds-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      height: 22px;
+      padding: 0 8px;
+      letter-spacing: 0.16px;
+      border-radius: 0;
+      text-transform: uppercase;
+    }
+
+    .cds-tag--blue { background: var(--cds-blue-10); color: var(--cds-blue-70); }
+    .cds-tag--green { background: var(--cds-green-10); color: var(--cds-green-50); }
+    .cds-tag--red { background: var(--cds-red-10); color: var(--cds-red-60); }
+    .cds-tag--yellow { background: var(--cds-yellow-10); color: #8a6914; }
+    .cds-tag--purple { background: var(--cds-purple-10); color: var(--cds-purple-60); }
+    .cds-tag--gray { background: var(--cds-gray-20); color: var(--cds-gray-80); }
+    .cds-tag--dark { background: var(--cds-gray-90); color: var(--cds-gray-30); border: 1px solid var(--cds-gray-75); }
+
+    /* ── DATA TABLES ────────────────────────────────────── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--cds-gray-20);
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    .data-table th {
+      background: var(--cds-gray-10);
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.32px;
+      text-transform: uppercase;
+      color: var(--cds-gray-60);
+      border-bottom: 1px solid var(--cds-gray-20);
+    }
+
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--cds-gray-20);
+      color: var(--cds-gray-80);
+      vertical-align: middle;
+    }
+
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover { background: #f8f9fa; }
+
+    .td-mono {
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .td-bold { font-weight: 600; color: var(--cds-gray-100); }
+
+    /* ── CARBON 2X GRID ─────────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--cds-gray-20); border: 1px solid var(--cds-gray-20); margin-top: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--cds-gray-20); border: 1px solid var(--cds-gray-20); margin-top: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--cds-gray-20); border: 1px solid var(--cds-gray-20); margin-top: 20px; }
+
+    .grid-cell {
+      background: var(--cds-white);
+      padding: 20px 24px;
+    }
+
+    .cell-num {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--cds-blue-60);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .cell-label {
+      font-size: 12px;
+      color: var(--cds-gray-60);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ── FLOW STEPS ─────────────────────────────────────── */
+    .flow-steps {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-top: 24px;
+      border: 1px solid var(--cds-gray-20);
+      background: var(--cds-gray-10);
+    }
+
+    .flow-step {
+      flex: 1;
+      padding: 20px 16px;
+      background: var(--cds-white);
+      border-right: 1px solid var(--cds-gray-20);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .flow-step:last-child { border-right: none; }
+
+    .flow-step__number {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--cds-blue-60);
+      margin-bottom: 8px;
+    }
+
+    .flow-step__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cds-gray-100);
+      margin-bottom: 6px;
+    }
+
+    .flow-step__desc {
+      font-size: 11px;
+      color: var(--cds-gray-70);
+      line-height: 1.45;
+    }
+
+    /* ── PRIORITY TILES ─────────────────────────────────── */
+    .priority-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .priority-tile {
+      padding: 16px;
+      border-top: 4px solid;
+      background: var(--cds-white);
+      border-left: 1px solid var(--cds-gray-20);
+      border-right: 1px solid var(--cds-gray-20);
+      border-bottom: 1px solid var(--cds-gray-20);
+    }
+
+    .pt--low { border-top-color: var(--cds-green-50); background: var(--cds-green-10); }
+    .pt--medium { border-top-color: var(--cds-yellow-30); background: var(--cds-yellow-10); }
+    .pt--high { border-top-color: var(--cds-orange-40); background: #fff2e8; }
+    .pt--emergency { border-top-color: var(--cds-red-60); background: var(--cds-red-10); }
+
+    .pt__name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cds-gray-100);
+      margin-bottom: 4px;
+    }
+
+    .pt__desc {
+      font-size: 12px;
+      color: var(--cds-gray-80);
+      line-height: 1.4;
+    }
+
+    /* ── CHECKLIST & CALLOUTS ───────────────────────────── */
+    .cds-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .cds-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      font-size: 13.5px;
+      color: var(--cds-gray-80);
+      line-height: 1.45;
+      border-bottom: 1px solid var(--cds-gray-10);
+    }
+
+    .cds-list li:last-child { border-bottom: none; }
+
+    .ci-check {
+      color: var(--cds-green-50);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .ci-not {
+      color: var(--cds-gray-40);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .callout {
+      padding: 14px 18px;
+      margin-top: 16px;
+      border-left: 3px solid;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .callout--info {
+      background: var(--cds-blue-10);
+      border-left-color: var(--cds-blue-60);
+      color: var(--cds-gray-90);
+    }
+
+    .callout--warning {
+      background: var(--cds-red-10);
+      border-left-color: var(--cds-red-60);
+      color: var(--cds-gray-90);
+    }
+
+    .callout strong { font-weight: 600; color: var(--cds-gray-100); }
+
+    /* ── CODE SNIPPET / TERMINAL BLOCK ──────────────────── */
+    .code-block {
+      background: var(--cds-gray-100);
+      border: 1px solid var(--cds-gray-80);
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #78a9ff;
+      line-height: 1.5;
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    .code-comment { color: var(--cds-gray-50); }
+    .code-keyword { color: #ee5396; }
+    .code-string { color: #42be65; }
+    .code-number { color: #33b1ff; }
+
+    /* ── TEAM GRID ──────────────────────────────────────── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--cds-gray-20);
+      border: 1px solid var(--cds-gray-20);
+      margin-top: 24px;
+    }
+
+    .team-cell {
+      background: var(--cds-white);
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .team-avatar {
+      width: 52px;
+      height: 52px;
+      background: var(--cds-blue-60);
+      color: var(--cds-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 auto 12px;
+      border: 2px solid var(--cds-white);
+      box-shadow: 0 0 0 1px var(--cds-gray-30);
+    }
+
+    .team-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cds-gray-100);
+      margin-bottom: 4px;
+    }
+
+    .team-rm {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cds-gray-60);
+    }
+
+    /* ── INTERACTIVE MOCKUP CARDS ───────────────────────── */
+    .mock-chat-bubble {
+      padding: 10px 14px;
+      max-width: 85%;
+      font-size: 13px;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .mcb--user {
+      background: var(--cds-gray-20);
+      color: var(--cds-gray-100);
+      align-self: flex-end;
+      border-left: 3px solid var(--cds-gray-60);
+    }
+
+    .mcb--bot {
+      background: var(--cds-blue-10);
+      color: var(--cds-gray-100);
+      align-self: flex-start;
+      border-left: 3px solid var(--cds-blue-60);
+    }
+
+    /* ── CARBON FOOTER CONTROLS ─────────────────────────── */
+    .carbon-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: var(--cds-gray-100);
+      border-top: 1px solid var(--cds-gray-80);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 9000;
+    }
+
+    .footer-hints {
+      font-size: 12px;
+      color: var(--cds-gray-50);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      background: var(--cds-gray-90);
+      border: 1px solid var(--cds-gray-70);
+      color: var(--cds-white);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      height: 32px;
+      padding: 0 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .nav-btn:hover {
+      background: var(--cds-blue-60);
+      border-color: var(--cds-blue-60);
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--cds-gray-30);
+      min-width: 70px;
+      text-align: center;
+    }
+
+    /* ── DRAWER (SLIDE OVERVIEW) ────────────────────────── */
+    .slide-drawer {
+      position: fixed;
+      top: 48px;
+      bottom: 48px;
+      left: 0;
+      width: 320px;
+      background: var(--cds-gray-90);
+      border-right: 1px solid var(--cds-gray-80);
+      z-index: 9500;
+      transform: translateX(-100%);
+      transition: transform 0.25s cubic-bezier(0.2, 0, 0.38, 0.9);
+      overflow-y: auto;
+      padding: 16px 0;
+    }
+
+    .slide-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-item {
+      padding: 10px 18px;
+      font-size: 12.5px;
+      color: var(--cds-gray-30);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .drawer-item:hover {
+      background: var(--cds-gray-80);
+      color: var(--cds-white);
+    }
+
+    .drawer-item.active {
+      background: var(--cds-gray-80);
+      color: var(--cds-white);
+      border-left-color: var(--cds-blue-60);
+      font-weight: 600;
+    }
+
+    .drawer-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--cds-blue-40);
+      min-width: 22px;
+    }
+
+    /* ── MODALS ─────────────────────────────────────────── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(2px);
+      z-index: 9990;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal-box {
+      background: var(--cds-gray-90);
+      border: 1px solid var(--cds-gray-70);
+      width: 640px;
+      max-width: 90vw;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--cds-gray-80);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--cds-white);
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--cds-gray-40);
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .modal-close:hover { color: var(--cds-white); }
+
+    .modal-body {
+      padding: 20px;
+      font-size: 13px;
+      color: var(--cds-gray-20);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       CARBON UI SHELL HEADER
+       ════════════════════════════════════════════════════════ -->
+  <header class="carbon-header">
+    <div class="carbon-header__left">
+      <button class="header-btn" id="btn-toggle-drawer" title="Abrir menu de slides (M)">
+        <span style="font-size:14px;">☰</span> Slides
+      </button>
+      <a class="carbon-brand" href="#slide-1">
+        <strong>IBM Carbon</strong> | Zelo
+      </a>
+      <div class="carbon-divider"></div>
+      <span class="carbon-subheading">Sprint 4 · Disruptive Architectures: IoT, IoB & Generative IA</span>
+    </div>
+
+    <div class="carbon-header__right">
+      <div class="timer-badge" id="timer-display" title="Clique para Iniciar/Pausar cronômetro de ensaio (5 min). Duplo-clique para resetar.">
+        <span>⏱</span> <span id="timer-text">00:00</span>
+      </div>
+      <button class="header-btn" id="btn-shortcuts" title="Atalhos de Teclado (?)">
+        ⌨ Atalhos
+      </button>
+      <button class="header-btn" id="btn-fullscreen" title="Tela Cheia (F)">
+        ⛶ Tela Cheia
+      </button>
+    </div>
+  </header>
+
+  <!-- Barra de progresso -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <!-- Drawer lateral de navegação -->
+  <aside class="slide-drawer" id="slide-drawer">
+    <div style="padding:0 18px 12px; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--cds-gray-50); border-bottom:1px solid var(--cds-gray-80); margin-bottom:8px;">
+      Índice de Slides
+    </div>
+    <div id="drawer-list"></div>
+  </aside>
+
+  <!-- ════════════════════════════════════════════════════════
+       SLIDE DECK
+       ════════════════════════════════════════════════════════ -->
+  <main class="slide-deck">
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 1 — CAPA
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-dark active" data-title="Capa">
+      <div class="eyebrow eyebrow-blue">Sprint 4 · Disruptive Architectures: IoT, IoB & Generative IA</div>
+      <h1 class="title-xl"><strong>Zelo</strong></h1>
+      <p class="subtitle subtitle-center" style="margin-bottom:28px;">
+        Cuidado contínuo antes da urgência.<br>
+        Chatbot de triagem preliminar para pets — <strong>Clyvo Vet</strong>.
+      </p>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:36px;">
+        <span class="cds-tag cds-tag--blue">FIAP Challenge 2026</span>
+        <span class="cds-tag cds-tag--dark">IA Híbrida</span>
+        <span class="cds-tag cds-tag--dark">Visão Computacional</span>
+        <span class="cds-tag cds-tag--dark">Spring Boot 3.5</span>
+        <span class="cds-tag cds-tag--dark">LGPD & Ética</span>
+      </div>
+      <div>
+        <a href="#slide-2" class="cds-btn cds-btn--primary" onclick="showSlide(1); return false;">
+          Iniciar Apresentação →
+        </a>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 2 — EQUIPE
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-white" data-title="Equipe">
+      <div class="eyebrow eyebrow-dark">Equipe de Desenvolvimento</div>
+      <h2 class="title-lg" style="color:var(--cds-gray-100)"><strong>Integrantes</strong> do grupo</h2>
+      <div class="accent-line"></div>
+      <p class="body-text" style="max-width:760px; margin-bottom:24px;">
+        Equipe responsável pelo desenvolvimento de ponta a ponta: engenharia de software backend, modelagem de dados, arquitetura de IA, microsserviço de visão e front-end responsivo.
+      </p>
+
+      <div class="team-grid">
+        <div class="team-cell">
+          <div class="team-avatar">B</div>
+          <div class="team-name">Bruno Ferreira</div>
+          <div class="team-rm">RM 563489</div>
+        </div>
+        <div class="team-cell">
+          <div class="team-avatar">G</div>
+          <div class="team-name">Gabriel R. Padilha</div>
+          <div class="team-rm">RM 566293</div>
+        </div>
+        <div class="team-cell">
+          <div class="team-avatar">H</div>
+          <div class="team-name">Hebert L. Santos</div>
+          <div class="team-rm">RM 563192</div>
+        </div>
+        <div class="team-cell">
+          <div class="team-avatar" style="background:var(--cds-blue-80)">M</div>
+          <div class="team-name">Marcus V. V. Silva</div>
+          <div class="team-rm">RM 558771</div>
+        </div>
+        <div class="team-cell">
+          <div class="team-avatar">N</div>
+          <div class="team-name">Nicolas M. Ramiro</div>
+          <div class="team-rm">RM 562380</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 3 — O PROBLEMA
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-split" data-title="O Problema">
+      <div class="split-left">
+        <div class="eyebrow eyebrow-blue">Cenário Clínico</div>
+        <h2 class="title-lg">Por que o <strong>Zelo</strong> existe?</h2>
+        <p class="subtitle" style="font-size:15px; margin-top:12px;">
+          O intervalo crítico entre os primeiros sintomas em casa e a chegada ao consultório.
+        </p>
+      </div>
+      <div class="split-right">
+        <div class="accent-line"></div>
+        <p class="body-text" style="margin-bottom:20px;">
+          Tutores frequentemente procuram ajuda médica quando o quadro clínico <strong>já virou emergência</strong>. Entre uma consulta e outra, sintomas sutis são mal interpretados, buscas no Google geram automedicação indevida e a clínica recebe dados fragmentados e tardios.
+        </p>
+
+        <div class="callout callout--info">
+          <em>"Ela estava um pouco molinha há uns dois dias, mas achei que era só preguiça do calor..."</em><br>
+          <span style="font-size:11px; color:var(--cds-gray-60); display:block; margin-top:4px;">— Relato típico de tutor na triagem hospitalar</span>
+        </div>
+
+        <p class="body-text" style="margin-top:20px;">
+          O <strong>Zelo</strong> atua como um assistente pré-clínico inteligente: acolhe o relato em linguagem natural, extrai sintomas objetivos, define o nível de prioridade e <strong>antecipa o quadro à equipe veterinária</strong> antes da chegada do tutor.
+        </p>
+
+        <div class="callout callout--warning">
+          <strong>Princípio Ético Fundamental:</strong> O Zelo <strong>não diagnostica</strong> e <strong>não prescreve tratamentos nem doses</strong>. A responsabilidade clínica é exclusiva do médico-veterinário. A IA organiza, prioriza e apoia a decisão.
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 4 — A SOLUÇÃO
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-white" data-title="A Solução">
+      <div class="eyebrow eyebrow-dark">Proposta de Valor</div>
+      <h2 class="title-lg" style="color:var(--cds-gray-100)">O que o Zelo <strong>faz</strong></h2>
+      <div class="accent-line"></div>
+
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step__number">01</div>
+          <div class="flow-step__title">Entende o Relato</div>
+          <div class="flow-step__desc">Processa linguagem natural em PT-BR, com normalização léxica, correção de digitação e tratamento de negações.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__number">02</div>
+          <div class="flow-step__title">Extrai Sintomas</div>
+          <div class="flow-step__desc">Cruza menções com 72 sintomas canônicos e contextualiza com espécie, idade, raça e histórico do pet.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__number">03</div>
+          <div class="flow-step__title">Classifica Prioridade</div>
+          <div class="flow-step__desc">Aplica 14 regras determinísticas (R0 a R14), calculando índice de confiança e justificativa rastreável.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__number">04</div>
+          <div class="flow-step__title">Avisa a Clínica</div>
+          <div class="flow-step__desc">Mediante consentimento explícito e revogável (LGPD), transmite o prontuário prévio para a fila de atendimento.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__number">05</div>
+          <div class="flow-step__title">Revisão Humana</div>
+          <div class="flow-step__desc">Veterinário valida ou ajusta a classificação — mantendo o ser humano no circuito de decisão (Human-in-the-Loop).</div>
+        </div>
+      </div>
+
+      <div class="priority-list">
+        <div class="priority-tile pt--low">
+          <div class="pt__name">Baixa Prioridade</div>
+          <div class="pt__desc">Espirros esporádicos, prurido leve.<br><strong>Orientação:</strong> Observar 24–48h.</div>
+        </div>
+        <div class="priority-tile pt--medium">
+          <div class="pt__name">Média Prioridade</div>
+          <div class="pt__desc">Tosse, êmese isolada, relato vago.<br><strong>Orientação:</strong> Consulta em 24–72h.</div>
+        </div>
+        <div class="priority-tile pt--high">
+          <div class="pt__name">Alta Prioridade</div>
+          <div class="pt__desc">Prostração com vômito, gato inapetente.<br><strong>Orientação:</strong> Contatar clínica hoje.</div>
+        </div>
+        <div class="priority-tile pt--emergency">
+          <div class="pt__name">Emergência</div>
+          <div class="pt__desc">Convulsão, anúria, dispneia grave.<br><strong>Orientação:</strong> Pronto-socorro agora.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 5 — ARQUITETURA DE IA HÍBRIDA
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-split" data-title="Arquitetura de IA">
+      <div class="split-left">
+        <div class="eyebrow eyebrow-blue">Arquitetura Técnica (60 pts)</div>
+        <h2 class="title-lg"><strong>IA Híbrida</strong> em 3 Camadas</h2>
+        <p class="subtitle" style="font-size:14px; margin-top:14px;">
+          Arquitetura defensiva: regras determinísticas garantem o piso de segurança inegociável, enquanto o LLM atua sob salvaguardas estritas.
+        </p>
+        <div style="margin-top:24px;">
+          <span class="cds-tag cds-tag--green">100% Funcional sem API Key</span>
+        </div>
+      </div>
+      <div class="split-right">
+        <div class="accent-line"></div>
+
+        <h3 class="title-md" style="color:var(--cds-gray-100);"><strong>Camada 1:</strong> Motor Determinístico (Piso de Segurança)</h3>
+        <ul class="cds-list">
+          <li><span class="ci-check">✓</span> <strong>Implementação em Java Puro:</strong> Sem latência de rede, zero dependências de nuvem para a decisão crítica.</li>
+          <li><span class="ci-check">✓</span> <strong>14 Regras de Segurança (R0–R14):</strong> Matriz de risco validada e imutável por inferência externa.</li>
+          <li><span class="ci-check">✓</span> <strong>Léxico Canônico:</strong> 72 sintomas mapeados com expressões idiomáticas em português e filtros de negação.</li>
+          <li><span class="ci-check">✓</span> <strong>Relato Desconhecido = Atenção:</strong> Texto não identificado nunca é classificado como "baixo"; recebe prioridade Média com revisão obrigatória.</li>
+        </ul>
+
+        <h3 class="title-md" style="color:var(--cds-gray-100); margin-top:18px;"><strong>Camada 2:</strong> IA Generativa Subordinada (Claude / Gemini)</h3>
+        <ul class="cds-list">
+          <li><span class="ci-check">✓</span> <strong>Regra de Ouro (withFloor):</strong> O LLM pode apenas somar sintomas omitidos; <strong>jamais rebaixa a prioridade</strong>.</li>
+          <li><span class="ci-check">✓</span> <strong>Isolamento de Urgências:</strong> Relatos classificados como Alta ou Emergência não sofrem reescrita generativa.</li>
+          <li><span class="ci-check">✓</span> <strong>ResponseGuard Ativo:</strong> Barreira algorítmica que reprova menção a fármacos, posologias ou diagnósticos.</li>
+        </ul>
+
+        <h3 class="title-md" style="color:var(--cds-gray-100); margin-top:18px;"><strong>Camada 3:</strong> Visão Computacional (D3)</h3>
+        <ul class="cds-list">
+          <li><span class="ci-check">✓</span> <strong>MobileNetV3 + ONNX Runtime:</strong> Modelo leve (11 MB) em microsserviço FastAPI (Python).</li>
+          <li><span class="ci-check">✓</span> <strong>Privacidade por Design:</strong> Imagem descartada imediatamente após processamento; armazena apenas hash SHA-256.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 6 — FLUXO DA MENSAGEM
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-white" data-title="Fluxo de Decisão">
+      <div class="eyebrow eyebrow-dark">Engenharia de Prompt & Regras</div>
+      <h2 class="title-lg" style="color:var(--cds-gray-100)">Como a IA <strong>processa e decide</strong></h2>
+      <div class="accent-line"></div>
+      <p class="body-text">Ciclo de vida síncrono de cada entrada do tutor na interface de conversação:</p>
+
+      <div class="grid-2">
+        <div class="grid-cell">
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:8px;">1. Classificação de Intenção (IntentClassifier)</div>
+          <p class="body-text" style="font-size:13px;">
+            Identifica saudações, pedidos de ajuda, autorização LGPD, perguntas sobre o plano de cuidados ou <strong>tentativas de pedir remédio</strong> (redirecionadas na hora).
+          </p>
+        </div>
+        <div class="grid-cell">
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:8px;">2. Normalização & Detecção de Negação</div>
+          <p class="body-text" style="font-size:13px;">
+            Corrige erros de digitação (Levenshtein), remove diacríticos e detecta negações: <em>"não vomitou"</em> marca vômito como ausente; <em>"a convulsão não parou"</em> ativa gatilho de emergência.
+          </p>
+        </div>
+        <div class="grid-cell">
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:8px;">3. Motor de Triagem & Contexto do Pet</div>
+          <p class="body-text" style="font-size:13px;">
+            Combina sintomas com o perfil: filhotes, idosos e braquicefálicos recebem incremento defensivo de urgência (+1 nível até Alta). Gatos anúricos disparam emergência estrita.
+          </p>
+        </div>
+        <div class="grid-cell">
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:8px;">4. Salvaguardas & Saída Rastreável</div>
+          <p class="body-text" style="font-size:13px;">
+            Gera objeto JSON imutável com ID da regra disparada, timestamp, versão do modelo (`zelo-v1.4`) e índice de confiança, alimentando simultaneamente a linha do tempo e a clínica.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--info" style="margin-top:20px;">
+        <strong>Tolerância a Falhas:</strong> Caso a API externa do LLM oscile, demore mais de 30s ou falhe, o Zelo degrada graciosamente e responde com o motor local instantaneamente, sem travar a experiência do usuário.
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 7 — CASOS PRÁTICOS DE TRIAGEM
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-white" data-title="Casos Práticos">
+      <div class="eyebrow eyebrow-dark">Casos de Uso Validados</div>
+      <h2 class="title-lg" style="color:var(--cds-gray-100)">Demonstração de <strong>Cenários Reais</strong></h2>
+      <div class="accent-line"></div>
+
+      <div class="grid-2" style="margin-top:16px;">
+        <!-- Cenário 1 -->
+        <div class="grid-cell" style="border-left:4px solid var(--cds-yellow-30);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <strong style="font-size:14px; color:var(--cds-gray-100);">Caso 1: Mel (Tosse & Ânsia)</strong>
+            <span class="cds-tag cds-tag--yellow">Média Prioridade</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div class="mock-chat-bubble mcb--user">"Ela está com tosse seca e parece meio engasgada."</div>
+            <div class="mock-chat-bubble mcb--bot">"Há quanto tempo começaram os sintomas? Ela respira normalmente?"</div>
+            <div class="mock-chat-bubble mcb--user">"Há 1 ou 2 dias. Respira normal."</div>
+          </div>
+          <div style="margin-top:10px; font-size:12px; color:var(--cds-gray-70);">
+            ✓ Duas perguntas de acompanhamento.<br>
+            ✓ Cartão com justificativa, confiança 88% e próximo passo.<br>
+            <button class="cds-btn cds-btn--ghost" style="height:28px; font-size:11px; padding:0 8px; margin-top:6px;" onclick="openJsonModal('media')">Ver JSON Estruturado</button>
+          </div>
+        </div>
+
+        <!-- Cenário 2 -->
+        <div class="grid-cell" style="border-left:4px solid var(--cds-red-60);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <strong style="font-size:14px; color:var(--cds-gray-100);">Caso 2: Mel (Convulsão Súbita)</strong>
+            <span class="cds-tag cds-tag--red">Emergência Imediata</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div class="mock-chat-bubble mcb--user">"Ela teve uma convulsão agora há pouco, tremeu inteira!"</div>
+            <div class="mock-chat-bubble mcb--bot">"Sinal de alerta detectado: procure um hospital veterinário agora mesmo. Deseja que eu avise a Clínica Zelo?"</div>
+          </div>
+          <div style="margin-top:10px; font-size:12px; color:var(--cds-gray-70);">
+            ✓ <strong>Zero perguntas:</strong> sem espera diante de sinal de alerta.<br>
+            ✓ Solicitação imediata de consentimento LGPD para aviso da clínica.<br>
+            <button class="cds-btn cds-btn--ghost" style="height:28px; font-size:11px; padding:0 8px; margin-top:6px;" onclick="openJsonModal('emergencia')">Ver JSON Estruturado</button>
+          </div>
+        </div>
+
+        <!-- Cenário 3 -->
+        <div class="grid-cell" style="border-left:4px solid var(--cds-red-60);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <strong style="font-size:14px; color:var(--cds-gray-100);">Caso 3: Thor (Gato / Obstrução Urinária)</strong>
+            <span class="cds-tag cds-tag--red">Regra Específica Felina</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div class="mock-chat-bubble mcb--user">"Ele tenta fazer xixi na caixinha, chora e não sai nada."</div>
+            <div class="mock-chat-bubble mcb--bot">"Suspeita de obstrução uretral felina: risco agudo de uremia. Leve ao atendimento emergencial imediatamente."</div>
+          </div>
+          <div style="margin-top:10px; font-size:12px; color:var(--cds-gray-70);">
+            ✓ <strong>Regra R11 de Espécie:</strong> Reconhece particularidades críticas de felinos que evoluem em poucas horas.
+          </div>
+        </div>
+
+        <!-- Cenário 4 -->
+        <div class="grid-cell" style="border-left:4px solid var(--cds-purple-60);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <strong style="font-size:14px; color:var(--cds-gray-100);">Caso 4: Pergunta de Medicamento</strong>
+            <span class="cds-tag cds-tag--purple">ResponseGuard Ativado</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div class="mock-chat-bubble mcb--user">"Posso dar dipirona infantil pra ele? Qual a dose?"</div>
+            <div class="mock-chat-bubble mcb--bot">"O Zelo não indica medicamentos nem dosagens. Remédios humanos podem ser tóxicos e fatais para pets. Consulte o veterinário."</div>
+          </div>
+          <div style="margin-top:10px; font-size:12px; color:var(--cds-gray-70);">
+            ✓ <strong>Bloqueio Ético:</strong> A IA recusa prontamente tentativas de prescrição ou cálculo de dosagem.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 8 — VISÃO COMPUTACIONAL
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-split" data-title="Visão Computacional">
+      <div class="split-left" style="background:#001d6c;">
+        <div class="eyebrow eyebrow-white">Deep Learning (D3)</div>
+        <h2 class="title-lg"><strong>Visão Computacional</strong> em Pele Canina</h2>
+        <p class="subtitle" style="font-size:14px; color:rgba(255,255,255,0.7); margin-top:14px;">
+          MobileNetV3 adaptado por transfer learning para triagem preliminar de afecções dermatológicas.
+        </p>
+        <div style="margin-top:24px;">
+          <span class="cds-tag cds-tag--blue" style="background:rgba(255,255,255,0.15); color:white;">ONNX Runtime · 11 MB</span>
+        </div>
+      </div>
+      <div class="split-right">
+        <div class="accent-line"></div>
+
+        <div class="grid-3" style="margin-top:0;">
+          <div class="grid-cell"><div class="cell-num">4.315</div><div class="cell-label">Imagens de Treinamento</div></div>
+          <div class="grid-cell"><div class="cell-num">6</div><div class="cell-label">Classes Dermatológicas</div></div>
+          <div class="grid-cell"><div class="cell-num">82.2%</div><div class="cell-label">Validação Agrupada</div></div>
+        </div>
+
+        <h3 class="title-md" style="color:var(--cds-gray-100); margin-top:20px;">Classes Mapeadas no Classificador</h3>
+        <p class="body-text" style="font-size:13px; margin-bottom:12px;">
+          Fúngica, bacteriana, parasítica, alérgica, benigna e pele saudável.
+        </p>
+
+        <div class="callout callout--warning">
+          <strong>Caráter Experimental & Não Armazenamento:</strong><br>
+          • O resultado é explicitamente sinalizado na interface como <strong>estudo preliminar</strong>.<br>
+          • <strong>Segurança de Dados:</strong> O arquivo de imagem é processado na memória RAM do microsserviço Python e descartado na mesma requisição. Apenas a assinatura SHA-256 é registrada para fins de auditoria técnica.
+        </div>
+
+        <div class="callout callout--info" style="margin-top:12px;">
+          <strong>Integração com a Triagem:</strong> Se a visão detectar suspeita grave associada a prurido intenso e feridas abertas, a informação é acoplada ao dossiê que será revisado pelo veterinário.
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 9 — PAINEL DA CLÍNICA & HUMAN-IN-THE-LOOP
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-white" data-title="Painel da Clínica">
+      <div class="eyebrow eyebrow-dark">Operação Hospitalar</div>
+      <h2 class="title-lg" style="color:var(--cds-gray-100)">Painel da Clínica & <strong>Human-in-the-Loop</strong></h2>
+      <div class="accent-line"></div>
+      <p class="body-text" style="max-width:760px; margin-bottom:20px;">
+        A interface profissional (`clinic.html`) oferece à equipe veterinária uma visão priorizada e auditável em tempo real, garantindo que o médico-veterinário valide cada decisão pré-clínica.
+      </p>
+
+      <div class="grid-3">
+        <div class="grid-cell">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:8px;">Fila Ordenada por Risco</div>
+          <p class="body-text" style="font-size:13px;">
+            Casos de Emergência e Alta ocupam automaticamente o topo do painel visual, permitindo à equipe preparar leitos, oxigênio e medicamentos antes da chegada física do tutor.
+          </p>
+        </div>
+        <div class="grid-cell">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:8px;">Dossiê Pré-Atendimento</div>
+          <p class="body-text" style="font-size:13px;">
+            Acesso ao relato original ipsi litteris, sintomas canônicos identificados, duração informada, foto de pele analisada e histórico vacinal/vermífugo autorizado.
+          </p>
+        </div>
+        <div class="grid-cell">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:8px;">Registro de Revisão</div>
+          <p class="body-text" style="font-size:13px;">
+            O profissional confirma a prioridade ou altera com uma nota clínica assinada. O tutor recebe a confirmação humana instantaneamente em sua linha do tempo.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout--info" style="margin-top:20px;">
+        <strong>Conformidade Legal (LGPD):</strong> Somente triagens com opt-in explícito do tutor são exibidas à clínica. Se o tutor revogar o consentimento, o compartilhamento é desfeito imediatamente no banco.
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 10 — STACK TÉCNICA COMPLETA
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-split" data-title="Stack Técnica">
+      <div class="split-left">
+        <div class="eyebrow eyebrow-blue">Arquitetura de Sistemas</div>
+        <h2 class="title-lg"><strong>Stack Técnica</strong> Integrada</h2>
+        <p class="subtitle" style="font-size:14px; margin-top:14px;">
+          Solução completa de ponta a ponta: frontend modular, backend em microsserviços, inteligência artificial e persistência relacional.
+        </p>
+      </div>
+      <div class="split-right" style="overflow-y:auto;">
+        <div class="accent-line"></div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Componente</th><th>Tecnologia</th><th>Papel no Ecossistema</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">Chatbot do Tutor</td>
+              <td><span class="cds-tag cds-tag--blue">HTML5</span> <span class="cds-tag cds-tag--blue">CSS3</span> <span class="cds-tag cds-tag--blue">ES Modules</span></td>
+              <td>Interface conversacional, cartão de triagem, timeline, consentimento e upload de foto.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Painel da Clínica</td>
+              <td><span class="cds-tag cds-tag--blue">SPA Vanilla JS</span></td>
+              <td>Fila hospitalar ao vivo, revisão profissional e retorno clínico estruturado.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Backend Principal</td>
+              <td><span class="cds-tag cds-tag--green">Spring Boot 3.5</span> <span class="cds-tag cds-tag--green">Java 21</span></td>
+              <td>API REST, autenticação por perfil (RBAC), Flyway migrations e persistência relacional.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Motor Determinístico</td>
+              <td><span class="cds-tag cds-tag--green">Java Puro</span></td>
+              <td>Normalização léxica, correção de digitação Levenshtein, regras R0-R14 e confidence scoring.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">IA Generativa</td>
+              <td><span class="cds-tag cds-tag--purple">SDK Claude</span> / <span class="cds-tag cds-tag--purple">Gemini API</span></td>
+              <td>Extração complementar de sintomas e reescrita de baixa/média sob ResponseGuard.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Visão Computacional</td>
+              <td><span class="cds-tag cds-tag--yellow">Python</span> <span class="cds-tag cds-tag--yellow">FastAPI</span> <span class="cds-tag cds-tag--yellow">ONNX</span></td>
+              <td>Classificação de pele em cães baseada em MobileNetV3 (11 MB).</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Segurança & Dados</td>
+              <td><span class="cds-tag cds-tag--red">Spring Security</span> <span class="cds-tag cds-tag--gray">H2 / Oracle</span></td>
+              <td>Sessão segura, CSRF, BCrypt, rate limiting e anonimização de dados pré-LLM.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 11 — GOVERNANÇA, LGPD & IA RESPONSÁVEL
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-white" data-title="Governança & LGPD">
+      <div class="eyebrow eyebrow-dark">Ética & Segurança de Dados</div>
+      <h2 class="title-lg" style="color:var(--cds-gray-100)">Governança & <strong>IA Responsável</strong></h2>
+      <div class="accent-line"></div>
+
+      <div class="grid-3" style="margin-top:16px;">
+        <div class="grid-cell">
+          <div class="cell-num" style="font-size:22px; color:var(--cds-green-50);">01</div>
+          <strong style="font-size:13px; color:var(--cds-gray-100); display:block; margin-bottom:6px;">Não Diagnostica</strong>
+          <p class="body-text" style="font-size:12px;">Comunicação focada estritamente em prioridade e orientação de encaminhamento. ResponseGuard veta remédios e posologias.</p>
+        </div>
+        <div class="grid-cell">
+          <div class="cell-num" style="font-size:22px; color:var(--cds-green-50);">02</div>
+          <strong style="font-size:13px; color:var(--cds-gray-100); display:block; margin-bottom:6px;">Consentimento LGPD</strong>
+          <p class="body-text" style="font-size:12px;">Opt-in explícito para envio de dados à clínica veterinária. Totalmente revogável a qualquer instante pelo tutor.</p>
+        </div>
+        <div class="grid-cell">
+          <div class="cell-num" style="font-size:22px; color:var(--cds-green-50);">03</div>
+          <strong style="font-size:13px; color:var(--cds-gray-100); display:block; margin-bottom:6px;">Humano no Circuito</strong>
+          <p class="body-text" style="font-size:12px;">Casos de triagem requerem homologação médica. Decisões clínicas pertencem exclusivamente aos veterinários.</p>
+        </div>
+        <div class="grid-cell">
+          <div class="cell-num" style="font-size:22px; color:var(--cds-green-50);">04</div>
+          <strong style="font-size:13px; color:var(--cds-gray-100); display:block; margin-bottom:6px;">Rastreabilidade Total</strong>
+          <p class="body-text" style="font-size:12px;">Cada resposta é acompanhada de schema JSON com versão do modelo, regras aplicadas e índice matemático de confiança.</p>
+        </div>
+        <div class="grid-cell">
+          <div class="cell-num" style="font-size:22px; color:var(--cds-green-50);">05</div>
+          <strong style="font-size:13px; color:var(--cds-gray-100); display:block; margin-bottom:6px;">Determinismo Soberano</strong>
+          <p class="body-text" style="font-size:12px;">O motor de regras estabelece o piso de urgência. O LLM atua sob coleira curta e jamais rebaixa a gravidade.</p>
+        </div>
+        <div class="grid-cell">
+          <div class="cell-num" style="font-size:22px; color:var(--cds-green-50);">06</div>
+          <strong style="font-size:13px; color:var(--cds-gray-100); display:block; margin-bottom:6px;">Minimização de Dados</strong>
+          <p class="body-text" style="font-size:12px;">Mascaramento regex de e-mails, telefones e CPFs antes de qualquer tráfego para APIs de terceiros. Sem segredos no repositório.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 12 — VALIDAÇÃO: NÚMEROS HONESTOS
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-split" data-title="Validação & Métricas">
+      <div class="split-left" style="background:var(--cds-blue-80);">
+        <div class="eyebrow eyebrow-white">Evidência Experimental</div>
+        <h2 class="title-lg">Métricas e <strong>Transparência</strong></h2>
+        <p class="subtitle" style="font-size:14px; color:rgba(255,255,255,0.7); margin-top:14px;">
+          Diferenciamos com honestidade acadêmica o acerto em regressão versus a capacidade real de generalização do modelo em novos dados.
+        </p>
+      </div>
+      <div class="split-right" style="overflow-y:auto;">
+        <div class="accent-line"></div>
+
+        <div class="grid-4" style="margin-top:0;">
+          <div class="grid-cell"><div class="cell-num">195</div><div class="cell-label">Testes Java</div></div>
+          <div class="grid-cell"><div class="cell-num">33</div><div class="cell-label">Testes Python</div></div>
+          <div class="grid-cell"><div class="cell-num">94.7%</div><div class="cell-label">Cobertura JaCoCo</div></div>
+          <div class="grid-cell"><div class="cell-num">72</div><div class="cell-label">Sintomas Canônicos</div></div>
+        </div>
+
+        <h3 class="title-md" style="color:var(--cds-gray-100); margin-top:20px;">Avaliação em Conjuntos Independentes (Texto Puro)</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>Conjunto de Dados</th><th>Amostras</th><th>Acurácia Global</th><th>Recall de Emergência</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">Holdout Independente</td>
+              <td class="td-mono">56 casos</td>
+              <td class="td-bold" style="color:var(--cds-blue-60)">75,0%</td>
+              <td class="td-bold" style="color:var(--cds-blue-60)">76,5%</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Conjunto Cego</td>
+              <td class="td-mono">35 casos</td>
+              <td class="td-bold" style="color:var(--cds-blue-60)">60,0%</td>
+              <td class="td-bold" style="color:var(--cds-blue-60)">57,1%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="title-md" style="color:var(--cds-gray-100); margin-top:18px;">Visão Computacional: Correção de Metodologia</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>Método de Avaliação</th><th>Resultado</th><th>Interpretação Científica</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">Validação Cruzada Agrupada</td>
+              <td class="td-mono" style="color:var(--cds-blue-60)">82,2% ± 1,3</td>
+              <td>Métrica real e correta — fotos do mesmo animal isoladas no mesmo fold.</td>
+            </tr>
+            <tr>
+              <td>Teste Original (Inflado)</td>
+              <td class="td-mono" style="color:var(--cds-gray-50)">91,5%</td>
+              <td style="color:var(--cds-red-60)">Descartado: detectamos vazamento de dados no split original.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 13 — LIMITAÇÕES & ROADMAP (IOT / IOB)
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-white" data-title="Limitações & Roadmap">
+      <div class="eyebrow eyebrow-dark">Transparência & Visão de Futuro</div>
+      <h2 class="title-lg" style="color:var(--cds-gray-100)">Limitações da Sprint & <strong>Próximos Passos</strong></h2>
+      <div class="accent-line"></div>
+
+      <div class="grid-2">
+        <div class="grid-cell" style="border-top:3px solid var(--cds-green-50);">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--cds-green-50); margin-bottom:12px;">Entregue na Sprint 4</div>
+          <ul class="cds-list">
+            <li><span class="ci-check">✓</span> Chatbot conversacional com IA híbrida ponta a ponta.</li>
+            <li><span class="ci-check">✓</span> 14 regras determinísticas de triagem clínica.</li>
+            <li><span class="ci-check">✓</span> Classificador de imagem de pele ONNX (MobileNetV3).</li>
+            <li><span class="ci-check">✓</span> Painel de clínica com fila por risco e revisão profissional.</li>
+            <li><span class="ci-check">✓</span> Gestão de consentimento LGPD nativa.</li>
+            <li><span class="ci-check">✓</span> Versão em nuvem publicada na Vercel.</li>
+            <li><span class="ci-check">✓</span> Bateria de 228 testes com 94,7% de cobertura.</li>
+          </ul>
+        </div>
+
+        <div class="grid-cell" style="border-top:3px solid var(--cds-blue-60);">
+          <div style="font-size:12px; font-weight:700; text-transform:uppercase; color:var(--cds-blue-60); margin-bottom:12px;">Roadmap & Integração IoT / IoB</div>
+          <ul class="cds-list">
+            <li><span class="ci-not">○</span> <strong>IoT & IoB (Internet of Behaviors):</strong> Integração com coleiras inteligentes (acelerômetros, monitoramento de sono e frequência de deglutição/tosse).</li>
+            <li><span class="ci-not">○</span> <strong>Validação Veterinária Formal:</strong> Parecer presencial de corpo docente clínico.</li>
+            <li><span class="ci-not">○</span> <strong>Testes de Usabilidade:</strong> Avaliação em campo com tutores de cães e gatos.</li>
+            <li><span class="ci-not">○</span> <strong>Expansão de Datasets:</strong> Inclusão de prontuários multiespécies (aves e silvestres).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 14 — REPOSITÓRIO & DOCUMENTAÇÃO
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-split" data-title="Documentação">
+      <div class="split-left">
+        <div class="eyebrow eyebrow-blue">Governança de Código</div>
+        <h2 class="title-lg"><strong>Repositório</strong> e Guias Técnicos</h2>
+        <p class="subtitle" style="font-size:14px; margin-top:14px;">
+          Todo o projeto está estruturado no GitHub, com histórico limpo, automação de testes e farta documentação em Markdown.
+        </p>
+      </div>
+      <div class="split-right" style="overflow-y:auto;">
+        <div class="accent-line"></div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Arquivo de Documentação</th><th>Conteúdo e Objetivo</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">README.md</td>
+              <td>Visão geral do Zelo, instruções de execução, contas demo e links de entrega.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">docs/arquitetura.md</td>
+              <td>Diagramas Mermaid de componentes, fluxo de estados, modelo relacional e sequências.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">docs/sprint4-ia.md</td>
+              <td>Da concepção da Sprint 3 ao código final — matriz de conformidade detalhada.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">docs/validacao-e-testes.md</td>
+              <td>Metodologia experimental, números de generalização e auditoria de vazamento de dados.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">docs/governanca-e-limitacoes.md</td>
+              <td>Salvaguardas de IA responsável, conformidade LGPD e fronteiras do sistema.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">docs/evidencias/</td>
+              <td>Galeria completa com 12 telas autenticando os fluxos executados na aplicação.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 15 — DEMONSTRAÇÃO AO VIVO
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-blue" data-title="Demo Online">
+      <div class="eyebrow eyebrow-white">Acesse em Tempo Real</div>
+      <h2 class="title-xl" style="color:white; margin-bottom:12px;"><strong>Zelo</strong> Online na Vercel</h2>
+      <p class="subtitle subtitle-center" style="color:rgba(255,255,255,0.8); margin-bottom:32px;">
+        Versão de demonstração publicada em infraestrutura global, executando o motor de triagem diretamente no navegador com total paridade aos testes em Java.
+      </p>
+
+      <div style="background:rgba(0,0,0,0.25); padding:24px 32px; border:1px solid rgba(255,255,255,0.2); display:inline-block; margin-bottom:28px;">
+        <span style="font-family:var(--font-mono); font-size:26px; font-weight:600; color:white; letter-spacing:0.5px;">
+          zelopet.vercel.app
+        </span>
+      </div>
+
+      <div>
+        <a href="https://zelopet.vercel.app/" target="_blank" class="cds-btn cds-btn--light">
+          Abrir Aplicação ao Vivo ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────────────────────────────
+         SLIDE 16 — ENCERRAMENTO
+         ────────────────────────────────────────────────────── -->
+    <section class="slide slide-dark" data-title="Conclusão">
+      <div class="eyebrow eyebrow-blue">FIAP Challenge 2026 · Clyvo Vet</div>
+      <h1 class="title-xl" style="margin-bottom:16px;"><strong>Zelo</strong></h1>
+      <p class="subtitle subtitle-center" style="margin-bottom:36px;">
+        Cuidado contínuo antes da urgência.<br>
+        Organiza, prioriza e conecta o tutor à clínica veterinária.<br>
+        <strong style="color:var(--cds-white);">Sem diagnosticar. Sem prescrever.</strong>
+      </p>
+
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:48px;">
+        <a href="https://zelopet.vercel.app/" target="_blank" class="cds-btn cds-btn--primary">
+          Acessar a Aplicação ↗
+        </a>
+        <a href="https://github.com/marcusvilanova/Challenge_fiap_ZeloPet" target="_blank" class="cds-btn cds-btn--secondary">
+          Repositório GitHub ↗
+        </a>
+      </div>
+
+      <p style="font-size:14px; color:var(--cds-gray-50); font-family:var(--font-mono);">
+        Obrigado! · FIAP 2026
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════
+       CARBON FOOTER CONTROLS
+       ════════════════════════════════════════════════════════ -->
+  <footer class="carbon-footer">
+    <div class="footer-hints">
+      <span>Navegue com <strong>←</strong> / <strong>→</strong> ou <strong>Espaço</strong></span>
+      <span>|</span>
+      <span>Menu: <strong>M</strong></span>
+      <span>|</span>
+      <span>Tela Cheia: <strong>F</strong></span>
+    </div>
+
+    <div class="footer-nav">
+      <button class="nav-btn" id="btn-prev" title="Slide Anterior (←)">
+        ← Anterior
+      </button>
+      <div class="slide-counter" id="counter">1 / 16</div>
+      <button class="nav-btn" id="btn-next" title="Próximo Slide (→)">
+        Próximo →
+      </button>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════
+       MODAIS (JSON & ATALHOS)
+       ════════════════════════════════════════════════════════ -->
+  <!-- Modal JSON -->
+  <div class="modal-backdrop" id="modal-json">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title" id="json-modal-title">Saída JSON Estruturada (Triagem)</div>
+        <button class="modal-close" onclick="closeModal('modal-json')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:12px; color:var(--cds-gray-40); margin-bottom:10px;">
+          Payload gerado pela esteira de triagem, validado contra o <code>triage-result.schema.json</code>:
+        </p>
+        <pre class="code-block" id="json-content"></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Atalhos -->
+  <div class="modal-backdrop" id="modal-shortcuts">
+    <div class="modal-box" style="width:480px;">
+      <div class="modal-header">
+        <div class="modal-title">Atalhos de Apresentação</div>
+        <button class="modal-close" onclick="closeModal('modal-shortcuts')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table class="data-table">
+          <thead>
+            <tr><th>Tecla</th><th>Ação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-mono">→ / Espaço / PgDown</td><td>Avançar para o próximo slide</td></tr>
+            <tr><td class="td-mono">← / PgUp</td><td>Voltar para o slide anterior</td></tr>
+            <tr><td class="td-mono">Home</td><td>Ir para o primeiro slide (Capa)</td></tr>
+            <tr><td class="td-mono">End</td><td>Ir para o último slide</td></tr>
+            <tr><td class="td-mono">F</td><td>Alternar Modo Tela Cheia</td></tr>
+            <tr><td class="td-mono">M</td><td>Abrir / Fechar menu de slides</td></tr>
+            <tr><td class="td-mono">T</td><td>Iniciar / Pausar cronômetro de ensaio</td></tr>
+            <tr><td class="td-mono">Esc</td><td>Fechar gaveta / modais</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       ENGINE JAVASCRIPT
+       ════════════════════════════════════════════════════════ -->
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const progress = document.getElementById('progress');
+    const counter = document.getElementById('counter');
+    const drawer = document.getElementById('slide-drawer');
+    const drawerList = document.getElementById('drawer-list');
+    let current = 0;
+
+    // Popula drawer
+    slides.forEach((slide, idx) => {
+      const item = document.createElement('div');
+      item.className = 'drawer-item' + (idx === 0 ? ' active' : '');
+      item.innerHTML = `<span class="drawer-num">${String(idx + 1).padStart(2, '0')}</span> <span>${slide.dataset.title || 'Slide ' + (idx + 1)}</span>`;
+      item.onclick = () => {
+        showSlide(idx);
+        toggleDrawer(false);
+      };
+      drawerList.appendChild(item);
+    });
+
+    function showSlide(index) {
+      if (index < 0 || index >= slides.length) return;
+      slides[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+
+      const pct = ((current + 1) / slides.length) * 100;
+      progress.style.width = pct + '%';
+      counter.textContent = `${current + 1} / ${slides.length}`;
+
+      // Atualiza drawer active
+      Array.from(drawerList.children).forEach((el, idx) => {
+        el.classList.toggle('active', idx === current);
+      });
+    }
+
+    // Controles footer
+    document.getElementById('btn-prev').addEventListener('click', () => showSlide(current - 1));
+    document.getElementById('btn-next').addEventListener('click', () => showSlide(current + 1));
+
+    // Drawer toggle
+    function toggleDrawer(open) {
+      if (typeof open === 'boolean') {
+        drawer.classList.toggle('open', open);
+      } else {
+        drawer.classList.toggle('open');
+      }
+    }
+    document.getElementById('btn-toggle-drawer').addEventListener('click', () => toggleDrawer());
+
+    // Fullscreen toggle
+    document.getElementById('btn-fullscreen').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    // Cronômetro
+    let timerSeconds = 0;
+    let timerInterval = null;
+    const timerDisplay = document.getElementById('timer-display');
+    const timerText = document.getElementById('timer-text');
+
+    function updateTimer() {
+      timerSeconds++;
+      const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+      const s = String(timerSeconds % 60).padStart(2, '0');
+      timerText.textContent = `${m}:${s}`;
+      if (timerSeconds >= 300) { // 5 min
+        timerText.style.color = '#fa4d56';
+      }
+    }
+
+    timerDisplay.addEventListener('click', () => {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      } else {
+        timerInterval = setInterval(updateTimer, 1000);
+      }
+    });
+
+    timerDisplay.addEventListener('dblclick', () => {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerSeconds = 0;
+      timerText.textContent = '00:00';
+      timerText.style.color = '';
+    });
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+      if (document.querySelector('.modal-backdrop.open')) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('open'));
+        }
+        return;
+      }
+
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        showSlide(current + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        showSlide(current - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        showSlide(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        showSlide(slides.length - 1);
+      } else if (e.key === 'f' || e.key === 'F') {
+        document.getElementById('btn-fullscreen').click();
+      } else if (e.key === 'm' || e.key === 'M') {
+        toggleDrawer();
+      } else if (e.key === 't' || e.key === 'T') {
+        timerDisplay.click();
+      } else if (e.key === '?' || e.key === '/') {
+        openModal('modal-shortcuts');
+      } else if (e.key === 'Escape') {
+        toggleDrawer(false);
+      }
+    });
+
+    // Navegação por clique lateral
+    document.querySelector('.slide-deck').addEventListener('click', (e) => {
+      if (e.target.closest('a, button, input, select, textarea, .callout, .code-block, table')) return;
+      if (e.clientX > window.innerWidth / 2) {
+        showSlide(current + 1);
+      } else {
+        showSlide(current - 1);
+      }
+    });
+
+    // Suporte a swipe em telas touch
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const diffX = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(diffX) > 50) {
+        if (diffX < 0) showSlide(current + 1);
+        else showSlide(current - 1);
+      }
+    }, { passive: true });
+
+    // Modais
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+    document.getElementById('btn-shortcuts').addEventListener('click', () => openModal('modal-shortcuts'));
+
+    // Exibição de payloads JSON
+    const jsonSamples = {
+      media: {
+        "triage_id": "tr-2026-mel-048",
+        "pet": { "name": "Mel", "species": "CANINE", "age_years": 4 },
+        "priority": "MEDIA",
+        "next_action": "AGENDAR_CONSULTA_24_72H",
+        "confidence": 0.88,
+        "engine": "DETERMINISTIC_RULES",
+        "model_version": "zelo-v1.4",
+        "matched_rules": ["R04_RESPIRATORIO_MODERADO"],
+        "extracted_symptoms": [
+          { "canonical": "tosse", "duration": "1_A_2_DIAS", "negated": false }
+        ],
+        "human_review_required": true,
+        "consent_granted": false
+      },
+      emergencia: {
+        "triage_id": "tr-2026-mel-049",
+        "pet": { "name": "Mel", "species": "CANINE", "age_years": 4 },
+        "priority": "EMERGENCIA",
+        "next_action": "PRONTO_SOCORRO_IMEDIATO",
+        "confidence": 0.99,
+        "engine": "CRITICAL_SIGNAL_GUARD",
+        "model_version": "zelo-v1.4",
+        "matched_rules": ["R01_SINAL_ALERTA_CONVULSAO"],
+        "extracted_symptoms": [
+          { "canonical": "convulsao", "duration": "RECENTE", "negated": false }
+        ],
+        "human_review_required": true,
+        "consent_granted": true,
+        "clinic_notified": "CLINICA_ZELO_CENTRAL"
+      }
+    };
+
+    function openJsonModal(type) {
+      const data = jsonSamples[type] || jsonSamples.media;
+      document.getElementById('json-modal-title').textContent =
+        type === 'emergencia' ? 'JSON: Emergência Imediata (R01)' : 'JSON: Triagem Média (R04)';
+      document.getElementById('json-content').textContent = JSON.stringify(data, null, 2);
+      openModal('modal-json');
+    }
+
+    // Inicializa
+    showSlide(0);
+  </script>
+</body>
+</html>
