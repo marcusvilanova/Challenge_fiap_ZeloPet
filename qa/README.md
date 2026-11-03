@@ -8,6 +8,8 @@
 | Consulta: tarefas da Sprint 4 | [Sprint 4 — Tarefas](https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=7c3d453c-74fe-46bd-9eba-8ec43ef24cb2) |
 | **Vídeo da automação de testes** (YouTube) | _inserir o link aqui antes de entregar_ |
 | Sistema testado (versão online) | https://zelopet.vercel.app |
+| **Professor Avaliador** | Prof. Felipe Santos (`proffelipe.santos@fiap.com.br`) |
+| **Acesso Configurado** | Licença **Basic** na Organização · **Project Administrator** no projeto CLYVO VET |
 
 > Para corrigir, o professor precisa ser **membro da organização com licença Basic** e **administrador do projeto** CLYVO VET (Organization settings → Users → Add users; depois Project settings → Permissions → Project Administrators).
 
