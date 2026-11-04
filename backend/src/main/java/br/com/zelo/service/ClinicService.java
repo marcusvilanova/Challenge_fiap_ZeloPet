@@ -3,14 +3,17 @@ package br.com.zelo.service;
 import br.com.zelo.ai.Priority;
 import br.com.zelo.api.dto.ApiDtos.ClinicTriageDetail;
 import br.com.zelo.api.dto.ApiDtos.ClinicTriageSummary;
+import br.com.zelo.api.dto.ApiDtos.ConversationLine;
 import br.com.zelo.api.dto.ApiDtos.ReviewRequest;
 import br.com.zelo.api.dto.ApiDtos.ReviewResponse;
 import br.com.zelo.api.dto.TriageResult;
 import br.com.zelo.domain.AppUser;
+import br.com.zelo.domain.ChatMessage;
 import br.com.zelo.domain.ClinicReview;
 import br.com.zelo.domain.ClinicReview.Decision;
 import br.com.zelo.domain.Triage;
 import br.com.zelo.repo.AppUserRepository;
+import br.com.zelo.repo.ChatMessageRepository;
 import br.com.zelo.repo.ClinicReviewRepository;
 import br.com.zelo.repo.TriageRepository;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -40,10 +44,13 @@ public class ClinicService {
     private final TriageService triageService;
     private final PetService pets;
     private final TimelineService timeline;
+    private final ChatMessageRepository messages;
     private final Clock clock;
 
     public ClinicService(TriageRepository triages, ClinicReviewRepository reviews, AppUserRepository users,
-                         TriageService triageService, PetService pets, TimelineService timeline, Clock clock) {
+                         TriageService triageService, PetService pets, TimelineService timeline,
+                         ChatMessageRepository messages, Clock clock) {
+        this.messages = messages;
         this.triages = triages;
         this.reviews = reviews;
         this.users = users;
@@ -72,7 +79,28 @@ public class ClinicService {
         boolean reviewed = reviews.findFirstByTriageIdOrderByCreatedAtDesc(triage.getId()).isPresent();
         return new ClinicTriageDetail(summary(triage, reviewed), triageService.toResult(triage),
                 pets.toResponse(triage.getPet()), triage.getInputText(),
-                timeline.latestForClinic(triage.getPet().getId(), TIMELINE_LIMIT), reviewsOf(triage));
+                timeline.latestForClinic(triage.getPet().getId(), TIMELINE_LIMIT), reviewsOf(triage),
+                conversationOf(triage));
+    }
+
+    /**
+     * Conversa que levou à triagem: da saudação até a resposta do bot que trouxe ESTA triagem (inclusive).
+     * O que o tutor disse depois (outros assuntos, outras triagens) não é mostrado à clínica (minimização).
+     */
+    private List<ConversationLine> conversationOf(Triage triage) {
+        if (triage.getSession() == null) {
+            return List.of(); // triagem avulsa (POST /api/triage): não há conversa
+        }
+        String marker = "\"" + triage.getPublicId() + "\"";
+        List<ConversationLine> lines = new ArrayList<>();
+        for (ChatMessage message : messages.findBySessionIdOrderByIdAsc(triage.getSession().getId())) {
+            lines.add(new ConversationLine(message.getAuthor().name(), message.getContent(),
+                    message.getCreatedAt().atOffset(ZoneOffset.UTC)));
+            if (message.getMetaJson() != null && message.getMetaJson().contains(marker)) {
+                break;
+            }
+        }
+        return lines;
     }
 
     @Transactional

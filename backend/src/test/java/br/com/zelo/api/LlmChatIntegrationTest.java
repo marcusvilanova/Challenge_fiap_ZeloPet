@@ -28,6 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         "spring.datasource.url=jdbc:h2:mem:zelo-llm-${random.uuid};DB_CLOSE_DELAY=-1",
         "zelo.seed.enabled=true",
         "zelo.seed.demo-password=" + ApiTestSupport.DEMO_PASSWORD,
+        "zelo.seed.clinic-scenarios=false", // este teste conta as chamadas ao LLM falso
         "zelo.rate-limit.per-minute=1000", "zelo.rate-limit.login-per-minute=1000",
         "zelo.vision.url=http://localhost:1"})
 @AutoConfigureMockMvc

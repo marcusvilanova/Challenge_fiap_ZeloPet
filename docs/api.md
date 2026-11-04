@@ -34,7 +34,7 @@ Documentação interativa (OpenAPI/Swagger): **http://localhost:8080/swagger-ui.
 | `POST /api/vision/analyze` | tutor | Foto da pele (multipart; só cães; JPEG/PNG/WebP até 5 MB) → classificação **experimental** |
 | `POST /api/sharing/consents` · `GET` · `DELETE /{id}` | tutor | Concede, lista e **revoga** o compartilhamento com a clínica (revogar oculta as triagens já enviadas) |
 | `GET /api/clinic/triages` | clínica | Fila de triagens compartilhadas, da prioridade mais alta para a mais baixa |
-| `GET /api/clinic/triages/{triageId}` | clínica | Relato, triagem, histórico **autorizado** e revisões anteriores |
+| `GET /api/clinic/triages/{triageId}` | clínica | Relato, triagem, histórico **autorizado**, revisões anteriores e `conversation`: a conversa tutor ↔ Zelo que gerou a triagem (só até a resposta com a triagem; vazia em triagem avulsa) |
 | `POST /api/clinic/reviews` | clínica | Registra a revisão profissional (confirma ou ajusta a prioridade) |
 | `GET /actuator/health` | público | Saúde do serviço |
 
@@ -45,7 +45,7 @@ Documentação interativa (OpenAPI/Swagger): **http://localhost:8080/swagger-ui.
 | `/` · `/index.html` · `/login` | público | Entrada e cadastro (no backend, `/` abre a entrada; na Vercel, `/` abre o painel e redireciona para a entrada se não houver login) |
 | `/chat.html` | tutor | Conversa com a Zelo |
 | `/dashboard` · `/painel` · `/tutor` | tutor | Painel do Tutor (IBM Carbon): perfil, edição do pet, histórico com exportação em PDF, gestão do plano de cuidados |
-| `/clinic.html` | clínica | Fila e revisão profissional |
+| `/clinic.html` | clínica | Fila, painel de atendimento (indicadores, prioridades, últimos 7 dias, sintomas), conversa da triagem e revisão profissional |
 | `/apresentacao` · `/pitch` · `/slides` · `/video` · `/demonstracao` | público | Apresentação da Sprint 4 e vídeo-guia de QA |
 
 ## Contrato da triagem (saída da IA)

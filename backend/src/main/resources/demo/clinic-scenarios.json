@@ -1,0 +1,82 @@
+{
+  "_comment": "Casos FICTÍCIOS de demonstração para o painel da clínica. Usado pelo DemoDataSeeder (Java) e pela versão online (web/local-api.js). Cada conversa passa pelo motor de triagem real; hours_ago e review.after_minutes só ajustam as datas.",
+  "tutors": [
+    {
+      "email": "carla@zelo.demo",
+      "name": "Carla Mendes",
+      "pets": [
+        {
+          "name": "Luna", "species": "cat", "breed": "Siamese", "female": true, "age_months": 72, "weight_kg": 4.1,
+          "history_tags": ["vacinado"],
+          "hours_ago": 50,
+          "messages": ["Ela não come há dois dias e está escondida, muito quieta", "Sim, compartilhar com a clínica"],
+          "review": { "decision": "CONFIRMADA", "after_minutes": 35, "note": "Trazer a Luna hoje para exame de sangue. Manter água fresca à vontade até a consulta." }
+        },
+        {
+          "name": "Mia", "species": "cat", "breed": "Persian", "female": true, "age_months": 144, "weight_kg": 3.6,
+          "history_tags": ["vacinado", "doenca_renal"],
+          "hours_ago": 120,
+          "messages": ["Ela está bebendo muita água e fazendo muito xixi faz uma semana", "Sim, compartilhar com a clínica"],
+          "review": { "decision": "AJUSTADA", "final_priority": "media", "after_minutes": 180, "note": "Quadro compatível com a doença renal já acompanhada. Consulta em até 48 h com exames de rotina." }
+        }
+      ]
+    },
+    {
+      "email": "diego@zelo.demo",
+      "name": "Diego Rocha",
+      "pets": [
+        {
+          "name": "Bidu", "species": "dog", "breed": "Beagle", "female": false, "age_months": 108, "weight_kg": 13.2,
+          "history_tags": ["vacinado"],
+          "hours_ago": 26,
+          "messages": ["Ele comeu uma barra de chocolate meio amargo há uma hora", "Sim, compartilhar com a clínica"],
+          "review": { "decision": "CONFIRMADA", "after_minutes": 6, "note": "Chocolate meio amargo é tóxico para cães. Venha agora: vamos avaliar e, se indicado, induzir o vômito." }
+        },
+        {
+          "name": "Max", "species": "dog", "breed": "Golden Retriever", "female": false, "age_months": 84, "weight_kg": 32.0,
+          "history_tags": ["vacinado"],
+          "hours_ago": 3,
+          "messages": ["Ele está mancando da pata traseira há uma semana", "Sim, compartilhar com a clínica"]
+        }
+      ]
+    },
+    {
+      "email": "fernanda@zelo.demo",
+      "name": "Fernanda Alves",
+      "pets": [
+        {
+          "name": "Nina", "species": "dog", "breed": "Bulldog", "female": true, "age_months": 36, "weight_kg": 21.5,
+          "history_tags": ["vacinado", "alergias"],
+          "hours_ago": 0.7,
+          "messages": ["Ela está respirando com muita dificuldade e a língua está roxa", "Sim, compartilhar com a clínica"]
+        },
+        {
+          "name": "Fred", "species": "dog", "breed": "Poodle", "female": false, "age_months": 60, "weight_kg": 6.8,
+          "history_tags": ["vacinado"],
+          "hours_ago": 72,
+          "messages": ["Ele vomitou uma vez hoje cedo", "Está comendo e bebendo normal", "Sim, compartilhar com a clínica"],
+          "review": { "decision": "AJUSTADA", "final_priority": "baixa", "after_minutes": 90, "note": "Episódio único, sem outros sinais. Observar em casa por 24 h e voltar a falar com a clínica se repetir." }
+        }
+      ]
+    },
+    {
+      "email": "lucas@zelo.demo",
+      "name": "Lucas Pereira",
+      "pets": [
+        {
+          "name": "Simba", "species": "cat", "breed": "Mixed Breed", "female": false, "age_months": 48, "weight_kg": 5.2,
+          "history_tags": ["vacinado"],
+          "hours_ago": 146,
+          "messages": ["Ele vai na caixa de areia toda hora e não sai xixi", "Sim, compartilhar com a clínica"],
+          "review": { "decision": "CONFIRMADA", "after_minutes": 4, "note": "Obstrução urinária confirmada no atendimento. Simba foi desobstruído e segue em observação." }
+        },
+        {
+          "name": "Pipoca", "species": "cat", "breed": "Mixed Breed", "female": true, "age_months": 14, "weight_kg": 3.0,
+          "history_tags": ["vacinado"],
+          "hours_ago": 7,
+          "messages": ["Ela está com diarreia desde ontem mas está brincando normal", "Está comendo e bebendo normal", "Sim, compartilhar com a clínica"]
+        }
+      ]
+    }
+  ]
+}

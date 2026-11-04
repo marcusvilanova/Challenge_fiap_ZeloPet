@@ -95,7 +95,10 @@ A Vercel não roda Java, então a versão online usa as **mesmas telas** com o m
 |---|---|---|
 | Tutora (pets: Mel — cadela, Thor — gato) | `ana@zelo.demo` | `zelo-demo-2026` |
 | Tutor (pet: Rex — bulldog) | `bruno@zelo.demo` | `zelo-demo-2026` |
-| Clínica | `vet@zelo.demo` | `zelo-demo-2026` |
+| Clínica (já com 8 triagens fictícias de 4 tutores na fila e no painel de atendimento) | `vet@zelo.demo` | `zelo-demo-2026` |
+| Tutores dos casos da clínica (Luna/Mia, Bidu/Max, Nina/Fred, Simba/Pipoca) | `carla@` · `diego@` · `fernanda@` · `lucas@zelo.demo` | `zelo-demo-2026` |
+
+> Na tela de entrada, os atalhos **Tutora Ana**, **Tutor Bruno** e **Clínica Zelo** preenchem e-mail **e senha**; é só clicar em **Entrar**. Os casos da clínica estão em [`demo/clinic-scenarios.json`](backend/src/main/resources/demo/clinic-scenarios.json): cada conversa passa pelo motor de triagem real (no backend e na versão online).
 
 > A senha acima é **somente de demonstração local**. Troque com `ZELO_DEMO_PASSWORD` ou desative os dados fictícios com `ZELO_SEED_DEMO=false`. Nada de segredo real fica no repositório.
 
@@ -151,7 +154,7 @@ Limitações, riscos e o que **não** foi feito (IoT/IoB, datasets D1/D4/D5, val
 
 ### Evidências (telas)
 
-As 16 capturas estão em [`docs/evidencias/`](docs/evidencias/) (lista comentada em [`docs/sprint4-ia.md`](docs/sprint4-ia.md)). Três delas:
+As 17 capturas estão em [`docs/evidencias/`](docs/evidencias/) (lista comentada em [`docs/sprint4-ia.md`](docs/sprint4-ia.md)). Três delas:
 
 | Triagem média, com motivos e confiança | Emergência: sem perguntas, pede consentimento | Painel da clínica: fila por prioridade |
 |---|---|---|

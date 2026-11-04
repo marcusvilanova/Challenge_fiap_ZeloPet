@@ -294,7 +294,7 @@ function createSession(db, user, pet) {
   return session;
 }
 
-async function handleMessage(db, user, body) {
+async function handleMessage(db, user, body, offline = false) {
   const pet = ownedPet(db, user, body.pet_id);
   const text = String(body.text || "").trim();
   if (!text) throw new ApiError(400, "Escreva uma mensagem.", { text: "obrigatório" });
@@ -306,7 +306,7 @@ async function handleMessage(db, user, body) {
 
   const ctx = context(db, pet);
   const care = careContext(db, pet);
-  const status = await llm();
+  const status = offline ? { enabled: false } : await llm(); // o seed de demonstração não chama o LLM
   let extractionUsed = false;
   const assist = status.enabled ? async (t, current) => {
     const allowed = Object.fromEntries(knowledge.symptoms.map((s) => [s.id, s.label]));
@@ -366,13 +366,89 @@ function clinicSummary(db, t) {
 const reviewResponse = (db, r) => ({ id: r.id, triage_id: triagePublicId(r.triage), reviewer: db.users.find((u) => u.id === r.reviewer)?.name ?? "",
   decision: r.decision, final_priority: r.final_priority, note: r.note, created_at: r.created_at });
 
+/** Conversa que gerou a triagem: da saudação até a resposta do bot com ESTA triagem (o que veio depois não vai à clínica). */
+function conversationOf(db, t) {
+  if (t.session == null) return [];
+  const lines = [];
+  for (const m of db.messages.filter((x) => x.session === t.session).sort((a, b) => a.id - b.id)) {
+    lines.push({ author: m.author, text: m.text, created_at: m.created_at });
+    if (m.triage?.triage_id === t.result.triage_id) break;
+  }
+  return lines;
+}
+
+function addReview(db, vet, t, decision, finalWire, note) {
+  const final = priorityFromWire(finalWire);
+  if (!final || !["CONFIRMADA", "AJUSTADA"].includes(decision)) throw new ApiError(400, "Revisão inválida.");
+  if (decision === "AJUSTADA" && final.wire === t.result.priority) throw new ApiError(400, "Para ajustar, escolha uma prioridade diferente da sugerida pela IA");
+  if (decision === "CONFIRMADA" && final.wire !== t.result.priority) throw new ApiError(400, "Para confirmar, mantenha a prioridade sugerida pela IA");
+  const review = { id: nextId(db, "review"), triage: t.id, reviewer: vet.id, decision, final_priority: final.wire,
+    note: note ? String(note).trim().slice(0, 1000) : null, created_at: now() };
+  db.reviews.push(review);
+  event(db, t.pet, "review", decision === "CONFIRMADA" ? `Clínica confirmou a prioridade ${final.wire}` : `Clínica ajustou a prioridade para ${final.wire}`,
+    review.note ?? "Revisão registrada pela clínica.", "clinic", t.id);
+  return review;
+}
+
+// ------------------------------------------------------------------- casos fictícios da clínica
+// Mesmo arquivo do DemoDataSeeder (Java): cada conversa passa pelo motor real; depois as datas são recuadas.
+const SCENARIOS_VERSION = 1;
+async function seedClinicScenarios(db) {
+  const response = await fetch("/demo/clinic-scenarios.json");
+  if (!response.ok) return;
+  const { tutors } = await response.json();
+  const vet = db.users.find((u) => u.role === "CLINICA");
+  const monthsAgo = (m) => { const d = new Date(); d.setMonth(d.getMonth() - m); return d.toISOString().slice(0, 10); };
+  for (const t of tutors) {
+    if (db.users.some((u) => u.email === t.email)) continue;
+    const user = { id: nextId(db, "user"), email: t.email, name: t.name, role: "TUTOR", demo: true };
+    db.users.push(user);
+    for (const p of t.pets) {
+      const pet = { id: nextId(db, "pet"), owner: user.id, name: p.name, species: p.species, breed: p.breed, female: p.female,
+        birth_date: monthsAgo(p.age_months), weight_kg: p.weight_kg, history_tags: p.history_tags };
+      db.pets.push(pet);
+      let sessionId = null;
+      let shared = null;
+      for (const text of p.messages) {
+        const reply = await handleMessage(db, user, { pet_id: petPublicId(pet.id), session_id: sessionId, text }, true);
+        sessionId = reply.session_id;
+        shared = reply.shared_triage_id ?? shared;
+      }
+      let reviewedAt = null;
+      const when = new Date(Date.now() - p.hours_ago * 3600000).toISOString();
+      if (shared && p.review) {
+        const triage = db.triages.find((x) => x.id === parseId(shared, "TRI"));
+        const decision = p.review.decision === "AJUSTADA" && p.review.final_priority !== triage.result.priority ? "AJUSTADA" : "CONFIRMADA";
+        addReview(db, vet, triage, decision, decision === "AJUSTADA" ? p.review.final_priority : triage.result.priority, p.review.note);
+        reviewedAt = new Date(Date.parse(when) + p.review.after_minutes * 60000).toISOString();
+      }
+      backdate(db, pet.id, when, reviewedAt ?? when);
+    }
+  }
+  db.clinicScenarios = SCENARIOS_VERSION;
+}
+
+function backdate(db, petId, when, reviewedAt) {
+  const sessions = new Set(db.sessions.filter((s) => s.pet === petId).map((s) => { s.updated_at = when; return s.id; }));
+  db.messages.filter((m) => sessions.has(m.session)).forEach((m) => { m.created_at = when; });
+  const triages = new Set(db.triages.filter((t) => t.pet === petId).map((t) => { t.created_at = when; t.result.created_at = when; return t.id; }));
+  db.consents.filter((c) => c.pet === petId).forEach((c) => { c.granted_at = when; });
+  db.events.filter((e) => e.pet === petId).forEach((e) => { e.occurred_at = e.type === "review" ? reviewedAt : when; });
+  db.reviews.filter((r) => triages.has(r.triage)).forEach((r) => { r.created_at = reviewedAt; });
+}
+
 // --------------------------------------------------------------------------------- rotas
 const sha256 = async (text) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)))]
   .map((b) => b.toString(16).padStart(2, "0")).join("");
 
+let seeding = null;
 async function route(method, url, body) {
   await ready;
   const db = load();
+  if (db.clinicScenarios !== SCENARIOS_VERSION) {
+    seeding ??= seedClinicScenarios(db).catch(() => { db.clinicScenarios = SCENARIOS_VERSION; }).finally(() => { seeding = null; save(); });
+    await seeding;
+  }
   const { pathname, searchParams } = new URL(url, location.origin);
   const parts = pathname.split("/").filter(Boolean).slice(1); // sem o "api"
   const key = `${method} /${parts.map((p, i) => (i > 0 && /^(PET|TRI)-\d+$|^\d+$/.test(p) ? ":id" : p)).join("/")}`;
@@ -519,20 +595,14 @@ async function route(method, url, body) {
       if (!t) throw new ApiError(404, "Triagem não encontrada");
       const pet = db.pets.find((p) => p.id === t.pet);
       return { summary: clinicSummary(db, t), triage: { ...t.result, shared_with_clinic: true }, pet: petResponse(db, pet), input_text: t.input_text,
-        timeline: timeline(db, pet.id, 15, true), reviews: db.reviews.filter((r) => r.triage === t.id).map((r) => reviewResponse(db, r)) };
+        timeline: timeline(db, pet.id, 15, true), reviews: db.reviews.filter((r) => r.triage === t.id).map((r) => reviewResponse(db, r)),
+        conversation: conversationOf(db, t) };
     }
     case "POST /clinic/reviews": {
       const vet = requireRole(db, "CLINICA");
       const t = clinicVisible(db).find((x) => x.id === parseId(body.triage_id, "TRI"));
       if (!t) throw new ApiError(404, "Triagem não encontrada");
-      const final = priorityFromWire(body.final_priority);
-      if (!final || !["CONFIRMADA", "AJUSTADA"].includes(body.decision)) throw new ApiError(400, "Revisão inválida.");
-      const review = { id: nextId(db, "review"), triage: t.id, reviewer: vet.id, decision: body.decision, final_priority: final.wire,
-        note: body.note ? String(body.note).trim().slice(0, 1000) : null, created_at: now() };
-      db.reviews.push(review);
-      event(db, t.pet, "review", body.decision === "CONFIRMADA" ? `Clínica confirmou a prioridade ${final.wire}` : `Clínica ajustou a prioridade para ${final.wire}`,
-        review.note ?? "Revisão registrada pela clínica.", "clinic", t.id);
-      return reviewResponse(db, review);
+      return reviewResponse(db, addReview(db, vet, t, body.decision, body.final_priority, body.note));
     }
     default:
       throw new ApiError(404, "Rota não encontrada.");

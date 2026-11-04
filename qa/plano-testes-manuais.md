@@ -200,14 +200,14 @@ Testes de **sistema** das funcionalidades principais do Zelo, com dados controla
 - **Azure Boards:** Test Case #69 · testa PBI-16 Consentimento e compartilhamento
 - **Objetivo:** Verificar o consentimento explícito (LGPD): recusar não compartilha.
 - **Dados de entrada:** Pet Mel · 'Ela teve uma convulsão agora há pouco' → atalho 'Agora não' · Depois: login vet@zelo.demo
-- **Saída esperada:** 'Tudo bem, não compartilhei nada com a clínica...'; na fila da clínica essa triagem não aparece (em sessão limpa: 'Nenhuma triagem compartilhada ainda').
+- **Saída esperada:** 'Tudo bem, não compartilhei nada com a clínica...'; na fila da clínica não aparece nenhuma triagem da Mel (só os casos fictícios de outros tutores: Nina, Bidu, Simba, Max, Luna, Mia, Pipoca, Fred).
 
 | # | Passo | Resultado esperado |
 |---|---|---|
 | 1 | Em janela anônima, entrar como ana@zelo.demo, Mel, 'Nova conversa' | Saudação do bot |
 | 2 | Enviar 'Ela teve uma convulsão agora há pouco' | Triagem de emergência com atalhos de compartilhamento |
 | 3 | Clicar em 'Agora não' | 'Tudo bem, não compartilhei nada com a clínica...' |
-| 4 | Clicar em 'Sair' e entrar como vet@zelo.demo (atalho 'Clínica Zelo') | Painel 'Fila de atenção' sem essa triagem ('Nenhuma triagem compartilhada ainda') |
+| 4 | Clicar em 'Sair' e entrar como vet@zelo.demo (atalho 'Clínica Zelo') | Painel 'Fila de atenção' sem nenhum item 'Mel' (a fila mostra só os casos fictícios de outros tutores) |
 
 ## CT-14 — Compartilhamento com consentimento aparece na fila da clínica
 

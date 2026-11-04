@@ -317,7 +317,7 @@
       "titulo": "Recusa do compartilhamento: nada vai para a clínica",
       "objetivo": "Verificar o consentimento explícito (LGPD): recusar não compartilha.",
       "entrada": "Pet Mel · 'Ela teve uma convulsão agora há pouco' → atalho 'Agora não' · Depois: login vet@zelo.demo",
-      "saida": "'Tudo bem, não compartilhei nada com a clínica...'; na fila da clínica essa triagem não aparece (em sessão limpa: 'Nenhuma triagem compartilhada ainda').",
+      "saida": "'Tudo bem, não compartilhei nada com a clínica...'; na fila da clínica não aparece nenhuma triagem da Mel (só os casos fictícios de outros tutores: Nina, Bidu, Simba, Max, Luna, Mia, Pipoca, Fred).",
       "passos": [
         [
           "Em janela anônima, entrar como ana@zelo.demo, Mel, 'Nova conversa'",
@@ -333,7 +333,7 @@
         ],
         [
           "Clicar em 'Sair' e entrar como vet@zelo.demo (atalho 'Clínica Zelo')",
-          "Painel 'Fila de atenção' sem essa triagem ('Nenhuma triagem compartilhada ainda')"
+          "Painel 'Fila de atenção' sem nenhum item 'Mel' (a fila mostra só os casos fictícios de outros tutores)"
         ]
       ]
     },

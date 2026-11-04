@@ -112,7 +112,12 @@ public final class ApiDtos {
     }
 
     public record ClinicTriageDetail(ClinicTriageSummary summary, TriageResult triage, PetResponse pet, String inputText,
-                                     List<TimelineEventResponse> timeline, List<ReviewResponse> reviews) {
+                                     List<TimelineEventResponse> timeline, List<ReviewResponse> reviews,
+                                     List<ConversationLine> conversation) {
+    }
+
+    /** Uma fala da conversa tutor ↔ Zelo que gerou a triagem (vazia em triagens avulsas). */
+    public record ConversationLine(String author, String text, OffsetDateTime createdAt) {
     }
 
     public record ReviewRequest(

@@ -27,7 +27,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
- * Cria dados FICTÍCIOS para a demonstração (2 tutores, 1 clínica, 3 pets com plano de cuidados). Roda apenas se
+ * Cria dados FICTÍCIOS para a demonstração (2 tutores, 1 clínica, 3 pets com plano de cuidados e, para o painel da
+ * clínica, mais 4 tutores com triagens compartilhadas — ver {@link ClinicDemoScenarios}). Roda apenas se
  * {@code zelo.seed.enabled=true} e o banco estiver vazio. Desative (ZELO_SEED_DEMO=false) em qualquer ambiente real.
  */
 @Component
@@ -45,10 +46,16 @@ public class DemoDataSeeder implements ApplicationRunner {
     private final ZeloProperties props;
     private final Clock clock;
     private final boolean secureCookies;
+    private final ClinicDemoScenarios clinicScenarios;
+    private final boolean withClinicScenarios;
 
     public DemoDataSeeder(AppUserRepository users, PetRepository pets, CareItemRepository careItems,
                           TimelineService timeline, PasswordEncoder encoder, ZeloProperties props, Clock clock,
-                          @Value("${server.servlet.session.cookie.secure:false}") boolean secureCookies) {
+                          @Value("${server.servlet.session.cookie.secure:false}") boolean secureCookies,
+                          ClinicDemoScenarios clinicScenarios,
+                          @Value("${zelo.seed.clinic-scenarios:true}") boolean withClinicScenarios) {
+        this.clinicScenarios = clinicScenarios;
+        this.withClinicScenarios = withClinicScenarios;
         this.users = users;
         this.pets = pets;
         this.careItems = careItems;
@@ -76,7 +83,7 @@ public class DemoDataSeeder implements ApplicationRunner {
 
         AppUser ana = users.save(new AppUser("ana@zelo.demo", "Ana Souza", hash, Role.TUTOR, now));
         AppUser bruno = users.save(new AppUser("bruno@zelo.demo", "Bruno Lima", hash, Role.TUTOR, now));
-        users.save(new AppUser("vet@zelo.demo", "Dra. Helena Prado (Clínica Zelo)", hash, Role.CLINICA, now));
+        AppUser vet = users.save(new AppUser("vet@zelo.demo", "Dra. Helena Prado (Clínica Zelo)", hash, Role.CLINICA, now));
 
         Pet mel = pets.save(new Pet(ana, "Mel", Species.DOG, "Labrador Retriever", true, today.minusYears(4),
                 new BigDecimal("27.5"), Set.of("vacinado"), now));
@@ -96,6 +103,9 @@ public class DemoDataSeeder implements ApplicationRunner {
         timeline.record(mel, "visit", "Consulta de rotina", "Check-up anual sem alterações. Peso estável.", "clinic", null, null);
         timeline.record(mel, "vaccine", "Vacina antirrábica aplicada", "Dose anual registrada pela clínica.", "clinic", null, null);
         timeline.record(thor, "visit", "Consulta de rotina", "Sem queixas. Orientações sobre alimentação.", "clinic", null, null);
+        if (withClinicScenarios) {
+            clinicScenarios.seed(hash, vet); // fila e painel da clínica com casos fictícios já compartilhados
+        }
         LOG.warn("Dados de DEMONSTRAÇÃO criados (ana@zelo.demo, bruno@zelo.demo, vet@zelo.demo). Desative com ZELO_SEED_DEMO=false.");
     }
 }

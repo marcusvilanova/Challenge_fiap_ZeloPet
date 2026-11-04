@@ -15,6 +15,8 @@ cpSync(join(root, "web", "local-api.js"), join(dist, "js", "api.js"));
 cpSync(join(root, "web", "engine"), join(dist, "js", "engine"), { recursive: true });
 mkdirSync(join(dist, "triage"), { recursive: true });
 cpSync(join(root, "backend", "src", "main", "resources", "triage", "triage_knowledge.json"), join(dist, "triage", "triage_knowledge.json"));
+// casos fictícios do painel da clínica: o mesmo arquivo usado pelo DemoDataSeeder do backend
+cpSync(join(root, "backend", "src", "main", "resources", "demo"), join(dist, "demo"), { recursive: true });
 
 if (existsSync(join(root, "apresentacao.html"))) {
   cpSync(join(root, "apresentacao.html"), join(dist, "apresentacao.html"));
@@ -33,8 +35,8 @@ function patch(file, from, to) {
   writeFileSync(path, html.replace(from, to));
 }
 
-patch("index.html", "A senha da demonstração está no README do projeto.",
-  "Versão online de demonstração: os dados ficam só neste navegador e as contas de exemplo entram com qualquer senha.");
+patch("index.html", "Clique numa conta de demonstração: e-mail e senha são preenchidos; é só clicar em Entrar.",
+  "Versão online de demonstração: clique numa conta de exemplo (e-mail e senha são preenchidos) e em Entrar. Os dados ficam só neste navegador.");
 patch("chat.html", "provedor externo (Anthropic)", "provedor externo (Google Gemini)");
 
 console.log(`Versão estática gerada em ${dist}`);

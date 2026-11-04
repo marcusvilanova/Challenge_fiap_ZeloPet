@@ -36,17 +36,24 @@ tabs.forEach((tab, index) => {
 });
 
 // ------------------------------------------------------------------- contas de demonstração
+// Senha só das contas FICTÍCIAS de demonstração (a mesma do README / ZELO_DEMO_PASSWORD padrão).
+const DEMO_PASSWORD = document.querySelector("[data-demo-password]")?.dataset.demoPassword ?? "";
+
+function fillDemo(email) {
+  $("login-email").value = email;
+  $("login-password").value = DEMO_PASSWORD;
+  showError("login-error", "");
+  $("login-submit").focus(); // um Enter (ou clique) e entra
+}
+
 document.querySelectorAll("[data-demo]").forEach((chip) => {
-  chip.addEventListener("click", () => {
-    $("login-email").value = chip.dataset.demo;
-    $("login-password").focus();
-  });
+  chip.addEventListener("click", () => fillDemo(chip.dataset.demo));
 });
 
-// Atalho vindo do painel ("Visão Clínica"): já deixa a conta de demonstração escolhida no campo de e-mail.
+// Atalho vindo do painel ("Visão Clínica"): já deixa a conta de demonstração escolhida preenchida.
 const demoFromUrl = new URLSearchParams(location.search).get("demo");
 if (demoFromUrl && document.querySelector(`[data-demo="${CSS.escape(demoFromUrl)}"]`)) {
-  $("login-email").value = demoFromUrl;
+  fillDemo(demoFromUrl);
 }
 
 // ------------------------------------------------------------------------------- envio

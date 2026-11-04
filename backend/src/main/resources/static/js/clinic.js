@@ -24,6 +24,7 @@ async function init() {
     await api.logout().catch(() => undefined);
     location.assign("/index.html");
   });
+  $("show-dashboard").addEventListener("click", () => renderDashboard());
   document.querySelectorAll("[data-filter]").forEach((chip) =>
     chip.addEventListener("click", () => {
       state.filter = chip.dataset.filter;
@@ -42,8 +43,8 @@ async function init() {
     return;
   }
 
-  renderEmpty();
   await refreshQueue();
+  renderDashboard();
   setInterval(() => {
     if (!document.hidden) refreshQueue();
   }, POLL_MS);
@@ -56,6 +57,7 @@ async function refreshQueue() {
     announceNewcomers(queue);
     state.queue = queue;
     renderQueue();
+    if (state.selectedId === null) renderDashboard(); // painel sempre com os números atuais
     $("live").className = "badge badge--ok";
   } catch (error) {
     $("live").className = "badge badge--warn";
@@ -131,11 +133,124 @@ function renderQueue() {
 function renderEmpty() {
   const detail = $("detalhe");
   clear(detail);
+  detail.dataset.view = "empty";
   detail.append(
     el("div", { class: "detail__empty" },
       el("h2", { text: "Escolha uma triagem" }),
       el("p", { text: "O tutor envia o resumo enquanto ainda está a caminho. Você vê o relato, o histórico autorizado e confirma ou ajusta a prioridade sugerida pela IA." })),
   );
+}
+
+// ------------------------------------------------------------------------ painel de atendimento
+const LEVELS = ["emergencia", "alta", "media", "baixa"];
+const dayKey = (iso) => new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+
+function ago(iso) {
+  const minutes = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+  if (minutes < 60) return `há ${minutes} min`;
+  const hours = Math.round(minutes / 60);
+  return hours < 24 ? `há ${hours} h` : `há ${Math.round(hours / 24)} d`;
+}
+
+function bar(fraction, priority) {
+  const fill = el("span", { class: "dash-bar__fill", "data-priority": priority ?? "" });
+  fill.style.width = `${Math.round(Math.max(0, Math.min(1, fraction)) * 100)}%`; // CSSOM: permitido pela CSP (sem style="")
+  return el("span", { class: "dash-bar", "aria-hidden": "true" }, fill);
+}
+
+function kpi(label, value, hint, tone) {
+  return el("div", { class: `dash-kpi${tone ? ` dash-kpi--${tone}` : ""}` },
+    el("span", { class: "dash-kpi__label", text: label }),
+    el("strong", { class: "dash-kpi__value", text: String(value) }),
+    hint ? el("span", { class: "dash-kpi__hint", text: hint }) : null);
+}
+
+function card(title, ...children) {
+  return el("section", { class: "dash-card" }, el("h3", { class: "dash-card__title", text: title }), ...children);
+}
+
+function renderDashboard() {
+  const holder = $("detalhe");
+  const keepScroll = holder.dataset.view === "dashboard" ? holder.scrollTop : 0;
+  if (state.selectedId !== null) {
+    state.selectedId = null;
+    renderQueue();
+  }
+  clear(holder);
+  holder.dataset.view = "dashboard";
+  const q = state.queue;
+  if (q.length === 0) {
+    renderEmpty();
+    return;
+  }
+  const pending = q.filter((t) => !t.reviewed);
+  const reviewed = q.length - pending.length;
+  const urgentPending = pending.filter((t) => t.priority === "emergencia").length;
+  const oldestPending = pending.reduce((a, b) => (a && a.created_at < b.created_at ? a : b), null);
+
+  const byLevel = LEVELS.map((level) => {
+    const all = q.filter((t) => t.priority === level);
+    return { level, total: all.length, pending: all.filter((t) => !t.reviewed).length };
+  });
+  const maxLevel = Math.max(1, ...byLevel.map((l) => l.total));
+
+  const days = [...Array(7)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() - (6 - i)); return d; });
+  const perDay = days.map((d) => ({ day: d, count: q.filter((t) => dayKey(t.created_at) === dayKey(d.toISOString())).length }));
+  const maxDay = Math.max(1, ...perDay.map((d) => d.count));
+  const weekday = new Intl.DateTimeFormat("pt-BR", { weekday: "short" });
+
+  const symptomCount = new Map();
+  q.forEach((t) => t.symptom_labels.forEach((label) => symptomCount.set(label, (symptomCount.get(label) ?? 0) + 1)));
+  const topSymptoms = [...symptomCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const maxSymptom = Math.max(1, ...topSymptoms.map(([, n]) => n));
+
+  const dogs = q.filter((t) => t.species === "dog").length;
+  const tutors = new Set(q.map((t) => t.tutor_name)).size;
+  const row = (label, fraction, value, priority) => el("li", { class: "dash-row" },
+    typeof label === "string" ? el("span", { class: "dash-row__label dash-row__label--text", text: label }) : el("span", { class: "dash-row__label" }, label),
+    bar(fraction, priority),
+    el("span", { class: "dash-row__value", text: value }));
+
+  put(holder,
+    el("header", { class: "dash-head" },
+      el("p", { class: "eyebrow", text: "Visão geral da clínica" }),
+      el("h2", { text: "Painel de atendimento" }),
+      el("p", { class: "hint", text: "Triagens que os tutores enviaram com consentimento. Atualiza sozinho a cada 10 segundos; clique numa triagem para ver a conversa e revisar." })),
+    el("div", { class: "dash-kpis" },
+      kpi("Triagens recebidas", q.length, `${tutors} ${tutors === 1 ? "tutor" : "tutores"}`),
+      kpi("Aguardando revisão", pending.length, oldestPending ? `mais antiga ${ago(oldestPending.created_at)}` : "fila em dia", pending.length ? "warn" : "ok"),
+      kpi("Emergências pendentes", urgentPending, urgentPending ? "atender primeiro" : "nenhuma agora", urgentPending ? "danger" : "ok"),
+      kpi("Revisadas", reviewed, `${Math.round((reviewed / q.length) * 100)}% do total`, "ok")),
+    el("div", { class: "dash-grid" },
+      card("Próximos atendimentos",
+        pending.length
+          ? el("ol", { class: "dash-next" }, pending.slice(0, 5).map((t) =>
+              el("li", {}, el("button", { class: "dash-next__item", type: "button", "data-priority": t.priority, onclick: () => select(t.triage_id) },
+                el("span", { class: "dash-next__top" }, el("strong", { text: t.pet_name }), priorityBadge(t.priority)),
+                el("small", { text: `${t.symptom_labels.slice(0, 2).join(", ") || "sem sintomas reconhecidos"} · ${ago(t.created_at)}` })))))
+          : el("p", { class: "hint", text: "Nenhuma triagem aguardando revisão." })),
+      card("Por prioridade",
+        el("ul", { class: "dash-rows" }, byLevel.map((l) =>
+          row(priorityBadge(l.level), l.total / maxLevel, `${l.total}${l.pending ? ` · ${l.pending} pend.` : ""}`, l.level)))),
+      card("Triagens nos últimos 7 dias",
+        el("div", { class: "dash-cols", role: "img", "aria-label": perDay.map((d) => `${dayKey(d.day.toISOString())}: ${d.count}`).join("; ") },
+          perDay.map((d) => {
+            const column = el("span", { class: "dash-col__bar" });
+            column.style.height = `${d.count === 0 ? 0 : Math.max(6, Math.round((d.count / maxDay) * 100))}%`;
+            return el("div", { class: "dash-col" },
+              el("span", { class: "dash-col__value", text: String(d.count) }),
+              el("span", { class: "dash-col__track" }, column),
+              el("span", { class: "dash-col__label", text: weekday.format(d.day).replace(".", "") }));
+          }))),
+      card("Sintomas mais relatados",
+        el("ul", { class: "dash-rows" }, topSymptoms.map(([label, n]) => row(label, n / maxSymptom, String(n))))),
+      card("Perfil dos pacientes",
+        el("ul", { class: "dash-rows" },
+          row("Cães", dogs / q.length, String(dogs)),
+          row("Gatos", (q.length - dogs) / q.length, String(q.length - dogs))),
+        el("p", { class: "hint", text: "A prioridade é sugerida pela IA; a decisão clínica é sempre da equipe veterinária." }))),
+  );
+  holder.scrollTop = keepScroll;
 }
 
 async function select(triageId) {
@@ -148,7 +263,7 @@ async function select(triageId) {
   } catch (error) {
     if (state.selectedId !== triageId) return;
     toast(error.message, "error");
-    renderEmpty();
+    renderDashboard();
   }
 }
 
@@ -156,6 +271,7 @@ function renderDetail(detail) {
   const { triage, pet, summary } = detail;
   const holder = $("detalhe");
   clear(holder);
+  holder.dataset.view = "detail";
 
   put(holder,
     el("header", {},
@@ -165,13 +281,29 @@ function renderDetail(detail) {
         pet.breed ? el("span", { class: "chip chip--static", text: pet.breed === "Mixed Breed" ? "SRD" : pet.breed }) : null,
         pet.weight_kg ? el("span", { class: "chip chip--static", text: `${pet.weight_kg} kg` }) : null,
         pet.history_tags.map((t) => el("span", { class: "chip chip--static", text: t.replaceAll("_", " ") })))),
+    el("button", { class: "btn btn--ghost btn--small detail__back", type: "button", text: "← Painel de atendimento", onclick: () => renderDashboard() }),
     el("section", {}, el("h3", { class: "section", text: "O que o tutor relatou" }), el("blockquote", { class: "quote", text: detail.input_text })),
+    conversationSection(detail),
     el("section", {}, el("h3", { class: "section", text: "Triagem preliminar da IA" }), renderTriageCard(triage, { showShare: false })),
     reviewsSection(detail),
     reviewForm(detail),
     timelineSection(detail),
   );
   holder.scrollTop = 0;
+}
+
+/** Conversa tutor ↔ Zelo que levou à triagem (só até a resposta com a triagem). */
+function conversationSection(detail) {
+  const lines = detail.conversation ?? [];
+  if (lines.length === 0) return null;
+  const tutorName = detail.summary.tutor_name.split(" ")[0];
+  return el("section", {},
+    el("details", { class: "convo", open: true },
+      el("summary", { text: `Conversa com a Zelo (${lines.length} mensagens)` }),
+      el("ol", { class: "convo__list" },
+        lines.map((m) => el("li", { class: `convo__msg convo__msg--${m.author === "USER" ? "user" : "bot"}` },
+          el("span", { class: "convo__who", text: `${m.author === "USER" ? tutorName : "Zelo"} · ${formatDateTime(m.created_at)}` }),
+          el("p", { class: "convo__text", text: m.text }))))));
 }
 
 function reviewsSection(detail) {

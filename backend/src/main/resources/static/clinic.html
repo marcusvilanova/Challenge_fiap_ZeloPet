@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-  <a class="skip-link" href="#detalhe">Ir para o detalhe da triagem</a>
+  <a class="skip-link" href="#detalhe">Ir para o painel e o detalhe da triagem</a>
 
   <header class="topbar">
     <a class="brand" href="/clinic.html" aria-label="Zelo, painel da clínica"><span class="brand__mark" id="brand-mark" aria-hidden="true"></span><span>Zelo · Clínica</span></a>
@@ -30,7 +30,10 @@
   <div class="clinic">
     <section class="queue" aria-labelledby="queue-title">
       <div class="queue__head">
-        <h1 id="queue-title">Fila de atenção</h1>
+        <div class="queue__title-row">
+          <h1 id="queue-title">Fila de atenção</h1>
+          <button class="btn btn--ghost btn--small" id="show-dashboard" type="button">Painel de atendimento</button>
+        </div>
         <div class="stats" id="stats" aria-live="polite"></div>
         <div class="filters" role="group" aria-label="Filtrar triagens">
           <button class="chip" type="button" data-filter="all" aria-pressed="true">Todas</button>

@@ -9,7 +9,7 @@ Como este repositório atende a cada item pedido na Sprint 4, o que foi **de fat
 | **Implementar a solução de IA definida na Sprint 3** | Sim (chatbot híbrido + visão). IoB: não | seção 2 |
 | **Integrar a IA ao app** (HTML + Java) | Sim: front-end estático servido pelo Spring Boot, API REST, banco, autenticação, painel da clínica | [`arquitetura.md`](arquitetura.md), [`api.md`](api.md) |
 | **Testar e validar** | Sim: 195 testes Java, 33 Python, ponta a ponta, conjuntos de avaliação com protocolo honesto | [`validacao-e-testes.md`](validacao-e-testes.md) |
-| **Evidências** (telas, fluxos, relatórios) | Sim | `docs/evidencias/` (16 telas) e `docs/relatorios/` |
+| **Evidências** (telas, fluxos, relatórios) | Sim | `docs/evidencias/` (17 telas) e `docs/relatorios/` |
 | **Vídeo pitch de ~5 min** | Roteiro pronto; **a gravação e o upload são da equipe** | [`roteiro-video-pitch.md`](roteiro-video-pitch.md) |
 | **.zip com link do YouTube (não listado) e do GitHub, com README** | Estrutura e script prontos; **os links são inseridos pela equipe** | [`checklist-entrega.md`](checklist-entrega.md), `scripts/build-zip.ps1` |
 
@@ -73,12 +73,13 @@ Regras de contexto (filhote, idoso, braquicefálico, histórico cardíaco/renal)
 | `06-recusa-de-medicamento.png` | "posso dar dipirona?" → recusa e redirecionamento |
 | `07-analise-de-foto-experimental.png` | foto da pele → classificação experimental, só o hash é guardado |
 | `08-triagem-gato-obstrucao-urinaria.png` | regra específica de gato (não consegue urinar) → emergência |
-| `09-clinica-fila-por-prioridade.png` | fila da clínica com triagens de dois tutores, da prioridade maior para a menor (emergência → alta) |
-| `10-clinica-detalhe-e-revisao.png` · `10b-…` | relato, triagem da IA, histórico autorizado e revisão profissional registrada |
+| `09-clinica-fila-por-prioridade.png` | fila da clínica (casos fictícios de vários tutores) da prioridade maior para a menor, ao lado do painel de atendimento: indicadores, prioridades, últimos 7 dias e sintomas |
+| `10-clinica-detalhe-e-revisao.png` · `10b-…` | relato, conversa tutor ↔ Zelo que gerou a triagem, triagem da IA, histórico autorizado e revisão profissional registrada |
 | `11-celular-chat.png` | versão para celular |
 | `12-painel-do-tutor.png` | Painel do Tutor (IBM Carbon) com dados reais: aviso de triagem aguardando revisão, abas por pet, perfil |
 | `13-painel-historico-de-atendimento.png` | histórico com prioridade e status (revisada pela clínica, enviada, registrada) e exportação em PDF |
 | `14-painel-gerenciar-plano-de-cuidados.png` | plano de cuidados em modo de gestão: adicionar, marcar como feito, remover; resumo de saúde |
 | `15-painel-editar-dados-do-pet.png` | edição dos dados do pet (espécie, raça, nascimento, peso, histórico de saúde) |
+| `16-clinica-conversa-da-triagem.png` | detalhe na clínica com a conversa tutor ↔ Zelo que gerou a triagem (só até a resposta com a triagem) |
 
 Gerar de novo: `scripts/capture_evidence.py` (ver o cabeçalho do script).
