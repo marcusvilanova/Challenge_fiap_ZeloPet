@@ -15,7 +15,7 @@
 | **QA — Vídeo da Automação de Testes (YouTube)** | _inserir o link do YouTube aqui após gravação_ | Demonstração do Selenium IDE executando os 6 testes (roteiro em `qa/README.md`) |
 | **QA — Simulador de Gravação Legendado** | [video.html](qa/video-guia-apresentacao.html) · online em `/video` | Simulador interativo do vídeo de 4 min com legendas sincronizadas para dublagem |
 | **QA — Arquivo de Legendas (SRT)** | [qa/legendas-video.srt](qa/legendas-video.srt) | Arquivo oficial de legendas sincronizadas segundo a segundo |
-| **Vídeo Pitch — Solução de IA (YouTube, não listado)** | _inserir o link aqui antes de entregar_ | Roteiro de 5 min em [`docs/roteiro-video-pitch.md`](docs/roteiro-video-pitch.md) |
+| **Vídeo Pitch — Solução de IA & IoT (YouTube)** | [Assistir Pitch no YouTube](https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ) | Demonstração em vídeo da Sprint 4 no YouTube: `https://youtu.be/x7SFaB4W2Eo` |
 | **Apresentação de Slides (IBM Carbon)** | [apresentacao.html](apresentacao.html) · online em `/apresentacao` | Deck interativo com 16 slides, timer de 5 min e navegação Carbon |
 | **Painel do Tutor (IBM Carbon)** | [web/dashboard.html](web/dashboard.html) · online em `/dashboard` | Perfil animal (Mel & Thor), histórico clínico, plano de cuidados e acesso à triagem |
 | **Repositório GitHub (Branch develop)** | https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop | Repositório público com código, testes e documentação |
