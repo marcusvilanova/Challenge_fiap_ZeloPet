@@ -1,5 +1,7 @@
 # Roteiro do vídeo pitch (≈ 5 minutos)
 
+> 🔴 **Link Oficial do Vídeo Pitch no YouTube (IoT & IA):** [https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ](https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ)
+
 O vídeo vale 20 pontos e deve mostrar o chatbot **funcionando de verdade**. Este roteiro já está no ritmo de 5 minutos. A gravação e a publicação (YouTube, **não listado**) são da equipe.
 
 ## Antes de gravar (10 minutos)
@@ -46,4 +48,4 @@ O vídeo vale 20 pontos e deve mostrar o chatbot **funcionando de verdade**. Est
 - [ ] Todos do grupo aparecem ou falam em algum trecho
 - [ ] Mostrou: conversa, emergência, compartilhamento, painel da clínica, foto, JSON estruturado
 - [ ] Citou limitações (revisão veterinária, IoT/IoB não feito)
-- [ ] Publicado no YouTube como **Não listado**; link colado no README e no LEIA-ME do .zip
+- [x] Publicado no YouTube: [https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ](https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ)

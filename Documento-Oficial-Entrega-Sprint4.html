@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Documento Oficial de Entrega — Sprint 4 | Zelo (Clyvo Vet) — FIAP Challenge 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 8.8pt;
+      line-height: 1.42;
+      color: #161616;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Cover / Header */
+    .doc-header {
+      border-bottom: 3px solid #0f62fe;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .doc-header .brand-title h1 {
+      font-size: 15pt;
+      font-weight: 700;
+      color: #0f62fe;
+      letter-spacing: -0.3px;
+    }
+
+    .doc-header .brand-title h2 {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: #262626;
+      margin-top: 1px;
+    }
+
+    .doc-header .brand-title h3 {
+      font-size: 8.5pt;
+      font-weight: 500;
+      color: #525252;
+    }
+
+    .doc-header .meta-box {
+      text-align: right;
+      font-size: 7.8pt;
+      font-family: 'IBM Plex Mono', monospace;
+      color: #525252;
+      line-height: 1.35;
+    }
+
+    .meta-box strong {
+      color: #161616;
+    }
+
+    /* Group Info Grid */
+    .group-card {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 10px;
+      background: #f4f4f4;
+      border: 1px solid #e0e0e0;
+      border-left: 4px solid #0f62fe;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      font-size: 8.2pt;
+    }
+
+    .group-card p {
+      margin-bottom: 2px;
+    }
+    .group-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Highlight Delivery Box */
+    .delivery-highlight-box {
+      background: #edf5ff;
+      border: 1.5px solid #0f62fe;
+      border-radius: 2px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .delivery-highlight-box h3 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0043ce;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .link-card {
+      background: #ffffff;
+      border: 1px solid #d0e2ff;
+      border-left: 3px solid #0f62fe;
+      padding: 6px 10px;
+      border-radius: 2px;
+    }
+
+    .link-card.red {
+      border-left-color: #da1e28;
+      background: #fff8f8;
+      border-color: #ffd7d9;
+    }
+
+    .link-card .label {
+      font-size: 7.2pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #525252;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .link-card.red .label {
+      color: #da1e28;
+    }
+
+    .link-card a {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: #0f62fe;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .link-card.red a {
+      color: #ba1b23;
+      font-weight: 700;
+    }
+
+    .link-card .desc {
+      font-size: 7.2pt;
+      color: #6f6f6f;
+      margin-top: 2px;
+      display: block;
+    }
+
+    /* Section Titles */
+    h3.section-title {
+      font-size: 9.8pt;
+      font-weight: 700;
+      color: #161616;
+      background: #e8daff;
+      border-left: 4px solid #8a3ffc;
+      padding: 3px 8px;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h3.section-title.blue {
+      background: #edf5ff;
+      border-left: 4px solid #0f62fe;
+    }
+
+    h3.section-title.green {
+      background: #defbe6;
+      border-left: 4px solid #24a148;
+    }
+
+    /* Tables */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+      font-size: 7.8pt;
+      page-break-inside: avoid;
+    }
+
+    table.data-table th, table.data-table td {
+      border: 1px solid #dcdcdc;
+      padding: 4px 6px;
+      text-align: left;
+    }
+
+    table.data-table th {
+      background: #262626;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    table.data-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* Callout & Content Blocks */
+    .callout {
+      border: 1px solid #d0d0d0;
+      border-left: 3px solid #0f62fe;
+      background: #ffffff;
+      padding: 6px 10px;
+      margin-bottom: 8px;
+      font-size: 8.2pt;
+      page-break-inside: avoid;
+    }
+
+    .callout.green {
+      border-left-color: #24a148;
+      background: #f6fcf8;
+    }
+
+    .callout strong {
+      color: #0f62fe;
+    }
+
+    .callout.green strong {
+      color: #198038;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 7pt;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .badge-blue { background: #d0e2ff; color: #0043ce; }
+    .badge-red { background: #ffd7d9; color: #ba1b23; }
+    .badge-green { background: #defbe6; color: #198038; }
+
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="brand-title">
+      <h1>FIAP · Challenge 2026 — Sprint 4</h1>
+      <h2>Documento Oficial de Entrega Técnica & Apresentação</h2>
+      <h3>Projeto Zelo (Clyvo Vet) — Ecossistema de Cuidado Contínuo e Triagem Clínica por IA</h3>
+    </div>
+    <div class="meta-box">
+      <strong>Data da Entrega:</strong> 04/11/2026<br>
+      <strong>Turma:</strong> 2TDS (Fevereiro)<br>
+      <strong>Branch de Entrega:</strong> <code>develop</code><br>
+      <strong>Status:</strong> Finalizado & Homologado
+    </div>
+  </div>
+
+  <!-- GRUPO -->
+  <div class="group-card">
+    <div>
+      <p><strong>Equipe de Desenvolvimento (Grupo Challenge):</strong></p>
+      <p>• Bruno Ferreira (RM 563489) · Gabriel Robertoni Padilha (RM 566293)</p>
+      <p>• Hebert Lopes do Santos (RM 563192) · Nicolas Monteiro Ramiro (RM 562380)</p>
+      <p>• <strong>Marcus Vinícius Vila Nova da Silva (RM 558771)</strong> — <em>Apresentador e Responsável Técnico</em></p>
+    </div>
+    <div>
+      <p><strong>Disciplinas Integradas nesta Entrega:</strong></p>
+      <p>1. <strong>Disruptive Architectures: IoT, IoB & Generative IA</strong></p>
+      <p>2. <strong>Compliance, Quality Assurance & Tests</strong></p>
+      <p><em>Professor Avaliador de QA: Prof. Felipe Santos</em></p>
+    </div>
+  </div>
+
+  <!-- CAIXA DE DESTAQUE DE LINKS OBRIGATÓRIOS -->
+  <div class="delivery-highlight-box">
+    <h3>🔴 Links Oficiais de Avaliação (Entrega Obrigatória)</h3>
+    <div class="links-grid">
+      
+      <!-- Link do Vídeo YouTube -->
+      <div class="link-card red" style="grid-column: 1 / -1;">
+        <span class="label">▶ Vídeo Pitch Oficial — Demonstração da Solução de IA & IoT (YouTube)</span>
+        <a href="https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ" target="_blank">https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ</a>
+        <span class="desc">Vídeo demonstrativo de 5 minutos cobrindo a arquitetura de IA, o funcionamento da triagem, guardrails e painel hospitalar.</span>
+      </div>
+
+      <!-- Repositório GitHub -->
+      <div class="link-card">
+        <span class="label">Código-Fonte no GitHub (Branch develop)</span>
+        <a href="https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop" target="_blank">github.com/marcusvilanova/Challenge_fiap_ZeloPet</a>
+        <span class="desc">Repositório público com código Spring Boot, frontend IBM Carbon v11, testes e suíte Selenium.</span>
+      </div>
+
+      <!-- Aplicação em Produção -->
+      <div class="link-card">
+        <span class="label">Aplicação em Produção na Nuvem (Vercel)</span>
+        <a href="https://zelopet.vercel.app" target="_blank">https://zelopet.vercel.app</a>
+        <span class="desc">Deploy contínuo online para validação direta e execução dos testes funcionais.</span>
+      </div>
+
+      <!-- Azure DevOps -->
+      <div class="link-card">
+        <span class="label">Azure Boards — Plano de Testes & Backlog</span>
+        <a href="https://dev.azure.com/RM558771/CLYVO%20VET" target="_blank">dev.azure.com/RM558771/CLYVO VET</a>
+        <span class="desc">20 Casos de Teste (#57-#76) e PBIs da Sprint 4 (Prof. Felipe Santos com licença Basic e Admin).</span>
+      </div>
+
+      <!-- Painel Tutor Dashboard -->
+      <div class="link-card">
+        <span class="label">Painel do Tutor (Design System IBM Carbon)</span>
+        <a href="https://zelopet.vercel.app/dashboard" target="_blank">https://zelopet.vercel.app/dashboard</a>
+        <span class="desc">Painel executivo do tutor com histórico clínico, ciclo de vacinas e acesso à triagem.</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: SÍNTESE DA SOLUÇÃO -->
+  <h3 class="section-title blue">1. Síntese Executiva do Projeto Zelo para a Clyvo Vet</h3>
+  <div class="callout">
+    <strong>O Problema:</strong> Tutores de pets costumam buscar orientação veterinária tardiamente, quando sintomas comuns já evoluíram para quadros agudos. Na outra ponta, os hospitais e clínicas veterinárias recebem tutores em pânico sem qualquer histórico organizado ou triagem prévia.<br>
+    <strong>A Solução Zelo:</strong> Assistente conversacional de cuidado longitudinal que atua na janela pré-clínica. Realiza triagem preliminar de sintomas em linguagem natural, classifica o risco (Baixa, Média, Alta ou Emergência) com base em protocolos clínicos, oferece orientações de primeiros socorros e envia o histórico estruturado diretamente para a fila da clínica veterinária Clyvo Vet — <em>sempre sob consentimento explícito e sem prescrever medicamentos</em>.
+  </div>
+
+  <!-- SEÇÃO 2: ARQUITETURA DE IA HÍBRIDA -->
+  <h3 class="section-title">2. Arquitetura Técnica de IA (Disruptive Architectures: IoT, IoB & Generative IA)</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width: 22%;">Componente</th>
+        <th style="width: 28%;">Tecnologia Utilizada</th>
+        <th style="width: 50%;">Papel na Solução e Regras de Segurança</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Camada 1: Regras Determinísticas</strong></td>
+        <td>Motor Local Java / TypeScript Baseado em Conhecimento</td>
+        <td>Avalia sinais de alerta vitais (ex: convulsão, dilatação gástrica, obstrução uretral em felinos). O motor de regras tem <strong>autoridade prioritária máxima</strong>: o LLM nunca pode reduzir uma emergência detectada por esta camada.</td>
+      </tr>
+      <tr>
+        <td><strong>Camada 2: Inteligência Generativa (LLM)</strong></td>
+        <td>Google Gemini / OpenAI com Prompt Estruturado</td>
+        <td>Extrai sintomas do texto livre, gera até duas perguntas de acompanhamento investigativas e formata saída estrita em JSON. <strong>Guardrails:</strong> bloqueio rigoroso contra prescrição de doses ou diagnóstico definitivo.</td>
+      </tr>
+      <tr>
+        <td><strong>Camada 3: Visão Computacional</strong></td>
+        <td>MobileNetV3 (PyTorch / FastAPI)</td>
+        <td>Classificação preliminar de imagens dermatológicas em 3 classes (alérgica, fúngica, bacteriana). Trata a imagem como complementar (apenas hash SHA-256 é armazenado para privacidade).</td>
+      </tr>
+      <tr>
+        <td><strong>Camada 4: Human-in-the-Loop</strong></td>
+        <td>Painel Hospitalar da Clyvo Vet</td>
+        <td>Médico-veterinário revisa a classificação antes da admissão do animal, preservando total conformidade ética e regulatória (CFMV).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- SEÇÃO 3: ROTEIRO E EVIDÊNCIAS DO VÍDEO PITCH -->
+  <h3 class="section-title blue">3. Roteiro e Demonstração do Vídeo Pitch (YouTube: youtu.be/x7SFaB4W2Eo)</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width: 14%;">Minutagem</th>
+        <th style="width: 26%;">Tela Exibida no Vídeo</th>
+        <th style="width: 35%;">Ação Prática Demonstrada</th>
+        <th style="width: 25%;">Evidência Técnica Validada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>0:00 - 0:45</strong></td>
+        <td>Identificação & Visão Geral</td>
+        <td>Apresentação dos integrantes e da proposta de valor Zelo para a Clyvo Vet</td>
+        <td>Alinhamento ao desafio do semestre</td>
+      </tr>
+      <tr>
+        <td><strong>0:45 - 1:30</strong></td>
+        <td>Arquitetura de Sistemas</td>
+        <td>Apresentação do diagrama de fluxo: Usuário → Chatbot → Guardrails → Clínica</td>
+        <td>Integração de IA Híbrida e microsserviços</td>
+      </tr>
+      <tr>
+        <td><strong>1:30 - 2:30</strong></td>
+        <td>Chatbot (Pet Mel - Tosse)</td>
+        <td>Envio de relato de tosse, geração de perguntas pelo bot e emissão de prioridade Média</td>
+        <td>Extração semântica e saída em JSON estruturado</td>
+      </tr>
+      <tr>
+        <td><strong>2:30 - 3:15</strong></td>
+        <td>Triagem de Emergência</td>
+        <td>Relato de convulsão/engasgo; disparo imediato de Emergência sem perguntas redundantes</td>
+        <td>Prevalência das regras determinísticas</td>
+      </tr>
+      <tr>
+        <td><strong>3:15 - 3:50</strong></td>
+        <td>Guardrail de Farmacologia</td>
+        <td>Tutor pede dosagem de remédio ("Posso dar dipirona?"); o bot recusa de forma ética</td>
+        <td>Compliance regulatório e segurança do pet</td>
+      </tr>
+      <tr>
+        <td><strong>3:50 - 4:25</strong></td>
+        <td>Painel da Clínica & Prontuário</td>
+        <td>Compartilhamento autorizado chegando à fila da clínica; revisão pelo veterinário</td>
+        <td>Consentimento LGPD e Human-in-the-loop</td>
+      </tr>
+      <tr>
+        <td><strong>4:25 - 5:00</strong></td>
+        <td>Métricas & Encerramento</td>
+        <td>Exibição de métricas de generalização, testes unitários e considerações finais</td>
+        <td>195 testes em Java + 33 testes em Python</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SEÇÃO 4: COMPLIANCE, QUALITY ASSURANCE & TESTS -->
+  <h3 class="section-title green">4. Compliance, Quality Assurance & Tests (Sprint 4 — Prof. Felipe Santos)</h3>
+  
+  <div class="callout green">
+    <strong>Parte A — Testes Manuais no Azure Boards (Peso 80% + Acesso 20%):</strong><br>
+    • <strong>20 Casos de Teste Formais (#57 a #76)</strong> cadastrados na iteração <em>Sprint 4 – Implementação e Validação</em>, cobrindo autenticação, triagem clínica, recusa ética de remédio, compartilhamento e painel da clínica.<br>
+    • Cada caso possui: objetivo específico, pré-condições, dados controlados de entrada (inputs fixos), passos estruturados e saídas esperadas (outputs esperados).<br>
+    • Matriz de rastreabilidade completa vinculando os Casos de Teste aos respectivos PBIs (Product Backlog Items) via relação <em>Tests / Tested By</em>.<br>
+    • O professor <strong>Prof. Felipe Santos (`proffelipe.santos@fiap.com.br`)</strong> foi cadastrado na organização com licença <strong>Basic</strong> e permissão de <strong>Project Administrator</strong>.
+  </div>
+
+  <div class="callout">
+    <strong>Parte B — Automação de Testes com Selenium IDE (Peso 20%):</strong><br>
+    • Foram automatizados <strong>6 Casos de Teste de ponta a ponta</strong> (superando a meta de 4 casos do edital), com arquivo <code>qa/selenium/zelo.side</code> versionado na branch <code>develop</code>.<br>
+    • <strong>TA-01:</strong> Autenticação da tutora com validação de layout no padrão IBM Carbon v11;<br>
+    • <strong>TA-02:</strong> Tratamento e bloqueio de credenciais inválidas com mensagem de erro amigável;<br>
+    • <strong>TA-03:</strong> Triagem de emergência imediata (tosse e engasgo) com validação de prioridade e confiança;<br>
+    • <strong>TA-04:</strong> Triagem média investigativa com acompanhamento de duração do sintoma;<br>
+    • <strong>TA-05:</strong> Verificação do guardrail ético com recusa categórica de prescrição de medicamentos;<br>
+    • <strong>TA-06:</strong> Compartilhamento consentido da triagem e conferência da fila de atendimento da clínica.<br>
+    • <strong>Resultado da Execução:</strong> 6 de 6 testes executados com <strong>100% de aprovação (Passed)</strong> e 0 erros.
+  </div>
+
+  <!-- SEÇÃO 5: CONSIDERAÇÕES FINAIS E DECLARAÇÃO -->
+  <h3 class="section-title blue">5. Declaração de Conformidade Técnica</h3>
+  <div class="callout">
+    Declaramos que todos os artefatos submetidos foram desenvolvidos pela equipe, encontram-se publicados e acessíveis publicamente na branch <code>develop</code> do repositório GitHub, e que a aplicação está em operação contínua e funcional na nuvem (Vercel). Os vídeos e links disponibilizados cumprem integralmente as exigências acadêmicas do Challenge 2026 da FIAP.
+  </div>
+
+  <div style="margin-top: 16px; border-top: 1px solid #c6c6c6; padding-top: 8px; display: flex; justify-content: space-between; font-size: 7.5pt; color: #6f6f6f; font-family: 'IBM Plex Mono', monospace;">
+    <span>Projeto Zelo · FIAP Challenge 2026 · Sprint 4</span>
+    <span>Apresentador: Marcus Vinícius Vila Nova da Silva (RM 558771)</span>
+    <span>https://zelopet.vercel.app</span>
+  </div>
+
+</body>
+</html>
