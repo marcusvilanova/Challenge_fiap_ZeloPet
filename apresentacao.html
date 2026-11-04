@@ -843,6 +843,134 @@
       color: var(--cds-gray-20);
       line-height: 1.6;
     }
+  
+    /* ── PRINT MEDIA STYLES FOR PDF EXPORT ──────────────── */
+    @media print {
+      @page {
+        size: 297mm 210mm;
+        margin: 0;
+      }
+
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html, body {
+        width: 297mm !important;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+        background: #161616 !important;
+      }
+
+      .carbon-header,
+      .carbon-footer,
+      .slide-drawer,
+      .progress-bar,
+      .toast,
+      #timer-display,
+      #btn-shortcuts,
+      #btn-fullscreen,
+      .header-btn {
+        display: none !important;
+      }
+
+      .slide-deck {
+        position: static !important;
+        overflow: visible !important;
+        width: 297mm !important;
+        height: auto !important;
+      }
+
+      .slide {
+        position: relative !important;
+        inset: auto !important;
+        width: 297mm !important;
+        height: 210mm !important;
+        min-height: 210mm !important;
+        max-height: 210mm !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .slide:first-of-type {
+        page-break-before: auto !important;
+        break-before: auto !important;
+      }
+
+      .slide-dark {
+        background: #161616 !important;
+        color: #ffffff !important;
+        padding: 36px 54px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+
+      .slide-white {
+        background: #ffffff !important;
+        color: #161616 !important;
+        padding: 36px 54px !important;
+      }
+
+      .slide-split {
+        flex-direction: row !important;
+        background: #ffffff !important;
+      }
+
+      .split-left {
+        width: 38% !important;
+        padding: 36px 36px !important;
+        box-sizing: border-box !important;
+      }
+
+      .split-right {
+        width: 62% !important;
+        padding: 36px 44px !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+      }
+
+      .slide-blue {
+        background: #0f62fe !important;
+        color: #ffffff !important;
+        padding: 36px 54px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+
+      .title-xl {
+        font-size: 38px !important;
+      }
+
+      .title-lg {
+        font-size: 26px !important;
+      }
+
+      .body-text {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+      }
+
+      .stat-number {
+        font-size: 40px !important;
+      }
+
+      .stat-label {
+        font-size: 12px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
