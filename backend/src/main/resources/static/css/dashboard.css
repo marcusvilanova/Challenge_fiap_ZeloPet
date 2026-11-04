@@ -807,6 +807,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 /* Diálogos (modal Carbon) */
 .cds-modal {
+  margin: auto; /* o reset global zera a margem automática que centraliza o <dialog> */
   border: none; padding: 0; width: min(560px, calc(100vw - 32px));
   border-top: 3px solid var(--blue-60); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
@@ -835,6 +836,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   border-left: 3px solid var(--green-40); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 .toast--error { border-left-color: var(--red-50); }
+
+/* menu lateral acompanha a rolagem (no desktop) */
+@media (min-width: 961px) {
+  .left-nav { position: sticky; top: var(--shell-height); align-self: start; max-height: calc(100vh - var(--shell-height)); overflow-y: auto; }
+}
 
 /* itens de grid podem encolher abaixo da largura das tabelas (que rolam dentro de .table-scroll) */
 .page-layout > *, .pet-profile-section > *, .two-col-grid > * { min-width: 0; }

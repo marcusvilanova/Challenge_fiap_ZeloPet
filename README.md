@@ -151,7 +151,7 @@ Limitações, riscos e o que **não** foi feito (IoT/IoB, datasets D1/D4/D5, val
 
 ### Evidências (telas)
 
-As 12 capturas estão em [`docs/evidencias/`](docs/evidencias/) (lista comentada em [`docs/sprint4-ia.md`](docs/sprint4-ia.md)). Três delas:
+As 16 capturas estão em [`docs/evidencias/`](docs/evidencias/) (lista comentada em [`docs/sprint4-ia.md`](docs/sprint4-ia.md)). Três delas:
 
 | Triagem média, com motivos e confiança | Emergência: sem perguntas, pede consentimento | Painel da clínica: fila por prioridade |
 |---|---|---|

@@ -110,7 +110,18 @@ def tutor_flow(browser, base: str, password: str) -> None:
     page.wait_for_timeout(500)
     say(page, "Ele tenta fazer xixi e não sai nada, está miando muito")
     shot(page, "08-triagem-gato-obstrucao-urinaria.png")
+    quick(page, "Sim, compartilhar com a clínica")  # mais uma emergência na fila da clínica
     context.close()
+
+    # outro tutor (Bruno) compartilha uma triagem de prioridade alta: a fila mostra a ordenação por prioridade
+    other = browser.new_context(viewport=DESKTOP, locale="pt-BR")
+    bruno = other.new_page()
+    login(bruno, base, "bruno@zelo.demo", password, "chat.html")
+    bruno.click("#new-chat")
+    bruno.wait_for_timeout(500)
+    say(bruno, "Ele está muito abatido e vomitou duas vezes desde ontem")
+    quick(bruno, "Sim, compartilhar com a clínica")
+    other.close()
 
     # celular (a tela é pensada para o tutor no caminho da clínica)
     mobile = browser.new_context(viewport=PHONE, device_scale_factor=2, is_mobile=True, has_touch=True, locale="pt-BR")
@@ -127,7 +138,7 @@ def clinic_flow(browser, base: str, password: str) -> None:
     login(page, base, "vet@zelo.demo", password, "clinic.html")
     page.wait_for_selector(".q-item")
     shot(page, "09-clinica-fila-por-prioridade.png")
-    page.locator(".q-item").first.click()
+    page.locator(".q-item", has_text="Convulsão").first.click()
     page.wait_for_selector("#review-note")
     page.fill("#review-note", "Trazer a Mel agora. Se possível, filmar a próxima crise.")
     shot(page, "10-clinica-detalhe-e-revisao.png")
@@ -135,6 +146,37 @@ def clinic_flow(browser, base: str, password: str) -> None:
     page.wait_for_selector(".review-entry")
     page.wait_for_timeout(400)
     shot(page, "10b-clinica-revisao-registrada.png")
+    context.close()
+
+
+def dashboard_flow(browser, base: str, password: str) -> None:
+    """Painel do Tutor (IBM Carbon), depois da revisão da clínica: o retorno aparece no aviso e no histórico."""
+    context = browser.new_context(viewport=DESKTOP, locale="pt-BR")
+    page = context.new_page()
+    login(page, base, "ana@zelo.demo", password, "chat.html")
+    page.goto(f"{base}/dashboard")
+    page.wait_for_selector("#cta-triage")
+    page.locator('[data-pet-id="PET-0001"]').click()
+    page.wait_for_load_state("networkidle")
+    page.wait_for_timeout(400)
+    shot(page, "12-painel-do-tutor.png")
+
+    page.click('[data-section="historico"]')
+    page.wait_for_timeout(900)
+    shot(page, "13-painel-historico-de-atendimento.png")
+
+    page.click("#manage-care")
+    page.wait_for_selector("#add-care")
+    page.click('[data-section="cuidados"]')
+    page.wait_for_timeout(900)
+    shot(page, "14-painel-gerenciar-plano-de-cuidados.png")
+
+    page.click('[data-section="perfil"]')
+    page.wait_for_timeout(600)
+    page.click("#edit-pet")
+    page.wait_for_selector("#pet-dialog[open]")
+    page.wait_for_timeout(300)
+    shot(page, "15-painel-editar-dados-do-pet.png")
     context.close()
 
 
@@ -147,6 +189,7 @@ def main() -> None:
         browser = playwright.chromium.launch(channel="chrome", headless=True)
         tutor_flow(browser, base, password)
         clinic_flow(browser, base, password)
+        dashboard_flow(browser, base, password)
         browser.close()
     print(f"Evidências em {OUT}")
 
