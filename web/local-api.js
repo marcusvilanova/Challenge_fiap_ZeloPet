@@ -167,6 +167,36 @@ const plural = (d) => `${d} ${d === 1 ? "dia" : "dias"}`;
 function careItems(db, pet) {
   return db.care.filter((c) => c.pet === pet.id).sort((a, b) => a.next_due.localeCompare(b.next_due));
 }
+function careResponse(i) {
+  const d = daysUntil(i.next_due);
+  return { id: i.id, type: i.type, name: i.name, last_done: i.last_done, next_due: i.next_due, status: d < 0 ? "OVERDUE" : d <= 14 ? "DUE_SOON" : "OK", days_until_due: d };
+}
+/** Intervalo padrão (dias) para a próxima data e tipo do evento na linha do tempo — igual ao CareItem.Type do Java. */
+const CARE_INTERVAL = {
+  VACINA: { days: 365, event: "vaccine" }, VERMIFUGO: { days: 90, event: "medication" },
+  ANTIPULGAS: { days: 30, event: "medication" }, CONSULTA: { days: 365, event: "visit" },
+};
+const isDate = (v) => typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(`${v}T12:00:00`));
+const brDate = (iso) => iso.split("-").reverse().join("/");
+function ownedCare(db, pet, rawId) {
+  const item = db.care.find((c) => c.id === Number(rawId) && c.pet === pet.id);
+  if (!item) throw new ApiError(404, "Cuidado não encontrado");
+  return item;
+}
+function petFields(body) {
+  const name = String(body.name || "").trim();
+  if (!name || !["dog", "cat"].includes(body.species)) throw new ApiError(400, "Dados do pet inválidos.", { name: "Informe nome e espécie." });
+  const weight = body.weight_kg == null || body.weight_kg === "" ? null : Number(body.weight_kg);
+  if (weight !== null && !(weight >= 0.1 && weight <= 120)) throw new ApiError(400, "Dados do pet inválidos.", { weight_kg: "O peso precisa estar entre 0,1 e 120 kg." });
+  if (body.birth_date && (!isDate(body.birth_date) || body.birth_date > day(0))) throw new ApiError(400, "Dados do pet inválidos.", { birth_date: "A data de nascimento não pode ser no futuro." });
+  const known = new Set(knowledge.historyTags.map((t) => t.id));
+  const tags = [...new Set(body.history_tags ?? [])];
+  const unknown = tags.find((t) => !known.has(t));
+  if (unknown) throw new ApiError(400, `Histórico de saúde desconhecido: ${unknown}`);
+  return { name: name.slice(0, 80), species: body.species, breed: body.breed || null, female: Boolean(body.female),
+    birth_date: body.birth_date || null, weight_kg: weight, history_tags: tags };
+}
+
 function careContext(db, pet) {
   const items = careItems(db, pet);
   const lines = items.map((i) => {
@@ -346,7 +376,8 @@ async function route(method, url, body) {
   const { pathname, searchParams } = new URL(url, location.origin);
   const parts = pathname.split("/").filter(Boolean).slice(1); // sem o "api"
   const key = `${method} /${parts.map((p, i) => (i > 0 && /^(PET|TRI)-\d+$|^\d+$/.test(p) ? ":id" : p)).join("/")}`;
-  const id = parts.find((p, i) => i > 0 && /^(PET|TRI)-\d+$|^\d+$/.test(p));
+  const ids = parts.filter((p, i) => i > 0 && /^(PET|TRI)-\d+$|^\d+$/.test(p));
+  const id = ids[0];
 
   switch (key) {
     case "POST /auth/login": {
@@ -391,20 +422,51 @@ async function route(method, url, body) {
     }
     case "POST /pets": {
       const user = requireRole(db, "TUTOR");
-      if (!body.name || !["dog", "cat"].includes(body.species)) throw new ApiError(400, "Dados do pet inválidos.", { name: "Informe nome e espécie." });
-      const pet = { id: nextId(db, "pet"), owner: user.id, name: String(body.name).trim().slice(0, 80), species: body.species, breed: body.breed || null,
-        female: Boolean(body.female), birth_date: body.birth_date || null, weight_kg: body.weight_kg ?? null, history_tags: body.history_tags ?? [] };
+      const pet = { id: nextId(db, "pet"), owner: user.id, ...petFields(body) };
       db.pets.push(pet);
+      return petResponse(db, pet);
+    }
+    case "PUT /pets/:id": {
+      const pet = ownedPet(db, requireRole(db, "TUTOR"), id);
+      Object.assign(pet, petFields(body));
+      event(db, pet.id, "note", "Dados do pet atualizados", "Ficha editada pelo tutor no painel.", "tutor");
       return petResponse(db, pet);
     }
     case "GET /pets/:id":
       return petResponse(db, ownedPet(db, requireRole(db, "TUTOR"), id));
     case "GET /pets/:id/care-plan": {
       const pet = ownedPet(db, requireRole(db, "TUTOR"), id);
-      return careItems(db, pet).map((i) => {
-        const d = daysUntil(i.next_due);
-        return { id: i.id, type: i.type, name: i.name, last_done: i.last_done, next_due: i.next_due, status: d < 0 ? "OVERDUE" : d <= 14 ? "DUE_SOON" : "OK", days_until_due: d };
-      });
+      return careItems(db, pet).map(careResponse);
+    }
+    case "POST /pets/:id/care-plan": {
+      const pet = ownedPet(db, requireRole(db, "TUTOR"), id);
+      const type = String(body.type || "").toUpperCase();
+      if (!CARE_INTERVAL[type]) throw new ApiError(400, `Tipo de cuidado inválido. Use: ${Object.keys(CARE_INTERVAL).join(", ")}`);
+      const name = String(body.name || "").trim().slice(0, 120);
+      if (!name || !isDate(body.next_due)) throw new ApiError(400, "Dados inválidos.", { next_due: "Informe a descrição e a próxima data." });
+      if (body.last_done && (!isDate(body.last_done) || body.last_done > day(0))) throw new ApiError(400, "A última aplicação não pode ser no futuro.");
+      if (body.last_done && body.next_due < body.last_done) throw new ApiError(400, "A próxima data não pode ser anterior à última aplicação.");
+      const item = { id: nextId(db, "care"), pet: pet.id, type, name, last_done: body.last_done || null, next_due: body.next_due };
+      db.care.push(item);
+      event(db, pet.id, "note", `Cuidado adicionado ao plano: ${name}`, `Próxima data: ${brDate(item.next_due)}.`, "tutor", item.id);
+      return careResponse(item);
+    }
+    case "POST /pets/:id/care-plan/:id/done": {
+      const pet = ownedPet(db, requireRole(db, "TUTOR"), id);
+      const item = ownedCare(db, pet, ids[1]);
+      const next = body.next_due ?? day(CARE_INTERVAL[item.type].days);
+      if (!isDate(next) || next <= day(0)) throw new ApiError(400, "A próxima data precisa ser depois de hoje.");
+      item.last_done = day(0);
+      item.next_due = next;
+      event(db, pet.id, CARE_INTERVAL[item.type].event, `Cuidado realizado: ${item.name}`, `Registrado pelo tutor. Próxima data: ${brDate(next)}.`, "tutor", item.id);
+      return careResponse(item);
+    }
+    case "DELETE /pets/:id/care-plan/:id": {
+      const pet = ownedPet(db, requireRole(db, "TUTOR"), id);
+      const item = ownedCare(db, pet, ids[1]);
+      db.care = db.care.filter((c) => c !== item);
+      event(db, pet.id, "note", `Cuidado removido do plano: ${item.name}`, null, "tutor", item.id);
+      return null;
     }
     case "GET /pets/:id/timeline": {
       const pet = ownedPet(db, requireRole(db, "TUTOR"), id);
@@ -492,6 +554,7 @@ async function request(method, url, body) {
 export const api = {
   get: (url) => request("GET", url),
   post: (url, json) => request("POST", url, json ?? {}),
+  put: (url, json) => request("PUT", url, json ?? {}),
   del: (url) => request("DELETE", url),
   upload: (url) => request("POST", url, {}),
   login: (email, password) => request("POST", "/api/auth/login", new URLSearchParams({ email, password })),

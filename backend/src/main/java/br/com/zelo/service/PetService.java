@@ -69,6 +69,16 @@ public class PetService {
         return toResponse(pet);
     }
 
+    /** Atualiza os dados do pet do tutor (404 se o pet for de outro tutor). */
+    @Transactional
+    public Pet update(Long userId, String publicId, CreatePetRequest request) {
+        Pet pet = requireOwned(userId, publicId);
+        pet.update(request.name().trim(), parseSpecies(request.species()), blankToNull(request.breed()),
+                Boolean.TRUE.equals(request.female()), request.birthDate(), request.weightKg(),
+                validateTags(request.historyTags()));
+        return pets.save(pet);
+    }
+
     public PetCatalog catalog() {
         return new PetCatalog(
                 knowledge.breeds(Species.DOG).stream().map(b -> new Option(b.id(), b.label())).toList(),

@@ -352,3 +352,27 @@
     max-width: 100%;
   }
 }
+
+/* Atalhos da tela de entrada (sem estilo embutido: a CSP do backend bloqueia style="") */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0;
+  transition: background 0.15s;
+}
+.quick-link--primary { background: #0f62fe; color: #ffffff; border: 1px solid #0f62fe; }
+.quick-link--primary:hover { background: #0353e9; }
+.quick-link--ghost { background: #262626; color: #78a9ff; border: 1px solid #393939; }
+.quick-link--ghost:hover { background: #333333; }
+.quick-link:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }

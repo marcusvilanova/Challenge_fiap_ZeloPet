@@ -51,6 +51,18 @@ public final class ApiDtos {
                                    String status, long daysUntilDue) {
     }
 
+    /** Novo item do plano de cuidados (tipo: VACINA, VERMIFUGO, ANTIPULGAS ou CONSULTA). */
+    public record CareItemRequest(
+            @NotBlank String type,
+            @NotBlank @Size(max = 120) String name,
+            @PastOrPresent LocalDate lastDone,
+            @NotNull LocalDate nextDue) {
+    }
+
+    /** Marca um cuidado como feito; sem {@code next_due}, a próxima data segue o intervalo padrão do tipo. */
+    public record CareDoneRequest(LocalDate nextDue) {
+    }
+
     public record TimelineEventResponse(Long id, String type, String title, String summary, String source,
                                         String refId, OffsetDateTime occurredAt) {
     }

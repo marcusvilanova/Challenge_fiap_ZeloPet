@@ -77,6 +77,18 @@ public class Pet {
         this.createdAt = createdAt;
     }
 
+    /** Edição dos dados pelo tutor (o dono e a data de cadastro não mudam). */
+    public void update(String name, Species species, String breed, boolean female, LocalDate birthDate,
+                       BigDecimal weightKg, Set<String> historyTags) {
+        this.name = name;
+        this.species = species;
+        this.breed = breed;
+        this.female = female;
+        this.birthDate = birthDate;
+        this.weightKg = weightKg;
+        this.historyTags = String.join(",", historyTags);
+    }
+
     public static String publicId(Long id) {
         return PUBLIC_ID_PREFIX + String.format("%04d", id);
     }

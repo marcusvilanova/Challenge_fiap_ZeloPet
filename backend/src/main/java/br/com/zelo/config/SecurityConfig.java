@@ -30,12 +30,21 @@ import java.util.Map;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private static final String APP_CSP = "default-src 'self'; img-src 'self' data: blob:; style-src 'self'; "
-            + "script-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; "
-            + "form-action 'self'; frame-ancestors 'none'";
+    /** Telas do app: nenhum script/estilo embutido; só a fonte IBM Plex vem do Google Fonts. */
+    private static final String APP_CSP = "default-src 'self'; img-src 'self' data: blob:; "
+            + "style-src 'self' https://fonts.googleapis.com; script-src 'self'; font-src 'self' https://fonts.gstatic.com; "
+            + "connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'";
     /** A interface do Swagger usa estilos/scripts embutidos; por isso tem uma CSP própria e mais frouxa. */
     private static final String DOCS_CSP = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; "
             + "script-src 'self' 'unsafe-inline'; frame-ancestors 'none'";
+    /** Apresentação e vídeo-guia: páginas estáticas e públicas, sem dados do usuário, com estilos/scripts embutidos. */
+    private static final String PRESENTATION_CSP = "default-src 'self'; img-src 'self' data: https:; "
+            + "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; "
+            + "font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; base-uri 'self'; "
+            + "form-action 'self'; frame-ancestors 'none'";
+    static final String[] PRESENTATION_PATHS = {"/apresentacao", "/apresentacao.html", "/pitch", "/slides",
+            "/video", "/video.html", "/demonstracao", "/*.pdf"};
+    private static final String[] DASHBOARD_PATHS = {"/dashboard", "/dashboard.html", "/painel", "/tutor"};
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -59,6 +68,19 @@ public class SecurityConfig {
 
     @Bean
     @Order(2)
+    SecurityFilterChain presentationChain(HttpSecurity http) throws Exception {
+        http.securityMatcher(PRESENTATION_PATHS)
+                .authorizeHttpRequests(a -> a.anyRequest().permitAll()) // material de apresentação, igual à versão online
+                .csrf(csrf -> csrf.disable()) // somente GET de arquivos estáticos
+                .requestCache(cache -> cache.disable())
+                .headers(h -> h
+                        .contentSecurityPolicy(csp -> csp.policyDirectives(PRESENTATION_CSP))
+                        .referrerPolicy(r -> r.policy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN)));
+        return http.build();
+    }
+
+    @Bean
+    @Order(3)
     SecurityFilterChain appChain(HttpSecurity http, ObjectMapper mapper, Clock clock, ZeloProperties props,
                                  @Value("${server.servlet.session.cookie.secure:false}") boolean secureCookies)
             throws Exception {
@@ -77,7 +99,9 @@ public class SecurityConfig {
                                 "/favicon.ico", "/favicon.svg", "/error").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/login", "/api/auth/register").permitAll()
                         .requestMatchers("/actuator/health", "/actuator/health/**").permitAll()
+                        .requestMatchers("/login").permitAll()
                         .requestMatchers("/chat.html").hasRole("TUTOR")
+                        .requestMatchers(DASHBOARD_PATHS).hasRole("TUTOR")
                         .requestMatchers("/clinic.html").hasRole("CLINICA")
                         .requestMatchers("/api/clinic/**").hasRole("CLINICA")
                         .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/system/**").authenticated()

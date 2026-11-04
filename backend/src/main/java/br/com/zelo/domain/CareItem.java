@@ -20,10 +20,28 @@ import java.time.LocalDate;
 public class CareItem {
 
     public enum Type {
-        VACINA,
-        VERMIFUGO,
-        ANTIPULGAS,
-        CONSULTA
+        VACINA(365, "vaccine"),
+        VERMIFUGO(90, "medication"),
+        ANTIPULGAS(30, "medication"),
+        CONSULTA(365, "visit");
+
+        private final int defaultIntervalDays;
+        private final String timelineType;
+
+        Type(int defaultIntervalDays, String timelineType) {
+            this.defaultIntervalDays = defaultIntervalDays;
+            this.timelineType = timelineType;
+        }
+
+        /** Intervalo usado para sugerir a próxima data quando o tutor marca o cuidado como feito. */
+        public int defaultIntervalDays() {
+            return defaultIntervalDays;
+        }
+
+        /** Tipo do evento registrado na linha do tempo quando o cuidado é feito. */
+        public String timelineType() {
+            return timelineType;
+        }
     }
 
     @Id
@@ -56,6 +74,12 @@ public class CareItem {
         this.name = name;
         this.lastDone = lastDone;
         this.nextDue = nextDue;
+    }
+
+    /** Registra que o cuidado foi feito em {@code doneOn} e agenda o próximo. */
+    public void markDone(LocalDate doneOn, LocalDate next) {
+        this.lastDone = doneOn;
+        this.nextDue = next;
     }
 
     public Long getId() {

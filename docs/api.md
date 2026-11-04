@@ -21,10 +21,12 @@ Documentação interativa (OpenAPI/Swagger): **http://localhost:8080/swagger-ui.
 | `GET /api/system/status` | logado | Estado dos componentes: motor, LLM ligado/desligado e modelo, serviço de visão |
 | `GET /api/pets` · `POST /api/pets` | tutor | Lista e cadastra pets |
 | `GET /api/pets/catalog` | tutor | Raças e tags de histórico aceitas |
-| `GET /api/pets/{petId}` | tutor | Detalhe do pet |
+| `GET /api/pets/{petId}` · `PUT /api/pets/{petId}` | tutor | Detalhe e edição dos dados do pet (a edição fica registrada na linha do tempo) |
 | `GET /api/pets/{petId}/timeline` | tutor | Linha do tempo (triagens, fotos, vacinas, retornos da clínica) |
 | `POST /api/pets/{petId}/events` | tutor | Registra evento manual (anotação, medicação etc.) |
-| `GET /api/pets/{petId}/care-plan` | tutor | Plano de cuidados (Ciclo Zelo): vencido / em breve / em dia |
+| `GET /api/pets/{petId}/care-plan` · `POST` | tutor | Plano de cuidados (Ciclo Zelo): vencido / em breve / em dia; `POST` adiciona item (`type`: VACINA, VERMIFUGO, ANTIPULGAS ou CONSULTA; `name`; `next_due`; `last_done` opcional) |
+| `POST /api/pets/{petId}/care-plan/{itemId}/done` | tutor | Marca o cuidado como feito hoje; a próxima data é `next_due` ou o intervalo padrão do tipo (vacina/consulta 365 d, vermífugo 90 d, antipulgas 30 d) |
+| `DELETE /api/pets/{petId}/care-plan/{itemId}` | tutor | Remove o item do plano (o histórico na linha do tempo é mantido) |
 | `POST /api/chat/sessions` | tutor | Abre ou retoma a conversa do pet (`fresh: true` cria uma nova) |
 | `POST /api/chat/messages` | tutor | Envia uma mensagem; devolve a resposta do bot, o estado e, se houve, o cartão de triagem |
 | `GET /api/chat/sessions/{id}/messages` | tutor | Histórico (o estado "compartilhado" vem do banco, não do instantâneo) |
@@ -35,6 +37,16 @@ Documentação interativa (OpenAPI/Swagger): **http://localhost:8080/swagger-ui.
 | `GET /api/clinic/triages/{triageId}` | clínica | Relato, triagem, histórico **autorizado** e revisões anteriores |
 | `POST /api/clinic/reviews` | clínica | Registra a revisão profissional (confirma ou ajusta a prioridade) |
 | `GET /actuator/health` | público | Saúde do serviço |
+
+### Telas (mesmos endereços no backend e na Vercel)
+
+| Endereço | Perfil | Tela |
+|---|---|---|
+| `/` · `/index.html` · `/login` | público | Entrada e cadastro (no backend, `/` abre a entrada; na Vercel, `/` abre o painel e redireciona para a entrada se não houver login) |
+| `/chat.html` | tutor | Conversa com a Zelo |
+| `/dashboard` · `/painel` · `/tutor` | tutor | Painel do Tutor (IBM Carbon): perfil, edição do pet, histórico com exportação em PDF, gestão do plano de cuidados |
+| `/clinic.html` | clínica | Fila e revisão profissional |
+| `/apresentacao` · `/pitch` · `/slides` · `/video` · `/demonstracao` | público | Apresentação da Sprint 4 e vídeo-guia de QA |
 
 ## Contrato da triagem (saída da IA)
 

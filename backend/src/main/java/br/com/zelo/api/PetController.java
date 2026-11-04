@@ -1,5 +1,7 @@
 package br.com.zelo.api;
 
+import br.com.zelo.api.dto.ApiDtos.CareDoneRequest;
+import br.com.zelo.api.dto.ApiDtos.CareItemRequest;
 import br.com.zelo.api.dto.ApiDtos.CareItemResponse;
 import br.com.zelo.api.dto.ApiDtos.CreatePetRequest;
 import br.com.zelo.api.dto.ApiDtos.PetCatalog;
@@ -18,9 +20,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,6 +81,15 @@ public class PetController {
         return pets.getMine(me.id(), petId);
     }
 
+    @Operation(summary = "Atualiza os dados do pet (404 se for de outro tutor)")
+    @PutMapping("/{petId}")
+    public PetResponse update(@AuthenticationPrincipal AppUserDetails me, @PathVariable String petId,
+                              @Valid @RequestBody CreatePetRequest request) {
+        Pet pet = pets.update(me.id(), petId, request);
+        timeline.record(pet, "note", "Dados do pet atualizados", "Ficha editada pelo tutor no painel.", "tutor", null, null);
+        return pets.toResponse(pet);
+    }
+
     @Operation(summary = "Linha do tempo longitudinal do pet")
     @GetMapping("/{petId}/timeline")
     public List<TimelineEventResponse> timeline(@AuthenticationPrincipal AppUserDetails me, @PathVariable String petId,
@@ -89,6 +102,29 @@ public class PetController {
     @GetMapping("/{petId}/care-plan")
     public List<CareItemResponse> carePlan(@AuthenticationPrincipal AppUserDetails me, @PathVariable String petId) {
         return carePlan.list(pets.requireOwned(me.id(), petId));
+    }
+
+    @Operation(summary = "Adiciona um cuidado ao plano (VACINA, VERMIFUGO, ANTIPULGAS ou CONSULTA)")
+    @PostMapping("/{petId}/care-plan")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CareItemResponse addCare(@AuthenticationPrincipal AppUserDetails me, @PathVariable String petId,
+                                    @Valid @RequestBody CareItemRequest request) {
+        return carePlan.add(pets.requireOwned(me.id(), petId), request);
+    }
+
+    @Operation(summary = "Marca um cuidado como feito hoje e agenda o próximo")
+    @PostMapping("/{petId}/care-plan/{itemId}/done")
+    public CareItemResponse markCareDone(@AuthenticationPrincipal AppUserDetails me, @PathVariable String petId,
+                                         @PathVariable Long itemId, @RequestBody(required = false) CareDoneRequest request) {
+        return carePlan.markDone(pets.requireOwned(me.id(), petId), itemId, request);
+    }
+
+    @Operation(summary = "Remove um cuidado do plano")
+    @DeleteMapping("/{petId}/care-plan/{itemId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeCare(@AuthenticationPrincipal AppUserDetails me, @PathVariable String petId,
+                           @PathVariable Long itemId) {
+        carePlan.remove(pets.requireOwned(me.id(), petId), itemId);
     }
 
     @Operation(summary = "Registra um evento manual na linha do tempo")

@@ -43,6 +43,12 @@ document.querySelectorAll("[data-demo]").forEach((chip) => {
   });
 });
 
+// Atalho vindo do painel ("Visão Clínica"): já deixa a conta de demonstração escolhida no campo de e-mail.
+const demoFromUrl = new URLSearchParams(location.search).get("demo");
+if (demoFromUrl && document.querySelector(`[data-demo="${CSS.escape(demoFromUrl)}"]`)) {
+  $("login-email").value = demoFromUrl;
+}
+
 // ------------------------------------------------------------------------------- envio
 function showError(id, message) {
   const node = $(id);

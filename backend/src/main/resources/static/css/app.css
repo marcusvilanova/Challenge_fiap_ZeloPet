@@ -975,3 +975,17 @@
 .triage-card__head {
   border-bottom: 1px solid #e0e0e0;
 }
+
+/* Atalho para o Painel do Tutor na barra superior da conversa */
+.topbar__panel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(15, 98, 254, 0.1);
+  color: #0043ce;
+  border: 1px solid rgba(15, 98, 254, 0.3);
+}

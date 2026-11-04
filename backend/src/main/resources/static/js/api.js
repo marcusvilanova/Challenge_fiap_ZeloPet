@@ -48,6 +48,7 @@ async function request(method, url, { json, form } = {}) {
 export const api = {
   get: (url) => request("GET", url),
   post: (url, json) => request("POST", url, { json }),
+  put: (url, json) => request("PUT", url, { json }),
   del: (url) => request("DELETE", url),
   upload: (url, formData) => request("POST", url, { form: formData }),
   login: (email, password) => request("POST", "/api/auth/login", { form: new URLSearchParams({ email, password }) }),

@@ -17,7 +17,7 @@
 | **QA — Arquivo de Legendas (SRT)** | [qa/legendas-video.srt](qa/legendas-video.srt) | Arquivo oficial de legendas sincronizadas segundo a segundo |
 | **Vídeo Pitch — Solução de IA & IoT (YouTube)** | [Assistir Pitch no YouTube](https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ) | Demonstração em vídeo da Sprint 4 no YouTube: `https://youtu.be/x7SFaB4W2Eo` |
 | **Apresentação de Slides (IBM Carbon)** | [apresentacao.html](apresentacao.html) · online em `/apresentacao` | Deck interativo com 16 slides, timer de 5 min e navegação Carbon |
-| **Painel do Tutor (IBM Carbon)** | [web/dashboard.html](web/dashboard.html) · online em `/dashboard` | Perfil animal (Mel & Thor), histórico clínico, plano de cuidados e acesso à triagem |
+| **Painel do Tutor (IBM Carbon)** | [dashboard.html](backend/src/main/resources/static/dashboard.html) · online em `/dashboard` | Dados reais do tutor logado: perfil e edição do pet, cadastro de pet, histórico de atendimentos com exportação em PDF, gestão do plano de cuidados (adicionar, marcar como feito, remover) e atalho para a triagem do pet escolhido |
 | **Repositório GitHub (Branch develop)** | https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop | Repositório público com código, testes e documentação |
 | **Aplicação Online (Vercel)** | https://zelopet.vercel.app | Ambiente de validação dos testes manuais e automatizados |
 
@@ -130,7 +130,7 @@ ia\.venv\Scripts\python scripts\smoke_test.py
 ## 4. Testes
 
 ```powershell
-cd backend;  .\mvnw.cmd verify                # 195 testes (unidade + integração + conjunto-ouro) + cobertura JaCoCo
+cd backend;  .\mvnw.cmd verify                # 199 testes (unidade + integração + conjunto-ouro) + cobertura JaCoCo
 ia\.venv\Scripts\python -m pytest tests\ia    # 33 testes (pipeline de dados + serviço de visão)
 ```
 

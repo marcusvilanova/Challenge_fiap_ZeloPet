@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zelo — Painel do Tutor</title>
-  <meta name="description" content="Painel de acompanhamento de saúde dos seus pets. Histórico de atendimento, perfil animal e triagem inteligente — Clyvo Vet." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    /* ─────────────────────────────────────────────────────────────
+/* Painel do Tutor (IBM Carbon Design System v11) */
+/* ─────────────────────────────────────────────────────────────
        IBM CARBON DESIGN SYSTEM — Token Reference
        Gray 10  #f4f4f4   Gray 20  #e0e0e0   Gray 30  #c6c6c6
        Gray 40  #a8a8a8   Gray 50  #8d8d8d   Gray 60  #6f6f6f
@@ -727,546 +717,152 @@
       .page-header { padding: var(--spacing-5); }
       .vitals-grid { grid-template-columns: 1fr 1fr; }
     }
-  </style>
-</head>
-<body>
 
-<!-- ── UI SHELL ─────────────────────────────────────────── -->
-<header class="ui-shell">
-  <a href="/dashboard" class="shell-name">
-    <div class="shell-logo-mark">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-    </div>
-    Zelo &middot; Clyvo Vet
-  </a>
-  <nav class="shell-nav">
-    <a class="shell-nav-item active" href="/dashboard">Painel</a>
-    <a class="shell-nav-item" href="/chat.html">Triagem / Chat</a>
-    <a class="shell-nav-item" href="/clinic.html">Visão Clínica</a>
-    <a class="shell-nav-item" href="/apresentacao">Pitch Sprint 4</a>
-  </nav>
-  <div class="shell-right">
-    <a href="/apresentacao" class="shell-icon-btn" title="Apresentação do Pitch (Sprint 4)" aria-label="Pitch" style="text-decoration:none;">
-      <svg viewBox="0 0 32 32"><path d="M28 4H4a2 2 0 00-2 2v20a2 2 0 002 2h24a2 2 0 002-2V6a2 2 0 00-2-2zm0 22H4V6h24z"/><path d="M8 10h6v2H8zm0 4h16v2H8zm0 4h12v2H8z"/></svg>
-    </a>
-    <a href="/index.html" class="shell-user" style="text-decoration:none;" title="Trocar conta ou fazer login de demonstração">
-      <div class="shell-user-avatar">A</div>
-      <span>Ana Souza (Sair)</span>
-    </a>
-  </div>
-</header>
+/* ─────────────────────────────────────────────────────────────
+   Painel com dados reais: botões, diálogos, avisos e impressão
+   ───────────────────────────────────────────────────────────── */
+[hidden] { display: none !important; }
 
-<!-- ── NOTIFICATION ─────────────────────────────────────── -->
-<div class="inline-notification" id="main-notif">
-  <svg viewBox="0 0 32 32"><path d="M16 2C8.3 2 2 8.3 2 16s6.3 14 14 14 14-6.3 14-14S23.7 2 16 2zm-1.1 6h2.2v11h-2.2V8zm1.1 16a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
-  <div class="notif-content">
-    <div class="notif-title">Ação necessária — Mel</div>
-    <div class="notif-body">A triagem de 28 out. foi revisada pela Clyvo Vet e confirmada como Prioridade Alta. Consulta de retorno está em atraso. Agende o quanto antes.</div>
-  </div>
-  <button class="notif-close-btn" onclick="document.getElementById('main-notif').style.display='none'" aria-label="Fechar">✕</button>
-</div>
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--blue-60); color: var(--white); padding: 8px 16px;
+}
+.skip-link:focus { left: 8px; top: 8px; }
 
-<!-- ── PAGE HEADER ──────────────────────────────────────── -->
-<div class="page-header">
-  <div class="page-breadcrumb">
-    <a href="#" class="breadcrumb-link">Clyvo Vet</a>
-    <span class="breadcrumb-sep">/</span>
-    <span>Painel do Tutor</span>
-  </div>
-  <h1 class="page-title"><strong>Painel</strong> de Acompanhamento</h1>
-  <p class="page-subtitle">Gerencie a saúde dos seus pets e acesse o histórico de atendimentos.</p>
-</div>
+button.shell-nav-item { background: none; border-top: none; border-left: none; border-right: none; font-family: inherit; }
+.shell-user { cursor: default; }
+.shell-user:hover { background: none; color: var(--gray-30); }
+.shell-logout {
+  background: none; border: 1px solid var(--gray-70); color: var(--gray-30);
+  font: inherit; font-size: 12px; padding: 4px 10px; cursor: pointer;
+}
+.shell-logout:hover { background: var(--gray-80); color: var(--white); }
 
-<!-- ── MAIN LAYOUT ──────────────────────────────────────── -->
-<div class="page-layout">
+/* botões com aparência de link / item de navegação */
+button.text-link { background: none; border: none; padding: 0; cursor: pointer; font-family: inherit; }
+button.nav-link { width: 100%; background: none; border-top: none; border-right: none; border-bottom: none; font-family: inherit; text-align: left; }
+.nav-link--primary { color: var(--blue-60); font-weight: 600; }
+.nav-link--primary svg { fill: var(--blue-60); opacity: 1; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 
-  <!-- ── LEFT NAV ──────────────────────────────────────── -->
-  <aside class="left-nav">
+.tutor-data-list { margin: 0; }
+.tutor-data-list dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
 
-    <!-- Tutor -->
-    <div class="tutor-profile-block">
-      <div class="tutor-profile-header">
-        <div class="tutor-avatar-large">A</div>
-        <div class="tutor-name-block">
-          <div class="name">Ana Souza</div>
-          <div class="role">Tutora · Clyvo Vet</div>
-        </div>
-      </div>
-      <div class="tutor-data-list">
-        <div class="tutor-data-item">
-          <span class="tutor-data-key">Localização</span>
-          <span class="tutor-data-val">São Paulo, SP</span>
-        </div>
-        <div class="tutor-data-item">
-          <span class="tutor-data-key">Membro desde</span>
-          <span class="tutor-data-val">Mar 2025</span>
-        </div>
-        <div class="tutor-data-item">
-          <span class="tutor-data-key">Telefone</span>
-          <span class="tutor-data-val">(11) 99999-0000</span>
-        </div>
-        <div class="tutor-data-item">
-          <span class="tutor-data-key">ID do tutor</span>
-          <span class="tutor-data-val" style="font-family:'IBM Plex Mono',monospace;font-size:11px;">TUT-00041</span>
-        </div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-cell">
-          <div class="stat-cell-num">8</div>
-          <div class="stat-cell-label">Triagens</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-cell-num">2</div>
-          <div class="stat-cell-label">Pets</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-cell-num">3</div>
-          <div class="stat-cell-label">Consultas</div>
-        </div>
-      </div>
-    </div>
+.tag-warn { background: var(--yellow-10); color: #8a6914; }
+.data-tag-gray { border-color: var(--gray-20); background: var(--gray-10); color: var(--gray-70); }
+.pet-tab-btn--add { color: var(--blue-60); font-weight: 600; margin-left: auto; }
+.avatar-fallback {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--blue-60); color: var(--white); font-weight: 600;
+}
+.pet-tab-avatar.avatar-fallback { font-size: 11px; }
+.pet-photo-circle.avatar-fallback { font-size: 44px; }
 
-    <div style="padding-top:8px">
-      <div class="left-nav-section-title">Navegação</div>
-      <button class="nav-link active" onclick="setSection('perfil')">
-        <svg viewBox="0 0 32 32"><path d="M16 16a6 6 0 100-12 6 6 0 000 12zm-9 14s-1 0-1-1 1-4 10-4 10 3 10 4-1 1-1 1z"/></svg>
-        Perfil &amp; Histórico
-      </button>
-      <button class="nav-link" onclick="setSection('cuidados')">
-        <svg viewBox="0 0 32 32"><path d="M28 6H18L16 2H4a2 2 0 00-2 2v22a2 2 0 002 2h24a2 2 0 002-2V8a2 2 0 00-2-2z"/></svg>
-        Plano de Cuidados
-      </button>
-      <button class="nav-link" onclick="setSection('saude')">
-        <svg viewBox="0 0 32 32"><path d="M16 28a12 12 0 100-24 12 12 0 000 24zm1-18h-2v7l5 3-1-2-4-2V10z"/></svg>
-        Resumo de Saúde
-      </button>
-    </div>
+#pet-content { padding: var(--spacing-7); outline: none; }
+.loading, .empty-row { color: var(--text-secondary); padding: var(--spacing-5) 0; }
+.empty-state {
+  border: 1px dashed var(--gray-30); padding: var(--spacing-7); text-align: center;
+  display: grid; gap: var(--spacing-4); justify-items: center;
+}
+.dash-section { scroll-margin-top: 64px; margin-bottom: var(--spacing-7); }
+.chat-cta-strip--cat { background: var(--gray-90); }
+.chat-cta-strip--cat .chat-cta-eyebrow { color: #a56eff; }
+.chat-cta-strip--cat .cta-btn { background: #6929c4; }
+.chat-cta-strip--cat .cta-btn:hover { background: #491d8b; }
+.notes-block { margin-top: var(--spacing-5); }
 
-    <div class="nav-divider"></div>
-    <div style="padding-top:0">
-      <div class="left-nav-section-title">Ações</div>
-      <a href="/chat.html" class="nav-link" style="color:var(--blue-60);font-weight:600;text-decoration:none;">
-        <svg viewBox="0 0 32 32" style="fill:var(--blue-60)"><path d="M17.7 3H6C4.3 3 3 4.3 3 6v21l6-6h20V6c0-1.7-1.3-3-3-3H17.7z"/></svg>
-        Iniciar Triagem (Chat)
-      </a>
-      <a href="/apresentacao" class="nav-link" style="text-decoration:none;">
-        <svg viewBox="0 0 32 32"><path d="M28 4H4a2 2 0 00-2 2v20a2 2 0 002 2h24a2 2 0 002-2V6a2 2 0 00-2-2zm0 22H4V6h24z"/><path d="M8 10h6v2H8zm0 4h16v2H8zm0 4h12v2H8z"/></svg>
-        Apresentação Pitch (Sprint 4)
-      </a>
-      <a href="/clinic.html" class="nav-link" style="text-decoration:none;">
-        <svg viewBox="0 0 32 32"><path d="M26 4h-4V2h-2v2h-8V2h-2v2H6c-1.1 0-2 .9-2 2v22c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 24H6V10h20v18z"/></svg>
-        Fila da Clínica (Veterinário)
-      </a>
-      <a href="/index.html" class="nav-link" style="text-decoration:none;">
-        <svg viewBox="0 0 32 32"><path d="M26 16l-6-6-1.4 1.4 3.6 3.6H10v2h12.2l-3.6 3.6 1.4 1.4 6-6zM6 6h10V4H6c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h10v-2H6V6z"/></svg>
-        Trocar Conta / Login
-      </a>
-    </div>
+.table-scroll { overflow-x: auto; margin-bottom: var(--spacing-7); }
+.table-scroll > table { margin-bottom: 0; }
+.desc-source { color: var(--gray-50); font-size: 11px; margin-top: 4px; }
+.care-type { color: var(--gray-60); font-size: 12px; }
+.care-actions { white-space: nowrap; }
+.care-actions .cds-btn + .cds-btn { margin-left: 8px; }
+.care-toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-5);
+  background: var(--blue-10); border-left: 3px solid var(--blue-60);
+  padding: var(--spacing-4) var(--spacing-5); margin-bottom: var(--spacing-4);
+}
+.hint { color: var(--text-secondary); font-size: 12px; margin: 0; }
 
-  </aside>
+/* Notificação: tons além do vermelho padrão */
+.inline-notification[data-tone="info"] { background: var(--blue-70); border-left-color: var(--blue-80); }
+.inline-notification[data-tone="warning"] { background: #8a3800; border-left-color: #5e2900; }
 
-  <!-- ── MAIN CONTENT AREA ──────────────────────────────── -->
-  <main class="main-content">
+/* Botões Carbon */
+.cds-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 40px; padding: 0 16px; border: 1px solid transparent; border-radius: 0;
+  font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none;
+}
+.cds-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.cds-btn--sm { min-height: 32px; font-size: 12px; padding: 0 12px; }
+.cds-btn--primary { background: var(--blue-60); color: var(--white); }
+.cds-btn--primary:hover:not(:disabled) { background: var(--blue-70); }
+.cds-btn--secondary { background: var(--gray-80); color: var(--white); }
+.cds-btn--secondary:hover:not(:disabled) { background: var(--gray-70); }
+.cds-btn--ghost { background: transparent; color: var(--blue-60); border-color: var(--blue-20); }
+.cds-btn--ghost:hover:not(:disabled) { background: var(--blue-10); }
+.cds-btn--danger-ghost { background: transparent; color: var(--red-60); border-color: #ffd7d9; }
+.cds-btn--danger-ghost:hover:not(:disabled) { background: #fff1f1; }
 
-    <!-- Pet selector tabs -->
-    <div class="pet-tabs-bar">
-      <button class="pet-tab-btn active" id="btn-mel" onclick="selectPet('mel')" aria-selected="true">
-        <img src="pet_mel.png" alt="" class="pet-tab-avatar"
-          onerror="this.style.display='none'">
-        Mel
-        <span class="tab-tag tag-alert">Alta</span>
-      </button>
-      <button class="pet-tab-btn" id="btn-thor" onclick="selectPet('thor')" aria-selected="false">
-        <img src="pet_thor.png" alt="" class="pet-tab-avatar"
-          onerror="this.style.display='none'">
-        Thor
-        <span class="tab-tag tag-ok">Ok</span>
-      </button>
-    </div>
+/* Diálogos (modal Carbon) */
+.cds-modal {
+  border: none; padding: 0; width: min(560px, calc(100vw - 32px));
+  border-top: 3px solid var(--blue-60); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+.cds-modal::backdrop { background: rgba(22, 22, 22, 0.6); }
+.cds-modal__body { padding: var(--spacing-6); display: grid; gap: var(--spacing-5); }
+.cds-modal__title { font-size: 20px; font-weight: 400; margin: 0; }
+.cds-modal__actions { display: flex; gap: 1px; margin: 0 calc(-1 * var(--spacing-6)) calc(-1 * var(--spacing-6)); }
+.cds-modal__actions .cds-btn { flex: 1; min-height: 56px; justify-content: flex-start; }
+.cds-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-5); }
+.cds-span-2 { grid-column: span 2; }
+.cds-field { display: grid; gap: 6px; min-width: 0; }
+.cds-field label, .cds-field legend { font-size: 12px; color: var(--gray-70); letter-spacing: 0.32px; }
+.cds-input {
+  height: 40px; padding: 0 12px; border: none; border-bottom: 1px solid var(--gray-50);
+  background: var(--gray-10); font-family: inherit; font-size: 14px; color: var(--text-primary); width: 100%;
+}
+.cds-checks { border: none; padding: 0; margin: 0; }
+.cds-checks > div { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 6px; }
+.cds-check { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
+.cds-error { color: var(--red-60); font-size: 13px; margin: 0; }
 
-    <!-- ═══════════ MEL ═══════════ -->
-    <div class="content-inner active" id="content-mel">
+/* Avisos rápidos (toast do ui.js) */
+.toast-region { position: fixed; right: 16px; bottom: 16px; z-index: 200; display: grid; gap: 8px; max-width: min(420px, calc(100vw - 32px)); }
+.toast {
+  background: var(--gray-100); color: var(--white); padding: 12px 16px; font-size: 14px;
+  border-left: 3px solid var(--green-40); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+.toast--error { border-left-color: var(--red-50); }
 
-      <!-- Chat CTA strip -->
-      <div class="chat-cta-strip">
-        <div class="chat-cta-text-area">
-          <div class="chat-cta-eyebrow">Triagem inteligente disponível</div>
-          <h2 class="chat-cta-heading">Algo incomoda a <strong>Mel</strong>?</h2>
-          <p class="chat-cta-sub">Descreva os sintomas ao Zelo. Em minutos, o assistente indica a prioridade e avisa a clínica — sem diagnosticar, sem prescrever.</p>
-        </div>
-        <a href="chat.html" class="cta-btn">
-          <svg viewBox="0 0 32 32"><path d="M17.7 3H6C4.3 3 3 4.3 3 6v21l6-6h20V6c0-1.7-1.3-3-3-3H17.7z"/></svg>
-          Iniciar Triagem com Mel
-        </a>
-      </div>
+/* itens de grid podem encolher abaixo da largura das tabelas (que rolam dentro de .table-scroll) */
+.page-layout > *, .pet-profile-section > *, .two-col-grid > * { min-width: 0; }
+.pet-tabs-bar { overflow-x: auto; }
+.pet-tab-btn { white-space: nowrap; }
 
-      <!-- Pet Profile -->
-      <div style="padding: 0 var(--spacing-7);">
-        <div class="section-header-row">
-          <h2 class="section-heading">Perfil do Animal</h2>
-          <a href="#" class="text-link">Editar dados →</a>
-        </div>
+@media (max-width: 640px) {
+  #pet-content { padding: var(--spacing-5); }
+  .chat-cta-strip { padding: var(--spacing-5); }
+  .cta-btn { width: 100%; justify-content: center; }
+  #shell-user-name { display: none; }
+  .shell-name { padding: 0 var(--spacing-4); }
+  .pet-tab-btn { padding: 0 var(--spacing-4); }
+  .cds-form-grid { grid-template-columns: 1fr; }
+  .cds-span-2 { grid-column: auto; }
+  .care-toolbar { flex-direction: column; align-items: flex-start; }
+  .shell-nav { display: none; }
+}
 
-        <div class="pet-profile-section">
-          <div class="pet-profile-photo-col">
-            <img src="pet_mel.png" alt="Mel"  class="pet-photo-circle"
-              onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><rect width=%22120%22 height=%22120%22 fill=%22%23e0e0e0%22/><text x=%2230%22 y=%2280%22 font-size=%2264%22>🐕</text></svg>'">
-            <span class="pet-id-mono">PET-0001</span>
-            <div class="pet-status-pill pill-red">
-              <div class="status-dot"></div>
-              Triagem Pendente
-            </div>
-          </div>
-          <div class="pet-profile-info-col">
-            <div class="section-label">Ficha do Pet</div>
-            <h3 class="pet-name-h"><strong>Mel</strong></h3>
-            <p class="pet-breed-line">Labrador Retriever — Fêmea — Porte Grande</p>
-
-            <div class="vitals-grid">
-              <div class="vital-cell">
-                <div class="vital-cell-label">Idade</div>
-                <div class="vital-cell-value">4 <span class="vital-cell-unit">anos</span></div>
-              </div>
-              <div class="vital-cell">
-                <div class="vital-cell-label">Peso</div>
-                <div class="vital-cell-value">22 <span class="vital-cell-unit">kg</span></div>
-              </div>
-              <div class="vital-cell">
-                <div class="vital-cell-label">Altura</div>
-                <div class="vital-cell-value">56 <span class="vital-cell-unit">cm</span></div>
-              </div>
-              <div class="vital-cell">
-                <div class="vital-cell-label">Tipo Sang.</div>
-                <div class="vital-cell-value" style="font-size:14px">DEA 1+</div>
-              </div>
-            </div>
-
-            <div class="tags-row">
-              <span class="data-tag data-tag-green">Vacinada em dia</span>
-              <span class="data-tag data-tag-blue">Antipulgas ativo</span>
-              <span class="data-tag data-tag-blue">Castrada</span>
-              <span class="data-tag data-tag-yellow">Sensível a glúten</span>
-              <span class="data-tag data-tag-green">Vermífugo em dia</span>
-              <span class="data-tag data-tag-blue">Microchip #985112003456</span>
-            </div>
-
-            <div class="notes-block">
-              <strong>Obs. clínicas:</strong> Histórico de sensibilidade gastrointestinal.
-              Em vômitos recorrentes, observar 12h antes de realimentar. Dieta: ração premium sem glúten.
-              Consulta de rotina: <strong>15 Nov 2026</strong>.
-            </div>
-          </div>
-        </div>
-
-        <!-- History -->
-        <div class="section-header-row" style="margin-top:var(--spacing-7)">
-          <h2 class="section-heading">Histórico de Atendimento</h2>
-          <a href="#" class="text-link">Exportar PDF →</a>
-        </div>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Ocorrência</th>
-              <th>Prioridade</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td-date">28 out 2026</td>
-              <td class="td-desc">
-                <div class="desc-main">Triagem: Abatimento e vômito recorrente</div>
-                <div class="desc-sub">Sintomas: apatia, vômito, sem apetite — 2 episódios em 24h</div>
-                <div class="vet-review">
-                  <span class="vet-review-author">Dr.ª Carla — Clyvo Vet:</span>
-                  "Prioridade confirmada. Suspeita de gastroenterite. Trazer em até 6h se persistir."
-                </div>
-              </td>
-              <td><span class="priority-tag pt-high">Alta</span></td>
-              <td><span class="status-confirmed">Confirmado</span></td>
-            </tr>
-            <tr>
-              <td class="td-date">10 set 2026</td>
-              <td class="td-desc">
-                <div class="desc-main">Triagem: Coceira e vermelhidão na pele</div>
-                <div class="desc-sub">Sintomas: prurido intenso, eritema, crostas na barriga</div>
-                <div class="vet-review">
-                  <span class="vet-review-author">Dr.ª Carla:</span>
-                  "Dermatite alérgica. Prescrito shampoo hipoalergênico e anti-histamínico 7 dias."
-                </div>
-              </td>
-              <td><span class="priority-tag pt-medium">Média</span></td>
-              <td><span class="status-confirmed">Confirmado</span></td>
-            </tr>
-            <tr>
-              <td class="td-date">02 ago 2026</td>
-              <td class="td-desc">
-                <div class="desc-main">Consulta de rotina — Vacinação V10 + Vermífugo</div>
-                <div class="desc-sub">Check-up anual. Peso: 21,5 kg. Exame físico sem alterações.</div>
-              </td>
-              <td><span class="priority-tag pt-routine">Rotina</span></td>
-              <td><span class="status-resolved">Concluído</span></td>
-            </tr>
-            <tr>
-              <td class="td-date">14 jun 2026</td>
-              <td class="td-desc">
-                <div class="desc-main">Triagem: Perda de apetite leve</div>
-                <div class="desc-sub">2 dias sem apetite, sem outros sintomas. Resolvido em 3 dias.</div>
-              </td>
-              <td><span class="priority-tag pt-low">Baixa</span></td>
-              <td><span class="status-resolved">Resolvido</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Care Plan -->
-        <div class="section-header-row">
-          <h2 class="section-heading">Plano de Cuidados</h2>
-          <a href="#" class="text-link">Gerenciar →</a>
-        </div>
-
-        <table class="care-table">
-          <thead>
-            <tr>
-              <th>Cuidado</th>
-              <th>Última aplicação</th>
-              <th>Próximo</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Antipulgas mensal — Nexgard</td>
-              <td class="care-date">01 out 2026</td>
-              <td class="care-date">01 nov 2026</td>
-              <td class="care-status-soon">Vence em 3 dias</td>
-            </tr>
-            <tr class="care-overdue">
-              <td><strong>Retorno dermatite</strong> — Revisão clínica</td>
-              <td class="care-date">—</td>
-              <td class="care-date" style="color:var(--red-60)">20 set 2026</td>
-              <td class="care-status-late">Atrasado — Agendar</td>
-            </tr>
-            <tr>
-              <td>Consulta de rotina anual</td>
-              <td class="care-date">02 ago 2026</td>
-              <td class="care-date">15 nov 2026</td>
-              <td class="care-status-soon">Em breve</td>
-            </tr>
-            <tr>
-              <td>Vacinação V10</td>
-              <td class="care-date">02 ago 2026</td>
-              <td class="care-date">ago 2027</td>
-              <td class="care-status-ok">Em dia</td>
-            </tr>
-            <tr>
-              <td>Vermífugo trimestral</td>
-              <td class="care-date">02 ago 2026</td>
-              <td class="care-date">02 nov 2026</td>
-              <td class="care-status-ok">Em dia</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Health Summary -->
-        <div class="section-header-row">
-          <h2 class="section-heading">Resumo de Saúde</h2>
-        </div>
-        <div class="two-col-grid" style="margin-bottom:var(--spacing-7)">
-          <div class="col-block">
-            <div class="col-block-title">Vacinas &amp; Preventivos</div>
-            <div class="kv-list">
-              <div class="kv-row"><span class="kv-key">V10 anual</span><span class="kv-val ok">Em dia</span></div>
-              <div class="kv-row"><span class="kv-key">Antirrábica</span><span class="kv-val ok">Em dia</span></div>
-              <div class="kv-row"><span class="kv-key">Vermífugo</span><span class="kv-val ok">Em dia</span></div>
-              <div class="kv-row"><span class="kv-key">Antipulgas</span><span class="kv-val warn">Vence em 3 dias</span></div>
-              <div class="kv-row"><span class="kv-key">Anticarrapato</span><span class="kv-val ok">Em dia</span></div>
-            </div>
-          </div>
-          <div class="col-block">
-            <div class="col-block-title">Histórico Clínico</div>
-            <div class="kv-list">
-              <div class="kv-row"><span class="kv-key">Castração</span><span class="kv-val ok">Realizada</span></div>
-              <div class="kv-row"><span class="kv-key">Alergias</span><span class="kv-val warn">Glúten, contato</span></div>
-              <div class="kv-row"><span class="kv-key">Microchip</span><span class="kv-val" style="font-family:'IBM Plex Mono',monospace;font-size:12px">#985112003456</span></div>
-              <div class="kv-row"><span class="kv-key">Última triagem</span><span class="kv-val late">28 out · Alta</span></div>
-              <div class="kv-row"><span class="kv-key">Retorno pendente</span><span class="kv-val late">Atrasado</span></div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /padding -->
-    </div><!-- /content-mel -->
-
-
-    <!-- ═══════════ THOR ═══════════ -->
-    <div class="content-inner" id="content-thor">
-
-      <!-- Chat CTA -->
-      <div class="chat-cta-strip" style="background:var(--gray-90);">
-        <div class="chat-cta-text-area">
-          <div class="chat-cta-eyebrow" style="color:#a56eff">Monitoramento ativo — FLUTD</div>
-          <h2 class="chat-cta-heading">Algo incomoda o <strong>Thor</strong>?</h2>
-          <p class="chat-cta-sub">Qualquer dificuldade para urinar ou choro na caixa de areia: use o Zelo imediatamente. Thor tem histórico de obstrução urinária.</p>
-        </div>
-        <a href="chat.html" class="cta-btn" style="background:#6929c4">
-          <svg viewBox="0 0 32 32"><path d="M17.7 3H6C4.3 3 3 4.3 3 6v21l6-6h20V6c0-1.7-1.3-3-3-3H17.7z"/></svg>
-          Iniciar Triagem com Thor
-        </a>
-      </div>
-
-      <div style="padding: 0 var(--spacing-7);">
-        <div class="section-header-row">
-          <h2 class="section-heading">Perfil do Animal</h2>
-          <a href="#" class="text-link">Editar dados →</a>
-        </div>
-
-        <div class="pet-profile-section">
-          <div class="pet-profile-photo-col">
-            <img src="pet_thor.png" alt="Thor" class="pet-photo-circle"
-              onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><rect width=%22120%22 height=%22120%22 fill=%22%23e0e0e0%22/><text x=%2228%22 y=%2280%22 font-size=%2264%22>🐈</text></svg>'">
-            <span class="pet-id-mono">PET-0002</span>
-            <div class="pet-status-pill pill-green">
-              <div class="status-dot"></div>
-              Estável
-            </div>
-          </div>
-          <div class="pet-profile-info-col">
-            <div class="section-label">Ficha do Pet</div>
-            <h3 class="pet-name-h"><strong>Thor</strong></h3>
-            <p class="pet-breed-line">Gato Doméstico Shorthair — Macho — Porte Médio</p>
-
-            <div class="vitals-grid">
-              <div class="vital-cell">
-                <div class="vital-cell-label">Idade</div>
-                <div class="vital-cell-value">2 <span class="vital-cell-unit">anos</span></div>
-              </div>
-              <div class="vital-cell">
-                <div class="vital-cell-label">Peso</div>
-                <div class="vital-cell-value">4,2 <span class="vital-cell-unit">kg</span></div>
-              </div>
-              <div class="vital-cell">
-                <div class="vital-cell-label">Pelagem</div>
-                <div class="vital-cell-value" style="font-size:13px">Cinza Mes.</div>
-              </div>
-              <div class="vital-cell">
-                <div class="vital-cell-label">Tipo Sang.</div>
-                <div class="vital-cell-value">B</div>
-              </div>
-            </div>
-
-            <div class="tags-row">
-              <span class="data-tag data-tag-green">Vacinado em dia</span>
-              <span class="data-tag data-tag-blue">Castrado</span>
-              <span class="data-tag data-tag-blue">Antipulgas ativo</span>
-              <span class="data-tag data-tag-red">FLUTD — risco de obstrução</span>
-              <span class="data-tag data-tag-blue">Dieta urinary S/O</span>
-            </div>
-
-            <div class="notes-block" style="border-left-color:#6929c4;background:#f6f2ff;">
-              <strong>Atenção clínica:</strong> Thor tem predisposição a FLUTD.
-              Qualquer dificuldade para urinar, sangue na urina ou choro na caixa de areia
-              deve ser tratado como <strong>emergência</strong> — leve à clínica imediatamente.
-              Manter hidratação com ração úmida.
-            </div>
-          </div>
-        </div>
-
-        <div class="section-header-row" style="margin-top:var(--spacing-7)">
-          <h2 class="section-heading">Histórico de Atendimento</h2>
-          <a href="#" class="text-link">Exportar PDF →</a>
-        </div>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Ocorrência</th>
-              <th>Prioridade</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td-date">15 out 2026</td>
-              <td class="td-desc">
-                <div class="desc-main">Emergência: Obstrução urinária — FLUTD</div>
-                <div class="desc-sub">Disúria, esforço sem urina, gotejamento. Internação 24h.</div>
-                <div class="vet-review">
-                  <span class="vet-review-author">Dr. Marcos — Clyvo Vet:</span>
-                  "Obstrução confirmada. Desobstrução realizada. Alta com dieta Urinary S/O e restrição de ração seca."
-                </div>
-              </td>
-              <td><span class="priority-tag pt-emergency">Emergência</span></td>
-              <td><span class="status-resolved">Resolvido</span></td>
-            </tr>
-            <tr>
-              <td class="td-date">10 mai 2026</td>
-              <td class="td-desc">
-                <div class="desc-main">Consulta de rotina — Vacinação V5 + Castração</div>
-                <div class="desc-sub">Primeira consulta pós-adoção. Recuperação sem complicações.</div>
-              </td>
-              <td><span class="priority-tag pt-routine">Rotina</span></td>
-              <td><span class="status-resolved">Concluído</span></td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="section-header-row">
-          <h2 class="section-heading">Plano de Cuidados</h2>
-        </div>
-        <table class="care-table">
-          <thead>
-            <tr><th>Cuidado</th><th>Última aplicação</th><th>Próximo</th><th>Status</th></tr>
-          </thead>
-          <tbody>
-            <tr class="care-overdue">
-              <td><strong>Retorno pós-obstrução</strong> — avaliação urinária</td>
-              <td class="care-date">—</td>
-              <td class="care-date" style="color:var(--red-60)">22 out 2026</td>
-              <td class="care-status-urgent">URGENTE — Agendar agora</td>
-            </tr>
-            <tr>
-              <td>Dieta úmida — Urinary S/O</td>
-              <td class="care-date">16 out 2026</td>
-              <td class="care-date">Contínuo</td>
-              <td class="care-status-ok">Ativo</td>
-            </tr>
-            <tr>
-              <td>Antipulgas mensal</td>
-              <td class="care-date">01 out 2026</td>
-              <td class="care-date">01 nov 2026</td>
-              <td class="care-status-soon">Em breve</td>
-            </tr>
-            <tr>
-              <td>Vacinação V5</td>
-              <td class="care-date">10 mai 2026</td>
-              <td class="care-date">mai 2027</td>
-              <td class="care-status-ok">Em dia</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-    </div><!-- /content-thor -->
-
-  </main>
-</div>
-
-<script>
-  function selectPet(name) {
-    ['mel','thor'].forEach(p => {
-      document.getElementById('btn-' + p).classList.toggle('active', p === name);
-      document.getElementById('btn-' + p).setAttribute('aria-selected', p === name);
-      document.getElementById('content-' + p).classList.toggle('active', p === name);
-    });
-  }
-  function setSection(name) {
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-  }
-</script>
-</body>
-</html>
+/* Exportar PDF: imprime só o relatório do pet escolhido */
+.print-only { display: none; }
+@media print {
+  .ui-shell, .inline-notification, .page-header, .left-nav, .pet-tabs-bar, .no-print, .skip-link, .toast-region, dialog { display: none !important; }
+  .print-only { display: block; }
+  .print-header { font-size: 12px; color: var(--gray-70); border-bottom: 1px solid var(--gray-30); padding-bottom: 8px; margin-bottom: 16px; }
+  .page-layout { display: block; }
+  #pet-content { padding: 0; }
+  .table-scroll { overflow: visible; }
+  tr, .kv-row, .pet-profile-section { break-inside: avoid; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
