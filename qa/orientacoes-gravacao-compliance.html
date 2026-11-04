@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Orientações de Gravação e Apresentação — Compliance & QA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 9pt;
+      line-height: 1.45;
+      color: #161616;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Header Cover Bar */
+    .doc-header {
+      border-bottom: 3px solid #0f62fe;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .doc-header .title-area h1 {
+      font-size: 15pt;
+      font-weight: 700;
+      color: #0f62fe;
+      margin-bottom: 2px;
+      letter-spacing: -0.3px;
+    }
+
+    .doc-header .title-area h2 {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: #393939;
+    }
+
+    .doc-header .meta-badge {
+      text-align: right;
+      font-size: 8pt;
+      color: #525252;
+      font-family: 'IBM Plex Mono', monospace;
+      line-height: 1.35;
+    }
+
+    .meta-badge strong {
+      color: #161616;
+    }
+
+    /* Info Card */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      background: #f4f4f4;
+      border: 1px solid #e0e0e0;
+      border-left: 4px solid #0f62fe;
+      padding: 8px 12px;
+      margin-bottom: 12px;
+      font-size: 8.5pt;
+      border-radius: 2px;
+    }
+
+    .info-grid div p {
+      margin-bottom: 2px;
+    }
+
+    .info-grid div p:last-child {
+      margin-bottom: 0;
+    }
+
+    h3.section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #161616;
+      background: #e8daff;
+      border-left: 4px solid #8a3ffc;
+      padding: 4px 8px;
+      margin-top: 10px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h3.section-title.blue {
+      background: #edf5ff;
+      border-left: 4px solid #0f62fe;
+    }
+
+    /* Tables */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      font-size: 8pt;
+    }
+
+    table.data-table th, table.data-table td {
+      border: 1px solid #dcdcdc;
+      padding: 5px 7px;
+      text-align: left;
+    }
+
+    table.data-table th {
+      background: #262626;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    table.data-table tr:nth-child(even) td {
+      background: #fbfbfb;
+    }
+
+    /* Scene Card */
+    .scene-box {
+      border: 1px solid #d0d0d0;
+      border-left: 4px solid #0f62fe;
+      background: #ffffff;
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      page-break-inside: avoid;
+      border-radius: 2px;
+    }
+
+    .scene-box.green-edge {
+      border-left-color: #24a148;
+    }
+
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 3px;
+    }
+
+    .scene-header .title {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0f62fe;
+    }
+
+    .scene-header .time-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8pt;
+      font-weight: 600;
+      background: #e0e0e0;
+      color: #161616;
+      padding: 1px 6px;
+      border-radius: 2px;
+    }
+
+    .screen-action {
+      background: #fff8e1;
+      border: 1px dashed #f1c21b;
+      padding: 5px 8px;
+      margin-bottom: 6px;
+      font-size: 8pt;
+      color: #393939;
+      border-radius: 2px;
+    }
+
+    .screen-action strong {
+      color: #b28600;
+      text-transform: uppercase;
+      font-size: 7.2pt;
+      display: block;
+      margin-bottom: 1px;
+      letter-spacing: 0.5px;
+    }
+
+    .speech-quote {
+      background: #f4f7fb;
+      border: 1px solid #d0e2ff;
+      border-left: 3px solid #24a148;
+      padding: 6px 10px;
+      font-size: 8.8pt;
+      line-height: 1.4;
+      color: #161616;
+      border-radius: 2px;
+    }
+
+    .speech-quote strong.label {
+      color: #198038;
+      font-size: 7.2pt;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    .instruction-box {
+      background: #edf5ff;
+      border: 1px solid #a6c8ff;
+      border-left: 4px solid #0f62fe;
+      padding: 8px 12px;
+      font-size: 8.2pt;
+      line-height: 1.35;
+      margin-top: 8px;
+      page-break-inside: avoid;
+    }
+
+    .instruction-box strong {
+      color: #0043ce;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="title-area">
+      <h1>FIAP · Challenge 2026 — Sprint 4</h1>
+      <h2>Compliance, Quality Assurance & Tests — Guia de Gravação e Fala</h2>
+    </div>
+    <div class="meta-badge">
+      <strong>Data da Entrega:</strong> 04/11/2026<br>
+      <strong>Avaliador:</strong> Prof. Felipe Santos<br>
+      <strong>Duração Estimada:</strong> ~3m30s
+    </div>
+  </div>
+
+  <!-- INFO BOX -->
+  <div class="info-grid">
+    <div>
+      <p><strong>Projeto:</strong> Zelo (Clyvo Vet) — Triagem Inteligente com Design System IBM Carbon v11</p>
+      <p><strong>Apresentador:</strong> Marcus Vinícius Vila Nova da Silva (RM 558771) — Turma 2TDS</p>
+      <p><strong>Equipe:</strong> Bruno Ferreira (563489) · Gabriel Padilha (566293) · Hebert Santos (563192) · Marcus Vila Nova (558771) · Nicolas Ramiro (562380)</p>
+    </div>
+    <div>
+      <p><strong>Branch de Entrega:</strong> <code>develop</code></p>
+      <p><strong>Automação:</strong> Selenium IDE (6 testes)</p>
+      <p><strong>Plano de Testes:</strong> Azure Boards (20 CTs)</p>
+    </div>
+  </div>
+
+  <!-- CHECKLIST PRÉ-GRAVAÇÃO -->
+  <h3 class="section-title blue">1. Onde Acessar — Checklist Pré-Gravação (Deixar Aberto)</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Aba / Janela</th>
+        <th style="width: 35%;">Ferramenta</th>
+        <th style="width: 50%;">Link / Acesso Direto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Aba 1</strong></td>
+        <td><strong>Azure Boards</strong> (Plano de Testes Manuais)</td>
+        <td><code>https://dev.azure.com/RM558771/CLYVO%20VET</code></td>
+      </tr>
+      <tr>
+        <td><strong>Aba 2</strong></td>
+        <td><strong>GitHub</strong> (Branch <code>develop</code>, pasta <code>qa</code>)</td>
+        <td><code>https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop/qa</code></td>
+      </tr>
+      <tr>
+        <td><strong>Aba 3</strong></td>
+        <td><strong>Sistema Zelo em Produção</strong> (Vercel)</td>
+        <td><code>https://zelopet.vercel.app</code></td>
+      </tr>
+      <tr>
+        <td><strong>Janela Extra</strong></td>
+        <td><strong>Extensão Selenium IDE</strong></td>
+        <td>Abrir o projeto <code>qa/selenium/zelo.side</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- CRONOGRAMA RESUMO -->
+  <h3 class="section-title blue">2. Tabela Resumo do Roteiro</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Momento</th>
+        <th style="width: 25%;">Tela Exibida</th>
+        <th style="width: 35%;">Ação Prática</th>
+        <th style="width: 25%;">Item Avaliativo (Edital)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>0:00 - 0:45</strong></td>
+        <td>Azure DevOps (Boards)</td>
+        <td>Abrir Test Case #57 (CT-01), mostrar passos e admin do prof.</td>
+        <td>Parte A: Teste Manual (80%) + Acesso (20%)</td>
+      </tr>
+      <tr>
+        <td><strong>0:45 - 1:15</strong></td>
+        <td>GitHub (Branch <code>develop</code>)</td>
+        <td>Mostrar pasta <code>qa/</code>, README e rastreabilidade</td>
+        <td>Conformidade da Entrega no GitHub</td>
+      </tr>
+      <tr>
+        <td><strong>1:15 - 1:55</strong></td>
+        <td>Selenium IDE</td>
+        <td>Mostrar URL base e lista de testes TA-01 ao TA-06</td>
+        <td>Parte B: Configuração da Automação</td>
+      </tr>
+      <tr>
+        <td><strong>1:55 - 2:50</strong></td>
+        <td>Navegador em Execução</td>
+        <td>Clicar "Run all tests", mostrar robô rodando sozinho</td>
+        <td>Parte B: Execução ao Vivo dos Testes</td>
+      </tr>
+      <tr>
+        <td><strong>2:50 - 3:20</strong></td>
+        <td>Selenium IDE (Log Verde)</td>
+        <td>Exibir 6 testes Passados com 0 erros e encerramento</td>
+        <td>Parte B: Evidências e Resultados</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- ROTEIRO DETALHADO -->
+  <h3 class="section-title">3. Roteiro Cronometrado — O que Mostrar na Tela e o que Falar</h3>
+
+  <!-- CENA 1 -->
+  <div class="scene-box">
+    <div class="scene-header">
+      <span class="title">CENA 1: Introdução e Testes Manuais no Azure Boards</span>
+      <span class="time-tag">⏱️ 0:00 - 0:45</span>
+    </div>
+    <div class="screen-action">
+      <strong>🖥️ O que mostrar na tela:</strong>
+      Navegador na <strong>Aba 1 (Azure DevOps)</strong>. Clique em <em>Boards &gt; Work Items</em>. Dê duplo clique no Caso de Teste <strong>#57 (CT-01)</strong>. Mostre a aba <em>Steps</em> com os passos e resultados esperados. Destaque que o Prof. Felipe Santos tem licença Basic e Administrador.
+    </div>
+    <div class="speech-quote">
+      <strong class="label">🗣️ O que falar:</strong>
+      "Olá professor Felipe Santos e banca avaliadora. Meu nome é Marcus Vinícius, RM 558771, e estou apresentando a entrega da Sprint 4 da disciplina de Compliance, Quality Assurance and Tests do projeto Zelo para a Clyvo Vet.<br>
+      Iniciando pela <strong>Parte A — Testes Manuais de Software</strong>: conforme as diretrizes do edital, elaboramos o plano completo de testes dentro do Azure Boards. Cadastramos 20 Casos de Teste formais, identificados do número 57 ao 76, cobrindo todos os fluxos críticos da nossa solução: autenticação, triagem clínica por inteligência artificial, regras éticas e compartilhamento de dados com a clínica.<br>
+      Como podemos ver aqui no Caso de Teste 57, cada item possui objetivo bem definido, dados de entrada controlados, passos estruturados e as saídas esperadas. As permissões do professor também já foram configuradas com nível Basic e Administrador do Projeto."
+    </div>
+  </div>
+
+  <!-- CENA 2 -->
+  <div class="scene-box">
+    <div class="scene-header">
+      <span class="title">CENA 2: Repositório GitHub na Branch develop</span>
+      <span class="time-tag">⏱️ 0:45 - 1:15</span>
+    </div>
+    <div class="screen-action">
+      <strong>🖥️ O que mostrar na tela:</strong>
+      Mude para a <strong>Aba 2 (GitHub)</strong>. Aponte para o seletor de branch exibindo <strong><code>develop</code></strong>. Mostre os arquivos da pasta <code>/qa</code>: o <code>README.md</code> com a matriz de rastreabilidade e a pasta <code>selenium/</code>.
+    </div>
+    <div class="speech-quote">
+      <strong class="label">🗣️ O que falar:</strong>
+      "Seguindo para a estrutura de entrega do repositório no GitHub: estamos posicionados na branch <strong>develop</strong>, atendendo rigorosamente à regra de entrega da matéria.<br>
+      Dentro do diretório 'qa', organizamos toda a documentação de suporte: temos o 'README.md' com a matriz de rastreabilidade completa vinculando os PBIs e histórias de usuário aos testes, o 'plano-testes-manuais.md' e o pacote de automação na pasta 'selenium'. Tudo devidamente versionado, público e rastreável."
+    </div>
+  </div>
+
+  <!-- CENA 3 -->
+  <div class="scene-box">
+    <div class="scene-header">
+      <span class="title">CENA 3: Configuração do Selenium IDE (Parte B)</span>
+      <span class="time-tag">⏱️ 1:15 - 1:55</span>
+    </div>
+    <div class="screen-action">
+      <strong>🖥️ O que mostrar na tela:</strong>
+      Mude para a janela da extensão <strong>Selenium IDE</strong>. Mostre a URL base <code>https://zelopet.vercel.app</code> e a lista lateral com os 6 testes: <strong>TA-01 ao TA-06</strong>. Clique no TA-03 para exibir os comandos (<code>open</code>, <code>type</code>, <code>click</code>, <code>assertText</code>).
+    </div>
+    <div class="speech-quote">
+      <strong class="label">🗣️ O que falar:</strong>
+      "Passando agora para a <strong>Parte B — Automação de Testes</strong>: utilizamos o Selenium IDE na modalidade Record and Playback para validar a aplicação web em produção na Vercel.<br>
+      O edital solicitava no mínimo 4 casos automatizados. Nossa equipe implementou 6 casos de teste cobrindo os cenários prioritários:<br>
+      • TA-01: Login da tutora e validação do Design System IBM Carbon v11;<br>
+      • TA-02: Bloqueio correto de credenciais inválidas;<br>
+      • TA-03: Triagem de emergência imediata ao relatar tosse e engasgo da pet Mel;<br>
+      • TA-04: Triagem de prioridade média com perguntas complementares;<br>
+      • TA-05: Guardrail ético recusando prescrição de medicamentos;<br>
+      • E TA-06: Compartilhamento seguro da triagem com a fila da clínica.<br>
+      Todos os comandos utilizam seletores consistentes, comandos de espera e asserções automáticas."
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- CENA 4 -->
+  <div class="scene-box">
+    <div class="scene-header">
+      <span class="title">CENA 4: Execução ao Vivo da Automação no Navegador</span>
+      <span class="time-tag">⏱️ 1:55 - 2:50</span>
+    </div>
+    <div class="screen-action">
+      <strong>🖥️ O que mostrar na tela:</strong>
+      No Selenium IDE, clique no botão <strong>"Run all tests in suite"</strong>. Deixe a janela do navegador aberta ao lado executando os testes automaticamente: login, chat, sintomas, botões e telas em IBM Carbon.
+    </div>
+    <div class="speech-quote">
+      <strong class="label">🗣️ O que falar:</strong>
+      "Vou iniciar agora a execução ao vivo de toda a suíte de testes.<br>
+      Acompanhem na janela do navegador: o Selenium executa cada comando de forma 100% automatizada. Ele realiza o login no sistema no padrão visual IBM Carbon, valida as mensagens de boas-vindas da pet Mel, submete os relatos de saúde no chat, valida a classificação de emergência em tempo real e verifica os bloqueios de segurança farmacológica.<br>
+      Por fim, valida a integração com o painel da clínica veterinária sem qualquer intervenção manual."
+    </div>
+  </div>
+
+  <!-- CENA 5 -->
+  <div class="scene-box green-edge">
+    <div class="scene-header">
+      <span class="title">CENA 5: Resultados e Conclusão</span>
+      <span class="time-tag">⏱️ 2:50 - 3:20</span>
+    </div>
+    <div class="screen-action">
+      <strong>🖥️ O que mostrar na tela:</strong>
+      Volte para a janela do Selenium IDE exibindo a barra verde com os <strong>6 testes Passed</strong> e 0 erros no log.
+    </div>
+    <div class="speech-quote">
+      <strong class="label">🗣️ O que falar:</strong>
+      "Como podemos verificar no log de resultados do Selenium IDE: os 6 testes automatizados foram executados com sucesso e obtiveram status aprovado, com zero erros.<br>
+      Com isso, comprovamos o atendimento de 100% dos requisitos de Compliance e Quality Assurance da Sprint 4: os 20 testes manuais no Azure Boards com dados controlados, a permissão administrativa do professor, a automação no Selenium IDE com evidência gravada e o repositório público na branch develop.<br>
+      Muito obrigado pela atenção!"
+    </div>
+  </div>
+
+  <!-- INSTRUÇÃO FINAL -->
+  <div class="instruction-box">
+    <strong>🔴 Instruções de Gravação no Windows (Passo a Passo):</strong><br>
+    1. Aperte <strong>Win + Alt + R</strong> para iniciar a gravação de tela nativa com áudio do microfone.<br>
+    2. Siga o roteiro acima. Ao finalizar a fala da Cena 5, aperte <strong>Win + Alt + R</strong> novamente para encerrar.<br>
+    3. O arquivo <code>.mp4</code> é salvo em: <code>C:\Users\marcu\Videos\Captures</code>.<br>
+    4. Suba o vídeo no YouTube com visibilidade <strong>"Não listado"</strong> e insira o link na tabela do <code>qa/README.md</code>.
+  </div>
+
+</body>
+</html>
