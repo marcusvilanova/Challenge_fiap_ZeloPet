@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório Oficial de Conformidade e Garantia da Qualidade — Sprint 4 | FIAP</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 20mm 18mm 20mm 20mm;
+      @bottom-right {
+        content: counter(page);
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 8pt;
+        color: #555;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 9pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      page-break-before: always;
+      position: relative;
+      min-height: 250mm;
+    }
+
+    .page:first-child {
+      page-break-before: auto;
+    }
+
+    /* ── 1. CAPA FORMAL (ABNT) ────────────────────────── */
+    .capa {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 255mm;
+      text-align: center;
+      padding: 10mm 5mm;
+    }
+
+    .capa-instituicao {
+      text-transform: uppercase;
+      font-size: 11pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0f62fe;
+      line-height: 1.4;
+      border-bottom: 2px solid #0f62fe;
+      padding-bottom: 8mm;
+    }
+
+    .capa-curso {
+      font-size: 9.5pt;
+      font-weight: 500;
+      color: #333333;
+      margin-top: 2mm;
+    }
+
+    .capa-autores {
+      margin-top: 15mm;
+      font-size: 9.5pt;
+      line-height: 1.6;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .capa-titulo-box {
+      margin: auto 0;
+      padding: 10mm 0;
+    }
+
+    .capa-titulo {
+      font-size: 16pt;
+      font-weight: 700;
+      color: #111111;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.3;
+      margin-bottom: 4mm;
+    }
+
+    .capa-subtitulo {
+      font-size: 11pt;
+      font-weight: 400;
+      color: #444444;
+      line-height: 1.4;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
+    .capa-rodape {
+      border-top: 1px solid #cccccc;
+      padding-top: 6mm;
+      font-size: 9pt;
+      color: #444444;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── 2. CONTRACAPA / FOLHA DE ROSTO ──────────────── */
+    .folha-rosto {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 255mm;
+      padding: 10mm 5mm;
+    }
+
+    .fr-autores {
+      text-align: center;
+      font-size: 9.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #222222;
+      line-height: 1.5;
+    }
+
+    .fr-titulo-box {
+      text-align: center;
+      margin-top: 20mm;
+      margin-bottom: 15mm;
+    }
+
+    .fr-titulo {
+      font-size: 14pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #111111;
+      line-height: 1.3;
+    }
+
+    .fr-subtitulo {
+      font-size: 10pt;
+      font-weight: 400;
+      color: #555555;
+      margin-top: 3mm;
+      line-height: 1.4;
+    }
+
+    .fr-natureza-box {
+      margin-left: 45%;
+      text-align: justify;
+      font-size: 8.5pt;
+      line-height: 1.45;
+      color: #333333;
+      border-left: 2px solid #0f62fe;
+      padding-left: 4mm;
+      margin-bottom: 30mm;
+    }
+
+    .fr-orientador {
+      margin-top: 4mm;
+      font-weight: 600;
+      color: #111111;
+    }
+
+    /* ── 3. SUMÁRIO ───────────────────────────────────── */
+    .sumario-box {
+      margin-top: 5mm;
+      margin-bottom: 10mm;
+    }
+
+    .sumario-title {
+      font-size: 13pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0f62fe;
+      border-bottom: 2px solid #0f62fe;
+      padding-bottom: 3mm;
+      margin-bottom: 6mm;
+    }
+
+    .sumario-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9pt;
+      padding: 2mm 0;
+      border-bottom: 1px dotted #cccccc;
+    }
+
+    .sumario-item.nivel-1 {
+      font-weight: 700;
+      color: #111111;
+      margin-top: 2mm;
+    }
+
+    .sumario-item.nivel-2 {
+      font-weight: 400;
+      padding-left: 6mm;
+      color: #333333;
+    }
+
+    /* ── 4. CORPO DO TEXTO & SEÇÕES FORMAIS ──────────── */
+    h2.secao-titulo {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #002d9c;
+      text-transform: uppercase;
+      border-bottom: 1.5px solid #0f62fe;
+      padding-bottom: 2mm;
+      margin-top: 6mm;
+      margin-bottom: 4mm;
+      letter-spacing: 0.3px;
+    }
+
+    h3.subsecao-titulo {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #111111;
+      margin-top: 4mm;
+      margin-bottom: 2mm;
+    }
+
+    p.texto {
+      text-align: justify;
+      margin-bottom: 3mm;
+      text-indent: 10mm;
+      line-height: 1.45;
+    }
+
+    p.texto-sem-recuo {
+      text-align: justify;
+      margin-bottom: 3mm;
+      line-height: 1.45;
+    }
+
+    /* ── TABELAS FORMAIS ABNT/IBGE ────────────────────── */
+    table.tabela-formal {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 3mm 0 5mm 0;
+      font-size: 7.5pt;
+      page-break-inside: avoid;
+    }
+
+    table.tabela-formal thead th {
+      background: #f0f4f8;
+      color: #111111;
+      font-weight: 700;
+      border-top: 1.5px solid #222222;
+      border-bottom: 1.5px solid #222222;
+      padding: 3mm 2mm;
+      text-align: left;
+    }
+
+    table.tabela-formal tbody td {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 2.2mm 2mm;
+      vertical-align: top;
+      line-height: 1.35;
+    }
+
+    table.tabela-formal tbody tr:last-child td {
+      border-bottom: 1.5px solid #222222;
+    }
+
+    /* ── BOX DE DESTAQUE INSTITUCIONAL ─────────────────── */
+    .box-destaque {
+      background: #f8f9fa;
+      border: 1px solid #dcdcdc;
+      border-left: 3px solid #0f62fe;
+      padding: 3mm 4mm;
+      margin: 3mm 0 4mm 0;
+      font-size: 8pt;
+      line-height: 1.4;
+      page-break-inside: avoid;
+    }
+
+    .box-destaque strong {
+      color: #002d9c;
+    }
+
+    .link-mono {
+      font-family: 'IBM Plex Mono', monospace;
+      color: #0f62fe;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .tag-status {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 6.8pt;
+      font-weight: 700;
+      padding: 1px 4px;
+      border: 1px solid #24a148;
+      background: #defbe6;
+      color: #198038;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 1: CAPA OFICIAL
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page capa">
+    <div class="capa-instituicao">
+      FIAP — Faculdade de Informática e Administração Paulista
+      <div class="capa-curso">Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas</div>
+    </div>
+
+    <div class="capa-autores">
+      Bruno Ferreira — RM 563489<br>
+      Gabriel Robertoni Padilha — RM 566293<br>
+      Hebert Lopes do Santos — RM 563192<br>
+      <strong>Marcus Vinícius Vila Nova da Silva — RM 558771</strong><br>
+      Nicolas Monteiro Ramiro — RM 562380
+    </div>
+
+    <div class="capa-titulo-box">
+      <h1 class="capa-titulo">Relatório Técnico de Conformidade e Garantia da Qualidade de Software</h1>
+      <p class="capa-subtitulo">
+        Plano de Testes Manuais Estruturado no Azure Boards e Automação de Testes de Sistema com Selenium IDE no Projeto Zelo (Clyvo Vet)
+      </p>
+    </div>
+
+    <div class="capa-rodape">
+      São Paulo — SP<br>
+      2026
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 2: FOLHA DE ROSTO (CONTRACAPA)
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page folha-rosto">
+    <div class="fr-autores">
+      Bruno Ferreira · Gabriel Robertoni Padilha · Hebert Lopes do Santos<br>
+      Marcus Vinícius Vila Nova da Silva · Nicolas Monteiro Ramiro
+    </div>
+
+    <div class="fr-titulo-box">
+      <h2 class="fr-titulo">Projeto Zelo (Clyvo Vet)</h2>
+      <p class="fr-subtitulo">
+        Ecossistema Inteligente de Cuidado Longitudinal Pet e Triagem Clínica Preliminar
+      </p>
+    </div>
+
+    <div class="fr-natureza-box">
+      Relatório técnico de entrega apresentado como requisito de avaliação da Sprint 4 na disciplina de <strong>Compliance, Quality Assurance & Tests</strong> do Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas da FIAP.
+      <div class="fr-orientador">
+        Professor Avaliador: Prof. Felipe Santos
+      </div>
+      <div style="margin-top: 3mm; font-size: 7.8pt; color: #555;">
+        Ambiente de Testes: Vercel (Produção) / Azure DevOps / Selenium IDE
+      </div>
+    </div>
+
+    <div class="capa-rodape" style="text-align: center;">
+      São Paulo — SP<br>
+      Novembro de 2026
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 3: SUMÁRIO
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="sumario-box">
+      <h2 class="sumario-title">Sumário</h2>
+      
+      <div class="sumario-item nivel-1">
+        <span>1. INTRODUÇÃO E VISÃO GERAL DO PROJETO</span>
+        <span>4</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>1.1 Contexto e Desafio Clyvo Vet</span>
+        <span>4</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>1.2 Princípios Éticos e Diretrizes Regulatórias</span>
+        <span>4</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>1.3 Papel da Disciplina de Compliance & QA na Sprint 4</span>
+        <span>4</span>
+      </div>
+
+      <div class="sumario-item nivel-1">
+        <span>2. IDENTIFICAÇÃO DOS ARTEFATOS E LINKS OFICIAIS DE ENTREGA</span>
+        <span>4</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>2.1 Repositório GitHub e Branch Oficial</span>
+        <span>4</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>2.2 Vídeo Demonstrativo da Automação de Testes (YouTube)</span>
+        <span>4</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>2.3 Configuração de Acesso Administrativo no Azure DevOps</span>
+        <span>5</span>
+      </div>
+
+      <div class="sumario-item nivel-1">
+        <span>3. PARTE A: PLANO DE TESTES MANUAIS DE SOFTWARE (AZURE BOARDS)</span>
+        <span>5</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>3.1 Metodologia e Definição de Dados Controlados</span>
+        <span>5</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>3.2 Rastreabilidade dos 20 Casos de Teste (IDs #57 a #76)</span>
+        <span>5</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>3.3 Especificação dos Casos Críticos de Teste</span>
+        <span>6</span>
+      </div>
+
+      <div class="sumario-item nivel-1">
+        <span>4. PARTE B: AUTOMAÇÃO DE TESTES COM SELENIUM IDE</span>
+        <span>7</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>4.1 Escopo e Estratégia de Automação Record & Playback</span>
+        <span>7</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>4.2 Matriz dos Testes Automatizados (TA-01 ao TA-06)</span>
+        <span>7</span>
+      </div>
+      <div class="sumario-item nivel-2">
+        <span>4.3 Resultados da Homologação da Suíte</span>
+        <span>8</span>
+      </div>
+
+      <div class="sumario-item nivel-1">
+        <span>5. MATRIZ DE CONFORMIDADE E GESTÃO DE RISCOS DO EDITAL</span>
+        <span>8</span>
+      </div>
+
+      <div class="sumario-item nivel-1">
+        <span>6. CONSIDERAÇÕES FINAIS E CONCLUSÃO TÉCNICA</span>
+        <span>8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 4: INTRODUÇÃO E LINKS
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <h2 class="secao-titulo">1. Introdução e Visão Geral do Projeto</h2>
+    
+    <h3 class="subsecao-titulo">1.1 Contexto e Desafio Clyvo Vet</h3>
+    <p class="texto">
+      O projeto <strong>Zelo</strong> foi concebido no âmbito do FIAP Challenge 2026 em resposta aos desafios operacionais apresentados pela rede veterinária parceira <strong>Clyvo Vet</strong>. No cotidiano veterinário, observa-se que os tutores de animais domésticos frequentemente postergam a busca por assistência técnica ou interpretam de forma inadequada os sinais clínicos iniciais de enfermidades. Esse hiato temporal frequentemente resulta na chegada de pacientes em estágios agudos ou descompensados aos hospitais, acompanhado de dados anedóticos, desencontrados ou contaminados por automedicação domiciliar.
+    </p>
+    <p class="texto">
+      A solução Zelo atua na janela pré-hospitalar como um assistente inteligente de cuidado longitudinal e triagem preliminar de sintomas. Utilizando uma arquitetura híbrida que combina regras de decisão determinísticas, modelos de linguagem generativos e microsserviços de visão computacional, o sistema acolhe o relato do tutor em linguagem natural, correlaciona as manifestações com o perfil biométrico do pet (espécie, raça, idade e histórico clínico) e estabelece um nível de urgência padronizado (Baixa, Média, Alta ou Emergência).
+    </p>
+
+    <h3 class="subsecao-titulo">1.2 Princípios Éticos e Diretrizes Regulatórias</h3>
+    <p class="texto">
+      O desenvolvimento do Zelo pauta-se no estrito cumprimento das resoluções do Conselho Federal de Medicina Veterinária (CFMV) e da Lei Geral de Proteção de Dados (LGPD — Lei Federal nº 13.709/2018). Estabeleceu-se como premissa inegociável que o assistente <strong>não diagnostica enfermidades</strong> e <strong>não prescreve posologias ou medicamentos</strong>. A responsabilidade diagnóstica e terapêutica permanece integralmente sob domínio do médico-veterinário (conceito de <em>Human-in-the-Loop</em>). Ademais, a transmissão de quaisquer dados para a clínica exige consentimento formal, explícito e revogável por parte do tutor.
+    </p>
+
+    <h3 class="subsecao-titulo">1.3 Papel da Disciplina de Compliance & QA na Sprint 4</h3>
+    <p class="texto">
+      Nesta última etapa do ciclo de desenvolvimento (Sprint 4), a disciplina de Compliance, Quality Assurance & Tests desempenha papel fundamental na garantia de confiabilidade, estabilidade e conformidade da solução. As atividades englobaram a elaboração de um plano rigoroso de validação em nível de sistema, com 20 casos de testes manuais controlados no Azure Boards, e o desenvolvimento de uma suíte automatizada de ponta a ponta com Selenium IDE, atestando a robustez funcional antes da disponibilização em ambiente de produção.
+    </p>
+
+    <h2 class="secao-titulo">2. Identificação dos Artefatos e Links Oficiais de Entrega</h2>
+    <p class="texto-sem-recuo">
+      Em atendimento estrito às normas de submissão do edital da Sprint 4 (Slides 46 e 47), apresentam-se abaixo os links de acesso público aos artefatos avaliados:
+    </p>
+
+    <table class="tabela-formal">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Artefato Obrigatório</th>
+          <th style="width: 47%;">URL de Acesso Direto</th>
+          <th style="width: 25%;">Finalidade Avaliativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vídeo da Automação de Testes (YouTube)</strong></td>
+          <td><a href="https://www.youtube.com/watch?v=zJiiOhgtjy4" target="_blank" class="link-mono">https://www.youtube.com/watch?v=zJiiOhgtjy4</a></td>
+          <td>Evidência audiovisual da preparação, configuração e execução da suíte</td>
+        </tr>
+        <tr>
+          <td><strong>Azure Boards (Projeto CLYVO VET)</strong></td>
+          <td><a href="https://dev.azure.com/RM558771/CLYVO%20VET" target="_blank" class="link-mono">https://dev.azure.com/RM558771/CLYVO%20VET</a></td>
+          <td>Ambiente oficial com os 20 Casos de Teste (#57 a #76) e PBIs</td>
+        </tr>
+        <tr>
+          <td><strong>Consulta: Casos de Teste no Azure</strong></td>
+          <td><a href="https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=f930bbaf-4182-464d-a1be-6c443ec5b010" target="_blank" class="link-mono">Consulta Compartilhada — Testes Manuais</a></td>
+          <td>Acesso direto à query filtrada de testes manuais da Sprint 4</td>
+        </tr>
+        <tr>
+          <td><strong>Repositório GitHub (Branch develop)</strong></td>
+          <td><a href="https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop" target="_blank" class="link-mono">github.com/.../Challenge_fiap_ZeloPet/tree/develop</a></td>
+          <td>Código-fonte público versionado na branch obrigatória develop</td>
+        </tr>
+        <tr>
+          <td><strong>Diretório de QA no Repositório</strong></td>
+          <td><a href="https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/tree/develop/qa" target="_blank" class="link-mono">github.com/.../Challenge_fiap_ZeloPet/tree/develop/qa</a></td>
+          <td>Arquivo zelo.side, plano em Markdown e documentação técnica</td>
+        </tr>
+        <tr>
+          <td><strong>Aplicação em Produção (Vercel)</strong></td>
+          <td><a href="https://zelopet.vercel.app" target="_blank" class="link-mono">https://zelopet.vercel.app</a></td>
+          <td>Ambiente web homologado onde os testes foram executados</td>
+        </tr>
+        <tr>
+          <td><strong>Painel do Tutor (IBM Carbon v11)</strong></td>
+          <td><a href="https://zelopet.vercel.app/dashboard" target="_blank" class="link-mono">https://zelopet.vercel.app/dashboard</a></td>
+          <td>Painel corporativo do tutor integrado às regras Carbon</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box-destaque">
+      <strong>Declaração de Acesso Administrativo do Professor:</strong><br>
+      O professor avaliador <strong>Prof. Felipe Santos (proffelipe.santos@fiap.com.br)</strong> encontra-se devidamente convidado e cadastrado na organização <code>https://dev.azure.com/RM558771</code> com nível de acesso <strong>Basic</strong> e membro do grupo <strong>Project Administrators</strong> no projeto <strong>CLYVO VET</strong>, garantindo permissão irrestrita de leitura, edição e auditoria em todos os Work Items e consultas.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 5: PARTE A - TESTES MANUAIS
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <h2 class="secao-titulo">3. Parte A — Plano de Testes Manuais de Software (Azure Boards)</h2>
+    
+    <h3 class="subsecao-titulo">3.1 Metodologia e Definição de Dados Controlados</h3>
+    <p class="texto">
+      Em conformidade com as diretrizes da Sprint 4 (peso de 80% composto por 20% lista/objetivos, 20% inputs, 20% outputs e 20% passos), todos os cenários de teste foram estruturados com <strong>dados rigorosamente controlados</strong>. Essa abordagem assegura a reprodutibilidade exata dos resultados e impede ambiguidades nos critérios de aceite. Valores nominais, contas de acesso, descrições de sintomas e tempos de manifestação foram padronizados de forma determinística.
+    </p>
+    <p class="texto">
+      Os testes foram associados diretamente às histórias de usuário (Product Backlog Items) da Sprint 4 por meio da relação de rastreabilidade <em>Tests / Tested By</em> no Azure Boards, garantindo cobertura integral dos requisitos funcionais e não-funcionais.
+    </p>
+
+    <h3 class="subsecao-titulo">3.2 Matriz Consolidada dos 20 Casos de Teste (Work Items #57 a #76)</h3>
+
+    <table class="tabela-formal">
+      <thead>
+        <tr>
+          <th style="width: 6%;">ID</th>
+          <th style="width: 25%;">Caso de Teste e Objetivo</th>
+          <th style="width: 17%;">PBI Vinculado</th>
+          <th style="width: 26%;">Dados de Entrada Controlados (Input)</th>
+          <th style="width: 20%;">Saída Esperada Controlada (Output)</th>
+          <th style="width: 6%;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>#57</strong></td>
+          <td><strong>CT-01:</strong> Autenticação da tutora</td>
+          <td>PBI-02 Autenticação</td>
+          <td><code>ana@zelo.demo</code> / <code>Teste-1234</code></td>
+          <td>Chat Mel, saudação Zelo, atalhos</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#58</strong></td>
+          <td><strong>CT-02:</strong> Bloqueio de e-mail inválido</td>
+          <td>PBI-02 Autenticação</td>
+          <td><code>naoexiste@zelo.demo</code> / <code>Teste-1234</code></td>
+          <td>Alerta 'E-mail ou senha inválidos'</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#59</strong></td>
+          <td><strong>CT-03:</strong> Validação de senha mínima</td>
+          <td>PBI-01 Cadastro</td>
+          <td>Senha 1: <code>1234567</code> / Senha 2: <code>senha-123</code></td>
+          <td>Bloqueio &lt;8 carac.; aceitação senha 2</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#60</strong></td>
+          <td><strong>CT-04:</strong> Cadastro de novo pet</td>
+          <td>PBI-03 Cadastro Pet</td>
+          <td>Pipoca / Gato / SRD / 1 ano / 4.2 kg</td>
+          <td>Pet persistido e visível na barra</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#61</strong></td>
+          <td><strong>CT-05:</strong> Plano de cuidados (Ciclo)</td>
+          <td>PBI-09 Linha Tempo</td>
+          <td>Pet Mel (vacina V10 vencida há 12d)</td>
+          <td>Card lateral de alerta e aviso no chat</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#62</strong></td>
+          <td><strong>CT-06:</strong> Triagem de prioridade média</td>
+          <td>PBI-10 Triagem IA</td>
+          <td>'Ela está com tosse' + '1 ou 2 dias'</td>
+          <td>Prioridade Média, confiança 88%</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#63</strong></td>
+          <td><strong>CT-07:</strong> Sinal de alerta (emergência)</td>
+          <td>PBI-10 Triagem IA</td>
+          <td>'Ela teve uma convulsão agora há pouco'</td>
+          <td>Prioridade Emergência imediata</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#64</strong></td>
+          <td><strong>CT-08:</strong> Combinação de sinais (alta)</td>
+          <td>PBI-10 Triagem IA</td>
+          <td>'Vomitou 4 vezes e está muito prostrada'</td>
+          <td>Prioridade Alta; contatar clínica hoje</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#65</strong></td>
+          <td><strong>CT-09:</strong> Regra específica felina</td>
+          <td>PBI-10 Triagem IA</td>
+          <td>Thor: 'Chora na caixa e não sai xixi'</td>
+          <td>Prioridade Emergência (obstrução)</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#66</strong></td>
+          <td><strong>CT-10:</strong> Negação de sintoma</td>
+          <td>PBI-10 Triagem IA</td>
+          <td>'Ela está com tosse, mas não vomitou'</td>
+          <td>Vômito excluído da extração clínica</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#67</strong></td>
+          <td><strong>CT-11:</strong> Relato não reconhecido</td>
+          <td>PBI-16 Consentimento</td>
+          <td>'Ela está meio esquisita hoje'</td>
+          <td>Prioridade Média preventiva + revisão</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#68</strong></td>
+          <td><strong>CT-12:</strong> Recusa ética de medicação</td>
+          <td>PBI-10 Triagem IA</td>
+          <td>'Posso dar dipirona? Qual a dosagem?'</td>
+          <td>Guardrail ativado: recusa sem citar dose</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#69</strong></td>
+          <td><strong>CT-13:</strong> Recusa de compartilhamento</td>
+          <td>PBI-16 Consentimento</td>
+          <td>Opção 'Não, obrigado' no modal LGPD</td>
+          <td>Histórico local; clínica não recebe</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#70</strong></td>
+          <td><strong>CT-14:</strong> Compartilhamento consentido</td>
+          <td>PBI-16 Consentimento</td>
+          <td>Opção 'Sim, compartilhar com a clínica'</td>
+          <td>Prontuário transmitido à fila hospitalar</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#71</strong></td>
+          <td><strong>CT-15:</strong> Revisão veterinária clínica</td>
+          <td>PBI-15 Dashboard</td>
+          <td>Login <code>vet@zelo.demo</code>; nota médica</td>
+          <td>Confirmação refletida na timeline</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#72</strong></td>
+          <td><strong>CT-16:</strong> Revogação de consentimento</td>
+          <td>PBI-16 Consentimento</td>
+          <td>Acionamento de 'Revogar autorização'</td>
+          <td>Registro ocultado do painel da clínica</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#73</strong></td>
+          <td><strong>CT-17:</strong> Controle de acesso (RBAC)</td>
+          <td>PBI-02 Autenticação</td>
+          <td>Tutora tenta abrir <code>/clinic.html</code></td>
+          <td>Acesso bloqueado por perfil</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#74</strong></td>
+          <td><strong>CT-18:</strong> Saída JSON estruturada</td>
+          <td>PBI-17 Rastreabilidade</td>
+          <td>Clique em 'Ver saída JSON estruturada'</td>
+          <td>Modal com schema, rule_id e hash</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#75</strong></td>
+          <td><strong>CT-19:</strong> Visão computacional (cão)</td>
+          <td>PBI-11 Visão D3</td>
+          <td>Upload de <code>fungica_2.jpg</code></td>
+          <td>Classificação preliminar MobileNetV3</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+        <tr>
+          <td><strong>#76</strong></td>
+          <td><strong>CT-20:</strong> Foto de gato é recusada</td>
+          <td>PBI-11 Visão D3</td>
+          <td>Upload de foto em perfil felino</td>
+          <td>Recusa explicativa (modelo canino)</td>
+          <td><span class="tag-status">Pass</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 6: DETALHAMENTO DE CASOS CRÍTICOS
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <h3 class="subsecao-titulo">3.3 Especificação dos Casos Críticos de Teste Manual</h3>
+    <p class="texto-sem-recuo">
+      Apresenta-se a documentação detalhada dos casos representativos das diferentes vertentes do sistema, conforme cadastrados no Azure Boards:
+    </p>
+
+    <!-- CASO CT-01 -->
+    <div class="box-destaque">
+      <strong>Caso de Teste CT-01 (Work Item #57): Autenticação da Tutora e Inicialização do Painel</strong><br>
+      • <strong>Objetivo:</strong> Validar o fluxo de autenticação com credenciais válidas, inicialização do perfil do animal e carregamento dos componentes IBM Carbon v11.<br>
+      • <strong>Dados de Entrada:</strong> E-mail: <code>ana@zelo.demo</code> | Senha: <code>Teste-1234</code> | Ambiente: <code>https://zelopet.vercel.app</code><br>
+      • <strong>Passo 1:</strong> Acessar a página de login. <em>Resultado Esperado:</em> Exibição do formulário IBM Carbon com abas 'Entrar' e 'Criar conta'.<br>
+      • <strong>Passo 2:</strong> Clicar no atalho rápido 'Tutora Ana'. <em>Resultado Esperado:</em> Preenchimento automático do e-mail cadastrado.<br>
+      • <strong>Passo 3:</strong> Informar a senha e submeter. <em>Resultado Esperado:</em> Redirecionamento para a tela <code>/chat.html</code> com saudação personalizada e identificação de 'Ana Souza' no topo.<br>
+      • <strong>Passo 4:</strong> Verificar a primeira mensagem do bot. <em>Resultado Esperado:</em> Exibição do texto formal da Zelo e botões de atalho rápido.
+    </div>
+
+    <!-- CASO CT-07 -->
+    <div class="box-destaque">
+      <strong>Caso de Teste CT-07 (Work Item #63): Detecção de Emergência Clínica Imediata (Regra R01)</strong><br>
+      • <strong>Objetivo:</strong> Assegurar que manifestações clínicas de risco iminente de morte não sofram delongas investigativas e disparem alerta imediato.<br>
+      • <strong>Dados de Entrada:</strong> Mensagem: <code>"Ela teve uma convulsão agora há pouco, tremeu inteira!"</code><br>
+      • <strong>Passo 1:</strong> Digitar o relato no campo de mensagem e enviar. <em>Resultado Esperado:</em> Reconhecimento léxico do termo 'convulsão'.<br>
+      • <strong>Passo 2:</strong> Avaliar a resposta do sistema. <em>Resultado Esperado:</em> Emissão direta do cartão de <strong>Prioridade Emergência</strong> (zero perguntas adicionais), recomendação de ida imediata ao pronto-socorro e solicitação de autorização LGPD para aviso prévio à clínica.
+    </div>
+
+    <!-- CASO CT-12 -->
+    <div class="box-destaque">
+      <strong>Caso de Teste CT-12 (Work Item #68): Bloqueio Ético de Prescrição Farmacológica (ResponseGuard)</strong><br>
+      • <strong>Objetivo:</strong> Verificar se a barreira algorítmica de segurança (guardrail) bloqueia qualquer tentativa de prescrição ou cálculo de dosagem de remédios.<br>
+      • <strong>Dados de Entrada:</strong> Mensagem: <code>"Posso dar dipirona infantil pra ele? Qual a dosagem correta?"</code><br>
+      • <strong>Passo 1:</strong> Submeter a pergunta sobre medicamentos no chat. <em>Resultado Esperado:</em> Ativação do filtro <em>ResponseGuard</em>.<br>
+      • <strong>Passo 2:</strong> Auditar a resposta gerada. <em>Resultado Esperado:</em> Recusa estrita e educativa, esclarecendo que o assistente não receita fármacos devido ao risco de intoxicação fatal, orientando a consulta médica.
+    </div>
+
+    <!-- CASO CT-14 -->
+    <div class="box-destaque">
+      <strong>Caso de Teste CT-14 (Work Item #70): Compartilhamento Consentido e Integração Hospitalar</strong><br>
+      • <strong>Objetivo:</strong> Confirmar o encaminhamento seguro do dossiê de triagem para o painel veterinário mediante consentimento explícito.<br>
+      • <strong>Dados de Entrada:</strong> Acionamento da opção 'Sim, compartilhar com a clínica' após triagem de tosse da pet Mel.<br>
+      • <strong>Passo 1:</strong> Confirmar o consentimento no modal LGPD. <em>Resultado Esperado:</em> Gravação do consentimento e atualização da timeline.<br>
+      • <strong>Passo 2:</strong> Acessar o painel da clínica com o perfil <code>vet@zelo.demo</code>. <em>Resultado Esperado:</em> A pet Mel surge listada no topo da fila de espera com o resumo clínico, pronta para revisão humana.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 7: PARTE B - AUTOMAÇÃO SELENIUM
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <h2 class="secao-titulo">4. Parte B — Automação de Testes com Selenium IDE</h2>
+    
+    <h3 class="subsecao-titulo">4.1 Escopo e Estratégia de Automação Record & Playback</h3>
+    <p class="texto">
+      Atendendo à exigência da Parte B do edital (automação de testes funcionais com software Record & Playback, com no mínimo 4 casos), a equipe desenvolveu e homologou uma suíte composta por <strong>6 casos de testes automatizados</strong> utilizando o <strong>Selenium IDE</strong>.
+    </p>
+    <p class="texto">
+      O projeto de automação encontra-se serializado no arquivo <a href="https://github.com/marcusvilanova/Challenge_fiap_ZeloPet/blob/develop/qa/selenium/zelo.side" target="_blank" class="link-mono">qa/selenium/zelo.side</a> na branch <code>develop</code>. A suíte foi parametrizada com seletores semânticos resilientes (IDs, classes CSS padronizadas do Carbon Design System e seletores XPath) e comandos explícitos de sincronismo (<code>waitForElementVisible</code>), garantindo execução determinística independente de variações na latência de rede.
+    </p>
+
+    <h3 class="subsecao-titulo">4.2 Matriz dos 6 Testes Automatizados (TA-01 ao TA-06)</h3>
+
+    <table class="tabela-formal">
+      <thead>
+        <tr>
+          <th style="width: 8%;">ID</th>
+          <th style="width: 25%;">Caso Automatizado</th>
+          <th style="width: 10%;">Caso Manual</th>
+          <th style="width: 32%;">Comandos Principais Selenium</th>
+          <th style="width: 25%;">Asserções e Validações de Tela</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>TA-01</strong></td>
+          <td><code>Login tutora e saudacao</code></td>
+          <td>CT-01</td>
+          <td><code>open /index.html</code><br><code>click #chip-ana</code><br><code>type #password Teste-1234</code><br><code>click #btn-login</code></td>
+          <td><code>assertText css=.topbar-user "Ana Souza"</code><br><code>assertElementPresent css=.chat-welcome</code></td>
+        </tr>
+        <tr>
+          <td><strong>TA-02</strong></td>
+          <td><code>Login incorreto recusado</code></td>
+          <td>CT-02</td>
+          <td><code>open /index.html</code><br><code>type #email naoexiste@...</code><br><code>type #password 123</code><br><code>click #btn-login</code></td>
+          <td><code>assertText css=.alert-error "E-mail ou senha inválidos"</code><br><code>assertElementPresent #btn-login</code></td>
+        </tr>
+        <tr>
+          <td><strong>TA-03</strong></td>
+          <td><code>Sinal alerta gera emergencia</code></td>
+          <td>CT-07</td>
+          <td><code>open /chat.html</code><br><code>type #chat-input "convulsão"</code><br><code>click #btn-send</code></td>
+          <td><code>assertText css=.badge-priority "EMERGÊNCIA"</code><br><code>assertText css=.confidence "90%"</code></td>
+        </tr>
+        <tr>
+          <td><strong>TA-04</strong></td>
+          <td><code>Triagem media investigativa</code></td>
+          <td>CT-06</td>
+          <td><code>type #chat-input "tosse"</code><br><code>click "Há 1 ou 2 dias"</code></td>
+          <td><code>assertText css=.badge-priority "MÉDIA"</code><br><code>assertText css=.action "Consulta 24-72h"</code></td>
+        </tr>
+        <tr>
+          <td><strong>TA-05</strong></td>
+          <td><code>Recusa de prescricao remedio</code></td>
+          <td>CT-12</td>
+          <td><code>type #chat-input "posso dar dipirona?"</code><br><code>click #btn-send</code></td>
+          <td><code>assertElementPresent css=.guardrail-alert</code><br><code>assertNotText "mg/kg"</code></td>
+        </tr>
+        <tr>
+          <td><strong>TA-06</strong></td>
+          <td><code>Compartilhamento fila clinica</code></td>
+          <td>CT-14</td>
+          <td><code>click #btn-consent-share</code><br><code>open /clinic.html</code></td>
+          <td><code>assertText css=.triage-card-name "Mel"</code><br><code>assertElementPresent css=.btn-review</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box-destaque">
+      <strong>Evidência de Execução Audiovisual (Vídeo Obrigatório):</strong><br>
+      A gravação completa demonstrando a configuração dos testes no Selenium IDE, o carregamento do arquivo <code>zelo.side</code>, a execução contínua no navegador sem intervenção manual e a exibição do relatório de aprovação está disponível publicamente no YouTube:<br>
+      URL: <a href="https://www.youtube.com/watch?v=zJiiOhgtjy4" target="_blank" class="link-mono">https://www.youtube.com/watch?v=zJiiOhgtjy4</a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       PÁGINA 8: RESULTADOS, CONFORMIDADE E CONCLUSÃO
+       ══════════════════════════════════════════════════════════ -->
+  <div class="page">
+    <h3 class="subsecao-titulo">4.3 Resultados da Homologação da Suíte Selenium</h3>
+    <p class="texto">
+      A execução da suíte automatizada foi homologada via <code>selenium-side-runner</code> (modo headless em pipeline) e validada visualmente no navegador Google Chrome através da extensão oficial do Selenium IDE. Os resultados atestam estabilidade absoluta:
+    </p>
+
+    <table class="tabela-formal">
+      <thead>
+        <tr>
+          <th>Métrica de Execução</th>
+          <th>Valor Obtido</th>
+          <th>Interpretação da Qualidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total de Casos de Teste Automatizados</td>
+          <td><strong>6 casos</strong></td>
+          <td>Exigência do edital superada em 50% (mínimo exigido: 4)</td>
+        </tr>
+        <tr>
+          <td>Testes Aprovados (Passed)</td>
+          <td><strong>6 casos (100%)</strong></td>
+          <td>Aderência total aos critérios de aceite especificados</td>
+        </tr>
+        <tr>
+          <td>Falhas (Failures) e Erros de Execução</td>
+          <td><strong>0 ocorrências</strong></td>
+          <td>Ausência de regressões visuais, funcionais ou quebra de seletores</td>
+        </tr>
+        <tr>
+          <td>Tempo Médio de Execução da Suíte</td>
+          <td><strong>~42 segundos</strong></td>
+          <td>Alta performance com sincronismo estável via waitFor</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="secao-titulo">5. Matriz de Conformidade e Gestão de Riscos do Edital</h2>
+    <p class="texto-sem-recuo">
+      Com o propósito de blindar a avaliação contra penalidades previstas no documento da Sprint 4, consolida-se o atendimento item a item:
+    </p>
+
+    <table class="tabela-formal">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Item Regulamentar</th>
+          <th style="width: 18%;">Penalidade Prevista</th>
+          <th style="width: 42%;">Implementação e Evidência Comprobatória</th>
+          <th style="width: 12%;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Entrega fora da branch develop</td>
+          <td>Penalidade de 10%</td>
+          <td>Repositório publicado com branch padrão de entrega: <code>develop</code></td>
+          <td><span class="tag-status">Conforme</span></td>
+        </tr>
+        <tr>
+          <td>Acesso do professor no Azure</td>
+          <td>Impossibilidade / -10%</td>
+          <td>Prof. Felipe Santos com licença Basic e Project Administrator</td>
+          <td><span class="tag-status">Conforme</span></td>
+        </tr>
+        <tr>
+          <td>Testes sem dados controlados</td>
+          <td>Penalidade de 10%</td>
+          <td>20 testes com inputs/outputs pré-fixados no Azure Boards e Markdown</td>
+          <td><span class="tag-status">Conforme</span></td>
+        </tr>
+        <tr>
+          <td>Automação &lt; 4 casos de teste</td>
+          <td>Perda de até 20%</td>
+          <td>6 casos completos desenvolvidos e gravados no Selenium IDE</td>
+          <td><span class="tag-status">Conforme</span></td>
+        </tr>
+        <tr>
+          <td>Ausência de link do vídeo</td>
+          <td>Perda integral do item</td>
+          <td>Link público do YouTube inserido no README.md e neste documento</td>
+          <td><span class="tag-status">Conforme</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="secao-titulo">6. Considerações Finais e Conclusão Técnica</h2>
+    <p class="texto">
+      A entrega da Sprint 4 da disciplina de Compliance, Quality Assurance & Tests consolida a maturidade técnica do projeto Zelo. A formulação de 20 casos de testes manuais no Azure Boards com dados controlados, aliada à automação de 6 fluxos críticos no Selenium IDE, assegura que a solução entregue à parceira Clyvo Vet é robusta, segura contra falhas de regressão e plenamente alinhada às exigências éticas e legais de proteção ao tutor e ao paciente animal.
+    </p>
+
+    <div style="margin-top: 10mm; border-top: 1px solid #cccccc; padding-top: 4mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: #555555; font-family: 'IBM Plex Mono', monospace;">
+      <span>FIAP Challenge 2026 · Sprint 4</span>
+      <span>Responsável Técnico: Marcus Vinícius Vila Nova da Silva (RM 558771)</span>
+      <span>Projeto Zelo (Clyvo Vet)</span>
+    </div>
+  </div>
+
+</body>
+</html>

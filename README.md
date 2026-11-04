@@ -12,7 +12,7 @@
 | **QA — Consulta: Rastreabilidade PBI × Testes** | [Sprint 4 — Rastreabilidade](https://dev.azure.com/RM558771/web/qr.aspx?pguid=299a7425-1e77-41c6-9d1b-333d9c6bbdf7&qid=21ce73d1-aef0-4f10-908b-8e053f9f5e3a) | Rastreabilidade *Tests / Tested By* |
 | **QA — Documentação dos Testes Manuais** | [`qa/plano-testes-manuais.md`](qa/plano-testes-manuais.md) · [`qa/README.md`](qa/README.md) | Objetivos, dados controlados de entrada/saída e passos detalhados |
 | **QA — Automação Selenium IDE** | [`qa/selenium/zelo.side`](qa/selenium/zelo.side) | 6 testes automatizados executando contra a versão online |
-| **QA — Vídeo da Automação de Testes (YouTube)** | _inserir o link do YouTube aqui após gravação_ | Demonstração do Selenium IDE executando os 6 testes (roteiro em `qa/README.md`) |
+| **QA — Vídeo da Automação de Testes (YouTube)** | [Assistir Demonstração no YouTube](https://www.youtube.com/watch?v=zJiiOhgtjy4) | Demonstração do Selenium IDE executando os 6 testes (roteiro em `qa/README.md`) |
 | **QA — Simulador de Gravação Legendado** | [video.html](qa/video-guia-apresentacao.html) · online em `/video` | Simulador interativo do vídeo de 4 min com legendas sincronizadas para dublagem |
 | **QA — Arquivo de Legendas (SRT)** | [qa/legendas-video.srt](qa/legendas-video.srt) | Arquivo oficial de legendas sincronizadas segundo a segundo |
 | **Vídeo Pitch — Solução de IA & IoT (YouTube)** | [Assistir Pitch no YouTube](https://youtu.be/x7SFaB4W2Eo?si=m0uE-kcxOw0PyOFZ) | Demonstração em vídeo da Sprint 4 no YouTube: `https://youtu.be/x7SFaB4W2Eo` |
